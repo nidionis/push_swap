@@ -6,13 +6,19 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/09 00:26:24 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/09 21:01:10 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
 #include <stdlib.h>
+
+int	error_msg(void)
+{
+	write(1, "Error\n", 6);
+	exit (0);
+}
 
 int	ft_atoi(char *str_nb)
 {
@@ -30,17 +36,16 @@ int	ft_atoi(char *str_nb)
 	}
 	while (*str_nb == '0')
 		str_nb++;
-	while (*str_nb && (*str_nb >= '0' && *str_nb <= '9') &&
-		   	//!(loop_nb++ > 10 && -1 * loop_nb > 10))
+	while (*str_nb && (*str_nb >= '0' && *str_nb <= '9') && loop_nb++ < 10)
 		nb = (*str_nb++ - 48) + 10 * nb;
-	nb *= sign;
+	if (nb != -2147483648) // already overflowed
+		nb *= sign;
 	if ((loop_nb > 9 && nb * sign < 0 && nb != -2147483648) || *str_nb != 0)
 		error_msg();
 	return (nb);
 }
 
 int *get_args(char *argv[], int arg_nb)
-
 {
 	int	*args_tab;
 
@@ -52,11 +57,19 @@ int *get_args(char *argv[], int arg_nb)
 	return (args_tab);
 }
 
-// 
-// #include <stdio.h>
-// int main()
-// {
-// 	printf("%d\n", ft_atoi("-2147483648"));
-// 	printf("%d\n", ft_atoi("2147483655"));
-// 	printf("%d\n", ft_atoi("-999999999999999999999"));
-// }
+
+/*
+#include <stdio.h>
+int main()
+{
+	printf("%d\n", ft_atoi("0"));
+	printf("%d\n", ft_atoi("-0"));
+	printf("%d\n", ft_atoi("2147483646"));
+	printf("%d\n", ft_atoi("2147483647"));
+	printf("%d\n", ft_atoi("-2147483647"));
+	printf("%d\n", ft_atoi("-2147483648"));
+	printf("%d\n", ft_atoi("214748364s6"));
+	printf("%d\n", ft_atoi("-2147483649"));
+	printf("%d\n", ft_atoi("-999999999999999999999"));
+}
+*/

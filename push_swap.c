@@ -6,16 +6,10 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:00:20 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/08 22:51:14 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/09 20:35:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-
-int	error_msg(void)
-{
-	write(1, "Error\n", 6);
-	exit (0);
-}
 
 #include <stdio.h>
 int	main(int argc, char *argv[])
