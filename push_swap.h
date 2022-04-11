@@ -31,5 +31,5 @@ typedef struct s_lst
 
 int itoa(char *str_nb);
 int *get_args(char *argv1[], int nb_args);
-int error_msg(void);
+int error_msg(char *);
 void do_stuff(int *list, int lst_size);

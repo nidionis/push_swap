@@ -24,8 +24,8 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 	t_lnk	*lnk;
 
 	lnk = malloc(sizeof(t_lnk));
-	if (!nb)
-		lnk = NULL;
+	if (!lnk)
+                error_msg("Error creating a new link\n");
 	else
 	{
 		lnk->nb = nb;
@@ -95,7 +95,30 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 	return (lnk);
 }
 
-void    push(t_lst lst_a, t_lst lst_b, char action)
+void    reverse(t_lst *lst)
+{
+    t_lnk   *lnk;
+    t_lnk   *tmp;
+    size_t     looped;
+
+    lnk = lst->first;
+    looped = 0;
+    if (lst->size)
+    {
+        while (looped++ < lst->size)
+        {
+                tmp = lnk->next;
+                lnk->next = lnk->prev;
+                lnk->prev = tmp;
+                lnk = lnk->next;
+        }
+        tmp = lst->first;
+        lst->first = lst->last;
+        lst->last = tmp;
+    }
+}
+
+void    push(t_lst *lst_a, t_lst *lst_b, char action)
 {
     t_lnk   *tmp;
 
@@ -110,7 +133,7 @@ void    push(t_lst lst_a, t_lst lst_b, char action)
         push_item(tmp, lst_a);
     }
     else
-        write(1, "error in push function\n", 23);
+        error_msg("error in push function\n");
     if (action > 96) // si action est minuscule, imprimer 
     {
         write(1, "s", 1);
@@ -121,7 +144,7 @@ void    push(t_lst lst_a, t_lst lst_b, char action)
 
 void    *del_list(t_lst *lst)
 {
-    t_lnk   lnk;
+    t_lnk   *lnk;
     while (lst->size > 0)
     {
     	lnk = pop(lst);
@@ -158,7 +181,9 @@ int main(int argc, char *argv[])
 	t_lst *lst = new_lst();
 
 	while (ii < argc - 1)
-		push(new_lnk(tab[ii++], 0, 0), lst);
+		push_item(new_lnk(tab[ii++], 0, 0), lst);
 	print_lst(lst);
         printf("lst size:%d\n", (lst)->size);
+        reverse(lst);
+	print_lst(lst);
 }
