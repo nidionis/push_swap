@@ -12,6 +12,13 @@
 
 #include "push_swap.h"
 
+t_lnk	*lnk_init(t_lnk *lnk)
+{
+	lnk->next = lnk;
+	lnk->prev = lnk;
+	return (lnk);
+}
+
 t_lnk	*new_lnk(int nb, int ind, int rank)
 {
 	t_lnk	*returned_lnk;
@@ -24,32 +31,33 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 		returned_lnk->nb = nb;
 		returned_lnk->ind = ind;
 		returned_lnk->rank = rank;
-		returned_lnk->next = NULL;
-		returned_lnk->prev = NULL;
+		lnk_init(returned_lnk);
 	}
 	return (returned_lnk);
 }
 
-t_lnk	*addr_null(t_lnk *lnk)
+t_lst   *new_lst(void)
 {
-	lnk->next = NULL;
-	lnk->prev = NULL;
-	return (lnk);
+    t_lst   *lst;
+
+    lst = malloc(sizeof(t_lst));
+    lst->first = NULL;
+    lst->last = NULL;
+    lst->size = 0;
+    return (lst);
 }
 
-size_t	lnk_cnt(t_lnk **lst)
+size_t	lnk_cnt(t_lst lst)
 {
 	size_t	cnt;
-	t_lnk	*lnk_init;
 
 	cnt = 0;
-	lnk_init = *lst;
-	while (*lst != NULL || *lst != lnk_init)
+        if (lst.size)
+            while (lst.first != lst.last)
 	{
-		*lst = (*lst)->next;
+		lst.first = (lst.first)->next;
 		cnt++;
 	}
-	*lst = lnk_init;
 	return (cnt);
 }
 
@@ -71,30 +79,28 @@ t_lnk	*pop(t_lnk	**lst)
 		(poped->next)->prev = poped->prev;
 		*lst = poped->next;
 	}
-	return (addr_null(poped));
+	return (lnk_init(poped));
+
+
 }
 
-t_lnk	*push(t_lnk	*lnk, t_lnk **lst)
+t_lnk	*push(t_lnk	*lnk, t_lst *lst)
 {
-	if (*lst == 0)
+	if (lst->size == 0)
 	{
-		*lst = lnk;
+		lst->first = lnk;
+		lst->last = lnk;
 	}
 	else
 	{
-		lnk->next = *lst;
-		if ((*lst)->next == NULL)
-			(*lst)->next = lnk;
-		if ((*lst)->prev == NULL)
-			(*lst)->prev = lnk;
-		else
-			lnk->prev = (*lst)->prev;
-		((*lst)->prev)->next = lnk;
-		((*lst)->prev)->next = lnk;
-		(*lst)->prev = lnk;
-		*lst = lnk;
+		lnk->next = lst->first;
+		lnk->prev = lst->last;
+		((lst->first)->prev)->next = lnk;
+		(lst->first)->prev = lnk;
+		lst->first = lnk;
 	}
-	return (*lst);
+    (lst->size)++;
+	return (lnk);
 }
 
 t_lnk	**reverse_lst(t_lnk **lst)
@@ -103,31 +109,36 @@ t_lnk	**reverse_lst(t_lnk **lst)
 }
 
 #include <stdio.h>
-void print_lst(t_lnk **lst)
+void print_lst(t_lst *lst)
 {
-	t_lnk *lnk_init;
 	int looped;
+        t_lnk   *lnk;
 
-	lnk_init = *lst;
-	looped = 0;
-	while (!looped++ && *lst != NULL && *lst != lnk_init)
+    lnk = lst->first;
+    looped = 0;
+    //printf("first : %d\n", (lst->first)->nb);
+    //printf("last : %d\n", (lst->last)->nb);
+    if (lst->size)
+    {
+        while (!(looped++) || lnk != lst->first)
 	{
-		printf("%d\n", (*lst)->nb);
-		*lst = (*lst)->next;
+		printf("%d\n", lnk->nb);
+		lnk = lnk->next;
 	}
-	*lst = lnk_init;
+    }
 }
+
+
 
 int main(int argc, char *argv[])
 {
 	int ii = 0;
 	int *tab = get_args(&argv[1], argc - 1);
-	t_lnk *lnk_init;
-	t_lnk **liste_chainee = &lnk_init;
+	t_lst *lst = new_lst();
 
 	while (ii < argc - 1)
 	{
-		push(new_lnk(tab[ii++], 0, 0), liste_chainee);
+		push(new_lnk(tab[ii++], 0, 0), lst);
 	}
-	print_lst(liste_chainee);
+	print_lst(lst);
 }

@@ -22,6 +22,13 @@ typedef struct	s_lnk
 	struct s_lnk	*prev;
 }	t_lnk;
 
+typedef struct s_lst
+{
+    t_lnk   *first;
+    t_lnk   *last;
+    size_t  size;
+}   t_lst;
+
 int	itoa(char *str_nb);
 int *get_args(char *argv1[], int nb_args);
 int	error_msg(void);
