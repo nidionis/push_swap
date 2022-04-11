@@ -21,19 +21,19 @@ t_lnk	*lnk_init(t_lnk *lnk)
 
 t_lnk	*new_lnk(int nb, int ind, int rank)
 {
-	t_lnk	*returned_lnk;
+	t_lnk	*lnk;
 
-	returned_lnk = malloc(sizeof(t_lnk));
+	lnk = malloc(sizeof(t_lnk));
 	if (!nb)
-		returned_lnk = NULL;
+		lnk = NULL;
 	else
 	{
-		returned_lnk->nb = nb;
-		returned_lnk->ind = ind;
-		returned_lnk->rank = rank;
-		lnk_init(returned_lnk);
+		lnk->nb = nb;
+		lnk->ind = ind;
+		lnk->rank = rank;
+		lnk_init(lnk);
 	}
-	return (returned_lnk);
+	return (lnk);
 }
 
 t_lst   *new_lst(void)
@@ -47,44 +47,36 @@ t_lst   *new_lst(void)
     return (lst);
 }
 
-size_t	lnk_cnt(t_lst lst)
+void   lst_init(t_lst *lst)
 {
-	size_t	cnt;
-
-	cnt = 0;
-        if (lst.size)
-            while (lst.first != lst.last)
-	{
-		lst.first = (lst.first)->next;
-		cnt++;
-	}
-	return (cnt);
+    lst->first = NULL;
+    lst->last = NULL;
+    lst->size = 0;
 }
 
-t_lnk	*pop(t_lnk	**lst)
+t_lnk	*pop(t_lst	*lst)
 {
 	t_lnk	*poped;
 
-	if (*lst == NULL)
+	if (lst->size == 0)
 		poped = NULL;
-	else if (*lst == (*lst)->next)
+	else if (lst->size == 1)
 	{
-		poped = *lst;
-		*lst = NULL;
+		poped = lst->first;
+                lst_init(lst);
 	}
 	else
 	{
-		poped = *lst;
-		(poped->prev)->next = poped->next;
-		(poped->next)->prev = poped->prev;
-		*lst = poped->next;
+		poped = lst->first;
+		(lst->last)->next = poped->next;
+		(poped->next)->prev = lst->last;
+		(lst->first) = poped->next;
+                (lst->size)--;
 	}
 	return (lnk_init(poped));
-
-
 }
 
-t_lnk	*push(t_lnk	*lnk, t_lst *lst)
+t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 {
 	if (lst->size == 0)
 	{
@@ -99,13 +91,43 @@ t_lnk	*push(t_lnk	*lnk, t_lst *lst)
 		(lst->first)->prev = lnk;
 		lst->first = lnk;
 	}
-    (lst->size)++;
+        (lst->size)++;
 	return (lnk);
 }
 
-t_lnk	**reverse_lst(t_lnk **lst)
+void    push(t_lst lst_a, t_lst lst_b, char action)
 {
-	return (lst);
+    t_lnk   *tmp;
+
+    if (action == 'a' || 'A')
+        push_item(pop(lst_a), lst_b);
+    else if (action == 'b' || 'B')
+        push_item(pop(lst_b), lst_a);
+    else if (action == 's' || 'S')
+    {
+        tmp = pop(lst_b);
+        push_item(pop(lst_a), lst_b);
+        push_item(tmp, lst_a);
+    }
+    else
+        write(1, "error in push function\n", 23);
+    if (action > 96) // si action est minuscule, imprimer 
+    {
+        write(1, "s", 1);
+        write(1, &action, 1);
+        write(1, "\n", 1);
+    }
+}
+
+void    *del_list(t_lst *lst)
+{
+    t_lnk   lnk;
+    while (lst->size > 0)
+    {
+    	lnk = pop(lst);
+        free(lnk);
+    }
+    free(lst);
 }
 
 #include <stdio.h>
@@ -128,17 +150,15 @@ void print_lst(t_lst *lst)
     }
 }
 
-
-
 int main(int argc, char *argv[])
 {
 	int ii = 0;
 	int *tab = get_args(&argv[1], argc - 1);
+        t_lnk   *lnk;
 	t_lst *lst = new_lst();
 
 	while (ii < argc - 1)
-	{
 		push(new_lnk(tab[ii++], 0, 0), lst);
-	}
 	print_lst(lst);
+        printf("lst size:%d\n", (lst)->size);
 }

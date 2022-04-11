@@ -13,23 +13,23 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef struct	s_lnk
+typedef struct  s_lnk
 {
-	int				nb;
-	int				ind;
-	int				rank;
-	struct s_lnk	*next;
-	struct s_lnk	*prev;
-}	t_lnk;
+    int             nb;
+    int             ind;
+    int             rank;
+    struct s_lnk    *next;
+    struct s_lnk    *prev;
+}   t_lnk;
 
 typedef struct s_lst
 {
     t_lnk   *first;
     t_lnk   *last;
-    size_t  size;
+    size_t     size;
 }   t_lst;
 
-int	itoa(char *str_nb);
+int itoa(char *str_nb);
 int *get_args(char *argv1[], int nb_args);
-int	error_msg(void);
+int error_msg(void);
 void do_stuff(int *list, int lst_size);
