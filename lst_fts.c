@@ -12,48 +12,6 @@
 
 #include "push_swap.h"
 
-t_lnk	*lnk_init(t_lnk *lnk)
-{
-	lnk->next = lnk;
-	lnk->prev = lnk;
-	return (lnk);
-}
-
-t_lnk	*new_lnk(int nb, int ind, int rank)
-{
-	t_lnk	*lnk;
-
-	lnk = malloc(sizeof(t_lnk));
-	if (!lnk)
-                error_msg("Error creating a new link\n");
-	else
-	{
-		lnk->nb = nb;
-		lnk->ind = ind;
-		lnk->rank = rank;
-		lnk_init(lnk);
-	}
-	return (lnk);
-}
-
-t_lst   *new_lst(void)
-{
-    t_lst   *lst;
-
-    lst = malloc(sizeof(t_lst));
-    lst->first = NULL;
-    lst->last = NULL;
-    lst->size = 0;
-    return (lst);
-}
-
-void   lst_init(t_lst *lst)
-{
-    lst->first = NULL;
-    lst->last = NULL;
-    lst->size = 0;
-}
-
 t_lnk	*pop(t_lst	*lst)
 {
 	t_lnk	*poped;
@@ -95,7 +53,7 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 	return (lnk);
 }
 
-void    reverse(t_lst *lst)
+void    rev_lst(t_lst *lst)
 {
     t_lnk   *lnk;
     t_lnk   *tmp;
@@ -116,41 +74,6 @@ void    reverse(t_lst *lst)
         lst->first = lst->last;
         lst->last = tmp;
     }
-}
-
-void    push(t_lst *lst_a, t_lst *lst_b, char action)
-{
-    t_lnk   *tmp;
-
-    if (action == 'a' || 'A')
-        push_item(pop(lst_a), lst_b);
-    else if (action == 'b' || 'B')
-        push_item(pop(lst_b), lst_a);
-    else if (action == 's' || 'S')
-    {
-        tmp = pop(lst_b);
-        push_item(pop(lst_a), lst_b);
-        push_item(tmp, lst_a);
-    }
-    else
-        error_msg("error in push function\n");
-    if (action > 96) // si action est minuscule, imprimer 
-    {
-        write(1, "s", 1);
-        write(1, &action, 1);
-        write(1, "\n", 1);
-    }
-}
-
-void    *del_list(t_lst *lst)
-{
-    t_lnk   *lnk;
-    while (lst->size > 0)
-    {
-    	lnk = pop(lst);
-        free(lnk);
-    }
-    free(lst);
 }
 
 #include <stdio.h>
@@ -184,6 +107,7 @@ int main(int argc, char *argv[])
 		push_item(new_lnk(tab[ii++], 0, 0), lst);
 	print_lst(lst);
         printf("lst size:%d\n", (lst)->size);
-        reverse(lst);
+        rev_lst(lst);
 	print_lst(lst);
+        del_list(lst);
 }

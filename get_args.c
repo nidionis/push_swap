@@ -14,9 +14,19 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int	error_msg(void)
+int	error_msg(char *msg)
 {
-	write(1, "Error\n", 6);
+        size_t  msg_len;
+
+        if (!msg)
+                write(1, "Error\n", 6);
+        else
+        {
+                msg_len = 0;
+                while (msg[msg_len])
+                        msg_len++;
+	        write(1, msg, msg_len);
+        }
 	exit (0);
 }
 
@@ -41,7 +51,7 @@ int	ft_atoi(char *str_nb)
 	if (nb != -2147483648) // already overflowed
 		nb *= sign;
 	if ((loop_nb > 9 && nb * sign < 0 && nb != -2147483648) || *str_nb != 0)
-		error_msg();
+		error_msg(NULL);
 	return (nb);
 }
 
@@ -51,7 +61,7 @@ int *get_args(char *argv[], int arg_nb)
 
 	args_tab = malloc(sizeof(int) * arg_nb);
 	if (!args_tab)
-		error_msg();
+		error_msg(NULL);
 	while (arg_nb--)
 		args_tab[arg_nb] = ft_atoi(argv[arg_nb]);
 	return (args_tab);
