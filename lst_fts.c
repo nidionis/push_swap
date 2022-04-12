@@ -60,7 +60,6 @@ void	swap_lst(t_lst *lst)
 	}
 }
 
-
 void	rev_lst(t_lst *lst)
 {
 	t_lnk   *lnk;
@@ -84,6 +83,23 @@ void	rev_lst(t_lst *lst)
 	}
 }
 
+void rotate_lst(t_lst *lst, int reverse)
+{
+	if (lst)
+	{
+		if (reverse)
+		{
+			lst->first = (lst->first)->prev;
+			lst->last = (lst->last)->prev;
+		}
+		else
+		{
+			lst->first = (lst->first)->next;
+			lst->last = (lst->last)->next;
+		}
+	}
+}
+
 #include <stdio.h>
 void print_lst(t_lst *lst_a, t_lst *lst_b)
 {
@@ -101,11 +117,11 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 	while (ii < loop_nb)
 	{
 		if (ii < lst_a->size && ii < lst_b->size)
-			printf("%3d\t|\t%3d\n", lnk_a->nb, lnk_b->nb);
+			printf("%10d\t|%10d\n", lnk_a->nb, lnk_b->nb);
 		else if (ii < lst_a->size)
-			printf("%3d\t|\t\n", lnk_a->nb);
+			printf("%10d\t|\n", lnk_a->nb);
 		else if (ii < lst_b->size)
-			printf("\t   |\t%3d\n", lnk_b->nb);
+			printf("\t\t|%10d\n", lnk_b->nb);
 		if (lnk_a)
 				lnk_a = lnk_a->next;
 		if (lnk_b)
