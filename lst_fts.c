@@ -53,6 +53,23 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 	return (lnk);
 }
 
+void    swap_lst(t_lst *lst)
+{
+        t_lnk   *old_first;
+        t_lnk   *new_first;
+
+        new_first = (lst->first)->next;
+        old_first = lst->first;
+        (new_first->next)->prev = old_first;
+        (lst->last)->next = new_first;
+        old_first->next = new_first->next;
+        old_first->prev = new_first;
+        new_first->next = lst->first;
+        new_first->prev = lst->last;
+        lst->first = new_first;
+}
+
+
 void    rev_lst(t_lst *lst)
 {
     t_lnk   *lnk;

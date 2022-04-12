@@ -59,6 +59,8 @@ t_lst   *get_args(int argc, char *argv[])
         t_lnk   *lnk;
 
         lst_a = new_lst();
+        if (argc < 2)
+                error_msg(NULL);
 	argc--;
         argv = &argv[1];
 	while (argc--)

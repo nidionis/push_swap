@@ -46,4 +46,5 @@ void    do_stuff(int *list, int lst_size);
 int     *bubble_sort(int *tab, int lst_size);
 char	*get_next_line(int fd);
 
-void print_lst(t_lst *lst);
+void    print_lst(t_lst *lst);
+void    swap_lst(t_lst *lst);
