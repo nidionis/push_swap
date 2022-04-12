@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 static char	*ft_realloc_cat(char *line, char c, int *len)
 {
 	char	*ret;

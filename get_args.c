@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 int	error_msg(char *msg)
 {
@@ -55,16 +53,20 @@ int	ft_atoi(char *str_nb)
 	return (nb);
 }
 
-int *get_args(char *argv[], int arg_nb)
+t_lst   *get_args(int argc, char *argv[])
 {
-	int	*args_tab;
+        t_lst   *lst_a;
+        t_lnk   *lnk;
 
-	args_tab = malloc(sizeof(int) * arg_nb);
-	if (!args_tab)
-		error_msg(NULL);
-	while (arg_nb--)
-		args_tab[arg_nb] = ft_atoi(argv[arg_nb]);
-	return (args_tab);
+        lst_a = new_lst();
+	argc--;
+        argv = &argv[1];
+	while (argc--)
+        {
+		lnk = new_lnk(ft_atoi(argv[argc]), argc, 0);
+                push_item(lnk, lst_a);
+       }
+	return (lst_a);
 }
 
 

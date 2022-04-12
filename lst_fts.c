@@ -96,6 +96,7 @@ void print_lst(t_lst *lst)
     }
 }
 
+/*
 int main(int argc, char *argv[])
 {
 	int ii = 0;
@@ -111,3 +112,4 @@ int main(int argc, char *argv[])
 	print_lst(lst);
         del_list(lst);
 }
+*/

@@ -39,6 +39,7 @@ int *bubble_sort(int *tab, int lst_size)
 	return (tab);
 }
 
+/*
 #include <stdio.h>
 int main(int argc, char *argv[])
 {
@@ -52,3 +53,4 @@ int main(int argc, char *argv[])
 		printf("%c\n", tab[lst_size]);
 	}
 }
+*/

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-#include <stdio.h>
+/*
 int	main(int argc, char *argv[])
 {
 	int	*args_tab;
@@ -24,3 +24,4 @@ int	main(int argc, char *argv[])
 		error_msg(NULL);
 	do_stuff(argc - 1, args_tab);
 }
+*/
