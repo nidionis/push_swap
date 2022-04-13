@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <limits.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 typedef struct  s_lnk
@@ -27,11 +29,13 @@ typedef struct s_lst
     t_lnk   *first;
     t_lnk   *last;
     size_t     size;
+	int		min_val;
+	int		max_val;
 }   t_lst;
 
-int	error_msg(char *msg);
+int		error_msg(char *msg);
 t_lst   *get_args(int argc, char *argv[]);
-int	ft_atoi(char *str_nb);
+int		ft_atoi(char *str_nb);
 
 t_lnk	*new_lnk(int nb, int ind, int rank);
 t_lnk	*lnk_init(t_lnk *lnk);
@@ -43,8 +47,14 @@ void    rev_lst(t_lst *lst);
 void    *del_list(t_lst *lst);
 
 void    do_stuff(int *list, int lst_size);
-int     *bubble_sort(int *tab, int lst_size);
-char	*get_next_line(int fd);
-
-void    print_lst(t_lst *lst);
+int 	*bubble_sort(t_lst *lst, t_lst *dest_lst, int crescent);
+char	*get_next_line(char *line);
+void    print_lst(t_lst *lst_a , t_lst *lst_b);
+int		verif(t_lst *lst_a);
 void    swap_lst(t_lst *lst);
+void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b);
+void	push(char *instr, t_lst *lst_a, t_lst *lst_b);
+void	swap(char *instr, t_lst *lst_a, t_lst *lst_b); 
+void	apply_instruction(char *instr, t_lst *lst_a, t_lst *lst_b);
+void	rotate_lst(t_lst *lst, int reverse);
+int		reset_max(t_lst *lst);

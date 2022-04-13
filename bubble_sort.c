@@ -13,30 +13,32 @@
 #include <stdio.h> 
 #include "push_swap.h"
 
-int *bubble_sort(int *tab, int lst_size)
+int *bubble_sort(t_lst *lst, t_lst *dest_lst, int crescent)
 {
-	int	lstsize;
-	int ind;
-	int tmp;
+	int		lstsize;
+	int		loop_nb;
+	t_lnk	*tmp;
+	t_lnk	*lnk;
 
-	ind = 0;
-	lstsize = lst_size;
-	while (lstsize > 2)
-	{
-		while (ind < lstsize - 2)
-		{
-			if (tab[ind] > tab[ind + 1])
-			{
-				tab[ind] = tmp;
-				tab[ind] = tab[ind + 1];
-				tab[ind + 1] = tmp;
-			}
-			ind++;
-		}
-		lstsize--;
-		ind = 0;
-	}
-	return (tab);
+	lstsize = lst->size;
+	loop_nb = 0;
+//	while (lst->size)
+//	{
+//		while (loop_nb < lstsize - 2)
+//		//while (ind < lstsize - 2)
+//		{
+//			if (tab[ind] > tab[ind + 1])
+//			{
+//				tab[ind] = tmp;
+//				tab[ind] = tab[ind + 1];
+//				tab[ind + 1] = tmp;
+//			}
+//			ind++;
+//		}
+//		lstsize--;
+//		ind = 0;
+//	}
+	return (dest_lst);
 }
 
 /*

@@ -17,7 +17,7 @@ void	push(char *instr, t_lst *lst_a, t_lst *lst_b)
 		push_item(pop(lst_b), lst_a);
 	else
 		error_msg(NULL);
-	if (*(++instr))
+	if (*(++instr) != '\n')
 		error_msg(NULL);
 }
 
@@ -53,11 +53,9 @@ void	swap(char *instr, t_lst *lst_a, t_lst *lst_b)
 	}
 	else
 		error_msg(NULL);
-	if (*(++instr))
+	if (*(++instr) != '\n')
 		error_msg(NULL);
 }
-
-
 
 void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b)  
 {
@@ -80,7 +78,7 @@ void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b)
 	if (*instr == 'a' || *instr == 'A')
 		rotate_lst(lst_a, reverse);
 	else if (*instr == 'b' || *instr == 'B')
-		rotate_lst(lst_b), reverse;
+		rotate_lst(lst_b, reverse);
 	else if (*instr == 'r' || *instr == 'R')
 	{
 		rotate_lst(lst_a, reverse);
@@ -88,18 +86,21 @@ void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b)
 	}
 	else
 		error_msg(NULL);
-	if (*(++instr))
+	if (*(++instr) != '\n')
 		error_msg(NULL);
 }
 
 void	apply_instruction(char *instr, t_lst *lst_a, t_lst *lst_b)  
 {
+	printf("[apply_instr] : line %s,\taddr: %p\n", instr, instr);
 	if (*instr == 's')
 		swap(++instr, lst_a, lst_b);
 	else if (*instr == 'p')
 		push(++instr, lst_a, lst_b);
 	else if (*instr == 'r')
 		rotate(++instr, lst_a, lst_b);
+	else
+		error_msg(NULL);
 }
 
 /*

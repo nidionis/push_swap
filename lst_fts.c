@@ -1,5 +1,37 @@
 #include "push_swap.h"
 
+int	reset_max(t_lst *lst)
+{
+	t_lnk 	*tmp;
+	int		max;
+
+	tmp = lst->first;
+	max = INT_MIN;
+	while (tmp->next != lst->first)
+	{
+		if (max < tmp->nb)
+			max = tmp->nb;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+int	reset_min(t_lst *lst)
+{
+	t_lnk 	*tmp;
+	int		min;
+
+	tmp = lst->first;
+	min = INT_MAX;
+	while (tmp->next != lst->first)
+	{
+		if (min > tmp->nb)
+			min = tmp->nb;
+		tmp = tmp->next;
+	}
+	return (min);
+}
+
 t_lnk	*pop(t_lst	*lst)
 {
 	t_lnk	*poped;
@@ -9,7 +41,7 @@ t_lnk	*pop(t_lst	*lst)
 	else if (lst->size == 1)
 	{
 		poped = lst->first;
-			lst_init(lst);
+		lst_init(lst);
 	}
 	else
 	{
@@ -17,7 +49,11 @@ t_lnk	*pop(t_lst	*lst)
 		(lst->last)->next = poped->next;
 		(poped->next)->prev = lst->last;
 		(lst->first) = poped->next;
-				(lst->size)--;
+		(lst->size)--;
+		if (lst->min_val == poped->nb)
+			reset_min(lst);
+		if (lst->max_val == poped->nb)
+			reset_max(lst);
 	}
 	return (lnk_init(poped));
 }
@@ -28,6 +64,8 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 	{
 		lst->first = lnk;
 		lst->last = lnk;
+		lst->min_val = lnk->nb;
+		lst->max_val = lnk->nb;
 	}
 	else
 	{
@@ -37,7 +75,11 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 		(lst->first)->prev = lnk;
 		lst->first = lnk;
 	}
-		(lst->size)++;
+	(lst->size)++;
+	if (lst->min_val > lnk->nb)
+		lst->min_val = lnk->nb;
+	if (lst->max_val < lnk->nb)
+		lst->max_val = lnk->nb;
 	return (lnk);
 }
 
@@ -109,19 +151,25 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 	t_lnk   *lnk_b;
 
 	lnk_a = lst_a->first;
-	lnk_b = lst_b->first;
+	if (lst_b)
+		lnk_b = lst_b->first;
 	loop_nb = lst_a->size;
-	if (lst_a->size < lst_b->size)
+	if (lst_b && lst_a->size < lst_b->size)
 		loop_nb = lst_b->size;
 	ii = 0;
 	while (ii < loop_nb)
 	{
-		if (ii < lst_a->size && ii < lst_b->size)
-			printf("%10d\t|%10d\n", lnk_a->nb, lnk_b->nb);
-		else if (ii < lst_a->size)
+		if (!lst_b)
 			printf("%10d\t|\n", lnk_a->nb);
-		else if (ii < lst_b->size)
-			printf("\t\t|%10d\n", lnk_b->nb);
+		else
+		{
+			if (ii < lst_a->size && ii < lst_b->size)
+				printf("%10d\t|%10d\n", lnk_a->nb, lnk_b->nb);
+			else if (ii < lst_a->size)
+				printf("%10d\t|\n", lnk_a->nb);
+			else if (ii < lst_b->size)
+				printf("\t\t|%10d\n", lnk_b->nb);
+		}
 		if (lnk_a)
 				lnk_a = lnk_a->next;
 		if (lnk_b)
@@ -130,20 +178,14 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 	}
 }
 
-/*
 int main(int argc, char *argv[])
 {
 	int ii = 0;
-	int *tab = get_args(&argv[1], argc - 1);
-		t_lnk   *lnk;
-	t_lst *lst = new_lst();
+	t_lst *lst = get_args(argc, argv);
+	t_lnk   *lnk;
 
-	while (ii < argc - 1)
-		push_item(new_lnk(tab[ii++], 0, 0), lst);
-	print_lst(lst);
-		printf("lst size:%d\n", (lst)->size);
-		rev_lst(lst);
-	print_lst(lst);
-		del_list(lst);
+	printf("min: %d\n", lst->min_val);
+	printf("max: %d\n", lst->max_val);
+	print_lst(lst, NULL);
+	del_list(lst);
 }
-*/

@@ -11,7 +11,7 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 {
 	t_lnk	*lnk;
 
-	lnk = malloc(sizeof(t_lnk));
+	lnk = (t_lnk *) malloc(sizeof(t_lnk));
 	if (!lnk)
 		error_msg("Error creating a new link\n");
 	else
@@ -28,10 +28,8 @@ t_lst   *new_lst(void)
 {
 	t_lst   *lst;
 
-	lst = malloc(sizeof(t_lst));
-	lst->first = NULL;
-	lst->last = NULL;
-	lst->size = 0;
+	lst = (t_lst *) malloc(sizeof(t_lst));
+	lst_init(lst);
 	return (lst);
 }
 
@@ -39,6 +37,8 @@ void   lst_init(t_lst *lst)
 {
 	lst->first = NULL;
 	lst->last = NULL;
+	lst->min_val = INT_MIN;
+	lst->max_val = INT_MAX;
 	lst->size = 0;
 }
 
