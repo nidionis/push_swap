@@ -20,6 +20,7 @@ typedef struct  s_lnk
     int             nb;
     int             ind;
     int             rank;
+    int             rankinlist;
     struct s_lnk    *next;
     struct s_lnk    *prev;
 }   t_lnk;
@@ -42,20 +43,28 @@ t_lnk	*lnk_init(t_lnk *lnk);
 t_lst   *new_lst(void);
 void    lst_init(t_lst *lst);
 void	lst_init_rank(t_lst *lst_ini);
-t_lnk	*pop(t_lst	*lst);
-t_lnk	*push_item(t_lnk *lnk, t_lst *lst);
+int		reset_max(t_lst *lst);
+int		reset_min(t_lst *lst);
 void    rev_lst(t_lst *lst);
 void    *del_list(t_lst *lst);
 
-void    do_stuff(int *list, int lst_size);
+void	lst_init_rankinlist(t_lst *lst);
+t_lst	*reachSorting_up_decr(t_lst *lst, int rank_nb);
+t_lst	*reachSorting_up_incr(t_lst *lst, int rank_nb);
+t_lst	*reachSorting_down_decr(t_lst *lst, int rank_nb);
+t_lst	*reachSorting_down_incr(t_lst *lst, int rank_nb);
 t_lst	*bubble_sort_decr(t_lst *dest_lst, t_lst *lst);
+
+void    do_stuff(int *list, int lst_size);
 char	*get_next_line(char *line);
 void    print_lst(t_lst *lst_a , t_lst *lst_b);
 int		verif(t_lst *lst_a);
+
+t_lnk	*pop(t_lst	*lst);
+t_lnk	*push_item(t_lnk *lnk, t_lst *lst);
 void    swap_lst(t_lst *lst);
+void	rotate_lst(t_lst *lst, int reverse);
 void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b);
 void	push(char *instr, t_lst *lst_a, t_lst *lst_b);
 void	swap(char *instr, t_lst *lst_a, t_lst *lst_b); 
 void	apply_instruction(char *instr, t_lst *lst_a, t_lst *lst_b);
-void	rotate_lst(t_lst *lst, int reverse);
-int		reset_max(t_lst *lst);

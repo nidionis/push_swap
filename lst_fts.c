@@ -180,6 +180,7 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 	t_lnk   *lnk_b;
 
 	lnk_a = lst_a->first;
+	lnk_b = NULL;
 	if (lst_b)
 		lnk_b = lst_b->first;
 	loop_nb = lst_a->size;
