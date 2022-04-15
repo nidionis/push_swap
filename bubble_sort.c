@@ -154,46 +154,7 @@ t_lst	*inplace_sort(t_lst *lst)
 	}
 }
 
-void	lst_init_rankinlist(t_lst *lst)
-{
-	int		rank;
-	t_lnk	*lnk;
-	
-	t_lst *lst_sorted;
-	lst_sorted = new_lst();
-	bubble_sort_decr_nb(lst, lst_sorted);
-	rank = 0;
-	lnk = lst_sorted->first;
-	while (rank < lst_sorted->size)
-	{
-		lnk->rankinlist = rank;
-		lnk = lnk->next;
-		rank++;
-	}
-	bubble_sort_decr_ind(lst_sorted, lst);
-	free(lst_sorted);
-}
-
-void	lst_init_rank(t_lst *lst_ini)
-{
-	int		rank;
-	t_lnk	*lnk;
-	
-	t_lst *lst_sorted;
-	lst_sorted = new_lst();
-	bubble_sort_decr_nb(lst_ini, lst_sorted);
-	rank = 0;
-	lnk = lst_sorted->first;
-	while (rank < lst_sorted->size)
-	{
-		lnk->rank = rank;
-		lnk = lnk->next;
-		rank++;
-	}
-	bubble_sort_decr_ind(lst_sorted, lst_ini);
-	free(lst_sorted);
-}
-
+/*
 int main(int argc, char **argv)
 {
 	t_lst *lst_ini;
@@ -205,3 +166,4 @@ int main(int argc, char **argv)
 	write(1, "\n", 1);
 	print_lst(lst_ini, NULL);
 }
+*/

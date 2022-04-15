@@ -73,6 +73,45 @@ t_lst	*get_args(int argc, char *argv[])
 	return (lst_a);
 }
 
+void	lst_init_rankinlist(t_lst *lst)
+{
+	int		rank;
+	t_lnk	*lnk;
+
+	t_lst *lst_sorted;
+	lst_sorted = new_lst();
+	bubble_sort_decr_nb(lst, lst_sorted);
+	rank = 0;
+	lnk = lst_sorted->first;
+	while (rank < lst_sorted->size)
+	{
+		lnk->rankinlist = rank;
+		lnk = lnk->next;
+		rank++;
+	}
+	bubble_sort_decr_ind(lst_sorted, lst);
+	free(lst_sorted);
+}
+
+void	lst_init_rank(t_lst *lst_ini)
+{
+	int		rank;
+	t_lnk	*lnk;
+
+	t_lst *lst_sorted;
+	lst_sorted = new_lst();
+	bubble_sort_decr_nb(lst_ini, lst_sorted);
+	rank = 0;
+	lnk = lst_sorted->first;
+	while (rank < lst_sorted->size)
+	{
+		lnk->rank = rank;
+		lnk = lnk->next;
+		rank++;
+	}
+	bubble_sort_decr_ind(lst_sorted, lst_ini);
+	free(lst_sorted);
+}
 
 /*
 #include <stdio.h>
