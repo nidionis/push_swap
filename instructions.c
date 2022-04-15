@@ -12,12 +12,12 @@ void	push(char *instr, t_lst *lst_a, t_lst *lst_b)
 		write(1, "\n", 1);
 	}
 	if (*instr == 'a' || *instr == 'A')
-		push_item(pop(lst_a), lst_b);
-	else if (*instr == 'b' || *instr == 'B')
 		push_item(pop(lst_b), lst_a);
+	else if (*instr == 'b' || *instr == 'B')
+		push_item(pop(lst_a), lst_b);
 	else
 		error_msg(NULL);
-	if (*(++instr) != '\n')
+	if (*(++instr) != '\n' && *instr != 0)
 		error_msg(NULL);
 }
 
@@ -53,7 +53,7 @@ void	swap(char *instr, t_lst *lst_a, t_lst *lst_b)
 	}
 	else
 		error_msg(NULL);
-	if (*(++instr) != '\n')
+	if (*(++instr) != '\n' && *instr != 0)
 		error_msg(NULL);
 }
 
@@ -86,13 +86,12 @@ void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b)
 	}
 	else
 		error_msg(NULL);
-	if (*(++instr) != '\n')
+	if (*(++instr) != '\n' && *instr != 0)
 		error_msg(NULL);
 }
 
 void	apply_instruction(char *instr, t_lst *lst_a, t_lst *lst_b)  
 {
-	printf("[apply_instr] : line %s,\taddr: %p\n", instr, instr);
 	if (*instr == 's')
 		swap(++instr, lst_a, lst_b);
 	else if (*instr == 'p')

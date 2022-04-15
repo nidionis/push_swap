@@ -14,17 +14,17 @@
 
 int	error_msg(char *msg)
 {
-        size_t  msg_len;
+	size_t  msg_len;
 
-        if (!msg)
-                write(1, "Error\n", 6);
-        else
-        {
-                msg_len = 0;
-                while (msg[msg_len])
-                        msg_len++;
-	        write(1, msg, msg_len);
-        }
+	if (!msg)
+	write(1, "Error\n", 6);
+	else
+	{
+	msg_len = 0;
+	while (msg[msg_len])
+	msg_len++;
+		write(1, msg, msg_len);
+	}
 	exit (0);
 }
 
@@ -53,21 +53,23 @@ int	ft_atoi(char *str_nb)
 	return (nb);
 }
 
-t_lst   *get_args(int argc, char *argv[])
+t_lst	*get_args(int argc, char *argv[])
 {
-        t_lst   *lst_a;
-        t_lnk   *lnk;
-
-        lst_a = new_lst();
-        if (argc < 2)
-                error_msg(NULL);
+	t_lst	*lst_a;
+	t_lnk	*lnk;
+	
+	lst_a = new_lst();
+	if (argc < 2)
+		error_msg(NULL);
 	argc--;
-        argv = &argv[1];
+		argv = &argv[1];
 	while (argc--)
-        {
-		lnk = new_lnk(ft_atoi(argv[argc]), argc, 0);
-                push_item(lnk, lst_a);
-       }
+	{
+	 	lnk = new_lnk(ft_atoi(argv[argc]), argc, 0);
+	 	lnk->ind = argc;
+	 	push_item(lnk, lst_a);
+	}
+	lst_init_rank(lst_a);
 	return (lst_a);
 }
 

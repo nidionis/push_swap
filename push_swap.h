@@ -28,7 +28,7 @@ typedef struct s_lst
 {
     t_lnk   *first;
     t_lnk   *last;
-    size_t     size;
+    size_t	size;
 	int		min_val;
 	int		max_val;
 }   t_lst;
@@ -41,13 +41,14 @@ t_lnk	*new_lnk(int nb, int ind, int rank);
 t_lnk	*lnk_init(t_lnk *lnk);
 t_lst   *new_lst(void);
 void    lst_init(t_lst *lst);
+void	lst_init_rank(t_lst *lst_ini);
 t_lnk	*pop(t_lst	*lst);
 t_lnk	*push_item(t_lnk *lnk, t_lst *lst);
 void    rev_lst(t_lst *lst);
 void    *del_list(t_lst *lst);
 
 void    do_stuff(int *list, int lst_size);
-int 	*bubble_sort(t_lst *lst, t_lst *dest_lst, int crescent);
+t_lst	*bubble_sort_decr(t_lst *dest_lst, t_lst *lst);
 char	*get_next_line(char *line);
 void    print_lst(t_lst *lst_a , t_lst *lst_b);
 int		verif(t_lst *lst_a);

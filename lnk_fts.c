@@ -2,8 +2,13 @@
 
 t_lnk	*lnk_init(t_lnk *lnk)
 {
-	lnk->next = lnk;
-	lnk->prev = lnk;
+	if (lnk)
+	{
+		lnk->next = lnk;
+		lnk->prev = lnk;
+	}
+	else
+		lnk == NULL;
 	return (lnk);
 }
 

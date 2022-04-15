@@ -38,7 +38,6 @@ re: fclean all
 test:
 	$(CC) $(SRCS) $(SRCS_BONUS) $(HEADER)
 	./a.out
-	rm a.out
 
 debug:
 	$(CC) -g $(SRCS) $(SRCS_BONUS) $(HEADER)

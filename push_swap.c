@@ -14,14 +14,11 @@
 /*
 int	main(int argc, char *argv[])
 {
-	int	*args_tab;
-
 	if (argc < 2)
 		error_msg(NULL);
-	argv = &argv[1];
-	args_tab = get_args(argv, argc - 1);
-	if !(args_tab)
+	lst_a = get_args(argv, argc);
+	if !(lst_a)
 		error_msg(NULL);
-	do_stuff(argc - 1, args_tab);
+	do_stuff();
 }
 */

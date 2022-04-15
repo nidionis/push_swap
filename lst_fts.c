@@ -5,13 +5,22 @@ int	reset_max(t_lst *lst)
 	t_lnk 	*tmp;
 	int		max;
 
-	tmp = lst->first;
-	max = INT_MIN;
-	while (tmp->next != lst->first)
+	if (lst->size == 1)
+		max = (lst->first)->nb;
+	else
 	{
+		tmp = lst->first;
+		max = INT_MIN;
 		if (max < tmp->nb)
 			max = tmp->nb;
 		tmp = tmp->next;
+		while (tmp != lst->first)
+		{
+			if (max < tmp->nb)
+				max = tmp->nb;
+			tmp = tmp->next;
+		}	
+		lst->max_val = max;
 	}
 	return (max);
 }
@@ -21,13 +30,19 @@ int	reset_min(t_lst *lst)
 	t_lnk 	*tmp;
 	int		min;
 
-	tmp = lst->first;
-	min = INT_MAX;
-	while (tmp->next != lst->first)
+	if (lst->size == 1)
+		min = (lst->first)->nb;
+	else
 	{
-		if (min > tmp->nb)
-			min = tmp->nb;
-		tmp = tmp->next;
+		tmp = lst->first;
+		min = INT_MAX;
+		while (tmp != lst->first)
+		{
+			if (min > tmp->nb)
+				min = tmp->nb;
+			tmp = tmp->next;
+		}	
+		lst->min_val = min;
 	}
 	return (min);
 }
@@ -60,33 +75,42 @@ t_lnk	*pop(t_lst	*lst)
 
 t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 {
-	if (lst->size == 0)
+	if (lst && lnk)
 	{
-		lst->first = lnk;
-		lst->last = lnk;
-		lst->min_val = lnk->nb;
-		lst->max_val = lnk->nb;
+		if (lst->size == 0)
+		{
+			lst->first = lnk;
+			lst->last = lnk;
+			lst->min_val = lnk->nb;
+			lst->max_val = lnk->nb;
+		}
+		else
+		{
+			lnk->next = lst->first;
+			lnk->prev = lst->last;
+			((lst->first)->prev)->next = lnk;
+			(lst->first)->prev = lnk;
+			lst->first = lnk;
+		}
+		(lst->size)++;
+		if (lst->min_val > lnk->nb)
+			lst->min_val = lnk->nb;
+		if (lst->max_val < lnk->nb)
+			lst->max_val = lnk->nb;
 	}
 	else
 	{
-		lnk->next = lst->first;
-		lnk->prev = lst->last;
-		((lst->first)->prev)->next = lnk;
-		(lst->first)->prev = lnk;
-		lst->first = lnk;
+		if (!lnk)
+			error_msg("pushing non existing link\n");
+		error_msg("error at push_item\n");
 	}
-	(lst->size)++;
-	if (lst->min_val > lnk->nb)
-		lst->min_val = lnk->nb;
-	if (lst->max_val < lnk->nb)
-		lst->max_val = lnk->nb;
 	return (lnk);
 }
 
 void	swap_lst(t_lst *lst)
 {
-	if (lst->size)
-{	
+	if (lst && lst->size)
+	{	
 		t_lnk   *old_first;
 		t_lnk   *new_first;
 
@@ -100,8 +124,10 @@ void	swap_lst(t_lst *lst)
 		new_first->prev = lst->last;
 		lst->first = new_first;
 	}
+	else
+		error_msg("error at swap_lst");
 }
-
+/*
 void	rev_lst(t_lst *lst)
 {
 	t_lnk   *lnk;
@@ -124,10 +150,11 @@ void	rev_lst(t_lst *lst)
 		lst->last = tmp;
 	}
 }
+*/
 
 void rotate_lst(t_lst *lst, int reverse)
 {
-	if (lst)
+	if (lst && lst->size > 1)
 	{
 		if (reverse)
 		{
@@ -140,6 +167,8 @@ void rotate_lst(t_lst *lst, int reverse)
 			lst->last = (lst->last)->next;
 		}
 	}
+	else
+		error_msg("error at rotate_lst");
 }
 
 #include <stdio.h>
@@ -178,14 +207,21 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 	}
 }
 
+/*
 int main(int argc, char *argv[])
 {
 	int ii = 0;
 	t_lst *lst = get_args(argc, argv);
 	t_lnk   *lnk;
 
+	lnk = pop(lst);
+	printf("min: %d\n", lst->min_val);
+	printf("max: %d\n", lst->max_val);
+	print_lst(lst, NULL);
+	push_item(lnk, lst);
 	printf("min: %d\n", lst->min_val);
 	printf("max: %d\n", lst->max_val);
 	print_lst(lst, NULL);
 	del_list(lst);
 }
+*/
