@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	reset_max(t_lst *lst)
+void	reset_max(t_lst *lst)
 {
 	t_lnk 	*tmp;
 	int		max;
@@ -9,23 +9,19 @@ int	reset_max(t_lst *lst)
 		max = (lst->first)->nb;
 	else
 	{
-		tmp = lst->first;
-		max = INT_MIN;
-		if (max < tmp->nb)
-			max = tmp->nb;
-		tmp = tmp->next;
+		max = (lst->first)->nb;
+		tmp = (lst->first)->next;
 		while (tmp != lst->first)
 		{
 			if (max < tmp->nb)
 				max = tmp->nb;
 			tmp = tmp->next;
 		}	
-		lst->max_val = max;
 	}
-	return (max);
+	lst->max_val = max;
 }
 
-int	reset_min(t_lst *lst)
+void	reset_min(t_lst *lst)
 {
 	t_lnk 	*tmp;
 	int		min;
@@ -34,41 +30,44 @@ int	reset_min(t_lst *lst)
 		min = (lst->first)->nb;
 	else
 	{
-		tmp = lst->first;
-		min = INT_MAX;
+		min = (lst->first)->nb;
+		tmp = (lst->first)->next;
 		while (tmp != lst->first)
 		{
 			if (min > tmp->nb)
 				min = tmp->nb;
 			tmp = tmp->next;
 		}	
-		lst->min_val = min;
 	}
-	return (min);
+	lst->min_val = min;
 }
 
 t_lnk	*pop(t_lst	*lst)
 {
 	t_lnk	*poped;
 
-	if (lst->size == 0)
-		poped = NULL;
-	else if (lst->size == 1)
+	poped = NULL;
+	if (lst && lst->size)
 	{
-		poped = lst->first;
-		lst_init(lst);
-	}
-	else
-	{
-		poped = lst->first;
-		(lst->last)->next = poped->next;
-		(poped->next)->prev = lst->last;
-		(lst->first) = poped->next;
-		(lst->size)--;
-		if (lst->min_val == poped->nb)
-			reset_min(lst);
-		if (lst->max_val == poped->nb)
-			reset_max(lst);
+		if (lst->size == 1)
+		{
+			poped = lst->first;
+			lst_init(lst);
+		}
+		else
+		{
+			poped = lst->first;
+			(lst->last)->next = poped->next;
+			(poped->next)->prev = lst->last;
+			(lst->first) = poped->next;
+			lst->size -= 1;
+			if (lst->min_val == poped->nb)
+				reset_min(lst);
+			if (lst->max_val == poped->nb)
+				reset_max(lst);
+			refreshRankinlist(lst, poped, "poped");
+			refreshIndinlist(lst, poped, "poped");
+		}
 	}
 	return (lnk_init(poped));
 }
@@ -88,8 +87,8 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 		{
 			lnk->next = lst->first;
 			lnk->prev = lst->last;
-			((lst->first)->prev)->next = lnk;
 			(lst->first)->prev = lnk;
+			(lst->last)->next = lnk;
 			lst->first = lnk;
 		}
 		(lst->size)++;
@@ -97,6 +96,7 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 			lst->min_val = lnk->nb;
 		if (lst->max_val < lnk->nb)
 			lst->max_val = lnk->nb;
+		refreshRankinlist(lst, lnk, "pushed");
 	}
 	else
 	{
@@ -111,22 +111,23 @@ void	swap_lst(t_lst *lst)
 {
 	if (lst && lst->size)
 	{	
-		t_lnk   *old_first;
-		t_lnk   *new_first;
+		t_lnk   *item0;
+		t_lnk   *item1;
 
-		new_first = (lst->first)->next;
-		old_first = lst->first;
-		(new_first->next)->prev = old_first;
-		(lst->last)->next = new_first;
-		old_first->next = new_first->next;
-		old_first->prev = new_first;
-		new_first->next = lst->first;
-		new_first->prev = lst->last;
-		lst->first = new_first;
+		item0 = (lst->first)->next;
+		item1 = lst->first;
+		(lst->last)->next = item1;
+		item0->next = item1->next;
+		(item1->next)->prev = item0;
+		item0->prev = item1;
+		item1->prev = lst->last;
+		item1->next = item0;
+		lst->first = item0;
 	}
 	else
 		error_msg("error at swap_lst");
 }
+
 /*
 void	rev_lst(t_lst *lst)
 {

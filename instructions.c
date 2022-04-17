@@ -1,6 +1,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+// bug avec les arguments passés
 void	push(char *instr, t_lst *lst_a, t_lst *lst_b)
 {
 	t_lnk   *tmp;
@@ -70,7 +71,7 @@ void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b)
 		write(1, "\n", 1);
 	}
 	reverse = 0;
-	if (*instr == 'r')
+	if (*instr == 'r' || *instr == 'R')
 	{
 		reverse = 1;
 		instr++;

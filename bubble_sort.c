@@ -39,16 +39,15 @@ t_lst *bubble_sort_decr_nb(t_lst *lst, t_lst *dest_lst)
 			step++;
 		}
 		if (lst->size > 1 && (lst->first)->nb != lst->max_val)
-			rotate("a", lst, NULL);
+			rotate("A", lst, NULL);
 		else if (lst->size > 1)
-			push("a", dest_lst, lst);
+			push("A", dest_lst, lst);
 		step = 0;
 	}
 	if (lst->size)
-		push("a", dest_lst, lst);
+		push("A", dest_lst, lst);
 	return (dest_lst);
 }
-
 
 void bubble_loop_ind(t_lst *lst, t_lst *dest_lst)
 {
@@ -63,7 +62,7 @@ void bubble_loop_ind(t_lst *lst, t_lst *dest_lst)
 		rotate("a", lst, NULL);
 }
 
-t_lst *bubble_sort_decr_ind(t_lst *lst, t_lst *dest_lst)
+t_lst	*bubble_sort_decr_ind(t_lst *lst, t_lst *dest_lst)
 {
 	int		step;
 
@@ -76,6 +75,42 @@ t_lst *bubble_sort_decr_ind(t_lst *lst, t_lst *dest_lst)
 			step++;
 		}
 		if (lst->size > 1 && (lst->first)->ind != lst->size - 1)
+			rotate("A", lst, NULL);
+		else if (lst->size > 1)
+			push("A", dest_lst, lst);
+		step = 0;
+	}
+	if (lst->size)
+		push("A", dest_lst, lst);
+	return (dest_lst);
+}
+
+void bubble_loop_indlst(t_lst *lst, t_lst *dest_lst)
+{
+	if (lst->size && (lst->last)->indinlist == lst->size - 1)
+			rotate("ra", lst, NULL);
+	if (lst->size && (lst->first)->indinlist == lst->size - 1)
+		while (lst->first && (lst->first)->indinlist == lst->size - 1)
+			push("a", dest_lst, lst);
+	if (lst->size && (lst->first)->indinlist > ((lst->first)->next)->indinlist)
+		swap("a", lst, NULL);
+	if (lst->size > 1)
+		rotate("a", lst, NULL);
+}
+
+t_lst *bubble_sort_decr_indinlist(t_lst *lst, t_lst *dest_lst)
+{
+	int		step;
+
+	step = 0;
+	while (lst->size > 1)
+	{
+		while (step + 2 < lst->size)
+		{
+			bubble_loop_ind(lst,  dest_lst);
+			step++;
+		}
+		if (lst->size > 1 && (lst->first)->indinlist != lst->size - 1)
 			rotate("a", lst, NULL);
 		else if (lst->size > 1)
 			push("a", dest_lst, lst);
@@ -104,53 +139,16 @@ void	swap_loc(t_lnk *lnk)
 		error_msg("error at swap_loc");
 }
 
-t_lst	*inplace_sort(t_lst *lst)
+t_lst	*inplace_sort_incr(t_lst *lst)
 {
 	int		ii;
 	t_lnk	*lnk_ind;
-	t_lnk	*lnk_end;
-	t_lnk	*lnk_start;
 
-	lst_init_rankinlist(lst);
-	ii = 0;
-	if ((lst->first)->rankinlist == 0)
+	if (lst)
 	{
-		lnk_start = lst->first;
-		while (lnk_start->rankinlist == ii++)
-			lnk_start = lnk_start->next;
-	}
-	else
-		lnk_start = NULL;
-	ii = lst->size - 1;
-	if ((lst->last)->rankinlist == ii)
-	{
-		lnk_end = lst->last;
-		while (lnk_end->rankinlist == ii--)
-			lnk_end = lnk_end->prev;
-	}
-	else
-		lnk_end = NULL;
-	lnk_ind = lst->first;
-	if (lnk_start)
-		lnk_ind = lnk_start;
-	else
-	ii = 0;
-	while (lnk_start && lnk_start != lnk_end)
-	{
-		if (lnk_ind->nb > (lnk_ind->next)->nb)
-		{
-			swap_loc(lnk_ind);
-			lnk_ind = lnk_ind->prev;
-			if (lnk_ind->rankinlist == lnk_start->rankinlist + 1)
-				lnk_start = lnk_ind;
-		}
-		if (lnk_ind->next == lnk_end)
-		{
-			if (lnk_ind->rankinlist = lnk_end->rankinlist - 1)
-				lnk_end = lnk_ind;
-			lnk_ind = lnk_start->next;
-		}
-		lnk_ind = lnk_ind->next;
+		lst_init_rankinlist(lst);
+		lst_init_indinlist(lst);
+		ii = 0;
 	}
 }
 
