@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lnk_fts.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 20:05:27 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/07 17:00:20 by supersko          #+#    #+#             */
+/*   Updated: 2022/04/09 20:35:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
-t_lnk	*lnk_init(t_lnk *lnk)
+/*
+int	main(int argc, char *argv[])
 {
-	if (lnk)
-	{
-		lnk->next = lnk;
-		lnk->prev = lnk;
-	}
-	else
-		lnk = NULL;
-	return (lnk);
+	if (argc < 2)
+		error_msg(NULL);
+	lst_a = get_args(argv, argc);
+	if !(lst_a)
+		error_msg(NULL);
+	do_stuff();
 }
-
-t_lnk	*new_lnk(int nb, int ind, int rank)
-{
-	t_lnk	*lnk;
-
-	lnk = (t_lnk *) malloc(sizeof(t_lnk));
-	if (!lnk)
-		error_msg("Error creating a new link\n");
-	else
-	{
-		lnk->nb = nb;
-		lnk->ind = ind;
-		lnk->indinlist = ind;
-		lnk->rank = rank;
-		lnk->rankinlist = rank;
-		lnk_init(lnk);
-	}
-	return (lnk);
-}
+*/

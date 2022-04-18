@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:52:02 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 21:22:00 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/18 18:33:09 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ t_lst *bubbleReachandsort(t_lst *lst, int rank_inlst, int ordre_croissant)
 }
 */
 
-/*
 int	main(int argc, char **argv)
 {
 	t_lst	*lst;
@@ -128,7 +127,7 @@ int	main(int argc, char **argv)
 	rotate("RA", lst, NULL);
 	print_lst(lst, tmp);
 	//printf("rankInlst %d, ind %d\n", 1, get_ind_from_rank_inlist(lst, 1));
-*/
+	
 /*
 	printf("going to the min value, decroissant:\n", lst->min_val);
 	reachandsort(lst, 0, 0);
@@ -143,5 +142,5 @@ int	main(int argc, char **argv)
 	reachandsort(lst, lst->size - 1, 0);
 	print_lst(lst, NULL);
 	del_list(tmp);
-}
 	*/
+}

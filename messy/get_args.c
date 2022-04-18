@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 21:03:17 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/18 15:15:18 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,18 @@ t_lst	*get_args(int argc, char *argv[])
 	return (lst_a);
 }
 
+/*
 #include <stdio.h>
-int main(int argc, char **argv)
+int main()
 {
-	t_lst	*lst_a;
-
-	lst_a = get_args(argc, argv);
-	print_lst(lst_a, NULL);
+	printf("%d\n", ft_atoi("0"));
+	printf("%d\n", ft_atoi("-0"));
+	printf("%d\n", ft_atoi("2147483646"));
+	printf("%d\n", ft_atoi("2147483647"));
+	printf("%d\n", ft_atoi("-2147483647"));
+	printf("%d\n", ft_atoi("-2147483648"));
+	printf("%d\n", ft_atoi("214748364s6"));
+	printf("%d\n", ft_atoi("-2147483649"));
+	printf("%d\n", ft_atoi("-999999999999999999999"));
 }
+*/

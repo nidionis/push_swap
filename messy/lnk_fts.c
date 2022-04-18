@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 20:05:27 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/18 19:41:47 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,34 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 		lnk_init(lnk);
 	}
 	return (lnk);
+}
+
+t_lst	*new_lst(void)
+{
+	t_lst	*lst;
+
+	lst = (t_lst *) malloc(sizeof(t_lst));
+	lst_init(lst);
+	return (lst);
+}
+
+void	lst_init(t_lst *lst)
+{
+	lst->first = NULL;
+	lst->last = NULL;
+	lst->min_val = INT_MAX;
+	lst->max_val = INT_MIN;
+	lst->size = 0;
+}
+
+void	del_list(t_lst *lst)
+{
+	t_lnk	*lnk;
+
+	while (lst->size > 0)
+	{
+		lnk = pop(lst);
+		free(lnk);
+	}
+	free(lst);
 }

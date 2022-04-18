@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lnk_fts.c                                          :+:      :+:    :+:   */
+/*   instr_and_verif.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 20:05:27 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/18 17:10:33 by supersko          #+#    #+#             */
+/*   Updated: 2022/04/18 17:17:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_lnk	*lnk_init(t_lnk *lnk)
+void	apply_instruction(char *instr, t_lst *lst_a, t_lst *lst_b)
 {
-	if (lnk)
-	{
-		lnk->next = lnk;
-		lnk->prev = lnk;
-	}
+	if (*instr == 's')
+		swap(++instr, lst_a, lst_b);
+	else if (*instr == 'p')
+		push(++instr, lst_a, lst_b);
+	else if (*instr == 'r')
+		rotate(++instr, lst_a, lst_b);
 	else
-		lnk = NULL;
-	return (lnk);
+		error_msg(NULL);
 }
 
-t_lnk	*new_lnk(int nb, int ind, int rank)
+int	verif(t_lst *lst_a)
 {
 	t_lnk	*lnk;
 
-	lnk = (t_lnk *) malloc(sizeof(t_lnk));
-	if (!lnk)
-		error_msg("Error creating a new link\n");
+	lnk = lst_a->first;
+	while (lnk->nb < (lnk->next)->nb && lnk != lst_a->last)
+			lnk = lnk->next;
+	if (lnk == lst_a->last)
+		return (1);
 	else
-	{
-		lnk->nb = nb;
-		lnk->ind = ind;
-		lnk->indinlist = ind;
-		lnk->rank = rank;
-		lnk->rankinlist = rank;
-		lnk_init(lnk);
-	}
-	return (lnk);
+		return (0);
 }

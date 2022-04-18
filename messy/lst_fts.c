@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:25:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 21:24:56 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/18 19:34:10 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_lnk	*pop(t_lst	*lst)
 		}
 		else
 			refresh_lnks_pop(lst);
-		refresh_afterpop_inlist(lst, poped);
+		refresh_afterpop_inlist(poped, lst);
 	}
 	return (lnk_init(poped));
 }
@@ -50,10 +50,9 @@ t_lnk	*push_item(t_lnk *lnk, t_lst *lst)
 		refresh_afterpush_inlist(lst, lnk);
 		if (!lnk)
 			error_msg("pushing non existing link\n");
+		return (lnk);
 	}
-	else
-		error_msg("error at push_item\n");
-	return (lnk);
+	error_msg("error at push_item\n");
 }
 
 void	swap_lst(t_lst *lst)
