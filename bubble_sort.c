@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/08 13:48:06 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/18 12:33:03 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ void	swap_loc(t_lnk *lnk)
 		error_msg("error at swap_loc");
 }
 
+/*
 t_lst	*inplace_sort_incr(t_lst *lst)
 {
 	int		ii;
@@ -150,7 +151,9 @@ t_lst	*inplace_sort_incr(t_lst *lst)
 		lst_init_indinlist(lst);
 		ii = 0;
 	}
+
 }
+*/
 
 /*
 int main(int argc, char **argv)

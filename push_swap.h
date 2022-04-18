@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/09 21:00:58 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/18 13:23:42 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,17 +43,18 @@ t_lnk	*new_lnk(int nb, int ind, int rank);
 t_lnk	*lnk_init(t_lnk *lnk);
 t_lst   *new_lst(void);
 void    lst_init(t_lst *lst);
-void	lst_init_rank(t_lst *lst_ini);
+void	lst_init_ranks(t_lst *lst_ini);
 void	lst_init_size(t_lst *lst);
 void	reset_max(t_lst *lst);
 void	reset_min(t_lst *lst);
 void    rev_lst(t_lst *lst);
-void    *del_list(t_lst *lst);
+void    del_list(t_lst *lst);
 void	lst_init_rankinlist(t_lst *lst);
 void	lst_init_indinlist(t_lst *lst);
 void	refreshRankinlist(t_lst *lst, t_lnk *rank_new_item, char *push_or_pop);
 void	refreshIndinlist(t_lst *lst, t_lnk *moved_item, char *action);
 
+void	reachAndSort(t_lst *lst, int rank_inlst, int ordre_croissant);
 t_lst	*reachSorting_rev_decr(t_lst *lst, int rank_nb);
 t_lst	*reachSorting_rev_incr(t_lst *lst, int rank_nb);
 t_lst	*reachSorting_decr(t_lst *lst, int rank_nb);

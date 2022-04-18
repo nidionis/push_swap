@@ -5,7 +5,7 @@ t_lst	*reachSorting_rev_decr(t_lst *lst, int rank_inlst)
 	if (lst && lst->size > 1 && rank_inlst < lst->size)
 	{
 		if ((lst->first)->rankinlist == ((lst->first)->next)->rankinlist)
-			lst_init_rankinlist(lst);
+			error_msg("rankinlist not initialized for reachSorting_rev_decr\n");
 		while ((lst->first)->rankinlist != rank_inlst)
 		{
 			if ((lst->first)->rankinlist > ((lst->first)->next)->rankinlist)
@@ -13,8 +13,8 @@ t_lst	*reachSorting_rev_decr(t_lst *lst, int rank_inlst)
 			if  ((lst->first)->rankinlist != rank_inlst)
 				rotate("RA", lst, NULL);
 		}
-		return (lst);
 	}
+	return (lst);
 }
 
 t_lst	*reachSorting_rev_incr(t_lst *lst, int rank_inlst)
@@ -22,7 +22,7 @@ t_lst	*reachSorting_rev_incr(t_lst *lst, int rank_inlst)
 	if (lst && lst->size > 1 && rank_inlst < lst->size)
 	{
 		if ((lst->first)->rankinlist == ((lst->first)->next)->rankinlist)
-			lst_init_rankinlist(lst);
+			error_msg("rankinlist not initialized for reachSorting_rev_incr\n");
 		while ((lst->first)->rankinlist != rank_inlst)
 		{
 			if ((lst->first)->rankinlist < ((lst->first)->next)->rankinlist)
@@ -30,8 +30,8 @@ t_lst	*reachSorting_rev_incr(t_lst *lst, int rank_inlst)
 			if  ((lst->first)->rankinlist != rank_inlst)
 				rotate("RA", lst, NULL);
 		}
-		return (lst);
 	}
+	return (lst);
 }
 
 t_lst	*reachSorting_incr(t_lst *lst, int rank_inlst)
@@ -39,7 +39,7 @@ t_lst	*reachSorting_incr(t_lst *lst, int rank_inlst)
 	if (lst && lst->size > 1 && rank_inlst < lst->size)
 	{
 		if ((lst->first)->rankinlist == ((lst->first)->next)->rankinlist)
-			lst_init_rankinlist(lst);
+			error_msg("rankinlist not initialized for reachSorting_incr\n");
 		while ((lst->first)->rankinlist != rank_inlst)
 		{
 			if ((lst->first)->rankinlist < ((lst->first)->next)->rankinlist)
@@ -47,8 +47,8 @@ t_lst	*reachSorting_incr(t_lst *lst, int rank_inlst)
 			if  ((lst->first)->rankinlist != rank_inlst)
 				rotate("A", lst, NULL);
 		}
-		return (lst);
 	}
+	return (lst);
 }
 
 t_lst	*reachSorting_decr(t_lst *lst, int rank_inlst)
@@ -56,7 +56,7 @@ t_lst	*reachSorting_decr(t_lst *lst, int rank_inlst)
 	if (lst && lst->size > 1 && rank_inlst < lst->size)
 	{
 		if ((lst->first)->rankinlist == ((lst->first)->next)->rankinlist)
-			lst_init_rankinlist(lst);
+			error_msg("rankinlist not initialized for reachSorting_decr\n");
 		while ((lst->first)->rankinlist != rank_inlst)
 		{
 			if ((lst->first)->rankinlist > ((lst->first)->next)->rankinlist)
@@ -64,11 +64,11 @@ t_lst	*reachSorting_decr(t_lst *lst, int rank_inlst)
 			if  ((lst->first)->rankinlist != rank_inlst)
 				rotate("A", lst, NULL);
 		}
-		return (lst);
 	}
+	return (lst);
 }
 
-t_lst *reachAndSort(t_lst *lst, int rank_inlst, int ordre_croissant)
+void	reachAndSort(t_lst *lst, int rank_inlst, int ordre_croissant)
 {
 	if (lst && rank_inlst < lst->size)
 	{
@@ -98,9 +98,10 @@ int		getIndFromRank(t_lst *lst, int rank)
 		lnk = lst->first;
 		while (lnk->rank != rank && lnk->next != lst->first)
 			lnk = lnk->next;
-		return (lnk->ind);
 	}
+	return (lnk->ind);
 }
+
 //
 //t_lst	*lst_init_indinlist(t_lst *lst)
 //{
@@ -141,19 +142,20 @@ int		getIndFromRank_InList(t_lst *lst, int rank_inlst)
 		}
 		while (lnk->rankinlist != rank_inlst && lnk->next != lst->first)
 			lnk = lnk->next;
-		return (lnk->indinlist);
 	}
 	else
-			error_msg("[In getIndFromRank_InList]: weird parameter\n");
+		error_msg("[In getIndFromRank_InList]: weird parameter\n");
+	return (lnk->indinlist);
 }
 
+/*
 t_lst *bubbleReachAndSort(t_lst *lst, int rank_inlst, int ordre_croissant)
 {
 	if (lst && lst->size > 1 && rank_inlst < lst->size)
 	{
-		return (NULL);
 	}
 }
+*/
 
 int	main(int argc, char **argv)
 {
@@ -163,9 +165,13 @@ int	main(int argc, char **argv)
 
 	lst = get_args(argc, argv);
 	tmp = malloc(sizeof(t_lst));
+	print_lst(lst, tmp);
 	push("A", tmp, lst);
+	print_lst(lst, tmp);
 	swap("A", lst, NULL);
+	print_lst(lst, tmp);
 	push("B", tmp, lst);
+	print_lst(lst, tmp);
 	rotate("RA", lst, NULL);
 	print_lst(lst, tmp);
 //	printf("rank %d,  ind %d\n", 0, getIndFromRank(lst, 0));
@@ -190,4 +196,5 @@ int	main(int argc, char **argv)
 	reachAndSort(lst, lst->size - 1, 0);
 	print_lst(lst, NULL);
 	*/
+	del_list(tmp);
 }

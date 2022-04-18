@@ -4,8 +4,6 @@
 // bug avec les arguments passés
 void	push(char *instr, t_lst *lst_a, t_lst *lst_b)
 {
-	t_lnk   *tmp;
-
 	if (*instr > 96) // si instr est minuscule, imprimer 
 	{
 		write(1, "p", 1);

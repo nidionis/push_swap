@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/09 21:01:10 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/18 13:36:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,19 @@ t_lst	*get_args(int argc, char *argv[])
 	t_lst	*lst_a;
 	t_lnk	*lnk;
 	
-	lst_a = new_lst();
 	if (argc < 2)
 		error_msg(NULL);
+	lst_a = new_lst();
 	argc--;
-		argv = &argv[1];
+	argv = &argv[1];
 	while (argc--)
 	{
 	 	lnk = new_lnk(ft_atoi(argv[argc]), argc, 0);
-	 	lnk->ind = argc;
 	 	push_item(lnk, lst_a);
 	}
-	lst_init_rank(lst_a);
-	lst_init_indinlist(lst_a);
-	lst_init_rankinlist(lst_a);
+	lst_init_ranks(lst_a);
+	//lst_init_indinlist(lst_a);
+	//lst_init_rankinlist(lst_a);
 	return (lst_a);
 }
 
@@ -167,8 +166,13 @@ void	refreshRankinlist(t_lst *lst, t_lnk *moved_item, char *action)
 				lnk->rankinlist += 1;
 				lnk = lnk->next;
 			}
-		if (*action == 'u' || lst->size == 1)
-			lnk->rankinlist = 0;
+		if (*action == 'u')
+		{
+			if (moved_item == lst->first)
+				lnk->rankinlist = 0;
+			else
+				error_msg("[refreshRankinlist] error refreshing rank after a push");
+		}
 	}
 }
 
@@ -194,7 +198,7 @@ void	lst_init_rankinlist(t_lst *lst)
 	}
 }
 
-void	lst_init_rank(t_lst *lst_ini)
+void	lst_init_ranks(t_lst *lst_ini)
 {
 	int		rank;
 	t_lnk	*lnk;
@@ -206,6 +210,7 @@ void	lst_init_rank(t_lst *lst_ini)
 	lnk = lst_sorted->first;
 	while (rank < lst_sorted->size)
 	{
+		lnk->rankinlist = rank;
 		lnk->rank = rank++;
 		lnk = lnk->next;
 	}

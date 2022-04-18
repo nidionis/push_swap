@@ -8,7 +8,7 @@ t_lnk	*lnk_init(t_lnk *lnk)
 		lnk->prev = lnk;
 	}
 	else
-		lnk == NULL;
+		lnk = NULL;
 	return (lnk);
 }
 
@@ -23,7 +23,9 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 	{
 		lnk->nb = nb;
 		lnk->ind = ind;
+	 	lnk->indinlist = ind;
 		lnk->rank = rank;
+		lnk->rankinlist = rank;
 		lnk_init(lnk);
 	}
 	return (lnk);
@@ -47,7 +49,7 @@ void   lst_init(t_lst *lst)
 	lst->size = 0;
 }
 
-void	*del_list(t_lst *lst)
+void	del_list(t_lst *lst)
 {
 	t_lnk   *lnk;
 	while (lst->size > 0)

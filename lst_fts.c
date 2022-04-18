@@ -114,8 +114,8 @@ void	swap_lst(t_lst *lst)
 		t_lnk   *item0;
 		t_lnk   *item1;
 
-		item0 = (lst->first)->next;
-		item1 = lst->first;
+		item0 = lst->first;
+		item1 = (lst->first)->next;
 		(lst->last)->next = item1;
 		item0->next = item1->next;
 		(item1->next)->prev = item0;
@@ -187,6 +187,10 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 	loop_nb = lst_a->size;
 	if (lst_b && lst_a->size < lst_b->size)
 		loop_nb = lst_b->size;
+	if (lst_a)
+		printf("[lst_a]: size=%d,	min_val=%d, 	maw_val=%d\n", lst_a->size, lst_a->min_val, lst_a->max_val);
+	if (lst_b)
+		printf("[lst_b]: size=%d,	min_val=%d, 	maw_val=%d\n", lst_b->size, lst_b->min_val, lst_b->max_val);
 	ii = 0;
 	while (ii < loop_nb)
 	{
@@ -195,11 +199,11 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 		else
 		{
 			if (ii < lst_a->size && ii < lst_b->size)
-				printf("%10d\t|%10d\n", lnk_a->nb, lnk_b->nb);
+				printf("%8d\t|%8d\n", lnk_a->nb, lnk_b->nb);
 			else if (ii < lst_a->size)
-				printf("%10d\t|\n", lnk_a->nb);
+				printf("%8d\t|\n", lnk_a->nb);
 			else if (ii < lst_b->size)
-				printf("\t\t|%10d\n", lnk_b->nb);
+				printf("\t\t|%8d\n", lnk_b->nb);
 		}
 		if (lnk_a)
 				lnk_a = lnk_a->next;
@@ -207,6 +211,7 @@ void print_lst(t_lst *lst_a, t_lst *lst_b)
 				lnk_b = lnk_b->next;
 		ii++;
 	}
+	printf("	***************\n");
 }
 
 /*
