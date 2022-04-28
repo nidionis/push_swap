@@ -10,22 +10,31 @@
 #                                                                              #
 # **************************************************************************** #
 
+SRC_DIR = ./src/
 SRCS = *.c
 
 OBJS = ${SRCS:.c=.o}
 
-NAME = push_swap
+NAME = pushswap
 
-CFLAGS = -Wall -Werror -Wextra
-
-HEADER = push_swap.h
+HEADERS = push_swap.h libftprintf.h libft.h get_next_line.h
+INC_DIR = ./include/
+LIBFTPRINTF_DIR = ./ft_printf/
+LIBFTPRINTF = libftprintf.a 
+AR = ar rsu
 
 CC = gcc
+CFLAGS += -Wall -Werror -Wextra
+CPPFLAGS += -I$(INC_DIR)
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) -c $(SRCS) $(HEADER)
+$(NAME): $(OBJS) $(LIBFTPRINTF)
+	$(CC) $(CFLAGS) $(CPPFLAGS) $(LIBFTPRINTF) -o $(NAME)
+
+$(LIBFTPRINTF): $(LIBFTPRINTF_DIR)$(LIBFTPRINTF)
+	$(MAKE) -C $(LIBFT_DIR)
+	cp $(LIBFT_DIR)$(LIBFTPRINTF) .
 
 clean:
 	rm -rf $(OBJS)
@@ -35,13 +44,8 @@ fclean: clean
 
 re: fclean all
 
-test:
-	$(CC) $(SRCS) $(SRCS_BONUS) $(HEADER)
-	./a.out
-
-debug:
-	$(CC) -g $(SRCS) $(SRCS_BONUS) $(HEADER)
-	lldb a.out
+test: $(NAME)
+	./$(NAME)
 	rm a.out
 
 .PHONY: all clean fclean re

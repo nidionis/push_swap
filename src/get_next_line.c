@@ -6,13 +6,11 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 15:17:56 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 15:16:02 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:47:42 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-/*
-static char	*ft_realloc_cat(char *line, char c, int *len)
+char	*ft_realloc_cat(char *line, char c, int *len)
 {
 	char	*ret;
 	int		i;
@@ -28,7 +26,6 @@ static char	*ft_realloc_cat(char *line, char c, int *len)
 	}
 	ret[*len] = c;
 	ret[++(*len)] = '\0';
-	printf("[realloc] : line %s,\taddr: %p\n", ret, ret);
 	if (line)
 		free(line);
 	return (ret);
@@ -52,22 +49,4 @@ char	*get_next_line(int fd)
 			return (line);
 	}
 	return (NULL);
-}
-*/
-
-char	*get_next_line(char *line)
-{
-	int	ii;
-
-	ii = 0;
-	while (ii < 5)
-		line[ii++] = 0;
-	ii = 0;
-	while (1)
-	{
-		read(0, line + ii, 1);
-		if (line[ii] == '\n' || !line[ii])
-			return (line);
-		ii++;
-	}
 }
