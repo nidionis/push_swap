@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 21:03:17 by supersko         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:59:52 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	error_msg(char *msg)
 	exit (0);
 }
 
-int	ft_atoi(char *str_nb)
+int	ft_atoi_err(char *str_nb)
 {
 	int	nb;
 	int	sign;
@@ -65,7 +65,7 @@ t_lst	*get_args(int argc, char *argv[])
 	argv = &argv[1];
 	while (argc--)
 	{
-		lnk = new_lnk(ft_atoi(argv[argc]), argc, 0);
+		lnk = new_lnk(ft_atoi_err(argv[argc]), argc, 0);
 		push_item(lnk, lst_a);
 	}
 	lst_init_ranks(lst_a);
