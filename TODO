@@ -1,0 +1,3 @@
+ refresh_lnks_push(lnk, lst)
+ refresh_afterpush_inlist(lst, lnk)
+		used int push_item: (pushing_fts.c)

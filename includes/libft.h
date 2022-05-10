@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 18:03:26 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/07 18:38:50 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/10 21:02:25 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 size_t	ft_strlen_char(char *str, char sep);
 int		ft_wd_count(char *str, char sep);
-int		ft_atoi_arg(char *str_nb);
+int		ft_atoi_err(char *str_nb);
 char	*ft_get_next_wd(char *sentence, char sep);
 void	error_msg(char *msg);
 char	**ft_split(char const *s, char c);
