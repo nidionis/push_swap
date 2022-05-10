@@ -6,15 +6,14 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/09 19:40:48 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/10 18:34:09 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include <libftprintf.h>
 # include <libft.h>
-# include <linked_lst.h>
+# include <libftprintf.h>
 
 typedef struct s_lnk
 {
@@ -36,6 +35,6 @@ typedef struct s_lst
 	int		max_val;
 }	t_lst;
 
-int	get_args(int argc, char *argv[]);
+int		get_args(int argc, char *argv[]);
 
 #endif

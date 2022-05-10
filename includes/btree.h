@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_args.c                                         :+:      :+:    :+:   */
+/*   btree.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/09 19:33:57 by supersko         ###   ########.fr       */
+/*   Created: 2022/05/10 15:28:11 by supersko          #+#    #+#             */
+/*   Updated: 2022/05/10 16:44:54 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef BTREE_H
+# define BTREE_H
+# include <libft.h>
 
-int main(int argc, char **argv)
+typedef struct	s_btree
 {
-	get_args(argc, argv);
-}
+	void			*item;
+	struct s_btree	*right;
+	struct s_btree	*left;
+	struct s_btree	*parent;
+}	t_btree;
+
+t_btree	*btree_create_node(void *item);
+
+#endif

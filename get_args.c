@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include <libftprintf.h>
 
 int get_args(int argc, char *argv[])
 {
@@ -7,3 +7,7 @@ int get_args(int argc, char *argv[])
 	return (0);
 }
 
+int main(int argc, char *argv[])
+{
+	get_args(argc, argv);
+}
