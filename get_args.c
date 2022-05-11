@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 22:31:19 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 23:07:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int main(int argc, char **argv)
 
 	lst_a = get_args(argc, argv);
 	print_lst(lst_a, "lst A");
-	del_lst(lst_a);
+	del_lst(&lst_a);
+	print_lst(lst_a, "is empty ?");
 }

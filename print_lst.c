@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 22:34:08 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 23:08:17 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,6 @@ void	print_lst(t_lnk *lst, char *header)
 		}
 	}
 	else
-		ft_printf("	[ empty list ] \n");
+		ft_printf("	[ empty list ]");
 	ft_printf("\n\t***************\n");
 }

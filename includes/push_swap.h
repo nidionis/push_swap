@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 22:31:44 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 23:04:55 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ t_lnk	*lnk_init(t_lnk *lnk);
 t_lnk	*new_lnk(int nb, int ind, int rank);
 void	push_item(t_lnk *lnk, t_lnk *lst);
 t_lnk	*get_args(int argc, char *argv[]);
-void	del_lst(t_lnk *lst);
+void	del_lst(t_lnk **lst);
 
 #endif
