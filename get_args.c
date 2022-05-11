@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 16:29:35 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 18:27:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ t_lnk	**get_args(int argc, char *argv[])
 
 	if (argc < 2)
 		error_msg(NULL);
-	argc--;
+	argc -= 2;
 	argv = &argv[1];
 	lnk = new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-	argc--;
 	lst_a = &lnk;	
 	while (argc--)
 	{

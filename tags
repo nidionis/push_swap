@@ -1,10 +1,5 @@
 Mget_args	get_args.c	/^int main(int argc, char **argv)$/
-get_args	get_args.c	/^t_lst	*get_args(int argc, char *argv[])$/
+get_args	get_args.c	/^t_lnk	**get_args(int argc, char *argv[])$/
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/
 new_lnk	lnk_fts.c	/^t_lnk	*new_lnk(int nb, int ind, int rank)$/
-push_item	pushing_fts.c	/^t_lnk	*push_item(t_lnk *lnk, t_lnk *lst)$/
-refresh_lnks_push	TODO	/^ refresh_lnks_push(lnk, lst)$/
-t_btree	includes/btree.h	/^}	t_btree;$/
-t_list	includes/linked_lst.h	/^}   t_list;$/
-t_lnk	includes/push_swap.h	/^}	t_lnk;$/
-t_lnk_items	includes/push_swap.h	/^}	t_lnk_items;$/
+push_item	pushing_fts.c	/^t_lnk	*push_item(t_lnk *lnk, t_lnk **lst)$/

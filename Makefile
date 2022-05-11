@@ -6,7 +6,7 @@
 #    By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/11 16:20:18 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/11 17:35:47 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ fclean: clean
 re: fclean all
 
 test: ctags
-	${CC} ${SRCS}
-	./a.out
+	${CC} $(CFLAGS) $(INCLUDES) ${SRCS} -o $(NAME)
+	./$(NAME)
 	rm a.out
 
 debug: ctags
-	${CC} -g ${SRCS}
-	lldb a.out
+	${CC} $(CFLAGS) $(INCLUDES) -g ${SRCS} -o $(NAME)
+	lldb $(NAME)
 	rm a.out
 
 .PHONY: all clean fclean re
