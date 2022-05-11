@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 20:43:40 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 22:27:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,26 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 	(lnk->items)->rank = rank;
 	lnk_init(lnk);
 	return (lnk);
+}
+
+void	del_lst(t_lnk *lst)
+{
+	t_lnk	*next_lnk;
+
+	if (lst->next == lst)
+	{
+		free(lst->items);
+		free(lst);
+	}
+	else
+	{
+		(lst->prev)->next = NULL;
+		while (lst)
+		{
+			next_lnk = lst->next;
+			free(lst->items);
+			free(lst);
+			lst = next_lnk;
+		}
+	}
 }

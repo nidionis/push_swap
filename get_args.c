@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 21:44:28 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 22:31:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int main(int argc, char **argv)
 	t_lnk	*lst_a;
 
 	lst_a = get_args(argc, argv);
-	print_lst(&lst_a);
+	print_lst(lst_a, "lst A");
+	del_lst(lst_a);
 }
