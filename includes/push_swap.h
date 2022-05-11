@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/10 21:19:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:31:46 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,23 @@
 # include <libft.h>
 # include <libftprintf.h>
 
+typedef struct s_lnk_items
+{
+	int	nb;
+	int	ind;
+	int	rank;
+}	t_lnk_items;
+
 typedef struct s_lnk
 {
-	void			*items;
+	t_lnk_items			*items;
 	struct s_lnk	*next;
 	struct s_lnk	*prev;
 }	t_lnk;
 
-typedef struct s_lnk_items
-{
-	int				nb;
-	int				ind;
-	int				indinlist;
-	int				rank;
-	int				rankinlist;
-}	t_lnk_items;
-
-typedef struct s_lst
-{
-	void	*items;
-	t_lnk	*first;
-	t_lnk	*last;
-}	t_lst;
-
-typedef struct s_lst_items
-{
-	size_t	size;
-	int		min_val;
-	int		max_val;
-}	t_lst_items;
+t_lnk	*lnk_init(t_lnk *lnk);
+t_lnk	*new_lnk(int nb, int ind, int rank);
+t_lnk	*push_item(t_lnk *lnk, t_lnk **lst);
+t_lnk	**get_args(int argc, char *argv[]);
 
 #endif

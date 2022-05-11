@@ -6,11 +6,11 @@
 #    By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/10 20:40:27 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/11 16:20:18 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  get_args.c
+SRCS =  get_args.c lnk_fts.c pushing_fts.c
 
 OBJS := ${SRCS:c=o}
 

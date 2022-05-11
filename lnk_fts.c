@@ -6,7 +6,7 @@
 /*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/10 21:13:39 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:33:03 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,10 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 		lnk_items = (t_lnk_items *) malloc(sizeof(t_lnk_items));
 		if (!lnk_items)
 			error_msg("Error mallocing lnk_items\n");
-		lnk->lnk_items = lnk_items;
+		lnk->items = lnk_items;
 		(lnk->items)->nb = nb;
 		(lnk->items)->ind = ind;
-		(lnk->items)->indinlist = ind;
 		(lnk->items)->rank = rank;
-		(lnk->items)->rankinlist = rank;
 		lnk_init(lnk);
 	}
 	return (lnk);
