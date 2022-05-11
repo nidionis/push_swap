@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushing_fts.c                                      :+:      :+:    :+:   */
+/*   print_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 21:39:15 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
+/*   Updated: 2022/05/11 21:43:09 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	push_item(t_lnk *lnk, t_lnk *lst)
+void	print_lst(t_lnk **lst)
 {
-	if (lnk)
+	t_lnk	*lnk_ind;
+
+	ft_printf("%d\n", ((*lst)->items)->nb);
+	lnk_ind = (*lst)->next;
+	while (lnk_ind != *lst)
 	{
-		if (lst == NULL)
-			lst = lnk_init(lnk);
-		else
-    	{
-    	    lnk->next = lst;
-    	    lnk->prev = lst->prev;
-    	    (lst->prev)->next = lnk;
-    	    lst->prev = lnk;
-			lst = lnk;
-    	}
-		if (!lnk)
-			error_msg("[push item] pushing non existing link\n");
+		ft_printf("%d\t|\n", lnk_ind->items->nb);
+		lnk_ind = lnk_ind->next;
 	}
-	else
-		error_msg("error at push_item\n");
+	ft_printf("	***************\n");
 }

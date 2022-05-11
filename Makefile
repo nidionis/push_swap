@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+         #
+#    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/11 17:35:47 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/11 19:04:29 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  get_args.c lnk_fts.c pushing_fts.c
+SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c
 
 OBJS := ${SRCS:c=o}
 

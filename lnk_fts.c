@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lnk_fts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 16:33:03 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:43:40 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,13 @@ t_lnk	*new_lnk(int nb, int ind, int rank)
 	lnk = (t_lnk *) malloc(sizeof(t_lnk));
 	if (!lnk)
 		error_msg("Error creating a new link\n");
-	else
-	{
-		lnk_items = (t_lnk_items *) malloc(sizeof(t_lnk_items));
-		if (!lnk_items)
-			error_msg("Error mallocing lnk_items\n");
-		lnk->items = lnk_items;
-		(lnk->items)->nb = nb;
-		(lnk->items)->ind = ind;
-		(lnk->items)->rank = rank;
-		lnk_init(lnk);
-	}
+	lnk_items = (t_lnk_items *) malloc(sizeof(t_lnk_items));
+	if (!lnk_items)
+		error_msg("Error mallocing lnk_items\n");
+	lnk->items = lnk_items;
+	(lnk->items)->nb = nb;
+	(lnk->items)->ind = ind;
+	(lnk->items)->rank = rank;
+	lnk_init(lnk);
 	return (lnk);
 }

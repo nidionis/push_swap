@@ -2,4 +2,5 @@ Mget_args	get_args.c	/^int main(int argc, char **argv)$/
 get_args	get_args.c	/^t_lnk	**get_args(int argc, char *argv[])$/
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/
 new_lnk	lnk_fts.c	/^t_lnk	*new_lnk(int nb, int ind, int rank)$/
-push_item	pushing_fts.c	/^t_lnk	*push_item(t_lnk *lnk, t_lnk **lst)$/
+print_lst	print_lst.c	/^void	print_lst(t_lnk **lst)$/
+push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
