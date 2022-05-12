@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/11 23:15:07 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:04:06 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_lnk	*lnk_init(t_lnk *lnk)
 		lnk->prev = lnk;
 	}
 	else
-		lnk = NULL;
+		error_msg("[lnk_init] NULL passed in params");
 	return (lnk);
 }
 
