@@ -6,22 +6,25 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/12 13:41:28 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/12 18:05:13 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c pop_item.c
+SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c
 
 OBJS := ${SRCS:c=o}
 
 NAME = push_swap
 HEADERS = includes
 LIBFT_DIR = libft/
+#LINKED_LST_DIR = linked_lst/
 LIBFTPRINTF_DIR = libftprintf/
 LIBFT_AR = libft.a
 LIBFTPRINTF_AR = libftprintf.a
+#LINKED_LST_AR = linked_lst.a
+LIBS = $(LIBFTPRINTF_DIR)$(LIBFTPRINTF_AR) $(LIBFT_DIR)$(LIBFT_AR) # $(LINKED_LST_DIR)$(LINKED_LST_AR)
 
-INCLUDES = -I./$(HEADERS) $(LIBFTPRINTF_DIR)$(LIBFTPRINTF_AR) $(LIBFT_DIR)$(LIBFT_AR) -I./$(LIBFTPRINTF_DIR) -I./$(LIBFT_DIR)
+INCLUDES = -I./$(HEADERS) $(LIBS) -I./$(LIBFTPRINTF_DIR) -I./$(LIBFT_DIR)
 CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc

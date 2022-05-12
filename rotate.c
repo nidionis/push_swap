@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop_item.c                                         :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 13:10:44 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/12 14:24:22 by supersko         ###   ########.fr       */
+/*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
+/*   Updated: 2022/05/12 18:04:05 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_lnk	*pop_item(t_lnk **lst)
+void    rotate_lst(t_lnk **lst)
 {
-    t_lnk   *poped_item;
+    if (!(*lst))
+        error_msg("[rotate_lst] rotate an empty list");
+    *lst = (*lst)->next;
+}
 
-    poped_item = *lst;
-	if (*lst == NULL)
-		error_msg("[pop_item] trying to pop a NULL list\n");
-    else if ((*lst)->next == *lst)
-        *lst = NULL;
-    else
-    {
-        (poped_item->prev)->next = (*lst)->next;
-        (poped_item->next)->prev = (*lst)->prev;
-        *lst = (*lst)->next;
-    }
-    return (lnk_init(poped_item));
+void    rrotate_lst(t_lnk **lst)
+{
+    if (!(*lst))
+        error_msg("[rrotate_lst] reverse-rotate an empty list");
+    *lst = (*lst)->prev;
 }

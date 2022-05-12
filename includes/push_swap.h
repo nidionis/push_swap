@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/12 14:23:25 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/12 18:05:41 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <libft.h>
 # include <libftprintf.h>
+# include <linked_lst.h>
 
 typedef struct s_lnk_items
 {
@@ -36,5 +37,7 @@ void	push_item(t_lnk *lnk, t_lnk **lst);
 t_lnk	*get_args(int argc, char *argv[]);
 void	del_lst(t_lnk **lst);
 t_lnk	*pop_item(t_lnk **lst);
+void    rotate_lst(t_lnk **lst);
+void    rrotate_lst(t_lnk **lst);
 
 #endif

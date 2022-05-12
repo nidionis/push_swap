@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/12 14:25:12 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/12 18:07:24 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int main(int argc, char **argv)
 		push_item(tmp, &lst_b);
 		print_lst(lst_b, "lst b");
 	}
-	print_lst(lst_a, "lst b");
+	rrotate_lst(&lst_b);
+	rrotate_lst(&lst_b);
+	print_lst(lst_b, "lst b");
 	del_lst(&lst_b);
-	print_lst(lst_a, "is empty ?");
 }
