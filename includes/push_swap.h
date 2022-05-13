@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/12 18:05:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:08:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,37 @@
 # include <libftprintf.h>
 # include <linked_lst.h>
 
-typedef struct s_lnk_items
+typedef struct s_lnk_itm
 {
 	int	nb;
 	int	ind;
 	int	rank;
-}	t_lnk_items;
+}	t_itm;
+
+typedef struct s_instr
+{
+	char	instr[4];
+}	t_instr;
 
 typedef struct s_lnk
 {
-	t_lnk_items		*items;
+	void		*itm;
 	struct s_lnk	*next;
 	struct s_lnk	*prev;
 }	t_lnk;
 
 void	print_lst(t_lnk *lst, char *header);
 t_lnk	*lnk_init(t_lnk *lnk);
-t_lnk	*new_lnk(int nb, int ind, int rank);
+t_lnk	*ft_new_lnk(int nb, int ind, int rank);
 void	push_item(t_lnk *lnk, t_lnk **lst);
 t_lnk	*get_args(int argc, char *argv[]);
 void	del_lst(t_lnk **lst);
 t_lnk	*pop_item(t_lnk **lst);
 void    rotate_lst(t_lnk **lst);
 void    rrotate_lst(t_lnk **lst);
+t_lnk	*new_instr_lnk(char *instr);
+void	push(t_lnk **from_lst, t_lnk **to_lst);
+void	lst_init_ranks(t_lnk **lst);
+void	print_lst_byrank(t_lnk *lst, char *header);
 
 #endif

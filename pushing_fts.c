@@ -6,11 +6,16 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/12 17:26:34 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/12 18:43:11 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+void	push(t_lnk **from_lst, t_lnk **to_lst)
+{
+	push_item(pop_item(from_lst), to_lst);
+}
 
 void	push_item(t_lnk *lnk, t_lnk **lst)
 {

@@ -1,8 +1,14 @@
 Mget_args	get_args.c	/^int main(int argc, char **argv)$/
 del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/
+ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/
-new_lnk	lnk_fts.c	/^t_lnk	*new_lnk(int nb, int ind, int rank)$/
-pop_item	pop_item.c	/^t_lnk	*pop_item(t_lnk **lst)$/
+lst_init_ranks	lnk_fts.c	/^void	lst_init_ranks(t_lnk **lst)$/
+new_instr_lnk	lnk_fts.c	/^t_lnk	*new_instr_lnk(char *instr)$/
+pop_item	pushing_fts.c	/^t_lnk	*pop_item(t_lnk **lst)$/
 print_lst	print_lst.c	/^void	print_lst(t_lnk *lst, char *header)$/
-push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk *lst)$/
+print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
+push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
+push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
+rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
+rrotate_lst	rotate.c	/^void    rrotate_lst(t_lnk **lst)$/
