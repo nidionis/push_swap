@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 16:21:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:55:39 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ t_lnk	*get_args(int argc, char *argv[])
 int main(int argc, char **argv)
 {
 	t_lnk	*lst_a = NULL;
-	t_lnk	*lst_b = NULL;
 
 	if (argc < 2)
 		error_msg(NULL);
@@ -64,13 +63,6 @@ int main(int argc, char **argv)
 	else
 		lst_a = get_args(argc, argv);
 	lst_init_ranks(&lst_a);
-	print_lst(lst_a, "lst a");
-	print_lst_byrank(lst_a, "lst a");
-	while (lst_a)
-	{
-		push(&lst_a, &lst_b);
-	}
-	print_lst(lst_b, "lst b");
-	print_lst_byrank(lst_b, "lst b");
-	del_lst(&lst_b);
+	ft_printf("is_sorted: %d\n", ft_is_sorted(lst_a));
+	del_lst(&lst_a);
 }

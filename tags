@@ -1,5 +1,6 @@
 Mget_args	get_args.c	/^int main(int argc, char **argv)$/
 del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/
+ft_is_sorted	verifications.c	/^int ft_is_sorted(t_lnk *lst)$/
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/
 get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/

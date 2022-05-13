@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 13:52:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:55:27 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,12 @@ void	del_lst(t_lnk **lst)
 			*lst = next_lnk;
 		}
 	}
-	free((*lst)->itm);
-	free(*lst);
-	*lst = NULL;
+	if (*lst)
+	{
+		free((*lst)->itm);
+		free(*lst);
+		*lst = NULL;
+	}
 }
 
 // return ind max
