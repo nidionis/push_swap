@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 17:54:28 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:21:28 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	print_lst_byrank(t_lnk *lst, char *header);
 t_lnk	*get_args_allinone(char *str);
 int 	ft_is_sorted(t_lnk *lst);
 void	swap_lst(t_lnk **lst);
+void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst);
 
 #endif
