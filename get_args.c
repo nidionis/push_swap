@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 16:55:39 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:58:28 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int main(int argc, char **argv)
 	else
 		lst_a = get_args(argc, argv);
 	lst_init_ranks(&lst_a);
-	ft_printf("is_sorted: %d\n", ft_is_sorted(lst_a));
+	swap_lst(&lst_a);
+	print_lst(lst_a, "lsta");
 	del_lst(&lst_a);
 }

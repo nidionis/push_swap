@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   verifications.c                                    :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 17:56:55 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:00:22 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int ft_is_sorted(t_lnk *lst)
+void	swap_lst(t_lnk **lst)
 {
-    t_lnk	*lnk_ind;
-    int     is_sorted;
+	t_lnk	*sec;
 
-    is_sorted = 0;
-	lnk_ind = lst->next;
-    if (((t_itm *)lnk_ind->itm)->rank != ((t_itm *)(lnk_ind->prev)->itm)->rank + 1)	
-        is_sorted = -1;
-    if (((t_itm *)lnk_ind->itm)->rank != ((t_itm *)(lnk_ind->prev)->itm)->rank - 1)	
-        is_sorted = 1;
-	while (lnk_ind != lst)
-	{
-        if (((t_itm *)lnk_ind->itm)->rank != ((t_itm *)(lnk_ind->prev)->itm)->rank + is_sorted)
-        {
-            is_sorted = 0;
-            break;
-        }
-		lnk_ind = lnk_ind->next;
+    sec = (*lst)->next;
+	if (*lst && (*lst)->next != *lst)
+	{	
+        ((*lst)->prev)->next = sec;
+        (sec->next)->prev = *lst;
+        sec->prev = (*lst)->prev;
+        (*lst)->prev = sec;
+        (*lst)->next = sec->next;
+        sec->next = *lst;
+        *lst = sec;
 	}
-    return (is_sorted);
 }
