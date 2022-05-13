@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 13:08:36 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 14:07:44 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void    rotate_lst(t_lnk **lst);
 void    rrotate_lst(t_lnk **lst);
 t_lnk	*new_instr_lnk(char *instr);
 void	push(t_lnk **from_lst, t_lnk **to_lst);
-void	lst_init_ranks(t_lnk **lst);
+int		lst_init_ranks(t_lnk **lst);
 void	print_lst_byrank(t_lnk *lst, char *header);
+t_lnk	*get_args_allinone(char *str);
 
 #endif

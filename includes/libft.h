@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 18:03:26 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/10 21:02:25 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 14:18:32 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_atoi_err(char *str_nb);
 char	*ft_get_next_wd(char *sentence, char sep);
 void	error_msg(char *msg);
 char	**ft_split(char const *s, char c);
+void    ft_free_split(char **tab);
 char	*ft_itoa(int n);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *s1);

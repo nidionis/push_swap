@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 13:29:11 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:52:30 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,21 +81,29 @@ void	del_lst(t_lnk **lst)
 	*lst = NULL;
 }
 
-void	lst_init_ranks(t_lnk **lst)
+// return ind max
+int	lst_init_ranks(t_lnk **lst)
 {
 	t_lnk	*lnk;
 	t_lnk	*l_i;
+	int		max;
 
 	lnk = *lst;
+	max = 0;
 	do
 	{
 		l_i = lnk;
 		do
 		{
 			if (((t_itm *)lnk->itm)->nb > ((t_itm *)(l_i)->itm)->nb)
+			{
 				(((t_itm *)lnk->itm)->rank)++;
+				if (max < ((t_itm *)lnk->itm)->rank)
+					max = ((t_itm *)lnk->itm)->rank;
+			}
 			l_i = l_i->next;
 		} while (l_i != lnk);
 		lnk = lnk->next;
 	} while (lnk != *lst);
+	return (max);
 }

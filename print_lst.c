@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 13:07:32 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/13 16:06:22 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	print_lst(t_lnk *lst, char *header)
 	ft_printf("***************\n");
 	if (lst)
 	{
-		ft_printf("%d\t", ((t_itm *)lst->itm)->nb);
+		ft_printf("-%d-\t", ((t_itm *)lst->itm)->nb);
 		lnk_ind = lst->next;
 		while (lnk_ind != lst)
 		{
-			ft_printf("%d\t", ((t_itm *)lnk_ind->itm)->nb);
+			ft_printf("-%d-\t", ((t_itm *)lnk_ind->itm)->nb);
 			lnk_ind = lnk_ind->next;
 		}
 	}

@@ -6,7 +6,7 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/12 18:05:13 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/13 15:24:21 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,9 @@ debug: ctags
 	${CC} $(CFLAGS) $(INCLUDES) -g ${SRCS} -o $(NAME)
 	lldb $(NAME)
 	rm a.out
+
+valgrind_: ctags
+	${CC} $(CFLAGS) $(INCLUDES) -g ${SRCS} -o $(NAME)
 
 .PHONY: all clean fclean re
 # If, for example, the file clean happened to be created running make clean would yield the confusing message:
