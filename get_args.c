@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 18:26:07 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 15:50:52 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,4 @@ t_lnk	*get_args(int argc, char *argv[])
 		push_item(lnk, &lst_a);
 	}
 	return (lst_a);
-}
-
-#include <stdio.h>
-int main(int argc, char **argv)
-{
-	t_lnk	*lst_a = NULL;
-
-	if (argc < 2)
-		error_msg(NULL);
-	else if (argc == 2)
-		lst_a = get_args_allinone(argv[1]);
-	else
-		lst_a = get_args(argc, argv);
-	lst_init_ranks(&lst_a);
-	apply_instr(rra, &lst_a, NULL, NULL);
-	print_lst(lst_a, "lsta");
-	del_lst(&lst_a);
 }

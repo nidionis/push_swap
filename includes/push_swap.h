@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 18:21:28 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:47:49 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_lnk
 	struct s_lnk	*prev;
 }	t_lnk;
 
-enum instr { sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr };
+enum instr { sa = 1, sb, pa, pb, ra, rb, rra, rrb, ss, rr, rrr };
 
 void	print_lst(t_lnk *lst, char *header);
 t_lnk	*lnk_init(t_lnk *lnk);
@@ -54,5 +54,7 @@ t_lnk	*get_args_allinone(char *str);
 int 	ft_is_sorted(t_lnk *lst);
 void	swap_lst(t_lnk **lst);
 void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst);
+char	*get_next_line(int fd);
+int		instr_to_i(char *str);
 
 #endif

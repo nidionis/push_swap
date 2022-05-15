@@ -6,15 +6,19 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/13 18:04:09 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/15 15:51:41 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c
+SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c get_next_line.c
 
 OBJS := ${SRCS:c=o}
 
+MAIN = main.c
+BONUS_MAIN = checker.c
+
 NAME = push_swap
+BONUS_NAME = checker
 HEADERS = includes
 LIBFT_DIR = libft/
 #LINKED_LST_DIR = linked_lst/
@@ -32,7 +36,10 @@ CC = gcc
 all: ${NAME}
 
 ${NAME}: make_libftprintf make_libft
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(MAIN) -o $(NAME)
+
+bonus:
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(BONUS_MAIN) -o $(BONUS_NAME)
 	
 %.o: %.c
 	${CC} ${CFLAGS} $(INCLUDES) -c $<

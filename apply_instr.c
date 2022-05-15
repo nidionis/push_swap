@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/13 18:25:06 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 16:50:22 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void    apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst)
         swap_lst(lst_b);
     }
     else if (instr == pa)
-        push(lst_a, lst_b);
-    else if (instr == pb)
         push(lst_b, lst_a);
+    else if (instr == pb)
+        push(lst_a, lst_b);
     else if (instr == ra)
         rotate_lst(lst_a);
     else if (instr == rb)
@@ -63,4 +63,49 @@ void    apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst)
     else
         fucking_norminette(instr, lst_a, lst_b, instr_lst);
     (void)instr_lst;
+}
+
+int fucking_normi_2(char *str)
+{
+    int ret;
+
+    if (!ft_strncmp(str, "ra", 2))
+        ret = ra;
+    else if (!ft_strncmp(str, "rb", 2))
+        ret = rb;
+    else if (!ft_strncmp(str, "sa", 2))
+        ret = sa;
+    else if (!ft_strncmp(str, "sb", 2))
+        ret = sb;
+    else if (!ft_strncmp(str, "pa", 2))
+        ret = pa;
+    else if (!ft_strncmp(str, "pb", 2))
+        ret = pb;
+    else
+        ret = -1;
+    return (ret);
+}
+
+int    instr_to_i(char *str)
+{
+    int ret;
+    
+    ret = -1;
+    if (!(*str))
+        ret = 0;
+    else if (!ft_strncmp(str, "rrr", 3))
+        ret = rrr;
+    else if (!ft_strncmp(str, "rra", 3))
+        ret = rra;
+    else if (!ft_strncmp(str, "rrb", 3))
+        ret = rrb;
+    else if (!ft_strncmp(str, "rr", 2))
+        ret = rr;
+    else if (!ft_strncmp(str, "ss", 2))
+        ret = ss;
+    else
+        ret = fucking_normi_2(str);
+    if (ret == -1)
+        error_msg("[instr_to_i] Error");
+    return (ret);
 }
