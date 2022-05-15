@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 16:54:33 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:16:59 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int main(int argc, char **argv)
 	else
 		lst_a = get_args(argc, argv);
 	lst_init_ranks(&lst_a);
+	if (!ft_no_duplicate(lst_a))
+		error_msg("Error: duplicated items");
 	instruction = get_next_line(0);
 	while (*instruction != '\n')
 	{

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 16:47:49 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 17:07:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void	swap_lst(t_lnk **lst);
 void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst);
 char	*get_next_line(int fd);
 int		instr_to_i(char *str);
+int ft_no_duplicate(t_lnk *lst);
 
 #endif
