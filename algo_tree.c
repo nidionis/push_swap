@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   algo_tree.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 21:08:00 by supersko         ###   ########.fr       */
+/*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
+/*   Updated: 2022/05/15 20:52:40 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void    rotate_lst(t_lnk **lst)
+void    find_solution(t_lnk **lst_a, t_lnk **lst_b)
 {
-//    if (!(*lst))
-//        error_msg("[rotate_lst] rotate an empty list");
-    if (*lst)
-        *lst = (*lst)->next;
+
 }
 
-void    rrotate_lst(t_lnk **lst)
+t_pstree    *rec_parsing(t_pstree   *parent_node)
 {
-//    if (!(*lst))
-//        error_msg("[rrotate_lst] reverse-rotate an empty list");
-    if (*lst)
-        *lst = (*lst)->prev;
+
 }

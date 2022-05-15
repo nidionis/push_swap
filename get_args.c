@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 15:50:52 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 20:06:42 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,26 @@ t_lnk	*get_args(int argc, char *argv[])
 		push_item(lnk, &lst_a);
 	}
 	return (lst_a);
+}
+
+t_lnk	*lst_cpy(t_lnk *lst)
+{
+	t_lnk	*lnk_ind;
+	t_lnk	*new_lnk;
+	t_lnk	*first_lnk;
+	t_lnk	*last_lnk;
+
+	lnk_ind = lst;
+	first_lnk = ft_new_lnk(((t_itm *)lnk_ind->itm)->nb, ((t_itm *)lnk_ind->itm)->ind, ((t_itm *)lnk_ind->itm)->rank);
+	last_lnk = first_lnk;
+	lnk_ind = lnk_ind->next;
+	while (lnk_ind != lst)
+	{
+		new_lnk = ft_new_lnk(((t_itm *)lnk_ind->itm)->nb, ((t_itm *)lnk_ind->itm)->ind, ((t_itm *)lnk_ind->itm)->rank);
+		new_lnk->next = first_lnk;
+		new_lnk->prev = last_lnk;
+		last_lnk->next = new_lnk;
+		last_lnk = new_lnk;
+	}
+	return (first_lnk);
 }

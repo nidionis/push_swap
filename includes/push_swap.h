@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 17:07:36 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 21:02:08 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,20 @@ typedef struct s_lnk
 {
 	void		*itm;
 	struct s_lnk	*next;
+	struct s_lnk	*init_next;
 	struct s_lnk	*prev;
+	struct s_lnk	*init_prev;
 }	t_lnk;
 
-enum instr { sa = 1, sb, pa, pb, ra, rb, rra, rrb, ss, rr, rrr };
+typedef struct	s_pstree
+{
+	int	instr_node;
+	struct s_pstree *parent;
+	struct s_pstree *right;
+	struct s_pstree *left;
+}	t_pstree;
+
+enum instr { INSTR_MIN = 1, sa = INSTR_MIN, sb, pa, pb, ra, rb, rra, rrb, rr, rrr, ss, INSTR_MAX };
 
 void	print_lst(t_lnk *lst, char *header);
 t_lnk	*lnk_init(t_lnk *lnk);
@@ -57,5 +67,8 @@ void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst);
 char	*get_next_line(int fd);
 int		instr_to_i(char *str);
 int ft_no_duplicate(t_lnk *lst);
+void i_to_instr(int i);
+void	set_initial_pointers(t_lnk **lst);
+void	reset_initial_pointers(t_lnk **lst_a, t_lnk **lst_b);
 
 #endif

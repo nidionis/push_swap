@@ -6,11 +6,11 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/15 15:51:41 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/15 20:53:19 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c get_next_line.c
+SRCS =  init_next_prev.c  get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c get_next_line.c# algo_tree.c
 
 OBJS := ${SRCS:c=o}
 
@@ -72,7 +72,7 @@ test: ctags
 	rm a.out
 
 debug: ctags
-	${CC} $(CFLAGS) $(INCLUDES) -g ${SRCS} -o $(NAME)
+	$(CC) $(CFLAGS) -g $(INCLUDES) $(SRCS) $(MAIN) -o $(NAME)
 	lldb $(NAME)
 	rm a.out
 

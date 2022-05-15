@@ -6,11 +6,12 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 16:50:22 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 18:45:47 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
 void    fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst)
 {
     if (instr == ra)
@@ -108,4 +109,33 @@ int    instr_to_i(char *str)
     if (ret == -1)
         error_msg("[instr_to_i] Error");
     return (ret);
+}
+
+void i_to_instr(int i)
+{
+    if (i == rrr)
+        ft_printf("rrr");
+    else if (i == rra)
+        ft_printf("rra");
+    else if (i == rrb)
+        ft_printf("rrb");
+    else if (i == ra)
+        ft_printf("ra");
+    else if (i == rb)
+        ft_printf("rb");
+    else if (i == rr)
+        ft_printf("rr");
+    else if (i == pa)
+        ft_printf("pa");
+    else if (i == pb)
+        ft_printf("pb");
+    else if (i == sa)
+        ft_printf("sa");
+    else if (i == sb)
+        ft_printf("sb");
+    else if (i == ss)
+        ft_printf("ss");
+    else
+        error_msg("[i_to_instr]: instruction non reconnue\n");
+    ft_printf("\n");
 }

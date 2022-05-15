@@ -1,10 +1,23 @@
-Mget_args	get_args.c	/^int main(int argc, char **argv)$/
+Mchecker	checker.c	/^int main(int argc, char **argv)$/
+Mmain	main.c	/^int main(int argc, char **argv)$/
+apply_instr	apply_instr.c	/^void    apply_instr(int instr, t_lnk **lst_a, t_ln/
+cpy_initp_to_p	init_next_prev.c	/^void    cpy_initp_to_p(t_lnk *lnk)$/
+cpy_p_to_initp	init_next_prev.c	/^void    cpy_p_to_initp(t_lnk *lnk)$/
 del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/
+find_solution	algo_tree.c	/^void    find_solution(t_lnk *lst_a, t_lnk *lst_b)$/
 ft_is_sorted	verifications.c	/^int ft_is_sorted(t_lnk *lst)$/
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/
+ft_no_duplicate	verifications.c	/^int ft_no_duplicate(t_lnk *lst)$/
+ft_realloc_cat	get_next_line.c	/^char	*ft_realloc_cat(char *line, char c, int *len)/
+fucking_normi_2	apply_instr.c	/^int fucking_normi_2(char *str)$/
+fucking_norminette	apply_instr.c	/^void    fucking_norminette(int instr, t_lnk **lst_/
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/
 get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/
+get_next_line	get_next_line.c	/^char	*get_next_line(int fd)$/
+i_to_instr	apply_instr.c	/^void i_to_instr(int i)$/
+instr_to_i	apply_instr.c	/^int    instr_to_i(char *str)$/
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/
+lst_cpy	get_args.c	/^t_lnk	*lst_cpy(t_lnk *lst)$/
 lst_init_ranks	lnk_fts.c	/^int	lst_init_ranks(t_lnk **lst)$/
 new_instr_lnk	lnk_fts.c	/^t_lnk	*new_instr_lnk(char *instr)$/
 pop_item	pushing_fts.c	/^t_lnk	*pop_item(t_lnk **lst)$/
@@ -12,5 +25,9 @@ print_lst	print_lst.c	/^void	print_lst(t_lnk *lst, char *header)$/
 print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
+rec_parsing	algo_tree.c	/^int rec_parsing(int instr, t_lnk **lst_a, t_lnk **/
+reset_initial_pointers	init_next_prev.c	/^void	reset_initial_pointers(t_lnk **lst)$/
 rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
 rrotate_lst	rotate.c	/^void    rrotate_lst(t_lnk **lst)$/
+set_initial_pointers	init_next_prev.c	/^void	set_initial_pointers(t_lnk **lst)$/
+swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/
