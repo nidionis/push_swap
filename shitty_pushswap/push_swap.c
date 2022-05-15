@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:00:20 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/09 20:35:19 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+
 
 /*
 int	main(int argc, char *argv[])

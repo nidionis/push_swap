@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_ind_and_ranks.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <ndionis@student.42mulhouse.fr>   +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:59:57 by supersko          #+#    #+#             */
-/*   Updated: 2022/04/18 21:31:36 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
