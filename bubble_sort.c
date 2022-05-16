@@ -6,13 +6,49 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 20:31:48 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h> 
 #include "push_swap.h"
 
+
+void	reachsort_step(t_lnk **lst, int ascend, int way, char lst_name)
+{
+	if (ascend < 0 && ((t_itm *)(*lst)->itm)->nb < ((t_itm *)((*lst)->next)->itm)->nb && ft_printf("s%c\n", lst_name))
+		apply_instr(sa, lst, NULL, 0);
+	else if (ascend > -1 && ((t_itm *)(*lst)->itm)->nb > ((t_itm *)((*lst)->next)->itm)->nb && ft_printf("s%c\n", lst_name))
+		apply_instr(sa, lst, NULL, 0);
+	else if ((*lst)->next != (*lst)->prev)
+	{
+		if (way < 0 && ft_printf("rr%c\n", lst_name))
+			apply_instr(rra, lst, NULL, 0);
+		else
+		{
+			apply_instr(ra, lst, NULL, 0);
+			ft_printf("r%c\n", lst_name);
+		}
+	}
+}
+
+// renvoit un negatif si le chemin le plus court est en reverse
+int	get_bestway(int rank, int rank_max, t_lnk *lst)
+{
+	int	step_nb;
+	int middle;
+
+	middle = (rank_max) / 2 + (rank_max) % 2;
+	step_nb = 0;
+	while (((t_itm *)lst->itm)->rank != rank)
+	{
+		step_nb++;
+		lst = lst->next;
+	}
+	return (middle - step_nb);
+}
+
+/*
 void	bubble_loop_nb(t_lst *lst, t_lst *dest_lst)
 {
 	if (lst->size && (lst->last)->nb == lst->max_val)
@@ -66,6 +102,7 @@ void	swap_loc(t_lnk *lnk)
 	else
 		error_msg("error at swap_loc");
 }
+*/
 
 /*
 t_lst	*inplace_sort_incr(t_lst *lst)
