@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 22:16:57 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:23:52 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	lst_initial = lst_a;
 	//apply_instr(rra, &lst_a, NULL, 0);
 	ft_printf("ind max:%d\n", ind_max);
-	ft_printf("%d\n", get_bestway(2, lst_a));
+	ft_printf("%d\n", get_bestway(ind_max, lst_a));
 	print_lst_byrank(lst_a, "A");
 	del_lst(&lst_a);
 }

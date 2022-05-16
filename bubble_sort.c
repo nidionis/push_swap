@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 22:15:27 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:40:15 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,28 @@ int	get_bestway(int rank, t_lnk *lst)
 	t_lnk	*last_lnk;
 	int found;
 
-	if (lst)
+	if (!lst)
+		error_msg("[get_bestway] empty list passed");
+	step_nb = 0;
+	len = 1;
+	last_lnk = lst;
+	found = 0;
+	if (((t_itm *)lst->itm)->rank == rank)
+		return (0);
+	lst = lst->next;
+	while (rank && lst != last_lnk && len++)
 	{
-		step_nb = 1;
-		len = 2;
-		last_lnk = lst;
-		found = 0;
-		if (((t_itm *)lst->itm)->rank == rank)
-			return (1);
-		lst = lst->next;
-		while (rank && lst != last_lnk)
-		{
-			if (!found)
-				step_nb++;
-			len++;
-			if (((t_itm *)lst->itm)->rank == rank)
-				found = 1;
-			lst = lst->next;
-		}
 		if (!found)
-			error_msg("[get_bestway] rank not found");
-		return ((len + 1) / 2 - step_nb);
+			step_nb++;
+		if (((t_itm *)lst->itm)->rank == rank)
+			found = 1;
+		lst = lst->next;
 	}
-	error_msg("[get_bestway] empty list passed");
-	return (-1);
+	if (!found)
+		error_msg("[get_bestway] rank not found");
+	if (step_nb > len / 2)
+		return (step_nb - len);
+	return (step_nb);
 }
 
 
