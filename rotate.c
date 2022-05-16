@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:04:46 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 void    rotate_lst(t_lnk **lst)
 {
-//    if (!(*lst))
-//        error_msg("[rotate_lst] rotate an empty list");
     if (*lst)
         *lst = (*lst)->next;
 }
 
 void    rrotate_lst(t_lnk **lst)
 {
-//    if (!(*lst))
-//        error_msg("[rrotate_lst] reverse-rotate an empty list");
     if (*lst)
         *lst = (*lst)->prev;
 }

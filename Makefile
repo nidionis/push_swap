@@ -6,7 +6,7 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/16 15:12:51 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/16 17:16:57 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ MAIN = main.c
 BONUS_MAIN = checker.c
 
 NAME = push_swap
+DEBUG_NAME = a.out
 BONUS_NAME = checker
 HEADERS = includes
 LIBFT_DIR = libft/
@@ -56,6 +57,7 @@ ctags:
 
 clean:
 	rm -rf ${OBJS}
+	rm -rf ${DEBUG_NAME}
 	make clean -C libft
 	make clean -C libftprintf
 
@@ -71,13 +73,15 @@ test: ctags
 	./$(NAME)
 	rm a.out
 
-debug: ctags
-	$(CC) $(CFLAGS) -g $(INCLUDES) $(SRCS) $(MAIN) -o $(NAME)
-	lldb $(NAME)
-	rm a.out
+debugfile: ctags
+	$(CC) $(CFLAGS) -g $(INCLUDES) $(SRCS) $(MAIN) -o $(DEBUG_NAME)
+
+debug: debugfile
+	lldb $(DEBUG_NAME)
+	rm $(DEBUG_NAME)
 
 valgrind_: ctags
-	${CC} $(CFLAGS) $(INCLUDES) -g ${SRCS} -o $(NAME)
+	${CC} $(CFLAGS) $(INCLUDES) -g ${SRCS} -o $(DEBUG_NAME)
 
 .PHONY: all clean fclean re
 # If, for example, the file clean happened to be created running make clean would yield the confusing message:

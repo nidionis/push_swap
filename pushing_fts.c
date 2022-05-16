@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:00:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	push_item(t_lnk *lnk, t_lnk **lst)
     	    (*lst)->prev = lnk;
 			(*lst) = lnk;
     	}
-		if (!lnk)
-			ft_printf("[push item] pushing non existing link\n");
 	}
+	if (!lnk)
+		ft_printf("[push item] pushing non existing link\n");
 }
 
 t_lnk	*pop_item(t_lnk **lst)
@@ -47,8 +47,8 @@ t_lnk	*pop_item(t_lnk **lst)
         *lst = NULL;
     else
     {
-        (poped_item->prev)->next = (*lst)->next;
-        (poped_item->next)->prev = (*lst)->prev;
+        (poped_item->prev)->next = poped_item->next;
+        (poped_item->next)->prev = poped_item->prev;
         *lst = (*lst)->next;
     }
     return (lnk_init(poped_item));

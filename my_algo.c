@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 15:38:49 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 18:11:13 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // if itm_A0 < median
 void		sort_push_step(t_lnk	**lst_a, t_lnk **lst_b, int median)
 {
-	if (((t_itm *)(*lst_a)->itm)->rank <= median)
+	if (((t_itm *)(*lst_a)->itm)->rank < median)
 		apply_instr(pb, lst_a, lst_b, 1);
 	else if (((t_itm *)(*lst_a)->itm)->nb > ((t_itm *)((*lst_a)->next)->itm)->nb)
 	{
@@ -46,6 +46,9 @@ void	sort_push(t_lnk	**lst_a, t_lnk **lst_b, int ind_max)
 	while (*lst_a != last)
 	{
 		sort_push_step(lst_a, lst_b, median);
+		print_lst(*lst_a, "[sortpush]A");
+		print_lst(*lst_b, "[sortpush]B");
+		ft_printf("\n");
 	}
 	sort_push_step(lst_a, lst_b, median);
 }
