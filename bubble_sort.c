@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 22:40:15 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:58:45 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@ void	reachsort_step(t_lnk **lst, int ascend, int way, char lst_name)
 	}
 }
 
+void	bestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank)
+{
+	if (!(*found))
+		(*step_nb)++;
+	if (((t_itm *)(*lst)->itm)->rank == *rank)
+		*found = 1;
+	*lst = (*lst)->next;
+}
+
 // renvoit un negatif si le chemin le plus court est en reverse
 int	get_bestway(int rank, t_lnk *lst)
 {
@@ -46,17 +55,12 @@ int	get_bestway(int rank, t_lnk *lst)
 	len = 1;
 	last_lnk = lst;
 	found = 0;
+
 	if (((t_itm *)lst->itm)->rank == rank)
 		return (0);
 	lst = lst->next;
-	while (rank && lst != last_lnk && len++)
-	{
-		if (!found)
-			step_nb++;
-		if (((t_itm *)lst->itm)->rank == rank)
-			found = 1;
-		lst = lst->next;
-	}
+	while (lst != last_lnk && len++)
+		bestway_fucking_norminette(&lst, &step_nb, &found, &rank);
 	if (!found)
 		error_msg("[get_bestway] rank not found");
 	if (step_nb > len / 2)
