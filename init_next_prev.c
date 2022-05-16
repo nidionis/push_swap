@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 12:27:00 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void    cpy_initp_to_p(t_lnk *lnk)
 	lnk->prev = lnk->init_prev;
 }
 
-void	reset_initial_pointers(t_lnk **lst_a,t_lnk **lst_b)
+void	reset_initial_pointers(t_lnk **lst_a)
 {
 	t_lnk	*lnk;
 
@@ -54,14 +54,4 @@ void	reset_initial_pointers(t_lnk **lst_a,t_lnk **lst_b)
 			lnk = lnk->next;
 		}
 	} 
-	if (*lst_b)
-	{
-		cpy_initp_to_p(*lst_b);
-		lnk = (*lst_b)->next;
-		while (*lst_b != lnk)
-		{
-			cpy_initp_to_p(lnk);
-			lnk = lnk->next;
-		}
-	}
 }

@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:33:51 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:15:14 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void    fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst)
+void    fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
 {
 	if (instr == ra)
 		rotate_lst(lst_a);
@@ -33,11 +33,12 @@ void    fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **inst
 		rotate_lst(lst_a);
 	}
 	else
+	{
 		error_msg("[apply_instr] instruction probably wrong");
-	(void)instr_lst;
+	}
 }
 
-void    apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst)
+void    apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)
 {
 	if (instr == sa)
 		swap_lst(lst_a);
@@ -62,8 +63,9 @@ void    apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, t_lnk **instr_lst)
 		rotate_lst(lst_a);
 	}
 	else
-		fucking_norminette(instr, lst_a, lst_b, instr_lst);
-	(void)instr_lst;
+		fucking_norminette(instr, lst_a, lst_b);
+	if (to_print)
+		i_to_instr(instr);
 }
 
 int fucking_normi_2(char *str)

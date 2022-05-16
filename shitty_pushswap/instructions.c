@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 16:54:06 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:59:54 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,26 +91,3 @@ void	rotate(char *instr, t_lst *lst_a, t_lst *lst_b)
 	if (*(++instr) != '\n' && *instr != 0)
 		error_msg(NULL);
 }
-
-/*
-int main(int argc, char *argv[])
-{
-		char	*buff;
-		t_lst  *lst_a; 
-		t_lst  *lst_b; 
-
-		lst_a = get_args(argc, argv);
-		lst_b = new_lst();
-		write(1, "\n", 1);
-		apply_instruction("pa", lst_a, lst_b);
-		apply_instruction("pa", lst_a, lst_b);
-		apply_instruction("pa", lst_a, lst_b);
-		print_lst(lst_a, lst_b);
-		apply_instruction("rrr", lst_a, lst_b);
-		print_lst(lst_a, lst_b);
-		// while ((buff = get_next_line(0)) != NULL)
-		// {
-		//		 apply_instruction(buff, lst_a, lst_b);
-		// }
-}
-*/

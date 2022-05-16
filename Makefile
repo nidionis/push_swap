@@ -6,11 +6,11 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/16 15:12:51 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  init_next_prev.c  get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c get_next_line.c# algo_tree.c
+SRCS =  init_next_prev.c  get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c get_next_line.c my_algo.c# algo_tree.c
 
 OBJS := ${SRCS:c=o}
 

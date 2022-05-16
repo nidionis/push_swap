@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:33:39 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 14:00:13 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,23 +39,6 @@ t_lnk	*ft_new_lnk(int nb, int ind, int rank)
 	((t_itm *)lnk->itm)->nb = nb;
 	((t_itm *)lnk->itm)->ind = ind;
 	((t_itm *)lnk->itm)->rank = rank;
-	lnk_init(lnk);
-	return (lnk);
-}
-
-t_lnk	*new_instr_lnk(char *instr)
-{
-	t_lnk		*lnk;
-	t_instr		*lnk_itm;
-
-	lnk = (t_lnk *) malloc(sizeof(t_lnk));
-	if (!lnk)
-		error_msg("Error creating a new link\n");
-	lnk_itm = (t_instr *) malloc(sizeof(t_instr));
-	if (!lnk_itm)
-		error_msg("[new_instr_lnk] Error mallocing lnk_itm\n");
-	lnk->itm = (void *) lnk_itm;
-	ft_strlcpy(((t_instr *) lnk->itm)->instr, instr, 4);
 	lnk_init(lnk);
 	return (lnk);
 }
