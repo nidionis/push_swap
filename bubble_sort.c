@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 20:31:48 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:15:27 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,40 @@ void	reachsort_step(t_lnk **lst, int ascend, int way, char lst_name)
 }
 
 // renvoit un negatif si le chemin le plus court est en reverse
-int	get_bestway(int rank, int rank_max, t_lnk *lst)
+int	get_bestway(int rank, t_lnk *lst)
 {
-	int	step_nb;
-	int middle;
+	int		step_nb;
+	int		len;
+	t_lnk	*last_lnk;
+	int found;
 
-	middle = (rank_max) / 2 + (rank_max) % 2;
-	step_nb = 0;
-	while (((t_itm *)lst->itm)->rank != rank)
+	if (lst)
 	{
-		step_nb++;
+		step_nb = 1;
+		len = 2;
+		last_lnk = lst;
+		found = 0;
+		if (((t_itm *)lst->itm)->rank == rank)
+			return (1);
 		lst = lst->next;
+		while (rank && lst != last_lnk)
+		{
+			if (!found)
+				step_nb++;
+			len++;
+			if (((t_itm *)lst->itm)->rank == rank)
+				found = 1;
+			lst = lst->next;
+		}
+		if (!found)
+			error_msg("[get_bestway] rank not found");
+		return ((len + 1) / 2 - step_nb);
 	}
-	return (middle - step_nb);
+	error_msg("[get_bestway] empty list passed");
+	return (-1);
 }
+
+
 
 /*
 void	bubble_loop_nb(t_lst *lst, t_lst *dest_lst)

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 19:52:49 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/16 22:16:57 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ int main(int argc, char **argv)
 	if (!ft_no_duplicate(lst_a))
 		error_msg("Error: duplicated items");
 	lst_initial = lst_a;
-	print_lst(lst_a, "A");
 	//apply_instr(rra, &lst_a, NULL, 0);
 	ft_printf("ind max:%d\n", ind_max);
-	ft_printf("%d\n", get_bestway(ind_max, ind_max, lst_a));
-	print_lst(lst_a, "A");
+	ft_printf("%d\n", get_bestway(2, lst_a));
+	print_lst_byrank(lst_a, "A");
 	del_lst(&lst_a);
 }
