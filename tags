@@ -32,6 +32,8 @@ print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
 print_seq	algo_tree.c	/^void	print_seq(t_pstree *node)$/
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
+push_return_rank	radix_sucks.c	/^int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b/
+reach_push	radix_sucks.c	/^void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int /
 reach_rank	radix_sucks.c	/^void	reach_rank(t_lnk **lst, int rank, int directi/
 rec_familly_parsing	algo_tree.c	/^void	rec_familly_parsing(t_pstree *parent_node, t_/
 reset_initial_pointers	init_next_prev.c	/^void	reset_initial_pointers(t_lnk **lst_a)$/

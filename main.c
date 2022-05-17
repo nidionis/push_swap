@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 15:06:16 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:16:45 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 {
 	t_lnk	*lst_a = NULL;
 	t_lnk	*lst_initial = NULL;
-	//t_lnk	*lst_b = NULL;
+	t_lnk	*lst_b = NULL;
 	int		ind_max;
 
 	if (argc < 2)
@@ -32,7 +32,9 @@ int main(int argc, char **argv)
 	lst_initial = lst_a;
 	//apply_instr(rra, &lst_a, NULL, 0);
 	print_lst_byrank(lst_a, "A");
-	reach_rank(&lst_a, 0, get_shortestway(0, lst_a));
+	reach_push(&lst_a, &lst_b, ind_max, 0);
 	print_lst_byrank(lst_a, "A");
+	print_lst_byrank(lst_b, "B");
 	del_lst(&lst_a);
+	del_lst(&lst_b);
 }

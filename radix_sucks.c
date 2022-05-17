@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 15:07:33 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:16:45 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,32 @@ void	reach_rank(t_lnk **lst, int rank, int direction)
 			apply_instr(instr, lst, NULL, 1);
 	}
 }
-//
-//void	loop(t_lnk **lst_a, t_lnk **lst_b, int relMin, int RelMax)
-//{
-	//t_lnk	first_lnk;
-	//int		direction;
-//
-	//first_lnk = *lst_a;
-	//direction = get_shortestway(relMin, *lst_a);
-	//if (direction > 0)
-	//{
-//
-	//}
-//}
+
+int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b)
+{
+	apply_instr(pb, lst_a, lst_b, 1);	
+	return ((*lst_b)->rank);
+}
+
+void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin)
+{
+	int		instr;
+
+	instr = ra;
+	if (get_shortestway(rank, *lst_a) < 0)
+		instr = rra;
+	if ((*lst_a)->rank != rank)
+	{
+		if ((*lst_a)->rank > relMin)
+			while ((*lst_a)->rank > relMin)
+				relMin = push_return_rank(lst_a, lst_b);
+		apply_instr(instr, lst_a, NULL, 1);
+		while ((*lst_a)->rank != rank)
+		{
+			if ((*lst_a)->rank > relMin)
+				while ((*lst_a)->rank > relMin)
+					relMin = push_return_rank(lst_a, lst_b);
+			apply_instr(instr, lst_a, NULL, 1);
+		}
+	}
+}
