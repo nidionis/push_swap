@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 16:39:57 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 17:23:55 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,35 @@ void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin, int relMax)
 	}
 }
 
-/*
-//reach [relative]Max + 1
-void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b )
+void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b) 
 {
-	int relMax = get_RelMax(*lst)
-	reach_push(lst_a, lstb, rel, 0);
-
+ 	while (*lst_b)
+	 {
+		if ((*lst_b)->rank < (*lst_a)->prev->rank)
+			while ((*lst_b)->rank < (*lst_a)->prev->rank)
+				apply_instr(rra, lst_a, lst_b, 1);
+		apply_instr(pa, lst_a, lst_b, 1);
+	 }
 }
-*/
+
+void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b) 
+{
+ 	while (*lst_b)
+	 {
+		if ((*lst_b)->rank > (*lst_a)->next->rank)
+			while ((*lst_b)->rank > (*lst_a)->next->rank)
+				apply_instr(ra, lst_a, lst_b, 1);
+		apply_instr(pa, lst_a, lst_b, 1);
+	 }
+}
+
+//reach [relative]Max + 1
+void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b, int ind_max)
+{
+	int relMax;
+
+	relMax = get_RelMax(*lst_a, ind_max);
+	reach_push(lst_a, lst_b, relMax, 0, relMax);
+	reach_rank(lst_a, relMax, get_shortestway(relMax, *lst_a));
+	dump_relMin(lst_a, lst_b);
+}
