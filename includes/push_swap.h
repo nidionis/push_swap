@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 20:49:24 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:11:53 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,11 @@
 # include <libftprintf.h>
 # include <linked_lst.h>
 
-typedef struct s_lnk_itm
+typedef struct s_lnk
 {
 	int	nb;
 	int	ind;
 	int	rank;
-}	t_itm;
-
-typedef struct s_lnk
-{
-	void			*itm;
 	struct s_lnk	*next;
 	struct s_lnk	*init_next;
 	struct s_lnk	*prev;

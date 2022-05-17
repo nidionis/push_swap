@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 16:13:33 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:15:55 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,13 @@ t_lnk	*lnk_init(t_lnk *lnk)
 t_lnk	*ft_new_lnk(int nb, int ind, int rank)
 {
 	t_lnk		*lnk;
-	t_itm	*lnk_itm;
 
 	lnk = (t_lnk *) malloc(sizeof(t_lnk));
 	if (!lnk)
 		error_msg("Error creating a new link\n");
-	lnk_itm = (t_itm *) malloc(sizeof(t_itm));
-	if (!lnk_itm)
-		error_msg("Error mallocing lnk_itm\n");
-	lnk->itm = (void *) lnk_itm;
-	((t_itm *)lnk->itm)->nb = nb;
-	((t_itm *)lnk->itm)->ind = ind;
-	((t_itm *)lnk->itm)->rank = rank;
+	lnk->nb = nb;
+	lnk->ind = ind;
+	lnk->rank = rank;
 	lnk_init(lnk);
 	return (lnk);
 }
@@ -54,14 +49,12 @@ void	del_lst(t_lnk **lst)
 		while ((*lst)->next != first_lnk)
 		{
 			next_lnk = (*lst)->next;
-			free((*lst)->itm);
 			free(*lst);
 			*lst = next_lnk;
 		}
 	}
 	if (*lst)
 	{
-		free((*lst)->itm);
 		free(*lst);
 		*lst = NULL;
 	}
@@ -81,11 +74,11 @@ int	lst_init_ranks(t_lnk **lst)
 		l_i = lnk;
 		do
 		{
-			if (((t_itm *)lnk->itm)->nb > ((t_itm *)(l_i)->itm)->nb)
+			if (lnk->nb > l_i->nb)
 			{
-				(((t_itm *)lnk->itm)->rank)++;
-				if (max < ((t_itm *)lnk->itm)->rank)
-					max = ((t_itm *)lnk->itm)->rank;
+				(lnk->rank)++;
+				if (max < lnk->rank)
+					max = lnk->rank;
 			}
 			l_i = l_i->next;
 		} while (l_i != lnk);

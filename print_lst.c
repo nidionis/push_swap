@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:15:55 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	print_lst(t_lnk *lst, char *header)
 	ft_printf("***************\n");
 	if (lst)
 	{
-		ft_printf("-%d-\t", ((t_itm *)lst->itm)->nb);
+		ft_printf("-%d-\t", lst->nb);
 		lnk_ind = lst->next;
 		while (lnk_ind != lst)
 		{
-			ft_printf("-%d-\t", ((t_itm *)lnk_ind->itm)->nb);
+			ft_printf("-%d-\t", lnk_ind->nb);
 			lnk_ind = lnk_ind->next;
 		}
 	}
@@ -43,11 +43,11 @@ void	print_lst_byrank(t_lnk *lst, char *header)
 	ft_printf("***************\n");
 	if (lst)
 	{
-		ft_printf("%d\t", ((t_itm *)lst->itm)->rank);
+		ft_printf("%d\t", lst->rank);
 		lnk_ind = lst->next;
 		while (lnk_ind != lst)
 		{
-			ft_printf("%d\t", ((t_itm *)lnk_ind->itm)->rank);
+			ft_printf("%d\t", lnk_ind->rank);
 			lnk_ind = lnk_ind->next;
 		}
 	}

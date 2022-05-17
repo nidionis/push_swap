@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bubble_sort.c                                      :+:      :+:    :+:   */
+/*   reach_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 22:58:45 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:23:07 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 void	reachsort_step(t_lnk **lst, int ascend, int way, char lst_name)
 {
-	if (ascend < 0 && ((t_itm *)(*lst)->itm)->nb < ((t_itm *)((*lst)->next)->itm)->nb && ft_printf("s%c\n", lst_name))
+	if (ascend < 0 && (*lst)->nb < ((*lst)->next)->nb && ft_printf("s%c\n", lst_name))
 		apply_instr(sa, lst, NULL, 0);
-	else if (ascend > -1 && ((t_itm *)(*lst)->itm)->nb > ((t_itm *)((*lst)->next)->itm)->nb && ft_printf("s%c\n", lst_name))
+	else if (ascend > -1 && (*lst)->nb > ((*lst)->next)->nb && ft_printf("s%c\n", lst_name))
 		apply_instr(sa, lst, NULL, 0);
 	else if ((*lst)->next != (*lst)->prev)
 	{
@@ -36,7 +36,7 @@ void	bestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank
 {
 	if (!(*found))
 		(*step_nb)++;
-	if (((t_itm *)(*lst)->itm)->rank == *rank)
+	if ((*lst)->rank == *rank)
 		*found = 1;
 	*lst = (*lst)->next;
 }
@@ -56,7 +56,7 @@ int	get_bestway(int rank, t_lnk *lst)
 	last_lnk = lst;
 	found = 0;
 
-	if (((t_itm *)lst->itm)->rank == rank)
+	if (lst->rank == rank)
 		return (0);
 	lst = lst->next;
 	while (lst != last_lnk && len++)

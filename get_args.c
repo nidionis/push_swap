@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:15:55 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,27 @@ t_lnk	*lst_cpy(t_lnk *lst)
 	t_lnk	*last_lnk;
 
 	lnk_ind = lst;
-	first_lnk = ft_new_lnk(((t_itm *)lnk_ind->itm)->nb, ((t_itm *)lnk_ind->itm)->ind, ((t_itm *)lnk_ind->itm)->rank);
+	first_lnk = ft_new_lnk(lnk_ind->nb, lnk_ind->ind, lnk_ind->rank);
 	last_lnk = first_lnk;
 	lnk_ind = lnk_ind->next;
 	while (lnk_ind != lst)
 	{
-		new_lnk = ft_new_lnk(((t_itm *)lnk_ind->itm)->nb, ((t_itm *)lnk_ind->itm)->ind, ((t_itm *)lnk_ind->itm)->rank);
+		new_lnk = ft_new_lnk(lnk_ind->nb, lnk_ind->ind, lnk_ind->rank);
 		new_lnk->next = first_lnk;
 		new_lnk->prev = last_lnk;
 		last_lnk->next = new_lnk;
 		last_lnk = new_lnk;
 	}
 	return (first_lnk);
+}
+
+int	*get_RelMinMax(t_lnk *lst)
+{
+	int 	*relMinMax = NULL;
+	t_lnk	*first_lnk;
+
+	first_lnk = lst;
+
+
+	return (relMinMax);
 }
