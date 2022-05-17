@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 16:16:45 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 16:39:57 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b)
 	return ((*lst_b)->rank);
 }
 
-void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin)
+void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin, int relMax)
 {
 	int		instr;
 
@@ -82,15 +82,25 @@ void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin)
 	if ((*lst_a)->rank != rank)
 	{
 		if ((*lst_a)->rank > relMin)
-			while ((*lst_a)->rank > relMin)
+			while ((*lst_a)->rank > relMin && (*lst_a)->rank < relMax)
 				relMin = push_return_rank(lst_a, lst_b);
 		apply_instr(instr, lst_a, NULL, 1);
 		while ((*lst_a)->rank != rank)
 		{
 			if ((*lst_a)->rank > relMin)
-				while ((*lst_a)->rank > relMin)
+				while ((*lst_a)->rank > relMin && (*lst_a)->rank < relMax)
 					relMin = push_return_rank(lst_a, lst_b);
 			apply_instr(instr, lst_a, NULL, 1);
 		}
 	}
 }
+
+/*
+//reach [relative]Max + 1
+void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b )
+{
+	int relMax = get_RelMax(*lst)
+	reach_push(lst_a, lstb, rel, 0);
+
+}
+*/
