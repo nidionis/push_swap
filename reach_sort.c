@@ -6,14 +6,14 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 13:23:07 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 13:30:54 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h> 
 #include "push_swap.h"
 
-
+/*
 void	reachsort_step(t_lnk **lst, int ascend, int way, char lst_name)
 {
 	if (ascend < 0 && (*lst)->nb < ((*lst)->next)->nb && ft_printf("s%c\n", lst_name))
@@ -31,8 +31,9 @@ void	reachsort_step(t_lnk **lst, int ascend, int way, char lst_name)
 		}
 	}
 }
+*/
 
-void	bestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank)
+void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank)
 {
 	if (!(*found))
 		(*step_nb)++;
@@ -42,7 +43,7 @@ void	bestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank
 }
 
 // renvoit un negatif si le chemin le plus court est en reverse
-int	get_bestway(int rank, t_lnk *lst)
+int	get_shortestway(int rank, t_lnk *lst)
 {
 	int		step_nb;
 	int		len;
@@ -50,7 +51,7 @@ int	get_bestway(int rank, t_lnk *lst)
 	int found;
 
 	if (!lst)
-		error_msg("[get_bestway] empty list passed");
+		error_msg("[get_shortestway] empty list passed");
 	step_nb = 0;
 	len = 1;
 	last_lnk = lst;
@@ -60,14 +61,13 @@ int	get_bestway(int rank, t_lnk *lst)
 		return (0);
 	lst = lst->next;
 	while (lst != last_lnk && len++)
-		bestway_fucking_norminette(&lst, &step_nb, &found, &rank);
+		shortestway_fucking_norminette(&lst, &step_nb, &found, &rank);
 	if (!found)
-		error_msg("[get_bestway] rank not found");
+		error_msg("[get_shortestway] rank not found");
 	if (step_nb > len / 2)
 		return (step_nb - len);
 	return (step_nb);
 }
-
 
 
 /*
