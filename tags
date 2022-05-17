@@ -14,6 +14,7 @@ ft_realloc_cat	get_next_line.c	/^char	*ft_realloc_cat(char *line, char c, int *l
 fucking_normi_2	apply_instr.c	/^int fucking_normi_2(char *str)$/
 fucking_norminette	apply_instr.c	/^void    fucking_norminette(int instr, t_lnk **lst_/
 get_RelMax	radix_sucks.c	/^int	get_RelMax(t_lnk *lst, int rankMax)$/
+get_RelMin	radix_sucks.c	/^int	get_RelMin(t_lnk *lst)$/
 get_RelMinMax	get_args.c	/^int	*get_RelMinMax(t_lnk *lst)$/
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/
 get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/
@@ -31,6 +32,7 @@ print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
 print_seq	algo_tree.c	/^void	print_seq(t_pstree *node)$/
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
+reach_rank	radix_sucks.c	/^void	reach_rank(t_lnk **lst, int rank, int directi/
 rec_familly_parsing	algo_tree.c	/^void	rec_familly_parsing(t_pstree *parent_node, t_/
 reset_initial_pointers	init_next_prev.c	/^void	reset_initial_pointers(t_lnk **lst_a)$/
 rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
