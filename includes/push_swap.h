@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 17:01:15 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 20:18:10 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,13 @@ void	reachsort_step(t_lnk **lst, int ascend, int way, char lst_name);
 int	get_shortestway(int rank, t_lnk *lst);
 void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin, int relMax);
 void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b, int ind_max);
+int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b);
+void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b);
+void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b);
+void	first_dump_relMax(t_lnk **lst_a, t_lnk **lst_b, int rank_max);
+void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b, int ind_max);
+int contains_only_higher(t_lnk *lst, int rank);
+
 //
 //void    find_solution(t_lnk *lst_a, t_lnk *lst_b);
 //void    make_new_bro(t_pstree *grandbro);
