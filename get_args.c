@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 13:15:55 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/17 22:43:06 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +71,4 @@ t_lnk	*lst_cpy(t_lnk *lst)
 		last_lnk = new_lnk;
 	}
 	return (first_lnk);
-}
-
-int	*get_RelMinMax(t_lnk *lst)
-{
-	int 	*relMinMax = NULL;
-	t_lnk	*first_lnk;
-
-	first_lnk = lst;
-
-
-	return (relMinMax);
 }

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 20:42:00 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:53:23 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 /*
 	Find value 0, reach_push to max and dump next to max
-	2 1
+	4       2       0       3       5       1
+	return
+	0       3       1       4       2       5
 */
 
 int contains_only_higher(t_lnk *lst, int rank)
@@ -61,11 +63,11 @@ void	first_dump_relMax(t_lnk **lst_a, t_lnk **lst_b, int rank_max)
 
 void	first_parse(t_lnk **lst_a, t_lnk **lst_b, int ind_max)
 {
-	int relMax;
+	t_lnk	*relMax;
 
 	relMax = get_RelMax(*lst_a, ind_max);
 	reach_rank(lst_a, 0, get_shortestway(0, *lst_a));
 	apply_instr(pb, lst_a, lst_b, 1);
-	reach_push(lst_a, lst_b, ind_max, 0, relMax);
+	reach_push(lst_a, lst_b, ind_max, 0, relMax->rank);
 	first_dump_relMax(lst_a, lst_b, ind_max);
 }

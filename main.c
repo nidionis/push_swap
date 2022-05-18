@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 20:42:55 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:54:22 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ int main(int argc, char **argv)
 		error_msg("Error: duplicated items");
 	lst_initial = lst_a;
 	print_lst_byrank(lst_a, "A");
-	first_parse(&lst_a, &lst_b, ind_max);
-	print_lst_byrank(lst_a, "A");
+	print_lst_byrank(get_RelMin(lst_a), "A");
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 }

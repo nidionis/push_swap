@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 20:18:10 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/18 14:46:16 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ char	*get_next_line(int fd);
 int		instr_to_i(char *str);
 int		ft_no_duplicate(t_lnk *lst);
 void	i_to_instr(int i);
-int	get_RelMax(t_lnk *lst, int rankMax);
-int	get_RelMin(t_lnk *lst);
 void	reach_rank(t_lnk **lst, int rank, int direction);
 //void	sort_push(t_lnk	**lst_a, t_lnk **lst_b, int ind_max);
 //void	set_initial_pointers(t_lnk **lst);
@@ -68,11 +66,15 @@ int	get_shortestway(int rank, t_lnk *lst);
 void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin, int relMax);
 void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b, int ind_max);
 int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b);
-void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b);
-void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b);
 void	first_dump_relMax(t_lnk **lst_a, t_lnk **lst_b, int rank_max);
 void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b, int ind_max);
-int contains_only_higher(t_lnk *lst, int rank);
+t_lnk	*get_RelMax(t_lnk *lst, int rankMax);
+t_lnk	*get_RelMin(t_lnk *lst);
+t_lnk	*refresh_RelMax(t_lnk *relMax);
+t_lnk	*refresh_RelMin(t_lnk *relMin);
+//int contains_only_higher(t_lnk *lst, int rank);
+//int	step_counter(int rank, t_lnk *lst, int rev_rotate);
+void	push_reachwise_relMin(t_lnk **lst_a, t_lnk **lst_b, int *relMin);
 
 //
 //void    find_solution(t_lnk *lst_a, t_lnk *lst_b);
