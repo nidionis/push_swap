@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 14:54:22 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/18 18:43:02 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	t_lnk	*lst_a = NULL;
 	t_lnk	*lst_initial = NULL;
 	t_lnk	*lst_b = NULL;
+	t_lnk	*relMinMax[2];
 	int		ind_max;
 
 	if (argc < 2)
@@ -31,7 +32,20 @@ int main(int argc, char **argv)
 		error_msg("Error: duplicated items");
 	lst_initial = lst_a;
 	print_lst_byrank(lst_a, "A");
-	print_lst_byrank(get_RelMin(lst_a), "A");
+	print_lst_byrank(lst_b, "B");
+	first_parse(&lst_a, &lst_b, ind_max, relMinMax);
+	print_lst_byrank(lst_a, "after first parse : A");
+	print_lst_byrank(lst_b, "after first parse : B");
+	relMinMax[0] = get_RelMin(lst_a);
+	relMinMax[1] = get_RelMax(lst_a, ind_max);
+	reach_push(&lst_a, &lst_b, relMinMax[0]->next->rank, rra, relMinMax);
+	print_lst_byrank(lst_a, "A");
+	print_lst_byrank(lst_b, "B");
+	//refresh_RelMin(relMin);
+	//reach_push(&lst_a, &lst_b, relMax->prev->rank, ra);
+	//dump_relMax(&lst_a, &lst_b);
+	//print_lst_byrank(lst_a, "A");
+	//print_lst_byrank(lst_b, "B");
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 }

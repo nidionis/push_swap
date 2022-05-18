@@ -1,17 +1,12 @@
 Mchecker	checker.c	/^int main(int argc, char **argv)$/
 Mmain	main.c	/^int main(int argc, char **argv)$/
 apply_instr	apply_instr.c	/^void	apply_instr(int instr, t_lnk **lst_a, t_lnk */
-big_list	radix_sucks.c	/^void	big_list(t_lnk **lst_a, t_lnk **lst_b, int in/
 check_instr	algo_tree.c	/^int	check_instr(t_pstree *node, t_lnk *lst_a, t_ln/
-contains_only_higher	gather_min_and_max.c	/^int contains_only_higher(t_lnk *lst, int rank)$/
-cpy_initp_to_p	init_next_prev.c	/^void    cpy_initp_to_p(t_lnk *lnk)$/
-cpy_p_to_initp	init_next_prev.c	/^void    cpy_p_to_initp(t_lnk *lnk)$/
 del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/
-dump_relMax	radix_sucks.c	/^void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b) $/
-dump_relMin	radix_sucks.c	/^void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b) $/
+dump_relMax	dumping_fts.c	/^void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b) $/
+dump_relMin	dumping_fts.c	/^void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b) $/
 familly_parsing	algo_tree.c	/^void    familly_parsing(t_pstree *parent_node, t_l/
 find_solution	algo_tree.c	/^void    find_solution(t_lnk *lst_a, t_lnk *lst_b)$/
-first_dump_relMax	gather_min_and_max.c	/^void	first_dump_relMax(t_lnk **lst_a, t_lnk **lst_/
 first_parse	gather_min_and_max.c	/^void	first_parse(t_lnk **lst_a, t_lnk **lst_b, int/
 ft_is_sorted	verifications.c	/^int ft_is_sorted(t_lnk *lst)$/
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/
@@ -19,8 +14,8 @@ ft_no_duplicate	verifications.c	/^int ft_no_duplicate(t_lnk *lst)$/
 ft_realloc_cat	get_next_line.c	/^char	*ft_realloc_cat(char *line, char c, int *len)/
 fucking_normi_2	apply_instr.c	/^int fucking_normi_2(char *str)$/
 fucking_norminette	apply_instr.c	/^void    fucking_norminette(int instr, t_lnk **lst_/
-get_RelMax	radix_sucks.c	/^int	get_RelMax(t_lnk *lst, int rankMax)$/
-get_RelMin	radix_sucks.c	/^int	get_RelMin(t_lnk *lst)$/
+get_RelMax	relMinMax_fts.c	/^t_lnk	*get_RelMax(t_lnk *lst, int rankMax)$/
+get_RelMin	relMinMax_fts.c	/^t_lnk	*get_RelMin(t_lnk *lst)$/
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/
 get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/
 get_next_line	get_next_line.c	/^char	*get_next_line(int fd)$/
@@ -37,17 +32,13 @@ print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
 print_seq	algo_tree.c	/^void	print_seq(t_pstree *node)$/
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
-push_reachwise_relMin	reach_sort.c	/^void	push_reachwise_relMin(t_lnk **lst_a, t_lnk **/
-push_return_rank	radix_sucks.c	/^int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b/
-reach_push	radix_sucks.c	/^void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int /
-reach_rank	radix_sucks.c	/^void	reach_rank(t_lnk **lst, int rank, int directi/
+reach_push	reach_sort.c	/^void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int /
+reach_push_loop	reach_sort.c	/^static void	reach_push_loop(t_lnk **lst_a, t_lnk */
+reach_rank	reach_sort.c	/^void	reach_rank(t_lnk **lst, int rank, int directi/
 rec_familly_parsing	algo_tree.c	/^void	rec_familly_parsing(t_pstree *parent_node, t_/
-reset_initial_pointers	init_next_prev.c	/^void	reset_initial_pointers(t_lnk **lst_a)$/
+refresh_RelMax	relMinMax_fts.c	/^t_lnk	*refresh_RelMax(t_lnk *relMax)$/
+refresh_RelMin	relMinMax_fts.c	/^t_lnk	*refresh_RelMin(t_lnk *relMin)$/
 rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
 rrotate_lst	rotate.c	/^void    rrotate_lst(t_lnk **lst)$/
-set_initial_pointers	init_next_prev.c	/^void	set_initial_pointers(t_lnk **lst)$/
 shortestway_fucking_norminette	reach_sort.c	/^void	shortestway_fucking_norminette(t_lnk **lst, i/
-sort_push	my_algo.c	/^void	sort_push(t_lnk	**lst_a, t_lnk **lst_b, int i/
-sort_push_step	my_algo.c	/^void		sort_push_step(t_lnk	**lst_a, t_lnk **lst_b,/
-step_counter	reach_sort.c	/^int	step_counter(int rank, t_lnk *lst)$/
 swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/

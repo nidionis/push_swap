@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gather_min_and_max.c                               :+:      :+:    :+:   */
+/*   dumping_fts.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 18:43:23 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/18 17:05:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-//gather min and max
-void	first_parse(t_lnk **lst_a, t_lnk **lst_b, int ind_max, t_lnk *RelMinMax[2])
+void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b) 
 {
-	int	instr_way;
+ 	while (*lst_b)
+	 {
+		if ((*lst_b)->rank < (*lst_a)->prev->rank)
+			while ((*lst_b)->rank < (*lst_a)->prev->rank && (*lst_b)->rank)
+				apply_instr(rra, lst_a, lst_b, 1);
+		apply_instr(pa, lst_a, lst_b, 1);
+	 }
+}
 
-	instr_way = ra;
-	reach_rank(lst_a, 0, get_shortestway(0, *lst_a));
-	if (get_shortestway(ind_max, *lst_a) < 0)
-		instr_way = rra;
-	reach_push(lst_a, lst_b, ind_max, instr_way, RelMinMax);
-	apply_instr(pb, lst_a, lst_b, 1);
-	apply_instr(rrb, lst_a, lst_b, 1);
-	apply_instr(pa, lst_a, lst_b, 1);
-	apply_instr(pa, lst_a, lst_b, 1);
-	dump_relMax(lst_a, lst_b);
+void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b) 
+{
+ 	while (*lst_b)
+	 {
+		if ((*lst_b)->rank > (*lst_a)->next->rank)
+			while ((*lst_b)->rank > (*lst_a)->next->rank)
+				apply_instr(ra, lst_a, lst_b, 1);
+		apply_instr(pa, lst_a, lst_b, 1);
+	 }
 }

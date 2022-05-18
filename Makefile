@@ -6,13 +6,13 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/18 14:50:01 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/18 17:25:42 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  init_next_prev.c  get_args.c lnk_fts.c pushing_fts.c print_lst.c \
+SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c \
 rotate.c verifications.c swap.c apply_instr.c get_next_line.c reach_sort.c \
-radix_sucks.c gather_min_and_max.c relMinMax_fts.c # my_algo.c bubble_sort.c # algo_tree.c
+gather_min_and_max.c relMinMax_fts.c  dumping_fts.c # my_algo.c bubble_sort.c # algo_tree.c
 
 OBJS := ${SRCS:c=o}
 
