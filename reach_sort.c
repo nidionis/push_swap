@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 19:43:00 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/18 22:52:34 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	reach_rank(t_lnk **lst, int rank, int direction)
 	{
 		apply_instr(instr, lst, NULL, 0);
 		while ((*lst)->rank != rank && *lst != first_lnk)
-			apply_instr(instr, lst, NULL, 0);
+			apply_instr(instr, lst, NULL, 1);
 	}
 }
 

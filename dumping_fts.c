@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 17:05:19 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/18 19:47:36 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b)
 	 }
 }
 
-void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b) 
-{
- 	while (*lst_b)
-	 {
-		if ((*lst_b)->rank > (*lst_a)->next->rank)
-			while ((*lst_b)->rank > (*lst_a)->next->rank)
-				apply_instr(ra, lst_a, lst_b, 1);
-		apply_instr(pa, lst_a, lst_b, 1);
-	 }
-}
+//void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b) 
+//{
+// 	while (*lst_b)
+//	 {
+//		if ((*lst_b)->rank > (*lst_a)->next->rank)
+//			while ((*lst_b)->rank > (*lst_a)->next->rank)
+//				apply_instr(ra, lst_a, lst_b, 1);
+//		apply_instr(pa, lst_a, lst_b, 1);
+//	 }
+//}
