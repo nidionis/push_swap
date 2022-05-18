@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 22:52:34 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 00:57:02 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *
 
 void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int instr_way, t_lnk	*relMinMax[2])
 {
-	if (!instr_way)
+	if (instr_way != 0)
 	{
 		instr_way = ra;
 		if (get_shortestway(rank, *lst_a) < 0)

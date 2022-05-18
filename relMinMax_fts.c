@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 14:49:00 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 01:27:43 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,17 @@ t_lnk	*get_RelMin(t_lnk *lst)
 t_lnk	*refresh_RelMin(t_lnk *relMin)
 {
 	while (relMin->rank == (relMin->next)->rank - 1)
+	{
 		relMin = relMin->next;
+	}
 	return (relMin);	
 }
 
 t_lnk	*refresh_RelMax(t_lnk *relMax)
 {
-	while (relMax->rank == (relMax->next)->rank + 1)
+	while (relMax->rank == (relMax->prev)->rank + 1)
+	{
 		relMax = relMax->prev;
+	}
 	return (relMax);	
 }

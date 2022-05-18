@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 00:14:04 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 01:36:19 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ t_lnk	*find_highest_tower(t_lnk *ind_lnk, int inst_way, t_lnk *relMinMax[2])
 	ind_relMinMax = 0;
 	highest_tower = ind_lnk;
 	if (inst_way == ra)
+	{
 		ind_relMinMax = 1;
-	while (ind_lnk->rank < relMinMax[ind_relMinMax]->rank)
+	}
+	while (ind_lnk != relMinMax[ind_relMinMax])
 	{
 		if (ind_lnk->rank > last_highest)
 		{
