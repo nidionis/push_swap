@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 23:57:47 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 00:14:04 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,16 +80,13 @@ int main(int argc, char **argv)
 	relMinMax[1] = get_RelMax(lst_a, ind_max);
 	relMinMax[0] = get_RelMin(lst_a);
 	relMinMax = recentrer(&lst_a, relMinMax);
-	while (lst_b || relMinMax[0]->rank >= relMinMax[1]->rank)
+		t_lnk	*taquet;
+	while (lst_b || relMinMax[0]->rank < relMinMax[1]->rank)
 	{
 		print_lst_byrank(lst_a, " A");
 		print_lst_byrank(lst_b, " B");
-		t_lnk	*taquet;
 		taquet = find_highest_tower(lst_a, rra, relMinMax);
-		ft_printf("%d\n", taquet->rank);
-		ft_printf("rech_push after fist parse : \n");
 		reach_push(&lst_a, &lst_b, taquet->rank, rra, relMinMax);
-		ft_printf("after reach_push after fist parse : \n");
 		if (lst_a->rank < relMinMax[1]->rank && lst_a->rank > relMinMax[0]->rank)
 			apply_instr(pb, &lst_a, &lst_b, 1);
 		reach_push(&lst_a, &lst_b, relMinMax[1]->rank, ra, relMinMax);
