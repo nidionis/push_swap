@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 00:57:02 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:10:23 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *
 	int action;
 
 	action = 1;
-	if (*lst_a != rel_MinMax[0] && *lst_a != rel_MinMax[1])
+	if ((*lst_a)->rank != rel_MinMax[0]->rank && (*lst_a)->rank < rel_MinMax[1]->rank)
 	{
 		action = 1;
 		if (*lst_b && (*lst_a)->rank > (*lst_b)->rank)

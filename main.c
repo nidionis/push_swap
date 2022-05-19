@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 14:47:03 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:17:00 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int main(int argc, char **argv)
 		error_msg("Error: duplicated items");
 	lst_initial = lst_a;
 	relMinMax = (t_lnk **)malloc(sizeof(t_lnk *) * 2);
-	first_parse(&lst_a, &lst_b, ind_max, relMinMax);
 	relMinMax[1] = get_RelMax(lst_a, ind_max);
 	relMinMax[0] = get_RelMin(lst_a);
+	first_parse(&lst_a, &lst_b, ind_max, relMinMax);
 	relMinMax = recentrer(&lst_a, relMinMax);
 		t_lnk	*taquet;
 	while (lst_b || relMinMax[0]->rank < relMinMax[1]->rank)
