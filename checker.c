@@ -12,6 +12,7 @@
 
 #include <push_swap.h>
 
+/*
 int main(int argc, char **argv)
 {
 	t_lnk	*lst_a = NULL;
@@ -28,7 +29,7 @@ int main(int argc, char **argv)
 	instruction = get_next_line(0);
 	while (*instruction != '\n')
 	{
-		apply_instr(instr_to_i(instruction), &lst_a, &lst_b, NULL);
+		apply_instr(instr_to_i(instruction), &lst_a, &lst_b, 0);
 //		print_lst(lst_a, "lst_a");
 //		print_lst(lst_b, "lst_b");
 		instruction = get_next_line(0);
@@ -42,3 +43,4 @@ int main(int argc, char **argv)
 	del_lst(&lst_b);
 	return (0);
 }
+*/

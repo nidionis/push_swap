@@ -63,7 +63,6 @@ t_lnk **recentrer(t_lnk **lst_a, t_lnk **relMinMax)
 int main(int argc, char **argv)
 {
 	t_lnk	*lst_a = NULL;
-	t_lnk	*lst_initial = NULL;
 	t_lnk	*lst_b = NULL;
 	t_lnk	**relMinMax;
 	int		ind_max;
@@ -78,7 +77,6 @@ int main(int argc, char **argv)
 	//set_initial_pointers(&lst_a);
 	if (!ft_no_duplicate(lst_a))
 		error_msg("Error: duplicated items");
-	lst_initial = lst_a;
 	relMinMax = (t_lnk **)malloc(sizeof(t_lnk *) * 2);
 	relMinMax[1] = get_RelMax(lst_a, ind_max);
 	relMinMax[0] = get_RelMin(lst_a);

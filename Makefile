@@ -39,7 +39,7 @@ CC = gcc
 all: ${NAME}
 
 ${NAME}: make_libftprintf make_libft
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(MAIN) -o $(NAME)
+	$(CC) $(CFLAGS) $(SRCS) $(MAIN) $(INCLUDES) -o $(NAME)
 
 bonus:
 	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(BONUS_MAIN) -o $(BONUS_NAME)
@@ -76,7 +76,7 @@ test: ctags
 	rm a.out
 
 debugfile: ctags
-	$(CC) $(CFLAGS) -g $(INCLUDES) $(SRCS) $(MAIN) -o $(DEBUG_NAME) -fsanitize=address
+	$(CC) $(CFLAGS) -g $(SRCS) $(MAIN) $(INCLUDES) -o $(DEBUG_NAME) -fsanitize=address
 
 debug: debugfile
 	lldb $(DEBUG_NAME)

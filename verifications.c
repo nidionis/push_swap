@@ -20,9 +20,13 @@ int ft_is_sorted(t_lnk *lst)
     is_sorted = 0;
 	lnk_ind = lst->next;
     if (lnk_ind->rank != lnk_ind->rank + 1)	
+    {
         is_sorted = -1;
+    }
     if (lnk_ind->rank != lnk_ind->rank - 1)	
+    {
         is_sorted = 1;
+    }
 	while (lnk_ind != lst)
 	{
         if (lnk_ind->rank != lnk_ind->rank + is_sorted)
