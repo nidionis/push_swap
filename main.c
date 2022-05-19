@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 01:36:19 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 14:47:03 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,20 @@ t_lnk	*find_highest_tower(t_lnk *ind_lnk, int inst_way, t_lnk *relMinMax[2])
 
 t_lnk **recentrer(t_lnk **lst_a, t_lnk **relMinMax)
 {
-	if (!ft_is_sorted(*lst_a))
+	relMinMax[0] = refresh_RelMin(relMinMax[0]);
+	relMinMax[1] = refresh_RelMax(relMinMax[1]);
+	if (relMinMax[0]->rank < relMinMax[1]->rank)
 	{
-		relMinMax[0] = refresh_RelMin(relMinMax[0]);
-		relMinMax[1] = refresh_RelMax(relMinMax[1]);
 		if ((*lst_a)->rank <= relMinMax[0]->rank)
 		{
 			while ((*lst_a)->rank <= relMinMax[0]->rank)
 				apply_instr(ra, lst_a, NULL, 1);
 		}
 		else if ((*lst_a)->rank >= relMinMax[1]->rank)
-			while ((*lst_a)->rank <= relMinMax[1]->rank)
+		{
+			while ((*lst_a)->rank >= relMinMax[1]->rank)
 				apply_instr(rra, lst_a, NULL, 1);
+		}
 	}
 	return (relMinMax);
 }
@@ -85,24 +87,20 @@ int main(int argc, char **argv)
 		t_lnk	*taquet;
 	while (lst_b || relMinMax[0]->rank < relMinMax[1]->rank)
 	{
-		print_lst_byrank(lst_a, " A");
-		print_lst_byrank(lst_b, " B");
 		taquet = find_highest_tower(lst_a, rra, relMinMax);
 		reach_push(&lst_a, &lst_b, taquet->rank, rra, relMinMax);
 		if (lst_a->rank < relMinMax[1]->rank && lst_a->rank > relMinMax[0]->rank)
 			apply_instr(pb, &lst_a, &lst_b, 1);
+		relMinMax = recentrer(&lst_a, relMinMax);
+		reach_push(&lst_a, &lst_b, relMinMax[1]->rank, ra, relMinMax);
+		relMinMax[1] = get_RelMax(lst_a, ind_max);
 		reach_push(&lst_a, &lst_b, relMinMax[1]->rank, ra, relMinMax);
 		dump_relMax(&lst_a, &lst_b);
 		relMinMax = recentrer(&lst_a, relMinMax);
 	}
 	reach_rank(&lst_a, 0, get_shortestway(0, lst_a));
-		print_lst_byrank(lst_a, " A");
-		print_lst_byrank(lst_b, " B");
-	//refresh_RelMin(relMin);
-	//reach_push(&lst_a, &lst_b, relMax->prev->rank, ra);
-	//dump_relMax(&lst_a, &lst_b);
-	//print_lst_byrank(lst_a, "A");
-	//print_lst_byrank(lst_b, "B");
+	print_lst_byrank(lst_a, "A");
+	print_lst_byrank(lst_b, "B");
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 	free(relMinMax);
