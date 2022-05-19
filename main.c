@@ -80,22 +80,25 @@ int main(int argc, char **argv)
 	relMinMax = (t_lnk **)malloc(sizeof(t_lnk *) * 2);
 	relMinMax[1] = get_RelMax(lst_a, ind_max);
 	relMinMax[0] = get_RelMin(lst_a);
-	relMinMax = first_parse(&lst_a, &lst_b, ind_max, relMinMax);
-		t_lnk	*taquet;
-	while (lst_b || relMinMax[0]->rank < relMinMax[1]->rank)
-	{
+	//relMinMax = first_parse(&lst_a, &lst_b, ind_max, relMinMax);
+	parse_down(&lst_a, &lst_b, relMinMax);
 	print_lst_byrank(lst_a, "A");
 	print_lst_byrank(lst_b, "B");
-		taquet = find_highest_tower(lst_a, rra, relMinMax);
-		relMinMax = reach_push(&lst_a, &lst_b, taquet->rank, rra, relMinMax);
-		if (lst_a->rank < relMinMax[1]->rank && lst_a->rank > relMinMax[0]->rank)
-			apply_instr(pb, &lst_a, &lst_b, 1);
-		relMinMax = recentrer(&lst_a, relMinMax);
-		relMinMax = reach_push(&lst_a, &lst_b, relMinMax[1]->rank, ra, relMinMax);
-		dump_relMax(&lst_a, &lst_b);
-		relMinMax = recentrer(&lst_a, relMinMax);
-	}
-	reach_rank(&lst_a, 0, get_shortestway(0, lst_a));
+	ft_printf("relMax%d\n", relMinMax[1]->rank);
+	ft_printf("relMin%d\n", relMinMax[0]->rank);
+	//	t_lnk	*taquet;
+	//while (lst_b || relMinMax[0]->rank < relMinMax[1]->rank)
+	//{
+	//	taquet = find_highest_tower(lst_a, rra, relMinMax);
+	//	relMinMax = reach_push(&lst_a, &lst_b, taquet->rank, rra, relMinMax);
+	//	if (lst_a->rank < relMinMax[1]->rank && lst_a->rank > relMinMax[0]->rank)
+	//		apply_instr(pb, &lst_a, &lst_b, 1);
+	//	relMinMax = recentrer(&lst_a, relMinMax);
+	//	relMinMax = reach_push(&lst_a, &lst_b, relMinMax[1]->rank, ra, relMinMax);
+	//	dump_relMax(&lst_a, &lst_b);
+	//	relMinMax = recentrer(&lst_a, relMinMax);
+	//}
+	//reach_rank(&lst_a, 0, get_shortestway(0, lst_a));
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 	free(relMinMax);

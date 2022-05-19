@@ -12,7 +12,7 @@
 
 SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c \
 rotate.c verifications.c swap.c apply_instr.c get_next_line.c reach_sort.c \
-gather_min_and_max.c relMinMax_fts.c  dumping_fts.c # my_algo.c bubble_sort.c # algo_tree.c
+parse_down.c gather_min_and_max.c relMinMax_fts.c  dumping_fts.c # my_algo.c bubble_sort.c # algo_tree.c
 
 OBJS := ${SRCS:c=o}
 

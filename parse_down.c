@@ -1,0 +1,59 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reach_sort.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+
+/*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
+/*   Updated: 2022/05/19 22:13:45 by supersko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static t_lnk **parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk *rel_MinMax[1])
+{
+	if (!(*lst_b))
+		apply_instr(pb, lst_a, lst_b, 1);
+	else if ((*lst_a)->rank > (*lst_b)->rank)
+		apply_instr(pb, lst_a, lst_b, 1);
+	else if ((*lst_b)->next != *lst_b && (*lst_a)->rank < (*lst_b)->prev->rank)
+	{
+		apply_instr(pb, lst_a, lst_b, 1);
+		if ((*lst_b)->next->rank > (*lst_b)->rank)
+			apply_instr(rb, lst_a, lst_b, 1);
+	}
+	else
+		apply_instr(ra, lst_a, lst_b, 1);
+	return (rel_MinMax);
+}
+
+static t_lnk **amorce_parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk *rel_MinMax[1])
+{
+	if (!(*lst_b) || (*lst_a)->rank > (*lst_b)->rank)
+    {
+		apply_instr(pb, lst_a, lst_b, 1);
+        rel_MinMax = recentrer(lst_a, rel_MinMax);
+    }
+	else if ((*lst_a) != rel_MinMax[1])
+		apply_instr(ra, lst_a, lst_b, 1);
+	return (rel_MinMax);
+}
+
+// start after relMin lst_b empty
+t_lnk	**parse_down(t_lnk **lst_a, t_lnk **lst_b, t_lnk	*relMinMax[2])
+{
+    if ((*lst_a)->prev == relMinMax[0])
+    {
+        while ((*lst_a)->prev == relMinMax[0] && (*lst_a) != relMinMax[1])
+            relMinMax =  amorce_parse_down_loop(lst_a, lst_b, relMinMax);
+    }
+	if ((*lst_a) != relMinMax[1])
+	{
+		while ((*lst_a) != relMinMax[1])
+			relMinMax = parse_down_loop(lst_a, lst_b, relMinMax);
+	}
+	return (relMinMax);
+}

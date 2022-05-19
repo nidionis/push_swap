@@ -29,24 +29,24 @@ void	reach_rank(t_lnk **lst, int rank, int direction)
 	}
 }
 
-static t_lnk **reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *rel_MinMax[2])
+static t_lnk **reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *rel_MinMax[1])
 {
 	if (!(*lst_b))
-		apply_instr(pb, lst_a, lst_b, 1);
+		apply_instr(pb, lst_a, lst_b, 0);
 	else if (*lst_b && (*lst_a)->rank > (*lst_b)->rank)
-		apply_instr(pb, lst_a, lst_b, 1);
+		apply_instr(pb, lst_a, lst_b, 0);
 	else if (*lst_b && (*lst_b)->next != *lst_b && (*lst_a)->rank < (*lst_b)->prev->rank)
 	{
-		if ((*lst_a)->rank > rel_MinMax[0]->rank)
+		if ((*lst_a)->rank > rel_MinMax[-1]->rank)
 		{
-			apply_instr(pb, lst_a, lst_b, 1);
+			apply_instr(pb, lst_a, lst_b, 0);
 			if ((*lst_b)->next->rank > (*lst_b)->rank)
-				apply_instr(rb, lst_a, lst_b, 1);
+				apply_instr(rb, lst_a, lst_b, 0);
 		}
 	}
 	else
-		apply_instr(instr_way, lst_a, lst_b, 1);
-	//if ((*lst_a)->rank <= rel_MinMax[0]->rank || (*lst_a)->rank >= rel_MinMax[1]->rank)
+		apply_instr(instr_way, lst_a, lst_b, 0);
+	//if ((*lst_a)->rank <= rel_MinMax[-1]->rank || (*lst_a)->rank >= rel_MinMax[1]->rank)
 	//{
 	//	rel_MinMax = recentrer(lst_a, rel_MinMax);
 	//}
