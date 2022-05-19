@@ -13,7 +13,7 @@
 
 #include "push_swap.h"
 
-static t_lnk **parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk *rel_MinMax[1])
+static void	parse_down_loop(t_lnk **lst_a, t_lnk **lst_b)
 {
 	if (!(*lst_b))
 		apply_instr(pb, lst_a, lst_b, 1);
@@ -27,7 +27,6 @@ static t_lnk **parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk *rel_MinMax[1
 	}
 	else
 		apply_instr(ra, lst_a, lst_b, 1);
-	return (rel_MinMax);
 }
 
 static t_lnk **amorce_parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk *rel_MinMax[1])
@@ -53,7 +52,7 @@ t_lnk	**parse_down(t_lnk **lst_a, t_lnk **lst_b, t_lnk	*relMinMax[2])
 	if ((*lst_a) != relMinMax[1])
 	{
 		while ((*lst_a) != relMinMax[1])
-			relMinMax = parse_down_loop(lst_a, lst_b, relMinMax);
+			parse_down_loop(lst_a, lst_b);
 	}
 	return (relMinMax);
 }
