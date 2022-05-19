@@ -7,7 +7,8 @@ dump_relMax	dumping_fts.c	/^void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b) $/
 familly_parsing	algo_tree.c	/^void    familly_parsing(t_pstree *parent_node, t_l/
 find_highest_tower	main.c	/^t_lnk	*find_highest_tower(t_lnk *ind_lnk, int inst/
 find_solution	algo_tree.c	/^void    find_solution(t_lnk *lst_a, t_lnk *lst_b)$/
-first_parse	gather_min_and_max.c	/^void	first_parse(t_lnk **lst_a, t_lnk **lst_b, int/
+first_parse	gather_min_and_max.c	/^t_lnk	**first_parse(t_lnk **lst_a, t_lnk **lst_b, /
+first_reach_push	gather_min_and_max.c	/^t_lnk	**first_reach_push(t_lnk **lst_a, t_lnk **ls/
 ft_is_sorted	verifications.c	/^int ft_is_sorted(t_lnk *lst)$/
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/
 ft_no_duplicate	verifications.c	/^int ft_no_duplicate(t_lnk *lst)$/
@@ -32,8 +33,8 @@ print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
 print_seq	algo_tree.c	/^void	print_seq(t_pstree *node)$/
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
-reach_push	reach_sort.c	/^void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int /
-reach_push_loop	reach_sort.c	/^static void	reach_push_loop(t_lnk **lst_a, t_lnk */
+reach_push	reach_sort.c	/^t_lnk	**reach_push(t_lnk **lst_a, t_lnk **lst_b, i/
+reach_push_loop	gather_min_and_max.c	/^static t_lnk **reach_push_loop(t_lnk **lst_a, t_ln/
 reach_rank	reach_sort.c	/^void	reach_rank(t_lnk **lst, int rank, int directi/
 rec_familly_parsing	algo_tree.c	/^void	rec_familly_parsing(t_pstree *parent_node, t_/
 recentrer	main.c	/^t_lnk **recentrer(t_lnk **lst_a, t_lnk **relMinMax/

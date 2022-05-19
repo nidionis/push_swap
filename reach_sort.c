@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 15:10:23 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 18:31:20 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,19 @@ void	reach_rank(t_lnk **lst, int rank, int direction)
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)
 	{
-		apply_instr(instr, lst, NULL, 0);
+		apply_instr(instr, lst, NULL, 1);
 		while ((*lst)->rank != rank && *lst != first_lnk)
 			apply_instr(instr, lst, NULL, 1);
 	}
 }
 
-static void	reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *rel_MinMax[2])
+static t_lnk **reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *rel_MinMax[2])
 {
-	int action;
-
-	action = 1;
-	if ((*lst_a)->rank != rel_MinMax[0]->rank && (*lst_a)->rank < rel_MinMax[1]->rank)
+	if ((*lst_a)->rank > rel_MinMax[0]->rank && (*lst_a)->rank < rel_MinMax[1]->rank)
 	{
-		action = 1;
-		if (*lst_b && (*lst_a)->rank > (*lst_b)->rank)
+		if (!(*lst_b))
+			apply_instr(pb, lst_a, lst_b, 1);
+		else if (*lst_b && (*lst_a)->rank > (*lst_b)->rank)
 			apply_instr(pb, lst_a, lst_b, 1);
 		else if (*lst_b && (*lst_b)->next != *lst_b && (*lst_a)->rank < (*lst_b)->prev->rank)
 		{
@@ -45,18 +43,17 @@ static void	reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *
 			if ((*lst_b)->next->rank > (*lst_b)->rank)
 				apply_instr(rb, lst_a, lst_b, 1);
 		}
-		else if (!(*lst_b))
-			apply_instr(pb, lst_a, lst_b, 1);
 		else
-			action = 1;
+			apply_instr(instr_way, lst_a, lst_b, 1);
 	}
-	if (action)
-		apply_instr(instr_way, lst_a, lst_b, 1);
+	if ((*lst_a)->rank <= rel_MinMax[0]->rank || (*lst_a)->rank >= rel_MinMax[1]->rank)
+		rel_MinMax = recentrer(lst_a, rel_MinMax);
+	return (rel_MinMax);
 }
 
-void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int instr_way, t_lnk	*relMinMax[2])
+t_lnk	**reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int instr_way, t_lnk	*relMinMax[2])
 {
-	if (instr_way != 0)
+	if (instr_way <= 0)
 	{
 		instr_way = ra;
 		if (get_shortestway(rank, *lst_a) < 0)
@@ -66,9 +63,10 @@ void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int instr_way, t_lnk	*re
 	{
 		while ((*lst_a)->rank != rank)
 		{
-			reach_push_loop(lst_a, lst_b, instr_way, relMinMax);
+			relMinMax = reach_push_loop(lst_a, lst_b, instr_way, relMinMax);
 		}
 	}
+	return (relMinMax);
 }
 
 void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank)
