@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 18:31:20 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 22:13:45 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,25 @@ void	reach_rank(t_lnk **lst, int rank, int direction)
 
 static t_lnk **reach_push_loop(t_lnk **lst_a, t_lnk **lst_b, int instr_way, t_lnk *rel_MinMax[2])
 {
-	if ((*lst_a)->rank > rel_MinMax[0]->rank && (*lst_a)->rank < rel_MinMax[1]->rank)
+	if (!(*lst_b))
+		apply_instr(pb, lst_a, lst_b, 1);
+	else if (*lst_b && (*lst_a)->rank > (*lst_b)->rank)
+		apply_instr(pb, lst_a, lst_b, 1);
+	else if (*lst_b && (*lst_b)->next != *lst_b && (*lst_a)->rank < (*lst_b)->prev->rank)
 	{
-		if (!(*lst_b))
-			apply_instr(pb, lst_a, lst_b, 1);
-		else if (*lst_b && (*lst_a)->rank > (*lst_b)->rank)
-			apply_instr(pb, lst_a, lst_b, 1);
-		else if (*lst_b && (*lst_b)->next != *lst_b && (*lst_a)->rank < (*lst_b)->prev->rank)
+		if ((*lst_a)->rank > rel_MinMax[0]->rank)
 		{
 			apply_instr(pb, lst_a, lst_b, 1);
 			if ((*lst_b)->next->rank > (*lst_b)->rank)
 				apply_instr(rb, lst_a, lst_b, 1);
 		}
-		else
-			apply_instr(instr_way, lst_a, lst_b, 1);
 	}
-	if ((*lst_a)->rank <= rel_MinMax[0]->rank || (*lst_a)->rank >= rel_MinMax[1]->rank)
-		rel_MinMax = recentrer(lst_a, rel_MinMax);
+	else
+		apply_instr(instr_way, lst_a, lst_b, 1);
+	//if ((*lst_a)->rank <= rel_MinMax[0]->rank || (*lst_a)->rank >= rel_MinMax[1]->rank)
+	//{
+	//	rel_MinMax = recentrer(lst_a, rel_MinMax);
+	//}
 	return (rel_MinMax);
 }
 
@@ -61,11 +63,13 @@ t_lnk	**reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int instr_way, t_lnk	
 	}
 	if ((*lst_a)->rank != rank)
 	{
-		while ((*lst_a)->rank != rank)
+		while ((*lst_a)->rank != rank && ((*lst_a)->rank > relMinMax[0]->rank && (*lst_a)->rank < relMinMax[1]->rank))
 		{
 			relMinMax = reach_push_loop(lst_a, lst_b, instr_way, relMinMax);
 		}
 	}
+//	if ((*lst_a)->rank != rank)
+//		//reach_push(lst_a, lst_b, rank, instr_way, relMinMax);
 	return (relMinMax);
 }
 

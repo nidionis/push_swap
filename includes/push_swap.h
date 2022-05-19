@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 18:33:09 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/19 19:40:34 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ t_lnk	*get_RelMax(t_lnk *lst, int rankMax);
 t_lnk	*get_RelMin(t_lnk *lst);
 t_lnk	*refresh_RelMax(t_lnk *relMax);
 t_lnk	*refresh_RelMin(t_lnk *relMin);
+t_lnk	**refresh_RelMinMax(t_lnk **relMinMax);
 void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b);
 void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b);
 //int contains_only_higher(t_lnk *lst, int rank);

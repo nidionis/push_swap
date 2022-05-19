@@ -6,7 +6,7 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/18 17:25:42 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/19 22:05:43 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ test: ctags
 	rm a.out
 
 debugfile: ctags
-	$(CC) $(CFLAGS) -g $(INCLUDES) $(SRCS) $(MAIN) -o $(DEBUG_NAME)
+	$(CC) $(CFLAGS) -g $(INCLUDES) $(SRCS) $(MAIN) -o $(DEBUG_NAME) -fsanitize=address
 
 debug: debugfile
 	lldb $(DEBUG_NAME)
