@@ -12,14 +12,29 @@
 
 #include <push_swap.h>
 
-void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b) 
+void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b, t_lnk **relMinMax) 
 {
  	while (*lst_b)
 	 {
 		if ((*lst_b)->rank < (*lst_a)->prev->rank)
 		{
 			while ((*lst_b)->rank < (*lst_a)->prev->rank && (*lst_b)->rank)
-				apply_instr(rra, lst_a, lst_b, 1);
+			{
+				if ((*lst_a)->rank < (*lst_b)->prev->rank)
+				{
+					apply_instr(pb, lst_a, lst_b, 1);
+					apply_instr(rb, lst_a, lst_b, 1);
+					if ((*lst_a)->next == relMinMax[1])
+						relMinMax = recentrer(lst_a, relMinMax);
+				}
+				else if ((*lst_a)->rank > (*lst_a)->next->rank)
+				{
+					apply_instr(sa, lst_a, lst_b, 1);
+					relMinMax = recentrer(lst_a, relMinMax);
+				}
+				else
+					apply_instr(rra, lst_a, lst_b, 1);
+			}
 		}
 		apply_instr(pa, lst_a, lst_b, 1);
 	 }
