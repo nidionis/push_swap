@@ -62,9 +62,18 @@ static t_lnk **amorce_parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk **relM
 	return (relMinMax);
 }
 
+t_lnk	**next_unsorted(t_lnk **lst_a, t_lnk **lst_b, t_lnk	*relMinMax[2])
+{
+	relMinMax = recentrer(lst_a, lst_b);
+	while ((*lst_a)->next->rank == (*lst_a)->rank + 1)
+		*lst_a = (*lst_a)->next;
+	return (relMinMax);
+}
+
 // start after relMin lst_b empty
 t_lnk	**parse_down(t_lnk **lst_a, t_lnk **lst_b, t_lnk	*relMinMax[2])
 {
+	relMinMax = next_unsorted(lst_a, lst_b, relMinMax);
     if ((*lst_a)->prev == relMinMax[0])
     {
         while ((*lst_a)->prev == relMinMax[0] && (*lst_a) != relMinMax[1])
