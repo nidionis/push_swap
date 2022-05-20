@@ -13,9 +13,19 @@
 
 #include "push_swap.h"
 
-static void	parse_down_loop(t_lnk **lst_a, t_lnk **lst_b)
+static t_lnk	**parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk **relMinMax)
 {
-	if (!(*lst_b))
+	if ((*lst_a)->next->rank < (*lst_a)->rank)
+	{
+		apply_instr(sa, lst_a, lst_b, 1);
+		if ((*lst_a)->next->next == relMinMax[1])
+		{
+			relMinMax = refresh_RelMinMax(relMinMax);
+			if ((*lst_a)->rank > relMinMax[1]->rank || (*lst_a)->rank < relMinMax[0]->rank)
+				recentrer(lst_a, relMinMax);
+		}
+	}
+	else if (!(*lst_b))
 		apply_instr(pb, lst_a, lst_b, 1);
 	else if ((*lst_a)->rank > (*lst_b)->rank)
 		apply_instr(pb, lst_a, lst_b, 1);
@@ -27,18 +37,29 @@ static void	parse_down_loop(t_lnk **lst_a, t_lnk **lst_b)
 	}
 	else
 		apply_instr(ra, lst_a, lst_b, 1);
+	return (relMinMax);
 }
 
-static t_lnk **amorce_parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk *rel_MinMax[1])
+static t_lnk **amorce_parse_down_loop(t_lnk **lst_a, t_lnk **lst_b, t_lnk **relMinMax)
 {
-	if (!(*lst_b) || (*lst_a)->rank > (*lst_b)->rank)
+	if ((*lst_a)->next->rank < (*lst_a)->rank)
+	{
+		apply_instr(sa, lst_a, lst_b, 1);
+		if ((*lst_a)->next->next == relMinMax[1])
+		{
+			relMinMax = refresh_RelMinMax(relMinMax);
+			if ((*lst_a)->rank > relMinMax[1]->rank || (*lst_a)->rank < relMinMax[0]->rank)
+				recentrer(lst_a, relMinMax);
+		}
+	}
+	else if (!(*lst_b) || (*lst_a)->rank > (*lst_b)->rank)
     {
 		apply_instr(pb, lst_a, lst_b, 1);
-        rel_MinMax = recentrer(lst_a, rel_MinMax);
+        relMinMax = recentrer(lst_a, relMinMax);
     }
-	else if ((*lst_a) != rel_MinMax[1])
+	else if ((*lst_a) != relMinMax[1])
 		apply_instr(ra, lst_a, lst_b, 1);
-	return (rel_MinMax);
+	return (relMinMax);
 }
 
 // start after relMin lst_b empty
@@ -52,7 +73,7 @@ t_lnk	**parse_down(t_lnk **lst_a, t_lnk **lst_b, t_lnk	*relMinMax[2])
 	if ((*lst_a) != relMinMax[1])
 	{
 		while ((*lst_a) != relMinMax[1])
-			parse_down_loop(lst_a, lst_b);
+			relMinMax = parse_down_loop(lst_a, lst_b, relMinMax);
 	}
 	return (relMinMax);
 }

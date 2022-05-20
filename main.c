@@ -40,15 +40,17 @@ t_lnk	*find_highest_tower(t_lnk *ind_lnk, int inst_way, t_lnk *relMinMax[2])
 	return (highest_tower);
 }
 
-t_lnk **recentrer(t_lnk **lst_a, t_lnk **relMinMax)
+// recentre la liste sur relMax (en prevision de push)
+// ou sur relMin->next
+t_lnk	**recentrer(t_lnk **lst_a, t_lnk **relMinMax)
 {
 	relMinMax[0] = refresh_RelMin(relMinMax[0]);
 	relMinMax[1] = refresh_RelMax(relMinMax[1]);
 	if (relMinMax[0]->rank < relMinMax[1]->rank)
 	{
-		if ((*lst_a)->rank <= relMinMax[0]->rank)
+		if ((*lst_a)->rank < relMinMax[0]->rank)
 		{
-			while ((*lst_a)->rank <= relMinMax[0]->rank)
+			while ((*lst_a)->rank < relMinMax[0]->rank && relMinMax[0]->next != relMinMax[1])
 				apply_instr(ra, lst_a, NULL, 1);
 		}
 		else if ((*lst_a)->rank >= relMinMax[1]->rank)
