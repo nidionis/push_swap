@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/21 16:45:12 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/21 18:31:08 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int main(int argc, char **argv)
 	t_lnk	*lst_a = NULL;
 	t_lnk	*lst_b = NULL;
 	t_lnk	**relMinMax;
-	t_lnk	*brelMax;
 	int		ind_max;
 
 	if (argc < 2)
@@ -83,22 +82,7 @@ int main(int argc, char **argv)
 	relMinMax = (t_lnk **)malloc(sizeof(t_lnk *) * 2);
 	relMinMax[1] = get_RelMax(lst_a, ind_max);
 	relMinMax[0] = get_RelMin(lst_a);
-	ft_printf("is sorted: %d\n", is_sorted(lst_a));
-	////relMinMax = first_parse(&lst_a, &lst_b, ind_max, relMinMax);
-	brelMax = lst_b;
-	while (!is_sorted(lst_a))
-	{
-		while (lst_a->rank != ind_max)
-		{
-			smart_load_loop(&lst_a, &lst_b, rra, 5, brelMax);
-			if (lst_b->rank > brelMax->rank)
-				brelMax = lst_b;
-		}
-		if (lst_a->rank == ind_max)
-		{
-			break;
-		}
-	}
+	median_split(&lst_a, &lst_b, relMinMax);
 	print_lst_byrank(lst_a, "A");
 	print_lst_byrank(lst_b, "B");
 	ft_printf("relMax%d\n", relMinMax[1]->rank);
