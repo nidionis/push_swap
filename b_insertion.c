@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/21 15:17:35 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:36:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_lnk	*smart_load_loop(t_lnk **lst_a, t_lnk **lst_b, int way_instr, int nb_raMax
 	while (i < nb_raMax) // arbitraire
 	{
 		min_steps[i] = b_insert(&lst_a_cpy, &lst_b_cpy, brelMax, 0);
-		lst_a_cpy = lst_a_cpy->next;
+		apply_instr(way_instr , &lst_a_cpy, NULL, 0);
 		i++;
 	}
 	i = lstMin(min_steps, nb_raMax);

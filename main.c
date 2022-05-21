@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/21 16:01:50 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/21 16:45:12 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,19 @@ int main(int argc, char **argv)
 	relMinMax[0] = get_RelMin(lst_a);
 	ft_printf("is sorted: %d\n", is_sorted(lst_a));
 	////relMinMax = first_parse(&lst_a, &lst_b, ind_max, relMinMax);
-	apply_instr(pb, &lst_a, &lst_b, 1);
 	brelMax = lst_b;
 	while (!is_sorted(lst_a))
 	{
-		smart_load_loop(&lst_a, &lst_b, rra, 5, brelMax);
-		if (lst_b->rank > brelMax->rank)
-			brelMax = lst_b;
+		while (lst_a->rank != ind_max)
+		{
+			smart_load_loop(&lst_a, &lst_b, rra, 5, brelMax);
+			if (lst_b->rank > brelMax->rank)
+				brelMax = lst_b;
+		}
+		if (lst_a->rank == ind_max)
+		{
+			break;
+		}
 	}
 	print_lst_byrank(lst_a, "A");
 	print_lst_byrank(lst_b, "B");
