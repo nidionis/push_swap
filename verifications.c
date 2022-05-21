@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/18 21:00:08 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:46:08 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,27 @@ int ft_is_sorted(t_lnk *lst)
     if (is_sorted)
         return (1);
     return (0);
+}
+
+int is_sorted(t_lnk *lst)
+{
+    t_lnk	*lnk_ind;
+    int     is_sorted;
+
+    is_sorted = 0;
+	lnk_ind = lst->next;
+	while (lnk_ind != lst)
+	{
+        if (lnk_ind->rank == lnk_ind->next->rank - 1)
+            lnk_ind = lnk_ind->next;
+        else
+        {
+            is_sorted++;
+            if (is_sorted > 1)
+                return (0);
+        }
+	}
+    return (1);
 }
 
 int ft_no_duplicate(t_lnk *lst)

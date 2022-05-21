@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/19 19:40:34 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/21 15:37:32 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 # include <libft.h>
 # include <libftprintf.h>
-# include <linked_lst.h>
 
 typedef struct s_lnk
 {
@@ -51,6 +50,7 @@ int		lst_init_ranks(t_lnk **lst);
 void	print_lst_byrank(t_lnk *lst, char *header);
 t_lnk	*get_args_allinone(char *str);
 int 	ft_is_sorted(t_lnk *lst);
+int 	is_sorted(t_lnk *lst);
 void	swap_lst(t_lnk **lst);
 void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print);
 char	*get_next_line(int fd);
@@ -74,12 +74,17 @@ t_lnk	*get_RelMin(t_lnk *lst);
 t_lnk	*refresh_RelMax(t_lnk *relMax);
 t_lnk	*refresh_RelMin(t_lnk *relMin);
 t_lnk	**refresh_RelMinMax(t_lnk **relMinMax);
-void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b);
+void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b, t_lnk **relMinMax);
 void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b);
 //int contains_only_higher(t_lnk *lst, int rank);
 //int	step_counter(int rank, t_lnk *lst, int rev_rotate);
 void	push_reachwise_relMin(t_lnk **lst_a, t_lnk **lst_b, int *relMin);
 t_lnk **recentrer(t_lnk **lst_a, t_lnk **relMinMax);
+
+int	can_insert(t_lnk *lst_a, t_lnk *lst_b, t_lnk *brelMax);
+int	b_insert(t_lnk **lst_a, t_lnk **lst_b, t_lnk *brelMax, int print);
+t_lnk	*smart_load_loop(t_lnk **lst_a, t_lnk **lst_b, int way_instr, int nb_raMax, t_lnk *brelMax);
+
 
 //
 //void    find_solution(t_lnk *lst_a, t_lnk *lst_b);
