@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/21 19:06:44 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/21 19:58:40 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	reach_rank(t_lnk **lst, int rank, int direction);
 int	get_shortestway(int rank, t_lnk *lst);
 t_lnk	**reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int instr_way, t_lnk *relMinMax[2]);
 t_lnk	**parse_down(t_lnk **lst_a, t_lnk **lst_b, t_lnk	*relMinMax[2]);
-void median_split(t_lnk **lst, t_lnk **lst_loaded, t_lnk **relMinMax);
+int median_split(t_lnk **lst, t_lnk **lst_loaded, t_lnk **relMinMax);
 //void	first_parse(t_lnk	**lst_a, t_lnk	**lst_b, int ind_max);
 //int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b);
 //void	first_dump_relMax(t_lnk **lst_a, t_lnk **lst_b, int rank_max);

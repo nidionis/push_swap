@@ -6,20 +6,20 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/21 19:34:00 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/21 19:58:14 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_lnk	*last_lower(t_lnk	*lst, int instr_way, t_lnk	**relMinMax)
+t_lnk	*last_lower(t_lnk	*lst, int instr_way, int relMinMax[2])
 {
 	t_lnk	*pivot;
 	t_lnk	*last;
 
-	pivot = lst;
-	last = lst;
-	while (lst != relMinMax[1] && lst != relMinMax[0])
+		pivot = lst;
+		last = lst;
+		while (lst->rank <= relMinMax[1] && lst->rank >= relMinMax[0])
 	{
 		if (lst->rank < pivot->rank)
 		{
@@ -30,7 +30,7 @@ t_lnk	*last_lower(t_lnk	*lst, int instr_way, t_lnk	**relMinMax)
 	return (last);
 }
 
-t_lnk	*last_higher(t_lnk	*lst, int pivot, int instr_way, t_lnk	**relMinMax)
+t_lnk	*last_higher(t_lnk	*lst, int pivot, int instr_way, int *relMinMax)
 {
 	t_lnk	*ind_lst;
 	t_lnk	*last;
@@ -38,7 +38,7 @@ t_lnk	*last_higher(t_lnk	*lst, int pivot, int instr_way, t_lnk	**relMinMax)
 	ind_lst = lst;
 	last = lst;
 	apply_instr(instr_way, &ind_lst, NULL, 0);
-	while (lst->rank <= relMinMax[1]->rank && lst->rank >= relMinMax[0]->rank && ind_lst != lst)
+	while (lst->rank <= relMinMax[1] && lst->rank >= relMinMax[0] && ind_lst != lst)
 	{
 		if ((ind_lst)->rank < pivot)
 		{
@@ -63,11 +63,11 @@ t_lnk	*last_higher(t_lnk	*lst, int pivot, int instr_way, t_lnk	**relMinMax)
 //
 //  swap(pivot, storeIndex-1)
 
-void median_split(t_lnk **lst, t_lnk **lst_loaded, t_lnk **relMinMax)
+int median_split(t_lnk **lst, t_lnk **lst_loaded, int relMinMax)
 {
 	int	pivot;
 
-	pivot = (relMinMax[1]->rank - relMinMax[0]->rank) / 2;
+	pivot = (relMinMax[1] - relMinMax[0] / 2;
 	while (*lst != last_higher(*lst, pivot, ra, relMinMax))
 	{
 		if ((*lst)->rank < pivot)
@@ -76,4 +76,13 @@ void median_split(t_lnk **lst, t_lnk **lst_loaded, t_lnk **relMinMax)
 		}
 		apply_instr(ra, lst, lst_loaded, 1);
 	}
+}
+
+void rec_median_split(t_lnk **lst, t_lnk **lst_loaded, int pivot, t_lnk **relMinMax)
+{
+	int	pivot;
+
+	pivot = (relMinMax[1] - relMinMax[0] / 2;
+	relMinMax[1] = pivot + relMinMax[0];
+	median_split(lst, lst_loaded, relMinMax);
 }
