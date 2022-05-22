@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/21 18:31:08 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/22 01:26:56 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int main(int argc, char **argv)
 	t_lnk	*lst_a = NULL;
 	t_lnk	*lst_b = NULL;
 	t_lnk	**relMinMax;
+	int 	int_relMinMax[2];
 	int		ind_max;
 
 	if (argc < 2)
@@ -82,7 +83,9 @@ int main(int argc, char **argv)
 	relMinMax = (t_lnk **)malloc(sizeof(t_lnk *) * 2);
 	relMinMax[1] = get_RelMax(lst_a, ind_max);
 	relMinMax[0] = get_RelMin(lst_a);
-	median_split(&lst_a, &lst_b, relMinMax);
+	int_relMinMax[0] = 0;
+	int_relMinMax[1] = ind_max;
+	first_load(&lst_a, &lst_b, ind_max);
 	print_lst_byrank(lst_a, "A");
 	print_lst_byrank(lst_b, "B");
 	ft_printf("relMax%d\n", relMinMax[1]->rank);
