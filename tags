@@ -1,44 +1,32 @@
 Mmain	main.c	/^int main(int argc, char **argv)$/
 apply_instr	apply_instr.c	/^void	apply_instr(int instr, t_lnk **lst_a, t_lnk */
+b_dump	algo.c	/^void    b_dump(t_lnk **lst_a, t_lnk **lst_b)$/
+can_push	algo.c	/^int can_push(t_lnk *lst_a, t_lnk *lst_b)$/
 del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/
-find_highest_tower	main.c	/^t_lnk	*find_highest_tower(t_lnk *ind_lnk, int inst/
-first_load	algo.c	/^void first_load(t_lnk **lst_a, t_lnk **lst_b, int /
-first_load_loop	algo.c	/^void	first_load_loop(t_lnk **lst_a, t_lnk **lst_b,/
+first_load	first_parsing.c	/^void first_load(t_lnk **lst_a, t_lnk **lst_b, int /
+fl_loop	first_parsing.c	/^void	fl_loop(t_lnk **lst_a, t_lnk **lst_b, int max/
 ft_is_sorted	verifications.c	/^int ft_is_sorted(t_lnk *lst)$/
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/
 ft_no_duplicate	verifications.c	/^int ft_no_duplicate(t_lnk *lst)$/
 ft_realloc_cat	get_next_line.c	/^char	*ft_realloc_cat(char *line, char c, int *len)/
 fucking_normi_2	apply_instr.c	/^int fucking_normi_2(char *str)$/
 fucking_norminette	apply_instr.c	/^void    fucking_norminette(int instr, t_lnk **lst_/
-get_RelMax	relMinMax_fts.c	/^t_lnk	*get_RelMax(t_lnk *lst, int rankMax)$/
-get_RelMin	relMinMax_fts.c	/^t_lnk	*get_RelMin(t_lnk *lst)$/
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/
 get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/
-get_dir	algo.c	/^int	get_dir(int rank, t_lnk *lst)$/
 get_next_line	get_next_line.c	/^char	*get_next_line(int fd)$/
 i_to_instr	apply_instr.c	/^void i_to_instr(int i)$/
 instr_to_i	apply_instr.c	/^int    instr_to_i(char *str)$/
 is_sorted	verifications.c	/^int is_sorted(t_lnk *lst)$/
-last_higher	qsort.c	/^t_lnk	*last_higher(t_lnk	*lst, int pivot, int inst/
-last_lower	qsort.c	/^t_lnk	*last_lower(t_lnk	*lst, int instr_way, int r/
-last_to_push	qsort.c	/^int last_to_push(t_lnk *lst_a, t_lnk *lst_b, int p/
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/
 lst_cpy	get_args.c	/^t_lnk	*lst_cpy(t_lnk *lst)$/
 lst_init_ranks	lnk_fts.c	/^int	lst_init_ranks(t_lnk **lst)$/
-median_split	qsort.c	/^int median_split(t_lnk **lst_a, t_lnk **lst_b, int/
 pop_item	pushing_fts.c	/^t_lnk	*pop_item(t_lnk **lst)$/
 print_lst	print_lst.c	/^void	print_lst(t_lnk *lst, char *header)$/
 print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
-rec_median_split	qsort.c	/^void rec_median_split(t_lnk **lst_a, t_lnk **lst_b/
-recentrer	main.c	/^t_lnk	**recentrer(t_lnk **lst_a, t_lnk **relMinMax/
-refresh_RelMax	relMinMax_fts.c	/^t_lnk	*refresh_RelMax(t_lnk *relMax)$/
-refresh_RelMin	relMinMax_fts.c	/^t_lnk	*refresh_RelMin(t_lnk *relMin)$/
-refresh_RelMinMax	relMinMax_fts.c	/^t_lnk	**refresh_RelMinMax(t_lnk **relMinMax)$/
 rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
 rrotate_lst	rotate.c	/^void    rrotate_lst(t_lnk **lst)$/
-shortestway_fucking_norminette	algo.c	/^void	shortestway_fucking_norminette(t_lnk **lst, i/
-stop_rec	qsort.c	/^int stop_rec(int *relMinMax)$/
+shortest_insert	algo.c	/^int *shortest_insert(t_lnk *lst_a, t_lnk *lst_b, i/
+special_item	first_parsing.c	/^int	special_item(t_lnk *lst_a, int max)$/
 swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/
-to_zero	algo.c	/^int to_zero(t_lnk **lst_a, t_lnk **lst_b, int ind_/

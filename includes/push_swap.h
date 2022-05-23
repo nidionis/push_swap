@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/22 01:32:54 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:04:29 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ t_lnk	**parse_down(t_lnk **lst_a, t_lnk **lst_b, t_lnk	*relMinMax[2]);
 //int		push_return_rank(t_lnk **lst_a, t_lnk **lst_b);
 //void	first_dump_relMax(t_lnk **lst_a, t_lnk **lst_b, int rank_max);
 //t_lnk	**first_parse(t_lnk	**lst_a, t_lnk	**lst_b, int ind_maxi, t_lnk *relMinMax[2]);
-t_lnk	*get_RelMax(t_lnk *lst, int rankMax);
-t_lnk	*get_RelMin(t_lnk *lst);
-t_lnk	*refresh_RelMax(t_lnk *relMax);
-t_lnk	*refresh_RelMin(t_lnk *relMin);
-t_lnk	**refresh_RelMinMax(t_lnk **relMinMax);
-void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b, t_lnk **relMinMax);
-void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b);
+//t_lnk	*get_RelMax(t_lnk *lst, int rankMax);
+//t_lnk	*get_RelMin(t_lnk *lst);
+//t_lnk	*refresh_RelMax(t_lnk *relMax);
+//t_lnk	*refresh_RelMin(t_lnk *relMin);
+//t_lnk	**refresh_RelMinMax(t_lnk **relMinMax);
+//void	dump_relMax(t_lnk **lst_a, t_lnk **lst_b, t_lnk **relMinMax);
+//void	dump_relMin(t_lnk **lst_a, t_lnk **lst_b);
 //int contains_only_higher(t_lnk *lst, int rank);
 //int	step_counter(int rank, t_lnk *lst, int rev_rotate);
 void	push_reachwise_relMin(t_lnk **lst_a, t_lnk **lst_b, int *relMin);
@@ -83,10 +83,11 @@ t_lnk **recentrer(t_lnk **lst_a, t_lnk **relMinMax);
 
 int	can_insert(t_lnk *lst_a, t_lnk *lst_b, t_lnk *brelMax);
 int	b_insert(t_lnk **lst_a, t_lnk **lst_b, t_lnk *brelMax, int print);
-t_lnk	*smart_load_loop(t_lnk **lst_a, t_lnk **lst_b, int way_instr, int nb_raMax, t_lnk *brelMax);
-void rec_median_split(t_lnk **lst, t_lnk **lst_loaded, int *relMinMax, int is_lst_b);
-int median_split(t_lnk **lst, t_lnk **lst_loaded, int *relMinMax, int is_lst_b);
-void first_load(t_lnk **lst_a, t_lnk **lst_b, int ind_max);
+//t_lnk	*smart_load_loop(t_lnk **lst_a, t_lnk **lst_b, int way_instr, int nb_raMax, t_lnk *brelMax);
+//void rec_median_split(t_lnk **lst, t_lnk **lst_loaded, int *relMinMax, int is_lst_b);
+//int median_split(t_lnk **lst, t_lnk **lst_loaded, int *relMinMax, int is_lst_b);
+//void first_load(t_lnk **lst_a, t_lnk **lst_b, int ind_max);
+void first_load(t_lnk **lst_a, t_lnk **lst_b, int max);
 
 
 //

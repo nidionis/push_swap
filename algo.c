@@ -6,113 +6,66 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/22 19:42:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/23 12:02:52 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-
-void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank)
+int can_push(t_lnk *lst_a, t_lnk *lst_b)
 {
-	if (!(*found))
-		(*step_nb)++;
-	if ((*lst)->rank == *rank)
-		*found = 1;
-	*lst = (*lst)->next;
+    if (lst_a->rank < lst_b->rank && (lst_a->next)->rank > lst_b->rank)
+        return (1);
+    return (0);
 }
 
-int	get_dir(int rank, t_lnk *lst)
+// return the best instr for reaching
+int *shortest_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_result)
 {
-	int		step_nb;
-	int		len;
-	t_lnk	*last_lnk;
-	int found;
+    int     instr;
+    int     steps;
+    t_lnk   *lst_a_init = NULL;
+    t_lnk   *lst_b_init = NULL;
 
-	if (!lst)
-		error_msg("[get_shortestway] empty list passed");
-	step_nb = 0;
-	len = 1;
-	last_lnk = lst;
-	found = 0;
-
-	if (lst->rank == rank)
-		return (0);
-	lst = lst->next;
-	while (lst != last_lnk && len++)
-		shortestway_fucking_norminette(&lst, &step_nb, &found, &rank);
-	if (!found)
-		error_msg("[get_shortestway] rank not found");
-	if (step_nb > len / 2)
-		return (rra);
-	return (ra);
+    instr = ra;
+    best_result[1] = 2147483647;
+    while (instr <= rrr)
+    {
+        steps = 0;
+        while (!can_push(lst_a, lst_b))
+        {
+            apply_instr(instr, &lst_a, &lst_b, 0);
+            if (steps > best_result[1])
+                break;
+            steps++;
+        }
+        if (steps < best_result[1])
+        {
+            best_result[0] = instr;
+            best_result[1] = steps;
+        }
+        lst_a = lst_a_init;
+        lst_b = lst_b_init;
+        instr++;
+    }
+    return (best_result);
 }
 
-int to_zero(t_lnk **lst_a, t_lnk **lst_b, int ind_max, int dir)
+void    b_dump(t_lnk **lst_a, t_lnk **lst_b)
 {
-	int max_loaded;
+    int *instr;
 
-	max_loaded = 0;
-	while ((*lst_a)->rank != 0)
-	{
-		if ((*lst_a)->rank == ind_max)
-		{
-			apply_instr(pb, lst_a, lst_b, 1);
-			apply_instr(rb, lst_a, lst_b, 1);
-			max_loaded = 1;
-		}
-		if ((*lst_a)->rank < (*lst_a)->next->rank)
-			apply_instr(dir, lst_a, lst_b, 1);
-		else
-			apply_instr(pb, lst_a, lst_b, 1);
+	instr = malloc(2 * sizeof(int));
+	if (!instr)
+		error_msg("[b_dump] error malloc");
+    while (lst_b)
+    {
+        instr = shortest_insert(*lst_a, *lst_b, instr);
+        while (!can_push(*lst_a, *lst_b))
+        {
+            apply_instr(instr[0], lst_a, lst_b, 1);
+        }
+        apply_instr(pa, lst_a, lst_b, 1);
 	}
-	return (max_loaded);
-}
-
-void	first_load_loop(t_lnk **lst_a, t_lnk **lst_b, int ind_max)
-{
-	if (*lst_a)
-	{
-		if ((*lst_a)->rank == 0 || (*lst_a)->rank == ind_max)
-		{
-			apply_instr(pb, lst_a, lst_b, 1);
-			apply_instr(rb, lst_a, lst_b, 1);
-		}
-		else
-		{
-			if ((*lst_a)->rank > (*lst_a)->prev->rank)
-				apply_instr(ra, lst_a, lst_b, 1);
-			else
-				apply_instr(pb, lst_a, lst_b, 1);
-		}
-	}
-}
-
-void first_load(t_lnk **lst_a, t_lnk **lst_b, int ind_max)
-{
-	int i;
-
-	i = ind_max;
-	if ((*lst_a)->rank == 0 || (*lst_a)->rank == ind_max || (*lst_a)->next->rank > ind_max / 2)
-		while ((*lst_a)->rank == 0 || (*lst_a)->rank == ind_max || (*lst_a)->next->rank > ind_max / 2)
-			apply_instr(ra, lst_a, lst_b, 1);
-	while (i--)
-	{
-		first_load_loop(lst_a, lst_b, ind_max);
-	}
-		first_load_loop(lst_a, lst_b, ind_max);
-		first_load_loop(lst_a, lst_b, ind_max);
-		apply_instr(rrb, lst_a, lst_b, 1);
-		if ((*lst_b)->rank == 0)
-		{
-			apply_instr(pa, lst_a, lst_b, 1);
-			apply_instr(rrb, lst_a, lst_b, 1);
-			apply_instr(pa, lst_a, lst_b, 1);
-		}
-		else
-		{
-			apply_instr(rrb, lst_a, lst_b, 1);
-			apply_instr(pa, lst_a, lst_b, 1);
-			apply_instr(pa, lst_a, lst_b, 1);
-		}
+	free(instr);
 }
