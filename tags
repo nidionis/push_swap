@@ -18,9 +18,12 @@ get_shortestway	reach.c	/^int	get_shortestway(int rank, t_lnk *lst)$/
 i_to_instr	apply_instr.c	/^void i_to_instr(int i)$/
 instr_to_i	apply_instr.c	/^int    instr_to_i(char *str)$/
 is_sorted	verifications.c	/^int is_sorted(t_lnk *lst)$/
+itm_insert	algo.c	/^int *itm_insert(t_lnk *lst_a, t_lnk *lst_b, int *b/
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/
+load_b	first_parsing.c	/^void load_b(t_lnk **lst_a, t_lnk **lst_b, int max)/
 lst_cpy	get_args.c	/^t_lnk	*lst_cpy(t_lnk *lst)$/
 lst_init_ranks	lnk_fts.c	/^int	lst_init_ranks(t_lnk **lst)$/
+min_in_dir	algo.c	/^int	min_in_dir(t_lnk *lst_a, t_lnk *lst_b, int ins/
 pop_item	pushing_fts.c	/^t_lnk	*pop_item(t_lnk **lst)$/
 print_lst	print_lst.c	/^void	print_lst(t_lnk *lst, char *header)$/
 print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
@@ -29,7 +32,6 @@ push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
 reach_rank	reach.c	/^void	reach_rank(t_lnk **lst, int rank, int directi/
 rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
 rrotate_lst	rotate.c	/^void    rrotate_lst(t_lnk **lst)$/
-shortest_insert	algo.c	/^int *shortest_insert(t_lnk *lst_a, t_lnk *lst_b, i/
 shortestway_fucking_norminette	reach.c	/^void	shortestway_fucking_norminette(t_lnk **lst, i/
 special_item	first_parsing.c	/^int	special_item(t_lnk *lst_a, int max)$/
 swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/
