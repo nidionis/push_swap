@@ -14,6 +14,7 @@ fucking_norminette	apply_instr.c	/^void    fucking_norminette(int instr, t_lnk *
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/
 get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/
 get_next_line	get_next_line.c	/^char	*get_next_line(int fd)$/
+get_shortestway	reach.c	/^int	get_shortestway(int rank, t_lnk *lst)$/
 i_to_instr	apply_instr.c	/^void i_to_instr(int i)$/
 instr_to_i	apply_instr.c	/^int    instr_to_i(char *str)$/
 is_sorted	verifications.c	/^int is_sorted(t_lnk *lst)$/
@@ -25,8 +26,10 @@ print_lst	print_lst.c	/^void	print_lst(t_lnk *lst, char *header)$/
 print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/
+reach_rank	reach.c	/^void	reach_rank(t_lnk **lst, int rank, int directi/
 rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
 rrotate_lst	rotate.c	/^void    rrotate_lst(t_lnk **lst)$/
 shortest_insert	algo.c	/^int *shortest_insert(t_lnk *lst_a, t_lnk *lst_b, i/
+shortestway_fucking_norminette	reach.c	/^void	shortestway_fucking_norminette(t_lnk **lst, i/
 special_item	first_parsing.c	/^int	special_item(t_lnk *lst_a, int max)$/
 swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/23 12:33:08 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:48:03 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	special_item(t_lnk *lst_a, int max)
 }
 
 
-void	fl_loop(t_lnk **lst_a, t_lnk **lst_b, int max)
+void	fl_loop(t_lnk **lst_a, t_lnk **lst_b, int max, int indice_optimisation)
 {
 	if (special_item(*lst_a, max))
 	{
@@ -33,7 +33,7 @@ void	fl_loop(t_lnk **lst_a, t_lnk **lst_b, int max)
 	}
 	else
 	{
-		if ((*lst_a)->prev->rank < (*lst_a)->rank)
+		if ((*lst_a)->rank > (*lst_a)->prev->rank && (*lst_a)->rank < (*lst_a)->prev->rank + max / indice_optimisation)
 			apply_instr(ra, lst_a, lst_b, 1);	
 		else
 			apply_instr(pb, lst_a, lst_b, 1);	
@@ -43,8 +43,10 @@ void	fl_loop(t_lnk **lst_a, t_lnk **lst_b, int max)
 void first_load(t_lnk **lst_a, t_lnk **lst_b, int max)
 {
 	int i;
+	int ind_optimisation;
 
 	i = max;
+	ind_optimisation = 10;
 	if (special_item(*lst_a, max) || (*lst_a)->rank > max / 2)
 	{
 		while (special_item(*lst_a, max) || (*lst_a)->rank > max / 2)
@@ -53,7 +55,7 @@ void first_load(t_lnk **lst_a, t_lnk **lst_b, int max)
 	apply_instr(ra, lst_a, lst_b, 1);
 	while (i--)
 	{
-		fl_loop(lst_a, lst_b, max);
+		fl_loop(lst_a, lst_b, max, ind_optimisation);
 	}
 	//dump on min
 	apply_instr(rrb, lst_a, lst_b, 1);
@@ -69,5 +71,4 @@ void first_load(t_lnk **lst_a, t_lnk **lst_b, int max)
 		apply_instr(pa, lst_a, lst_b, 1);
 		apply_instr(pa, lst_a, lst_b, 1);
 	}
-
 }

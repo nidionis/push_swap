@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/23 12:02:52 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/23 13:03:10 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int can_push(t_lnk *lst_a, t_lnk *lst_b)
 {
-    if (lst_a->rank < lst_b->rank && (lst_a->next)->rank > lst_b->rank)
+    if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
         return (1);
     return (0);
 }
@@ -24,10 +24,12 @@ int *shortest_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_result)
 {
     int     instr;
     int     steps;
-    t_lnk   *lst_a_init = NULL;
-    t_lnk   *lst_b_init = NULL;
+    t_lnk   *lst_a_init;
+    t_lnk   *lst_b_init;
 
     instr = ra;
+	lst_a_init = lst_a;
+	lst_b_init = lst_b;
     best_result[1] = 2147483647;
     while (instr <= rrr)
     {
@@ -58,7 +60,7 @@ void    b_dump(t_lnk **lst_a, t_lnk **lst_b)
 	instr = malloc(2 * sizeof(int));
 	if (!instr)
 		error_msg("[b_dump] error malloc");
-    while (lst_b)
+    while (*lst_b)
     {
         instr = shortest_insert(*lst_a, *lst_b, instr);
         while (!can_push(*lst_a, *lst_b))
