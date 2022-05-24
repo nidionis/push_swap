@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/23 22:54:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:37:49 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@ int can_push(t_lnk *lst_a, t_lnk *lst_b)
     return (0);
 }
 
-// return the best instr for reaching
-int *itm_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_result)
+int *itm_insert(t_lnk *lst_a, t_lnk *lst_b)
 {
     int     instr;
     int     steps;
     t_lnk   *lst_a_init;
     t_lnk   *lst_b_init;
+	int		*best_result;
 
+	best_result = malloc(sizeof(int) * 2);
+	if (!best_result)
+		error_msg("[itm_insert] did not malloc");
+	best_result[1] = 2147483647; 
     instr = ra;
 	lst_a_init = lst_a;
 	lst_b_init = lst_b;
@@ -55,78 +59,75 @@ int *itm_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_result)
 	return (best_result);
 }
 
-int	min_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_inst_step)
+int	refresh_best_inst_steps(int *best_inst_step, int instr, int steps, int *instr_steps_itm, int steps_max)
 {
-    t_lnk	**lst_a_cpy;
-    t_lnk	**lst_b_cpy;
-	int		steps;
-	int 	*best_at_step;
-
-	lst_a_cpy = &lst_a;
-	lst_b_cpy = &lst_b;
-	best_at_step = malloc(sizeof(int) * 3);
-	if (!best_at_step)
-		error_msg("[min_in_dir] malloc error");
-	best_at_step[2] = best_inst_step[1];
-	steps = 1;
-	while (steps < best_at_step[2])
+	if (instr_steps_itm[1] + steps < steps_max)
 	{
-		apply_instr(instr, lst_b_cpy, lst_b_cpy, 0);
-		best_at_step = itm_insert(*lst_b_cpy, *lst_b_cpy, best_at_step);
-		if (best_at_step[1] < best_inst_step[1] - steps)
-		{
-			best_at_step[2] = best_at_step[1] + steps;
-		}
-		steps++;
+		best_inst_step[0] = instr;
+		best_inst_step[1] = steps;
+		best_inst_step[2] = instr_steps_itm[0];
+		best_inst_step[3] = instr_steps_itm[1];
 	}
-	if (best_at_step[2] < best_inst_step[1])
-		best_inst_step[1] = best_at_step[2];
-	free(best_at_step);
-	return (steps);
+	free(instr_steps_itm);
+	return (best_inst_step[1] + best_inst_step[3]);
 }
+
+void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_inst_step)
+{
+	int		steps;
+	int		steps_max;
+	int		*instr_steps_item;
+
+	steps = 0;
+	steps_max = best_inst_step[1] + best_inst_step[3];
+	while (++steps < steps_max)
+	{
+		apply_instr(instr, &lst_a, &lst_b, 0);
+		instr_steps_item = itm_insert(lst_a, lst_b);
+		refresh_best_inst_steps(best_inst_step, instr, steps, instr_steps_item, steps_max);
+	}
+}
+
+
+int *best_insert(t_lnk *lst_a, t_lnk *lst_b)
+{
+	int *best_inst_step;
+	int *itm_insert_result;
+	int instr;
+
+	best_inst_step = malloc(sizeof(int) * 4);
+	if (!best_inst_step)
+		error_msg("[best_instert] did not malloc");
+	itm_insert_result = itm_insert(lst_a, lst_b);
+	best_inst_step[0] = 0;
+	best_inst_step[1] = 0;
+	best_inst_step[2] = itm_insert_result[0];
+	best_inst_step[3] = itm_insert_result[1];
+	free(itm_insert_result);
+	instr = ra;
+	while (instr <= rrr)
+	{
+		refresh_in_dir(lst_a, lst_b, instr++, best_inst_step);
+	}
+	return (best_inst_step);
+}
+
 
 void    b_dump(t_lnk **lst_a, t_lnk **lst_b)
 {
-    int *best_instr_step;
-    int min;
-    int instr;
+    int *best_inst_step;
 
-	best_instr_step = malloc(2 * sizeof(int));
-	if (!best_instr_step)
-		error_msg("[b_dump] error malloc");
     while (*lst_b)
     {
-		best_instr_step[1] = 0;
 		if (!can_push(*lst_a, *lst_b))
 		{
-			best_instr_step[1] = 2147483647;
-  	    	best_instr_step = itm_insert(*lst_a, *lst_b, best_instr_step);
-			instr = ra;
-			min = 2147483647;
-			while (instr <= rrr)
-			{
-				min_in_dir(*lst_a, *lst_b, instr, best_instr_step);
-				min = best_instr_step[1];
-				if (best_instr_step[1] > min)
-				{
-					best_instr_step[0] = instr;
-					best_instr_step[1] = min;
-				}
-				instr++;
-			}
-			while (--best_instr_step[1])
-			{
-				apply_instr(best_instr_step[0], lst_a, lst_b, 1);
-			}
-			if (!can_push(*lst_a, *lst_b))
-			{
-				best_instr_step[1] = 2147483647;
-				best_instr_step = itm_insert(*lst_a, *lst_b, best_instr_step);
-				while (!can_push(*lst_a, *lst_b))
-					apply_instr(best_instr_step[0], lst_a, lst_b, 1);
-			}
+			best_inst_step = best_insert(*lst_a, *lst_b);
+			while (best_inst_step[1]--)
+				apply_instr(best_inst_step[0], lst_a, lst_b, 1);
+			while (best_inst_step[3]--)
+				apply_instr(best_inst_step[2], lst_a, lst_b, 1);
 		}
 		apply_instr(pa, lst_a, lst_b, 1);
 	}
-	free(best_instr_step);
+	free(best_inst_step);
 }
