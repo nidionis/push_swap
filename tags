@@ -4,8 +4,6 @@ b_dump	algo.c	/^void    b_dump(t_lnk **lst_a, t_lnk **lst_b)$/
 best_insert	algo.c	/^int *best_insert(t_lnk *lst_a, t_lnk *lst_b)$/
 can_push	algo.c	/^int can_push(t_lnk *lst_a, t_lnk *lst_b)$/
 del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/
-first_load	first_parsing.c	/^void first_load(t_lnk **lst_a, t_lnk **lst_b, int /
-fl_loop	first_parsing.c	/^void	fl_loop(t_lnk **lst_a, t_lnk **lst_b, int max/
 ft_is_sorted	verifications.c	/^int ft_is_sorted(t_lnk *lst)$/
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/
 ft_no_duplicate	verifications.c	/^int ft_no_duplicate(t_lnk *lst)$/
@@ -21,7 +19,6 @@ instr_to_i	apply_instr.c	/^int    instr_to_i(char *str)$/
 is_sorted	verifications.c	/^int is_sorted(t_lnk *lst)$/
 itm_insert	algo.c	/^int *itm_insert(t_lnk *lst_a, t_lnk *lst_b)$/
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/
-load_b	first_parsing.c	/^void load_b(t_lnk **lst_a, t_lnk **lst_b, int max)/
 lst_cpy	get_args.c	/^t_lnk	*lst_cpy(t_lnk *lst)$/
 lst_init_ranks	lnk_fts.c	/^int	lst_init_ranks(t_lnk **lst)$/
 new_load_b	first_parsing.c	/^void new_load_b(t_lnk **lst_a, t_lnk **lst_b, int /
@@ -36,5 +33,6 @@ refresh_in_dir	algo.c	/^void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, in/
 rotate_lst	rotate.c	/^void    rotate_lst(t_lnk **lst)$/
 rrotate_lst	rotate.c	/^void    rrotate_lst(t_lnk **lst)$/
 shortestway_fucking_norminette	reach.c	/^void	shortestway_fucking_norminette(t_lnk **lst, i/
+sort_3_nb	small_lst.c	/^void sort_3_nb(t_lnk **lst_a)$/
 special_item	first_parsing.c	/^int	special_item(t_lnk *lst_a, int max)$/
 swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/

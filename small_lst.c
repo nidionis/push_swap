@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   first_parsing.c                                    :+:      :+:    :+:   */
+/*   small_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 14:16:20 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:49:50 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	special_item(t_lnk *lst_a, int max)
+void sort_3_nb(t_lnk **lst_a)
 {
-	if (lst_a->rank == 0 || lst_a->rank == max)
-		return (1);
-	return (0);
-}
-
-void new_load_b(t_lnk **lst_a, t_lnk **lst_b, int max)
-{
-	int i;
-
-	i = max + 1;
-	while (i--)
+	if ((*lst_a)->rank != 0)
 	{
-		if (special_item(*lst_a, max))
-			apply_instr(ra, lst_a, lst_b, 1);
-		else
+		if ((*lst_a)->next->rank == 1) // 2 1 0
 		{
-			if ((*lst_a)->rank > max / 2)
-				apply_instr(pb, lst_a, lst_b, 1);
-			else
-			{
-				apply_instr(pb, lst_a, lst_b, 1);
-				apply_instr(rb, lst_a, lst_b, 1);
-			}
+			apply_instr(sa, lst_a, NULL, 1);
+			apply_instr(rra, lst_a, NULL, 1);
+		}
+		else if ((*lst_a)->prev->rank == 1) // 2 0 1
+			apply_instr(ra, lst_a, NULL, 1);
+		else if ((*lst_a)->prev->rank == 2) // 1 0 2
+			apply_instr(sa, lst_a, NULL, 1);
+		else // 1 2 0
+			apply_instr(rra, lst_a, NULL, 1);
+	}
+	else
+	{
+		if ((*lst_a)->next->rank != 1)
+		{
+			apply_instr(ra, lst_a, NULL, 1);
+			apply_instr(sa, lst_a, NULL, 1);
+			apply_instr(rra, lst_a, NULL, 1);
 		}
 	}
-	if ((*lst_a)->rank > (*lst_a)->next->rank)
-		apply_instr(sa, lst_a, lst_b, 1);
 }

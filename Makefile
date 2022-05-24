@@ -6,13 +6,13 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/23 13:40:50 by supersko         ###   ########.fr        #
+#    Updated: 2022/05/24 14:28:45 by supersko         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c \
 rotate.c verifications.c swap.c apply_instr.c get_next_line.c \
-first_parsing.c algo.c reach.c # my_algo.c bubble_sort.c # algo_tree.c
+first_parsing.c algo.c reach.c small_lst.c # my_algo.c bubble_sort.c # algo_tree.c
 
 OBJS := ${SRCS:c=o}
 

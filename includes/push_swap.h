@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 13:53:02 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:24:40 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void    b_dump(t_lnk **lst_a, t_lnk **lst_b);
 void	reach_rank(t_lnk **lst, int rank, int direction);
 int	get_shortestway(int rank, t_lnk *lst);
 void new_load_b(t_lnk **lst_a, t_lnk **lst_b, int max);
-
+void sort_3_nb(t_lnk **lst_a);
 
 //
 //void    find_solution(t_lnk *lst_a, t_lnk *lst_b);
