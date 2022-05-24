@@ -6,13 +6,12 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:47:47 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-/*
 int main(int argc, char **argv)
 {
 	t_lnk	*lst_a = NULL;
@@ -35,7 +34,7 @@ int main(int argc, char **argv)
 		instruction = get_next_line(0);
 		ft_printf("%s\n", instruction);
 	}
-	if (ft_is_sorted(lst_a) && lst_b == NULL)
+	if (is_sorted(lst_a) && lst_b == NULL)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
@@ -43,4 +42,3 @@ int main(int argc, char **argv)
 	del_lst(&lst_b);
 	return (0);
 }
-*/

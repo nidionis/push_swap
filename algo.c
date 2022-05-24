@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 13:37:49 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:10:37 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,9 @@ void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_inst_step)
 	{
 		apply_instr(instr, &lst_a, &lst_b, 0);
 		instr_steps_item = itm_insert(lst_a, lst_b);
-		refresh_best_inst_steps(best_inst_step, instr, steps, instr_steps_item, steps_max);
+		steps_max = refresh_best_inst_steps(best_inst_step, instr, steps, instr_steps_item, steps_max);
 	}
 }
-
 
 int *best_insert(t_lnk *lst_a, t_lnk *lst_b)
 {

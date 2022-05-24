@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 14:16:20 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 15:04:01 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	special_item(t_lnk *lst_a, int max)
 {
-	if (lst_a->rank == 0 || lst_a->rank == max)
+	if (lst_a->rank == 0 || lst_a->rank == max || lst_a->rank == max / 2)
 		return (1);
 	return (0);
 }
@@ -39,6 +39,5 @@ void new_load_b(t_lnk **lst_a, t_lnk **lst_b, int max)
 			}
 		}
 	}
-	if ((*lst_a)->rank > (*lst_a)->next->rank)
-		apply_instr(sa, lst_a, lst_b, 1);
+	sort_3_nb(lst_a, max);
 }
