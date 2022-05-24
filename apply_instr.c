@@ -6,13 +6,13 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 16:17:56 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:17:09 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void    fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
+void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
 {
 	if (instr == sa)
 		swap_lst(lst_a);
@@ -59,9 +59,9 @@ void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)
 		i_to_instr(instr);
 }
 
-int fucking_normi_2(char *str)
+int	fucking_normi_2(char *str)
 {
-	int ret;
+	int	ret;
 
 	if (!ft_strncmp(str, "ra", 2))
 		ret = ra;
@@ -80,10 +80,10 @@ int fucking_normi_2(char *str)
 	return (ret);
 }
 
-int    instr_to_i(char *str)
+int	instr_to_i(char *str)
 {
-	int ret;
-	
+	int	ret;
+
 	ret = -1;
 	if (!(*str))
 		ret = 0;
@@ -104,7 +104,7 @@ int    instr_to_i(char *str)
 	return (ret);
 }
 
-void i_to_instr(int i)
+void	i_to_instr(int i)
 {
 	if (i == rrr)
 		ft_printf("rrr");

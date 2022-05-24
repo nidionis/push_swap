@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 15:04:01 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:15:25 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	special_item(t_lnk *lst_a, int max)
 	return (0);
 }
 
-void new_load_b(t_lnk **lst_a, t_lnk **lst_b, int max)
+void	load_b(t_lnk **lst_a, t_lnk **lst_b, int max)
 {
-	int i;
+	int	i;
 
 	i = max + 1;
 	while (i--)

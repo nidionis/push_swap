@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/23 13:41:26 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 18:28:15 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	reach_rank(t_lnk **lst, int rank, int direction)
 	}
 }
 
-void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, int *found, int *rank)
+void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, \
+	int *found, int *rank)
 {
 	if (!(*found))
 		(*step_nb)++;
@@ -44,7 +45,7 @@ int	get_shortestway(int rank, t_lnk *lst)
 	int		step_nb;
 	int		len;
 	t_lnk	*last_lnk;
-	int found;
+	int		found;
 
 	if (!lst)
 		error_msg("[get_shortestway] empty list passed");
@@ -52,7 +53,6 @@ int	get_shortestway(int rank, t_lnk *lst)
 	len = 1;
 	last_lnk = lst;
 	found = 0;
-
 	if (lst->rank == rank)
 		return (0);
 	lst = lst->next;

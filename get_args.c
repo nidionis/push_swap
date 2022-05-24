@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/17 22:43:06 by ndionis          ###   ########.fr       */
+/*   Updated: 2022/05/24 19:34:37 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_lnk	*get_args_allinone(char *str)
 		error_msg(NULL);
 	splited = ft_split(str, ' ');
 	lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
-	lst_a = lnk;	
+	lst_a = lnk;
 	while (argc--)
 	{
 		lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
@@ -42,7 +42,7 @@ t_lnk	*get_args(int argc, char *argv[])
 	argc -= 2;
 	argv = &argv[1];
 	lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-	lst_a = lnk;	
+	lst_a = lnk;
 	while (argc--)
 	{
 		lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);

@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/23 18:18:32 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/24 19:11:58 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,27 @@ void	del_lst(t_lnk **lst)
 	}
 }
 
+void	loop(t_lnk *lnk, t_lnk *l_i, int *max)
+{
+	if (lnk->nb > l_i->nb)
+	{
+		(lnk->rank)++;
+		if (*max < lnk->rank)
+			*max = lnk->rank;
+	}
+	l_i = l_i->next;
+	while (l_i != lnk)
+	{
+		if (lnk->nb > l_i->nb)
+		{
+			(lnk->rank)++;
+			if (*max < lnk->rank)
+				*max = lnk->rank;
+		}
+		l_i = l_i->next;
+	}
+}
+
 // return ind max
 int	lst_init_ranks(t_lnk **lst)
 {
@@ -69,20 +90,14 @@ int	lst_init_ranks(t_lnk **lst)
 
 	lnk = *lst;
 	max = 0;
-	do
+	l_i = lnk;
+	loop(lnk, l_i, &max);
+	lnk = lnk->next;
+	while (lnk != *lst)
 	{
 		l_i = lnk;
-		do
-		{
-			if (lnk->nb > l_i->nb)
-			{
-				(lnk->rank)++;
-				if (max < lnk->rank)
-					max = lnk->rank;
-			}
-			l_i = l_i->next;
-		} while (l_i != lnk);
+		loop(lnk, l_i, &max);
 		lnk = lnk->next;
-	} while (lnk != *lst);
+	}
 	return (max);
 }
