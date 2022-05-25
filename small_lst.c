@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:26:09 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:56:34 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,22 @@ void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b)
 	i = 0;
 	while (i++ < 5)
 	{
-		if ((*lst_a)->rank > 2)
+		if ((*lst_a)->rank < 3)
+		{
 			apply_instr(pb, lst_a, lst_b, 1);
+			if ((*lst_b)->rank < (*lst_b)->next->rank)
+				apply_instr(sb, lst_a, lst_b, 1);
+		}
 		else
 			apply_instr(ra, lst_a, lst_b, 1);
+		if ((*lst_a)->next == (*lst_a))
+			break ;
 	}
-	sort_3_nb(lst_a, 2);
+	if ((*lst_a)->rank > (*lst_a)->next->rank)
+		apply_instr(sa, lst_a, lst_b, 1);
+	apply_instr(pa, lst_a, lst_b, 1);
 	if ((*lst_b)->rank < (*lst_b)->next->rank)
 		apply_instr(sb, lst_a, lst_b, 1);
 	apply_instr(pa, lst_a, lst_b, 1);
 	apply_instr(pa, lst_a, lst_b, 1);
-	apply_instr(ra, lst_a, lst_b, 1);
-	apply_instr(ra, lst_a, lst_b, 1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:31:41 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:40:11 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	print_lst(t_lnk *lst, char *header)
 	ft_printf("***************\n");
 	if (lst)
 	{
-		ft_printf("-%d-\t", lst->nb);
+		ft_printf("%d\t", lst->nb);
 		lnk_ind = lst->next;
 		while (lnk_ind != lst)
 		{
-			ft_printf("-%d-\t", lnk_ind->nb);
+			ft_printf("%d\t", lnk_ind->nb);
 			lnk_ind = lnk_ind->next;
 		}
 	}

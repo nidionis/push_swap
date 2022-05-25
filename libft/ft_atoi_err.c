@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi_err.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:13:11 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 19:42:30 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/25 21:06:10 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,11 @@ static long int	c_to_i(char c)
 	return ((long int) c - (long int) '0');
 }
 
-int	ft_atoi_err(char *str)
+long int	ft_atoi_err(char *str)
 {
-	int			sign;
+	long int	sign;
 	long int	nbr;
 
-	if (!str)
-		return (0);
 	sign = 1;
 	while (ft_isspace(*str))
 		str++;
@@ -41,16 +39,19 @@ int	ft_atoi_err(char *str)
 		if (*str++ == '-')
 			sign *= -1;
 	nbr = 0;
+	if (!ft_isdigit(*str))
+		return (2147483649);
 	while (ft_isdigit(*str))
 	{
 		nbr *= 10;
 		nbr += (long int) c_to_i(*str++);
-		if (nbr > 2147483647)
-			error_msg("[ft_atoi_err] not int value");
+		if (nbr > 2147483648)
+			return (nbr);
 	}
 	if (*str)
-		error_msg(NULL);
-	return (sign * nbr);
+		return (2147483649);
+	nbr *= sign;
+	return (nbr);
 }
 
 /*

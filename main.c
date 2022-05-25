@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:36:00 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/25 20:19:56 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)
 {
-	if (ind_max == 1)
+	if (ind_max == 0)
+		del_lst(&lst_a);
+	else if (ind_max == 1)
 		sort_2_nb(&lst_a);
 	else if (ind_max == 2)
 		sort_3_nb(&lst_a, ind_max);
@@ -36,16 +38,18 @@ int	main(int argc, char **argv)
 	t_lnk	*lst_b;
 	int		ind_max;
 
+	lst_b = NULL;
 	if (argc < 2)
-		error_msg(NULL);
+		return (1);
 	else if (argc == 2)
 		lst_a = get_args_allinone(argv[1]);
 	else
 		lst_a = get_args(argc, argv);
 	ind_max = lst_init_ranks(&lst_a);
 	if (!ft_no_duplicate(lst_a))
-		error_msg("Error: duplicated items");
-	select_algo(lst_a, lst_a, ind_max);
+		error_msg(NULL);
+	if (!is_sorted(lst_a))
+		select_algo(lst_a, lst_b, ind_max);
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 }

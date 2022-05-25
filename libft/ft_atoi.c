@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 16:48:16 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:35:11 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	ft_atoi(const char *str0)
 		nbr *= 10;
 		nbr += (long int) c_to_i(*str++);
 	}
-	return (sign * nbr);
+	nbr *= sign;
+	return ((int)nbr);
 }
 
 /*

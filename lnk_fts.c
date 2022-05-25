@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lnk_fts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:11:58 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:32:25 by ndionis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ t_lnk	*lnk_init(t_lnk *lnk)
 	return (lnk);
 }
 
-t_lnk	*ft_new_lnk(int nb, int ind, int rank)
+t_lnk	*ft_new_lnk(long int nb, int ind, int rank)
 {
 	t_lnk		*lnk;
 
 	lnk = (t_lnk *) malloc(sizeof(t_lnk));
 	if (!lnk)
 		error_msg("Error creating a new link\n");
-	lnk->nb = nb;
+	lnk->nb = (int)nb;
 	lnk->ind = ind;
 	lnk->rank = rank;
 	lnk_init(lnk);
