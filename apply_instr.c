@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:17:09 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:49:17 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,17 +63,17 @@ int	fucking_normi_2(char *str)
 {
 	int	ret;
 
-	if (!ft_strncmp(str, "ra", 2))
+	if (!ft_strncmp(str, "ra\n", 3))
 		ret = ra;
-	else if (!ft_strncmp(str, "rb", 2))
+	else if (!ft_strncmp(str, "rb\n", 3))
 		ret = rb;
-	else if (!ft_strncmp(str, "sa", 2))
+	else if (!ft_strncmp(str, "sa\n", 3))
 		ret = sa;
-	else if (!ft_strncmp(str, "sb", 2))
+	else if (!ft_strncmp(str, "sb\n", 3))
 		ret = sb;
-	else if (!ft_strncmp(str, "pa", 2))
+	else if (!ft_strncmp(str, "pa\n", 3))
 		ret = pa;
-	else if (!ft_strncmp(str, "pb", 2))
+	else if (!ft_strncmp(str, "pb\n", 3))
 		ret = pb;
 	else
 		ret = -1;
@@ -87,15 +87,15 @@ int	instr_to_i(char *str)
 	ret = -1;
 	if (!(*str))
 		ret = 0;
-	else if (!ft_strncmp(str, "rrr", 3))
+	else if (!ft_strncmp(str, "rrr\n", 4))
 		ret = rrr;
-	else if (!ft_strncmp(str, "rra", 3))
+	else if (!ft_strncmp(str, "rra\n", 4))
 		ret = rra;
-	else if (!ft_strncmp(str, "rrb", 3))
+	else if (!ft_strncmp(str, "rrb\n", 4))
 		ret = rrb;
-	else if (!ft_strncmp(str, "rr", 2))
+	else if (!ft_strncmp(str, "rr\n", 3))
 		ret = rr;
-	else if (!ft_strncmp(str, "ss", 2))
+	else if (!ft_strncmp(str, "ss\n", 3))
 		ret = ss;
 	else
 		ret = fucking_normi_2(str);
