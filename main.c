@@ -6,7 +6,7 @@
 /*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/25 20:19:56 by ndionis          ###   ########.fr       */
+/*   Updated: 2022/05/28 15:10:21 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	else if (argc == 2)
+	{
+		if (!(*argv[1]))
+			exit(0);
 		lst_a = get_args_allinone(argv[1]);
+	}
 	else
 		lst_a = get_args(argc, argv);
 	ind_max = lst_init_ranks(&lst_a);

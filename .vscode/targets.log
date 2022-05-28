@@ -1,0 +1,391 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+
+# Make data base, printed on Sat May 28 14:50:20 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 28)
+LIBFT_AR = libft.a
+# environment
+VSCODE_LOG_NATIVE = false
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# makefile (from `Makefile', line 32)
+INCLUDES = -I./$(HEADERS) $(LIBS) -I./$(LIBFTPRINTF_DIR) -I./$(LIBFT_DIR)
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/ndionis/push_swap
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 33)
+CFLAGS = -Wall -Wextra -Werror
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+VSCODE_VERBOSE_LOGGING = true
+# makefile (from `Makefile', line 17)
+OBJS := get_args.o lnk_fts.o pushing_fts.o print_lst.o rotate.o verifications.o swap.o apply_instr.o get_next_line.o first_parsing.o algo.o reach.o small_lst.o b_dump.o
+# environment
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000cb540032s9/T/vscode-ipc-f39920da-4712-4f80-97aa-e9bc018cdfe0.sock
+# makefile (from `Makefile', line 27)
+LIBFTPRINTF_DIR = libftprintf/
+# environment
+VSCODE_CWD = /
+# environment
+PATH = /Users/ndionis/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+LaunchInstanceID = C68D57D0-CED4-4CA2-8479-FC701210C7F8
+# environment
+VSCODE_LOG_STACK = false
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# makefile (from `Makefile', line 26)
+LIBFT_DIR = libft/
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.eEucKaDxmw/Listeners
+# automatic
+%F = $(notdir $%)
+# environment
+VSCODE_PIPE_LOGGING = true
+# environment
+PWD = /Users/ndionis/push_swap
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+MANPATH = /usr/local/man:
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/ndionis
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/ndionis/Library/Application Support/Code/CachedData/b5205cc8eb4fbaa726835538cd82372cc0222d43
+# environment
+LOGNAME = ndionis
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+# makefile (from `Makefile', line 25)
+HEADERS = includes
+# environment
+ZSH = /Users/ndionis/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# makefile (from `Makefile', line 13)
+SRCS = get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c get_next_line.c first_parsing.c algo.c reach.c small_lst.c b_dump.c
+# environment
+SHLVL = 1
+# makefile (from `Makefile', line 35)
+CC = gcc
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = supersko
+# makefile
+.DEFAULT_GOAL := all
+# makefile (from `Makefile', line 22)
+NAME = push_swap
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n000cb540032s9/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/ndionis/Library/Application Support/Code/1.65.0-main.sock
+# makefile (from `Makefile', line 23)
+DEBUG_NAME = a.out
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+MAIL = ndionis@student.42mulhouse.fr
+# makefile (from `Makefile', line 19)
+MAIN = main.c
+# makefile (from `Makefile', line 24)
+BONUS_NAME = checker
+# environment
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+__CF_USER_TEXT_ENCODING = 0x18B29:0x0:0x0
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# makefile (from `Makefile', line 20)
+BONUS_MAIN = checker.c
+# environment
+EDITOR = mvim
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# makefile (from `Makefile', line 30)
+LIBS = $(LIBFTPRINTF_DIR)$(LIBFTPRINTF_AR) $(LIBFT_DIR)$(LIBFT_AR)
+# environment
+SECURITYSESSIONID = 186a6
+# makefile (from `Makefile', line 29)
+LIBFTPRINTF_AR = libftprintf.a
+# automatic
+^F = $(notdir $^)
+# default
+SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+VSCODE_PID = 45970
+# variable set hash-table stats:
+# Load=86/1024=8%, Rehash=0, Collisions=3/115=3%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777226, inode 788079): 25 files, no impossibilities.
+
+# 25 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+%.o: %.c
+#  commands to execute (from `Makefile', line 46):
+	${CC} ${CFLAGS} $(INCLUDES) -c $<
+	
+
+# 1 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+all: push_swap
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/2=0%
+
+debugfile: ctags
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 78):
+	$(CC) $(CFLAGS) -g $(SRCS) $(MAIN) $(INCLUDES) -o $(DEBUG_NAME) -fsanitize=address
+	
+
+.PHONY: ctags all clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+bonusdebugfile: ctags
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 81):
+	$(CC) $(CFLAGS) -g $(SRCS) $(BONUS_MAIN) $(INCLUDES) -o $(BONUS_NAME) -fsanitize=address
+	
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-05-24 20:06:18
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+make_libftprintf:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := make_libftprintf
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/10=10%
+#  commands to execute (from `Makefile', line 52):
+	make -C libftprintf
+	
+
+debug: debugfile
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 84):
+	lldb $(DEBUG_NAME)
+	rm $(DEBUG_NAME)
+	
+
+test: ctags
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 73):
+	${CC} $(CFLAGS) $(INCLUDES) ${SRCS} -o $(NAME)
+	./$(NAME)
+	rm a.out
+	
+
+bonus: make_libftprintf make_libft
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 43):
+	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(BONUS_MAIN) -o $(BONUS_NAME)
+	
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+ 
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 65):
+	rm -f $(NAME)
+	rm -f $(BONUS_NAME)
+	make fclean -C libft
+	make fclean -C libftprintf
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 59):
+	rm -f $(OBJS)
+	rm -f $(DEBUG_NAME)
+	make clean -C libft
+	make clean -C libftprintf
+	
+
+push_swap: make_libftprintf make_libft
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/2=0%
+#  commands to execute (from `Makefile', line 40):
+	$(CC) $(CFLAGS) $(SRCS) $(MAIN) $(INCLUDES) -o $(NAME)
+	
+
+make_libft:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 49):
+	make -C libft
+	
+
+ctags:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 56):
+	ctags *
+	
+
+# files hash-table stats:
+# Load=17/1024=2%, Rehash=0, Collisions=0/49=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Sat May 28 14:50:20 2022
+
+ 

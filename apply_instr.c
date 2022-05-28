@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/26 13:49:17 by supersko         ###   ########.fr       */
+/*   Updated: 2022/05/26 13:56:14 by supersko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
 	}
 	else
 	{
-		error_msg("[apply_instr] instruction probably wrong");
+		error_msg(NULL);
 	}
 }
 
@@ -100,7 +100,7 @@ int	instr_to_i(char *str)
 	else
 		ret = fucking_normi_2(str);
 	if (ret == -1)
-		error_msg("[instr_to_i] Error");
+		error_msg(NULL);
 	return (ret);
 }
 
@@ -129,6 +129,6 @@ void	i_to_instr(int i)
 	else if (i == ss)
 		ft_printf("ss");
 	else
-		error_msg("[i_to_instr]: instruction non reconnue\n");
+		error_msg(NULL);
 	ft_printf("\n");
 }

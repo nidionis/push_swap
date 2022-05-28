@@ -1,0 +1,7 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/ndionis/push_swap'
+make -C libftprintf
+make -C libft
+gcc -Wall -Wextra -Werror get_args.c lnk_fts.c pushing_fts.c print_lst.c rotate.c verifications.c swap.c apply_instr.c get_next_line.c first_parsing.c algo.c reach.c small_lst.c b_dump.c main.c -I./includes libftprintf/libftprintf.a libft/libft.a -I./libftprintf/ -I./libft/ -o push_swap
+make: Leaving directory `/Users/ndionis/push_swap'
+ 
