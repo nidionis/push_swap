@@ -6,7 +6,7 @@
 /*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/25 19:34:48 by ndionis          ###   ########.fr       */
+/*   Updated: 2024/11/17 22:19:33 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,22 @@ typedef struct s_lnk
 	struct s_lnk	*prev;
 }	t_lnk;
 
-enum	e_instr { INSTR_MIN = 1, sa = INSTR_MIN, sb, pa, pb, ra, rb, rra, rrb, \
-rr, rrr, ss, INSTR_MAX = ss };
+enum	e_instr
+{
+	INSTR_MIN = 1,
+	sa = INSTR_MIN,
+	sb,
+	pa,
+	pb,
+	ra,
+	rb,
+	rra,
+	rrb,
+	rr,
+	rrr,
+	ss,
+	INSTR_MAX = ss
+};
 
 char	*ft_realloc_cat(char *line, char c, int *len);
 char	*get_next_line(int fd);
@@ -40,7 +54,7 @@ int		is_median(t_lnk *lst_a, int max);
 int		is_sorted(t_lnk *lst);
 int		lst_init_ranks(t_lnk **lst);
 int		special_item(t_lnk *lst_a, int max);
-t_lnk	*ft_new_lnk(long int nb, int ind, int rank);
+t_lnk	*ft_new_lnk(long int n, int i, int rank);
 t_lnk	*get_args(int argc, char *argv[]);
 t_lnk	*get_args_allinone(char *str);
 t_lnk	*lnk_init(t_lnk *lnk);
