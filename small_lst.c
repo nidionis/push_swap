@@ -6,7 +6,7 @@
 /*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/25 20:56:34 by ndionis          ###   ########.fr       */
+/*   Updated: 2024/11/26 16:05:53 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b)
 	}
 	if ((*lst_a)->rank > (*lst_a)->next->rank)
 		apply_instr(sa, lst_a, lst_b, 1);
-	if ((*lst_a)->rank < (*lst_a)->next->rank)
+	if ((*lst_b)->rank < (*lst_b)->next->rank)
 		apply_instr(sb, lst_a, lst_b, 1);
 	apply_instr(pa, lst_a, lst_b, 1);
 	apply_instr(pa, lst_a, lst_b, 1);
