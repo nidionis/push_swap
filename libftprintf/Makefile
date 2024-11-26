@@ -6,7 +6,7 @@
 #    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr        #
+#    Updated: 2024/11/26 15:00:21 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ $(LIBFT_DIR)$(LIBFT):
 
 clean:
 	rm -rf $(OBJS)
-	rm $(LIBFT)
 	$(MAKE) clean -C $(LIBFT_DIR)
 
 fclean: clean
