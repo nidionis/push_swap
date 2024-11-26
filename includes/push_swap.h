@@ -6,7 +6,7 @@
 /*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/17 22:19:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:52:14 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ enum	e_instr
 
 char	*ft_realloc_cat(char *line, char c, int *len);
 char	*get_next_line(int fd);
-int		*best_insert(t_lnk *lst_a, t_lnk *lst_b);
+int		*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *b);
 int		*itm_insert(t_lnk *lst_a, t_lnk *lst_b);
 int		can_push(t_lnk *lst_a, t_lnk *lst_b);
 int		ft_no_duplicate(t_lnk *lst);

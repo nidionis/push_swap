@@ -6,19 +6,17 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:33:00 by supersko         ###   ########.fr       */
+/*   Updated: 2024/11/26 14:53:18 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	*best_insert(t_lnk *lst_a, t_lnk *lst_b)
+int	*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_inst_step)
 {
-	int	*best_inst_step;
 	int	*itm_insert_result;
 	int	instr;
 
-	best_inst_step = malloc(sizeof(int) * 4);
 	if (!best_inst_step)
 		error_msg("[best_instert] did not malloc");
 	itm_insert_result = itm_insert(lst_a, lst_b);
@@ -37,13 +35,15 @@ int	*best_insert(t_lnk *lst_a, t_lnk *lst_b)
 
 void	b_dump(t_lnk **lst_a, t_lnk **lst_b)
 {
+	int	b[4];
 	int	*best_inst_step;
 
+	best_inst_step = b;
 	while (*lst_b)
 	{
 		if (!can_push(*lst_a, *lst_b))
 		{
-			best_inst_step = best_insert(*lst_a, *lst_b);
+			best_inst_step = best_insert(*lst_a, *lst_b, best_inst_step);
 			while (best_inst_step[1]--)
 				apply_instr(best_inst_step[0], lst_a, lst_b, 1);
 			while (best_inst_step[3]--)
@@ -51,5 +51,4 @@ void	b_dump(t_lnk **lst_a, t_lnk **lst_b)
 		}
 		apply_instr(pa, lst_a, lst_b, 1);
 	}
-	free(best_inst_step);
 }
