@@ -1,14 +1,28 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:36:41 by supersko         ###   ########.fr       */
+/*   Created: 2022/03/04 10:36:39 by supersko          #+#    #+#             */
+/*   Updated: 2024/10/31 13:49:01 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "libft.h"
+
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*new;
+
+	new = malloc(sizeof(*new));
+	if (!new)
+	{
+		ft_errmsg("[ft_lstnew] malloc crashed\n");
+		return (NULL);
+	}
+	new->content = content;
+	new->next = NULL;
+	return (new);
+}

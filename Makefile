@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: supersko <supersko@student.42.fr>          +#+  +:+       +#+         #
+#    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2022/05/24 20:06:18 by supersko         ###   ########.fr        #
+#    Updated: 2025/01/19 00:05:46 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,22 +24,20 @@ DEBUG_NAME = a.out
 BONUS_NAME = checker
 HEADERS = includes
 LIBFT_DIR = libft/
-LIBFTPRINTF_DIR = libftprintf/
 LIBFT_AR = libft.a
-LIBFTPRINTF_AR = libftprintf.a
-LIBS = $(LIBFTPRINTF_DIR)$(LIBFTPRINTF_AR) $(LIBFT_DIR)$(LIBFT_AR)
+LIBS = $(LIBFT_DIR)$(LIBFT_AR)
 
-INCLUDES = -I./$(HEADERS) $(LIBS) -I./$(LIBFTPRINTF_DIR) -I./$(LIBFT_DIR)
+INCLUDES = -I./$(HEADERS) $(LIBS) -I./$(LIBFT_DIR)
 CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
 
 all: ${NAME}
 
-${NAME}: make_libftprintf make_libft
+${NAME}:  make_libft
 	$(CC) $(CFLAGS) $(SRCS) $(MAIN) $(INCLUDES) -o $(NAME)
 
-bonus: make_libftprintf make_libft
+bonus:  make_libft
 	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(BONUS_MAIN) -o $(BONUS_NAME)
 	
 %.o: %.c
@@ -48,10 +46,6 @@ bonus: make_libftprintf make_libft
 make_libft:
 	make -C libft
 
-make_libftprintf:
-	make -C libftprintf
-
-.PHONY: ctags
 ctags:
 	ctags *
 
@@ -59,13 +53,11 @@ clean:
 	rm -f $(OBJS)
 	rm -f $(DEBUG_NAME)
 	make clean -C libft
-	make clean -C libftprintf
 
 fclean: clean
 	rm -f $(NAME)
 	rm -f $(BONUS_NAME)
 	make fclean -C libft
-	make fclean -C libftprintf
 
 re: fclean all
 

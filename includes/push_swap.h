@@ -3,20 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/18 19:15:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:08:55 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <libft.h>
-# include <libftprintf.h>
 
 #define FIRST_INSTR 1
 #define SECOND_INSTR 3
+#define NB_FIRST_INSTR 0
+#define NB_SECOND_INSTR 2
+
+#define ROTATE 0
+#define REVERSE_ROTATE 1
+
+#define MODULO_GIVING_ROTATE_INSTRUCTIONS 1
+#define MODULO_GIVING_REVERSE_ROTATE_INSTRUCTIONS 0
 
 #define PRINT 1
 
@@ -82,10 +89,10 @@ void	push_item(t_lnk *lnk, t_lnk **lst);
 void	reach_rank(t_lnk **lst, int rank, int direction);
 void	rotate_lst(t_lnk **lst);
 void	rrotate_lst(t_lnk **lst);
-int		refresh_best_inst_steps(int *best_inst_step, int instr, int steps, \
+int		refresh_best_combs(int *best_comb, int instr, int steps, \
 	int	*instr_steps_itm);
 void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \
-	int *best_inst_step);
+	int *best_comb);
 void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max);
 void	sort_2_nb(t_lnk **lst_a);
 void	sort_3_nb(t_lnk **lst_a, int max);
