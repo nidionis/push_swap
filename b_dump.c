@@ -6,7 +6,7 @@
 /*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/26 14:53:18 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:17:01 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ int	*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_inst_step)
 	return (best_inst_step);
 }
 
+int	nb_instruction(int **b, int INSTR)
+{
+	return ((*b)[INSTR]--);
+}
+
 void	b_dump(t_lnk **lst_a, t_lnk **lst_b)
 {
 	int	b[4];
@@ -44,10 +49,10 @@ void	b_dump(t_lnk **lst_a, t_lnk **lst_b)
 		if (!can_push(*lst_a, *lst_b))
 		{
 			best_inst_step = best_insert(*lst_a, *lst_b, best_inst_step);
-			while (best_inst_step[1]--)
-				apply_instr(best_inst_step[0], lst_a, lst_b, 1);
-			while (best_inst_step[3]--)
-				apply_instr(best_inst_step[2], lst_a, lst_b, 1);
+			while (nb_instruction(&best_inst_step, FIRST_INSTR))
+				apply_instr(best_inst_step[0], lst_a, lst_b, PRINT);
+			while (nb_instruction(&best_inst_step, SECOND_INSTR))
+				apply_instr(best_inst_step[2], lst_a, lst_b, PRINT);
 		}
 		apply_instr(pa, lst_a, lst_b, 1);
 	}

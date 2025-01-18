@@ -6,7 +6,7 @@
 /*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/26 14:52:14 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/18 19:15:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define PUSH_SWAP_H
 # include <libft.h>
 # include <libftprintf.h>
+
+#define FIRST_INSTR 1
+#define SECOND_INSTR 3
+
+#define PRINT 1
 
 typedef struct s_lnk
 {

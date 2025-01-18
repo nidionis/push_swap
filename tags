@@ -1,0 +1,245 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/nidionis/push_swap/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	//
+$(LIBFT_DIR)$(LIBFT)	libftprintf/Makefile	/^$(LIBFT_DIR)$(LIBFT):$/;"	t
+$(NAME)	libftprintf/Makefile	/^$(NAME): $(OBJS) $(LIBFT_DIR)$(LIBFT)$/;"	t
+${NAME}	Makefile	/^${NAME}: make_libftprintf make_libft$/;"	t
+${NAME}	libft/Makefile	/^${NAME}: ${OBJS}$/;"	t
+%.o	Makefile	/^%.o: %.c$/;"	t
+%.o	libft/Makefile	/^%.o: %.c$/;"	t
+0	.vscode/launch.json	/^        "args": [""],$/;"	s	array:configurations.0.args
+0	.vscode/launch.json	/^    {$/;"	o	array:configurations
+0	.vscode/tasks.json	/^                "$gcc"$/;"	s	array:tasks.0.problemMatcher
+0	.vscode/tasks.json	/^                "-fdiagnostics-color=always",$/;"	s	array:tasks.0.args
+0	.vscode/tasks.json	/^        {$/;"	o	array:tasks
+1	.vscode/tasks.json	/^                "-g",$/;"	s	array:tasks.0.args
+2	.vscode/tasks.json	/^                "${file}",$/;"	s	array:tasks.0.args
+3	.vscode/tasks.json	/^                "-o",$/;"	s	array:tasks.0.args
+4	.vscode/tasks.json	/^                "${fileDirname}\/${fileBasenameNoExtension}"$/;"	s	array:tasks.0.args
+AR	libftprintf/Makefile	/^AR = ar rsu$/;"	m
+BONUS_MAIN	Makefile	/^BONUS_MAIN = checker.c$/;"	m
+BONUS_NAME	Makefile	/^BONUS_NAME = checker$/;"	m
+CC	Makefile	/^CC = gcc$/;"	m
+CC	libft/Makefile	/^CC = gcc$/;"	m
+CC	libftprintf/Makefile	/^CC = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+CFLAGS	libft/Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
+DEBUG_NAME	Makefile	/^DEBUG_NAME = a.out$/;"	m
+FIRST_INSTR	includes/push_swap.h	/^#define FIRST_INSTR /;"	d
+HEADER	libftprintf/Makefile	/^HEADER = libftprintf.h$/;"	m
+HEADERS	Makefile	/^HEADERS = includes$/;"	m
+INCLUDES	Makefile	/^INCLUDES = -I.\/$(HEADERS) $(LIBS) -I.\/$(LIBFTPRINTF_DIR) -I.\/$(LIBFT_DIR)$/;"	m
+INSTR_MAX	includes/push_swap.h	/^	INSTR_MAX = ss$/;"	e	enum:e_instr
+INSTR_MIN	includes/push_swap.h	/^	INSTR_MIN = 1,$/;"	e	enum:e_instr
+LIBFT	libftprintf/Makefile	/^LIBFT = libft.a$/;"	m
+LIBFTPRINTF_AR	Makefile	/^LIBFTPRINTF_AR = libftprintf.a$/;"	m
+LIBFTPRINTF_DIR	Makefile	/^LIBFTPRINTF_DIR = libftprintf\/$/;"	m
+LIBFTPRINTF_H	includes/libftprintf.h	/^# define LIBFTPRINTF_H$/;"	d
+LIBFTPRINTF_H	libftprintf/libftprintf.h	/^# define LIBFTPRINTF_H$/;"	d
+LIBFT_AR	Makefile	/^LIBFT_AR = libft.a$/;"	m
+LIBFT_DIR	Makefile	/^LIBFT_DIR = libft\/$/;"	m
+LIBFT_DIR	libftprintf/Makefile	/^LIBFT_DIR = ..\/libft\/$/;"	m
+LIBFT_H	includes/libft.h	/^# define LIBFT_H$/;"	d
+LIBFT_H	libft/libft.h	/^# define LIBFT_H$/;"	d
+LIBS	Makefile	/^LIBS = $(LIBFTPRINTF_DIR)$(LIBFTPRINTF_AR) $(LIBFT_DIR)$(LIBFT_AR)$/;"	m
+MAIN	Makefile	/^MAIN = main.c$/;"	m
+MIMode	.vscode/launch.json	/^        "MIMode": "lldb"$/;"	s	object:configurations.0
+NAME	Makefile	/^NAME = push_swap$/;"	m
+NAME	libft/Makefile	/^NAME = libft.a$/;"	m
+NAME	libftprintf/Makefile	/^NAME = libftprintf.a$/;"	m
+OBJS	Makefile	/^OBJS := ${SRCS:c=o}$/;"	m
+OBJS	libft/Makefile	/^OBJS := ${SRCS:c=o}$/;"	m
+OBJS	libftprintf/Makefile	/^OBJS = ${SRCS:.c=.o}$/;"	m
+PRINT	includes/push_swap.h	/^#define PRINT /;"	d
+PUSH_SWAP_H	includes/push_swap.h	/^# define PUSH_SWAP_H$/;"	d
+SECOND_INSTR	includes/push_swap.h	/^#define SECOND_INSTR /;"	d
+SRCS	Makefile	/^SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c \\$/;"	m
+SRCS	libft/Makefile	/^SRCS = error_msg.c ft_atoi.c ft_atoi_err.c ft_bzero.c ft_calloc.c \\$/;"	m
+SRCS	libftprintf/Makefile	/^SRCS = ft_print_arg.c ft_print_chars.c ft_print_hexa.c ft_print_int.c ft_printf.c$/;"	m
+all	Makefile	/^all: ${NAME}$/;"	t
+all	libft/Makefile	/^all: ${NAME}$/;"	t
+all	libftprintf/Makefile	/^all: $(NAME)$/;"	t
+apply_instr	apply_instr.c	/^void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)$/;"	f	typeref:typename:void
+args	.vscode/launch.json	/^        "args": [""],$/;"	a	object:configurations.0
+args	.vscode/tasks.json	/^            "args": [$/;"	a	object:tasks.0
+b_dump	b_dump.c	/^void	b_dump(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
+best_insert	b_dump.c	/^int	*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_inst_step)$/;"	f	typeref:typename:int *
+bonus	Makefile	/^bonus: make_libftprintf make_libft$/;"	t
+bonusdebugfile	Makefile	/^bonusdebugfile: ctags$/;"	t
+c_to_i	libft/ft_atoi.c	/^static long int	c_to_i(char c)$/;"	f	typeref:typename:long int	file:
+c_to_i	libft/ft_atoi_err.c	/^static long int	c_to_i(char c)$/;"	f	typeref:typename:long int	file:
+can_push	algo.c	/^int	can_push(t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:int
+carry_negative	libft/ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, int *len)$/;"	f	typeref:typename:char *	file:
+clean	Makefile	/^clean:$/;"	t
+clean	libft/Makefile	/^clean:$/;"	t
+clean	libftprintf/Makefile	/^clean:$/;"	t
+clean_exit	get_args.c	/^void	clean_exit(t_lnk *lst_a, char **splited)$/;"	f	typeref:typename:void
+command	.vscode/tasks.json	/^            "command": "\/usr\/bin\/gcc",$/;"	s	object:tasks.0
+configurations	.vscode/launch.json	/^    "configurations": [$/;"	a
+ctags	Makefile	/^ctags:$/;"	t
+ctags	libft/Makefile	/^ctags:$/;"	t
+cwd	.vscode/launch.json	/^        "cwd": "${fileDirname}",$/;"	s	object:configurations.0
+cwd	.vscode/tasks.json	/^                "cwd": "${fileDirname}"$/;"	s	object:tasks.0.options
+debug	Makefile	/^debug: debugfile$/;"	t
+debug	libft/Makefile	/^debug: ctags$/;"	t
+debugfile	Makefile	/^debugfile: ctags$/;"	t
+del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/;"	f	typeref:typename:void
+detail	.vscode/tasks.json	/^            "detail": "Task generated by Debugger."$/;"	s	object:tasks.0
+e_instr	includes/push_swap.h	/^enum	e_instr$/;"	g
+environment	.vscode/launch.json	/^        "environment": [],$/;"	a	object:configurations.0
+error_msg	libft/error_msg.c	/^void	error_msg(char *msg)$/;"	f	typeref:typename:void
+externalConsole	.vscode/launch.json	/^        "externalConsole": false,$/;"	b	object:configurations.0
+fclean	Makefile	/^fclean: clean$/;"	t
+fclean	libft/Makefile	/^fclean: clean$/;"	t
+fclean	libftprintf/Makefile	/^fclean: clean$/;"	t
+files.associations	.vscode/settings.json	/^    "files.associations": {$/;"	o
+finishing	checker.c	/^void	finishing(t_lnk *lst_a, t_lnk *lst_b, char *instruction)$/;"	f	typeref:typename:void
+ft_atoi	libft/ft_atoi.c	/^int	ft_atoi(const char *str0)$/;"	f	typeref:typename:int
+ft_atoi_err	libft/ft_atoi_err.c	/^long int	ft_atoi_err(char *str)$/;"	f	typeref:typename:long int
+ft_bzero	libft/ft_bzero.c	/^void	*ft_bzero(void *s, size_t n)$/;"	f	typeref:typename:void *
+ft_calloc	libft/ft_calloc.c	/^void	*ft_calloc(size_t count, size_t size)$/;"	f	typeref:typename:void *
+ft_free_split	libft/ft_split.c	/^void	ft_free_split(char **tab)$/;"	f	typeref:typename:void
+ft_get_next_wd	libft/ft_get_next_wd.c	/^char	*ft_get_next_wd(char *sentence, char sep)$/;"	f	typeref:typename:char *
+ft_intlen	libft/ft_itoa.c	/^static int	ft_intlen(int n)$/;"	f	typeref:typename:int	file:
+ft_is_flag	libftprintf/ft_printf.c	/^int	ft_is_flag(char c)$/;"	f	typeref:typename:int
+ft_isalnum	libft/ft_isalnum.c	/^int	ft_isalnum(int c)$/;"	f	typeref:typename:int
+ft_isalpha	libft/ft_isalpha.c	/^int	ft_isalpha(int c)$/;"	f	typeref:typename:int
+ft_isascii	libft/ft_isascii.c	/^int	ft_isascii(int c)$/;"	f	typeref:typename:int
+ft_isdigit	libft/ft_isdigit.c	/^int	ft_isdigit(int c)$/;"	f	typeref:typename:int
+ft_isprint	libft/ft_isprint.c	/^int	ft_isprint(int c)$/;"	f	typeref:typename:int
+ft_isspace	libft/ft_atoi.c	/^static int	ft_isspace(const char c)$/;"	f	typeref:typename:int	file:
+ft_isspace	libft/ft_atoi_err.c	/^static int	ft_isspace(const char c)$/;"	f	typeref:typename:int	file:
+ft_itoa	libft/ft_itoa.c	/^char	*ft_itoa(int n)$/;"	f	typeref:typename:char *
+ft_memchr	libft/ft_memchr.c	/^void	*ft_memchr(const void *str0, int c, size_t n)$/;"	f	typeref:typename:void *
+ft_memcmp	libft/ft_memcmp.c	/^int	ft_memcmp(const void *s1, const void *s2, size_t n)$/;"	f	typeref:typename:int
+ft_memcpy	libft/ft_memcpy.c	/^void	*ft_memcpy(void *dst, const void *src, unsigned int len)$/;"	f	typeref:typename:void *
+ft_memmove	libft/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void *
+ft_memset	libft/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f	typeref:typename:void *
+ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(long int nb, int ind, int rank)$/;"	f	typeref:typename:t_lnk *
+ft_no_duplicate	verifications.c	/^int	ft_no_duplicate(t_lnk *lst)$/;"	f	typeref:typename:int
+ft_print_addr	libftprintf/ft_print_hexa.c	/^size_t	ft_print_addr(void *num)$/;"	f	typeref:typename:size_t
+ft_print_arg	libftprintf/ft_print_arg.c	/^size_t	ft_print_arg(va_list *ap, char *after_percent)$/;"	f	typeref:typename:size_t
+ft_print_char	libftprintf/ft_print_chars.c	/^size_t	ft_print_char(char c)$/;"	f	typeref:typename:size_t
+ft_print_hexa	libftprintf/ft_print_hexa.c	/^size_t	ft_print_hexa(long long unsigned int num, char CASE)$/;"	f	typeref:typename:size_t
+ft_print_int	libftprintf/ft_print_int.c	/^size_t	ft_print_int(int num)$/;"	f	typeref:typename:size_t
+ft_print_str	libftprintf/ft_print_chars.c	/^size_t	ft_print_str(char *str)$/;"	f	typeref:typename:size_t
+ft_print_unsigned	libftprintf/ft_print_int.c	/^size_t	ft_print_unsigned(unsigned int num)$/;"	f	typeref:typename:size_t
+ft_printf	libftprintf/ft_printf.c	/^int	ft_printf(const char *str0, ...)$/;"	f	typeref:typename:int
+ft_putchar_fd	libft/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
+ft_putendl_fd	libft/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_putnbr_fd	libft/ft_putnbr_fd.c	/^void	ft_putnbr_fd(int n, int fd)$/;"	f	typeref:typename:void
+ft_putstr_fd	libft/ft_putstr_fd.c	/^void	ft_putstr_fd(char *s, int fd)$/;"	f	typeref:typename:void
+ft_realloc_cat	get_next_line.c	/^char	*ft_realloc_cat(char *line, char c, int *len)$/;"	f	typeref:typename:char *
+ft_recursive_print_addr	libftprintf/ft_print_hexa.c	/^void	ft_recursive_print_addr(long long unsigned int num, size_t *len)$/;"	f	typeref:typename:void
+ft_recursive_print_hexa	libftprintf/ft_print_hexa.c	/^void	ft_recursive_print_hexa(long long unsigned int num,$/;"	f	typeref:typename:void
+ft_recursive_print_int	libftprintf/ft_print_int.c	/^size_t	ft_recursive_print_int(int num, size_t *len)$/;"	f	typeref:typename:size_t
+ft_recursive_print_unsigned	libftprintf/ft_print_int.c	/^size_t	ft_recursive_print_unsigned(unsigned int num, size_t *len)$/;"	f	typeref:typename:size_t
+ft_split	libft/ft_split.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
+ft_strchr	libft/ft_strchr.c	/^char	*ft_strchr(const char *str, int c)$/;"	f	typeref:typename:char *
+ft_strdup	libft/ft_strdup.c	/^char	*ft_strdup(const char *s1)$/;"	f	typeref:typename:char *
+ft_striteri	libft/ft_striteri.c	/^void	ft_striteri(char *s, void (*f)(unsigned int, char *))$/;"	f	typeref:typename:void
+ft_strjoin	libft/ft_strjoin.c	/^char	*ft_strjoin(char const *s1, char const *s2)$/;"	f	typeref:typename:char *
+ft_strlcat	libft/ft_strlcat.c	/^size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
+ft_strlcpy	libft/ft_strlcpy.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)$/;"	f	typeref:typename:size_t
+ft_strlen	libft/ft_strlen.c	/^size_t	ft_strlen(const char *str)$/;"	f	typeref:typename:size_t
+ft_strlen_char	libft/ft_strlen_char.c	/^size_t	ft_strlen_char(char *str, char sep)$/;"	f	typeref:typename:size_t
+ft_strmapi	libft/ft_strmapi.c	/^char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))$/;"	f	typeref:typename:char *
+ft_strncmp	libft/ft_strncmp.c	/^int	ft_strncmp(const char *s1, const char *s2, size_t n)$/;"	f	typeref:typename:int
+ft_strnlen	libft/ft_strlcat.c	/^static unsigned int	ft_strnlen(char *s, size_t max)$/;"	f	typeref:typename:unsigned int	file:
+ft_strnstr	libft/ft_strnstr.c	/^char	*ft_strnstr(const char *str, const char *ndl, size_t len)$/;"	f	typeref:typename:char *
+ft_strrchr	libft/ft_strrchr.c	/^char	*ft_strrchr(char *s, int c)$/;"	f	typeref:typename:char *
+ft_strtrim	libft/ft_strtrim.c	/^char	*ft_strtrim(char const *s1, char const *set)$/;"	f	typeref:typename:char *
+ft_substr	libft/ft_substr.c	/^char	*ft_substr(char const *s, unsigned int start, size_t len)$/;"	f	typeref:typename:char *
+ft_tolower	libft/ft_tolower.c	/^int	ft_tolower(int c)$/;"	f	typeref:typename:int
+ft_toupper	libft/ft_toupper.c	/^int	ft_toupper(int c)$/;"	f	typeref:typename:int
+ft_wd_count	libft/ft_wd_count.c	/^int	ft_wd_count(char *str, char sep)$/;"	f	typeref:typename:int
+fucking_normi_2	apply_instr.c	/^int	fucking_normi_2(char *str)$/;"	f	typeref:typename:int
+fucking_norminette	apply_instr.c	/^void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
+get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/;"	f	typeref:typename:t_lnk *
+get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/;"	f	typeref:typename:t_lnk *
+get_next_line	get_next_line.c	/^char	*get_next_line(int fd)$/;"	f	typeref:typename:char *
+get_shortestway	reach.c	/^int	get_shortestway(int rank, t_lnk *lst)$/;"	f	typeref:typename:int
+group	.vscode/tasks.json	/^            "group": {$/;"	o	object:tasks.0
+i_to_instr	apply_instr.c	/^void	i_to_instr(int i)$/;"	f	typeref:typename:void
+ind	includes/push_swap.h	/^	int				ind;$/;"	m	struct:s_lnk	typeref:typename:int
+instr_to_i	apply_instr.c	/^int	instr_to_i(char *str)$/;"	f	typeref:typename:int
+isDefault	.vscode/tasks.json	/^                "isDefault": true$/;"	b	object:tasks.0.group
+is_median	small_lst.c	/^int	is_median(t_lnk *lst_a, int max)$/;"	f	typeref:typename:int
+is_sorted	verifications.c	/^int	is_sorted(t_lnk *lst)$/;"	f	typeref:typename:int
+is_trimable	libft/ft_strtrim.c	/^static int	is_trimable(char c, char *trimset)$/;"	f	typeref:typename:int	file:
+itm_insert	algo.c	/^int	*itm_insert(t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:int *
+itm_insert_loop	algo.c	/^void	itm_insert_loop(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_result)$/;"	f	typeref:typename:void
+kind	.vscode/tasks.json	/^                "kind": "build",$/;"	s	object:tasks.0.group
+label	.vscode/tasks.json	/^            "label": "C\/C++: gcc build active file",$/;"	s	object:tasks.0
+lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/;"	f	typeref:typename:t_lnk *
+load_b	first_parsing.c	/^void	load_b(t_lnk **lst_a, t_lnk **lst_b, int max)$/;"	f	typeref:typename:void
+loop	lnk_fts.c	/^void	loop(t_lnk *lnk, t_lnk *l_i, int *max)$/;"	f	typeref:typename:void
+lst_init_ranks	lnk_fts.c	/^int	lst_init_ranks(t_lnk **lst)$/;"	f	typeref:typename:int
+main	checker.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
+main	main.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
+make_libft	Makefile	/^make_libft:$/;"	t
+make_libftprintf	Makefile	/^make_libftprintf:$/;"	t
+make_str	libft/ft_itoa.c	/^static void	make_str(int *n, char *n_str, int i)$/;"	f	typeref:typename:void	file:
+make_tab	libft/ft_split.c	/^static char	**make_tab(char **ret, char const *s, char c, unsigned int nb_wd)$/;"	f	typeref:typename:char **	file:
+my_loc	libft/ft_itoa.c	/^static char	*my_loc(int len)$/;"	f	typeref:typename:char *	file:
+name	.vscode/launch.json	/^        "name": "(lldb) Launch",$/;"	s	object:configurations.0
+nb	includes/push_swap.h	/^	int				nb;$/;"	m	struct:s_lnk	typeref:typename:int
+nb_instruction	b_dump.c	/^int	nb_instruction(int **b, int INSTR)$/;"	f	typeref:typename:int
+next	includes/push_swap.h	/^	struct s_lnk	*next;$/;"	m	struct:s_lnk	typeref:struct:s_lnk *
+options	.vscode/tasks.json	/^            "options": {$/;"	o	object:tasks.0
+pa	includes/push_swap.h	/^	pa,$/;"	e	enum:e_instr
+pb	includes/push_swap.h	/^	pb,$/;"	e	enum:e_instr
+pop_item	pushing_fts.c	/^t_lnk	*pop_item(t_lnk **lst)$/;"	f	typeref:typename:t_lnk *
+prev	includes/push_swap.h	/^	struct s_lnk	*prev;$/;"	m	struct:s_lnk	typeref:struct:s_lnk *
+print_lst	print_lst.c	/^void	print_lst(t_lnk *lst, char *header)$/;"	f	typeref:typename:void
+print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/;"	f	typeref:typename:void
+printing_loop	libftprintf/ft_printf.c	/^size_t	printing_loop(char *str, va_list *ap)$/;"	f	typeref:typename:size_t
+problemMatcher	.vscode/tasks.json	/^            "problemMatcher": [$/;"	a	object:tasks.0
+program	.vscode/launch.json	/^        "program": "${workspaceFolder}\/a.out",$/;"	s	object:configurations.0
+push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/;"	f	typeref:typename:void
+push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/;"	f	typeref:typename:void
+push_swap.h	.vscode/settings.json	/^        "push_swap.h": "c"$/;"	s	object:files.associations
+ra	includes/push_swap.h	/^	ra,$/;"	e	enum:e_instr
+rank	includes/push_swap.h	/^	int				rank;$/;"	m	struct:s_lnk	typeref:typename:int
+rb	includes/push_swap.h	/^	rb,$/;"	e	enum:e_instr
+re	Makefile	/^re: fclean all$/;"	t
+re	libft/Makefile	/^re: fclean all$/;"	t
+re	libftprintf/Makefile	/^re: fclean all$/;"	t
+reach_rank	reach.c	/^void	reach_rank(t_lnk **lst, int rank, int direction)$/;"	f	typeref:typename:void
+refresh_best_inst_steps	algo.c	/^int	refresh_best_inst_steps(int *best_inst_step, int instr, int steps, \\$/;"	f	typeref:typename:int
+refresh_in_dir	algo.c	/^void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \\$/;"	f	typeref:typename:void
+request	.vscode/launch.json	/^        "request": "launch",$/;"	s	object:configurations.0
+rotate_lst	rotate.c	/^void	rotate_lst(t_lnk **lst)$/;"	f	typeref:typename:void
+rr	includes/push_swap.h	/^	rr,$/;"	e	enum:e_instr
+rra	includes/push_swap.h	/^	rra,$/;"	e	enum:e_instr
+rrb	includes/push_swap.h	/^	rrb,$/;"	e	enum:e_instr
+rrotate_lst	rotate.c	/^void	rrotate_lst(t_lnk **lst)$/;"	f	typeref:typename:void
+rrr	includes/push_swap.h	/^	rrr,$/;"	e	enum:e_instr
+s_lnk	includes/push_swap.h	/^typedef struct s_lnk$/;"	s
+sa	includes/push_swap.h	/^	sa = INSTR_MIN,$/;"	e	enum:e_instr
+sb	includes/push_swap.h	/^	sb,$/;"	e	enum:e_instr
+select_algo	main.c	/^void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)$/;"	f	typeref:typename:void
+shortestway_fucking_norminette	reach.c	/^void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, \\$/;"	f	typeref:typename:void
+sort_2_nb	small_lst.c	/^void	sort_2_nb(t_lnk **lst_a)$/;"	f	typeref:typename:void
+sort_3_nb	small_lst.c	/^void	sort_3_nb(t_lnk **lst_a, int max)$/;"	f	typeref:typename:void
+sort_4_nb	small_lst.c	/^void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
+sort_5_nb	small_lst.c	/^void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
+special_item	first_parsing.c	/^int	special_item(t_lnk *lst_a, int max)$/;"	f	typeref:typename:int
+ss	includes/push_swap.h	/^	ss,$/;"	e	enum:e_instr
+stopAtEntry	.vscode/launch.json	/^        "stopAtEntry": false,$/;"	b	object:configurations.0
+swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/;"	f	typeref:typename:void
+t_lnk	includes/push_swap.h	/^}	t_lnk;$/;"	t	typeref:struct:s_lnk
+tasks	.vscode/tasks.json	/^    "tasks": [$/;"	a
+test	Makefile	/^test: ctags$/;"	t
+test	libft/Makefile	/^test: ctags$/;"	t
+type	.vscode/launch.json	/^        "type": "cppdbg",$/;"	s	object:configurations.0
+type	.vscode/tasks.json	/^            "type": "cppbuild",$/;"	s	object:tasks.0
+version	.vscode/tasks.json	/^    "version": "2.0.0"$/;"	s

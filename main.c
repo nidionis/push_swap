@@ -6,7 +6,7 @@
 /*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/26 15:11:16 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/18 14:31:32 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	{
 		if (!(*argv[1]))
 			exit(0);
-		lst_a = get_args_allinone(argv[1]);
+		//lst_a = get_args_allinone(argv[1]);
 	}
 	else
 		lst_a = get_args(argc, argv);
