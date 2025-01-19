@@ -248,8 +248,8 @@ sort_2_nb	small_lst.c	/^void	sort_2_nb(t_lnk **lst_a)$/;"	f	typeref:typename:voi
 sort_3_nb	small_lst.c	/^void	sort_3_nb(t_lnk **lst_a, int max)$/;"	f	typeref:typename:void
 sort_4_nb	small_lst.c	/^void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
 sort_5_nb	small_lst.c	/^void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
-special_item	smart_load.c	/^int	special_item(t_lnk *lst_a, int max)$/;"	f	typeref:typename:int
-special_items	smart_load.c	/^int	special_items(t_lnk *lst_a, int i1, int i2)$/;"	f	typeref:typename:int
+is_min_or_max	smart_load.c	/^int	is_min_or_max(t_lnk *lst_a, int max)$/;"	f	typeref:typename:int
+is_min_or_maxs	smart_load.c	/^int	is_min_or_maxs(t_lnk *lst_a, int i1, int i2)$/;"	f	typeref:typename:int
 ss	include/push_swap.h	/^	ss,$/;"	e	enum:e_instr
 stopAtEntry	.vscode/launch.json	/^        "stopAtEntry": false,$/;"	b	object:configurations.0
 swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/;"	f	typeref:typename:void

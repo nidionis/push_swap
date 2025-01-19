@@ -6,12 +6,13 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 11:12:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:19:54 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/*
 void	init_best_comb(int *best_comb, int *itm_insert_result, t_lnk *lst_a, t_lnk *lst_b)
 {
 	if (!best_comb)
@@ -61,3 +62,4 @@ void	b_dump(t_lnk **lst_a, t_lnk **lst_b)
 		apply_instr(pa, lst_a, lst_b, 1);
 	}
 }
+*/

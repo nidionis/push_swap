@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 11:11:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:00:44 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,6 @@ typedef struct s_lnk
 	struct s_lnk	*prev;
 }	t_lnk;
 
-/*
-	F **ckinlove my enum
-*/
 enum	e_instr
 {
 	ROTATE_MIN = 2,
@@ -69,6 +66,11 @@ enum	e_instr
 };
 int get_min(t_lnk *lst);
 int get_max(t_lnk *lst);
+int get_softmin_a(t_lnk *lst);
+int get_softmax_a(t_lnk *lst);
+int	reach_rank_lst_b(t_lnk **lst, int rank, int direction, int to_print);
+int	reach_rank_lst_a(t_lnk **lst, int rank, int direction, int to_print);
+int	get_shortestway(t_lnk *lst, int rank);
 
 int load_to_by(t_lnk **lst_a, t_lnk **lst_b, int target_rk, int intermediate_target);
 int reach_to_by(t_lnk **lst_a, t_lnk **lst_b, int target_rk, int intermediate_target, int to_print);
@@ -85,8 +87,8 @@ int		instr_to_i(char *str);
 int		is_median(t_lnk *lst_a, int max);
 int		is_sorted(t_lnk *lst);
 int		lst_init_ranks(t_lnk **lst);
-//int		special_item(t_lnk *lst_a, int max);
-int	special_item(t_lnk *lst_a, int i1, int i2);
+//int		is_min_or_max(t_lnk *lst_a, int max);
+int	is_min_or_max(t_lnk *lst_a, int i1, int i2);
 t_lnk	*ft_new_lnk(long int n, int i, int rank);
 t_lnk	*get_args(int argc, char *argv[]);
 t_lnk	*get_args_allinone(char *str);

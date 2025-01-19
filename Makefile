@@ -6,67 +6,57 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/19 09:20:29 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/20 00:35:07 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = *.c
-
-OBJS := ${SRCS:c=o}
-
-#MAIN = main.c
-BONUS_MAIN = checker.c
-
-NAME = push_swap
-DEBUG_NAME = a.out
-BONUS_NAME = checker
-HEADERS = -I./include -I./libft/include
-LIBFT_DIR = libft/
-LIBFT_AR = libft.a
-LIBS = $(LIBFT_DIR)$(LIBFT_AR)
-
-INCLUDES = $(HEADERS) -L./$(LIBFT_DIR) -L include $(LIBS) -I./$(LIBFT_DIR)
-CFLAGS = -Wall -Wextra -Werror
-
+# Compiler and Flags
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+HEADERS = -I./include -I./libft/include
+LIBFT_DIR = -Llibft
+LIBFT_AR = -lft
+LIBS = $(LIBFT_DIR) $(LIBFT_AR)
 
-all: ${NAME}
+# Folders and Files
+SRC_DIR = src
+OBJ_DIR = obj
+SRCS = $(filter-out $(SRC_DIR)/main.c, $(wildcard $(SRC_DIR)/*.c))
+OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+MAIN = main.c
+NAME = push_swap
 
-${NAME}:  make_libft
-	$(CC) $(CFLAGS) $(SRCS) $(MAIN) $(INCLUDES) -o $(NAME)
+# Rules
+.PHONY: all clean fclean re make_libft
 
-bonus:  make_libft
-	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(BONUS_MAIN) -o $(BONUS_NAME)
-	
-%.o: %.c
-	${CC} ${CFLAGS} $(INCLUDES) -c $<
+all: $(NAME)
 
+# Create executable
+$(NAME): make_libft $(OBJ_DIR) $(OBJS)
+	$(CC) $(CFLAGS) $(HEADERS) $(OBJS) $(MAIN) -o $(NAME) $(LIBS)
+
+# Create obj directory and compile source files into obj directory
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+
+# Ensure obj directory exists
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+# Build libft
 make_libft:
-	make -C libft
+	$(MAKE) -C libft
 
-ctags:
-	ctags -R .
-
+# Clean object files
 clean:
-	rm -f $(OBJS)
-	rm -f $(DEBUG_NAME)
-	make clean -C libft
+	rm -rf $(OBJ_DIR)
+	$(MAKE) clean -C libft
 
+# Full clean (including binary)
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(BONUS_NAME)
-	make fclean -C libft
+	$(MAKE) fclean -C libft
 
+# Rebuild everything
 re: fclean all
-
-test: ctags
-	${CC} $(INCLUDES) $(SRCS) $(MAIN) $(INCLUDES) -o $(NAME)
-	./$(NAME)
-	rm a.out
-
-debug: clean
-	$(CC) $(CFLAGS) -g $(SRCS) $(MAIN) $(INCLUDES) -o $(DEBUG_NAME)
-	lldb $(DEBUG_NAME)
-	rm $(DEBUG_NAME)
-
-.PHONY: all clean fclean re

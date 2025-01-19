@@ -6,11 +6,13 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 11:06:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:14:10 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+/*
 
 int	can_push_a(t_lnk *lst_a, t_lnk *lst_b)
 {
@@ -107,3 +109,4 @@ void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \
 			instr_steps_item);
 	}
 }
+*/
