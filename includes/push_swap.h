@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:28:28 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:04:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 #define MODULO_GIVING_REVERSE_ROTATE_INSTRUCTIONS 0
 
 #define PRINT 1
+
+#define ISSPACE " \t\f\n\r\v"
 
 typedef struct s_lnk
 {

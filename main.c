@@ -6,11 +6,50 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:08:23 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+int ft_isspace(char c)
+{
+	return (!(!ft_strchr(ISSPACE, c)));
+}
+
+int c_to_i(char c)
+{
+	if (ft_isdigit(c))
+		return (c - '0');
+	return (INT_MIN);
+}
+
+long int       ft_atoi_err(char *str)
+{
+	long int        sign;
+	long int        nbr;
+
+	sign = 1;
+	while (ft_isspace(*str))
+	        str++;
+	if (*str == '-' || *str == '+')
+	        if (*str++ == '-')
+	                sign *= -1;
+	nbr = 0;
+	if (!ft_isdigit(*str))
+	        return (2147483649);
+	while (ft_isdigit(*str))
+	{
+	        nbr *= 10;
+	        nbr += (long int) c_to_i(*str++);
+	        if (nbr > 2147483648)
+	                return (nbr);
+	}
+	if (*str)
+	        return (2147483649);
+	nbr *= sign;
+	return (nbr);
+}
 
 void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)
 {
