@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/19 03:59:44 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/19 09:20:29 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ fclean: clean
 re: fclean all
 
 test: ctags
-	${CC} $(CFLAGS) $(INCLUDES) ${SRCS} -o $(NAME)
+	${CC} $(INCLUDES) $(SRCS) $(MAIN) $(INCLUDES) -o $(NAME)
 	./$(NAME)
 	rm a.out
 

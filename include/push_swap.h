@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:57:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 09:08:00 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 #define MODULO_GIVING_ROTATE_INSTRUCTIONS 1
 #define MODULO_GIVING_REVERSE_ROTATE_INSTRUCTIONS 0
 
+#define MAX 3
+#define MEDIANE 2
+#define LOWEST 1
+/* pour du debug */
+#define MAYBE_A_WEAKNESS 0
+
 #define PRINT 1
 #define QUIET 0
 
@@ -40,21 +46,26 @@ typedef struct s_lnk
 	struct s_lnk	*prev;
 }	t_lnk;
 
+/*
+	F **ckinlove my enum
+*/
 enum	e_instr
 {
-	INSTR_MIN = 1,
+	ROTATE_MIN = 2,
+	INSTR_MIN = 0,
 	sa = INSTR_MIN,
-	sb,
 	pa,
-	pb,
+	rra = ROTATE_MIN,
 	ra,
+	rrr,
 	rb,
-	rra,
 	rrb,
 	rr,
-	rrr,
+	sb,
+	pb,
 	ss,
-	INSTR_MAX = ss
+	INSTR_MAX = ss,
+	ROTATE_MAX = rr,
 };
 
 long int       ft_atoi_err(char *str);
@@ -105,5 +116,6 @@ void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_lst(t_lnk **lst);
 int	is_in_lst(t_lnk *lst);
+int reach_to_by(t_lnk **lst_a, int target_rank, int intermediate_target, int to_print);
 
 #endif

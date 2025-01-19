@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:57:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 07:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,14 @@ void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)
 		sort_5_nb(&lst_a, &lst_b);
 	else
 	{
-		load_b(&lst_a, &lst_b, ind_max);
+		reach_to_by(&lst_a, 0, ind_max, PRINT);
+		//load_b(&lst_a, &lst_b, ind_max);
 		//b_dump(&lst_a, &lst_b);
 	}
 	reach_rank(&lst_a, 0, get_shortestway(lst_a, 0), PRINT);
 }
 
-int	pusw_swpap(int argc, char **argv)
+int	push_swap(int argc, char **argv)
 {
 	t_lnk	*lst_a;
 	t_lnk	*lst_b;
@@ -87,12 +88,12 @@ int	pusw_swpap(int argc, char **argv)
 		//lst_a = get_args_allinone(argv[1]);
 	}
 	lst_a = get_args(argc, argv);
-	print_lst_byrank(lst_a, "aaa");
 	if (!lst_a)
 		return (1);
 	ind_max = lst_init_ranks(&lst_a);
 	if (ft_is_duplicate(lst_a))
 		return (ft_errmsg("error\n"), 1);
+	print_lst_byrank(lst_a, "aaa");
 	if (!is_sorted(lst_a))
 		select_algo(lst_a, lst_b, ind_max);
 	del_lst(&lst_a);
@@ -100,21 +101,35 @@ int	pusw_swpap(int argc, char **argv)
 	return (0);
 }
 
+int	testing_env(int argc, char **argv)
+{
+	t_lnk	*lst_a;
+	t_lnk	*lst_b;
+	int		ind_max;
+
+	lst_b = NULL;
+	if (argc < 2)
+		return (1);
+	else if (argc == 2)
+		return (0);
+	lst_a = get_args(argc, argv);
+	if (!lst_a)
+		return (1);
+	ind_max = lst_init_ranks(&lst_a);
+	if (ft_is_duplicate(lst_a))
+		return (ft_errmsg("error\n"), 1);
+	print_lst_byrank(lst_a, "before selecting algo");
+	if (!is_sorted(lst_a))
+	{
+		reach_to_by(&lst_a, 0, ind_max, PRINT);
+	}
+	print_lst_byrank(lst_a, "after algo");
+	del_lst(&lst_a);
+	del_lst(&lst_b);
+	return (0);
+}
 
 int	main(int argc, char *argv[])
 {
-	t_lnk	*lst;
-	t_lnk	*lnk_ind;
-	int		i;
-
-	lst = NULL;
-	i = 1;
-	while (i < argc)
-	{
-		lnk_ind = ft_new_lnk(ft_atoi(argv[i]), i, 0);
-		push_item(lnk_ind, &lst);
-		i++;
-	}
-	printf("ft_is_duplicate ? %d\n", ft_is_duplicate(lst));
-	return (0);
+	return (testing_env(argc, argv));
 }

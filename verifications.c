@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:56:38 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 09:00:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	is_in_lst(t_lnk *lst)
 	}
 	return (FALSE);
 }
+
 int	ft_is_duplicate(t_lnk *lst)
 {
 	t_lnk	*lnk_ind1;

@@ -6,13 +6,13 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 04:17:40 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 09:34:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
+void	foret_de_ifs(int instr, t_lnk **lst_a, t_lnk **lst_b)
 {
 	if (instr == sa)
 		swap_lst(lst_a);
@@ -34,7 +34,7 @@ void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
 	}
 	else
 	{
-		ft_errmsg("error\n");
+		ft_errmsg("[instr_not_set]\n");
 	}
 }
 
@@ -54,12 +54,12 @@ void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)
 	else if (instr == pb)
 		push(lst_a, lst_b);
 	else
-		fucking_norminette(instr, lst_a, lst_b);
+		foret_de_ifs(instr, lst_a, lst_b);
 	if (to_print)
 		i_to_instr(instr);
 }
 
-int	fucking_normi_2(char *str)
+int	foret_de_ifs_2(char *str)
 {
 	int	ret;
 
@@ -98,7 +98,7 @@ int	instr_to_i(char *str)
 	else if (!ft_strncmp(str, "ss\n", 3))
 		ret = ss;
 	else
-		ret = fucking_normi_2(str);
+		ret = foret_de_ifs_2(str);
 	if (ret == -1)
 		ft_errmsg("error\n");
 	return (ret);
