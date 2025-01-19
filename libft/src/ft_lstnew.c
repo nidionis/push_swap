@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 10:36:39 by supersko          #+#    #+#             */
-/*   Updated: 2024/10/31 13:49:01 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_list	*ft_lstnew(void *content)
 	new = malloc(sizeof(*new));
 	if (!new)
 	{
-		ft_errmsg("[ft_lstnew] malloc crashed\n");
+		ft_ft_errmsg("[ft_lstnew] malloc crashed\n");
 		return (NULL);
 	}
 	new->content = content;

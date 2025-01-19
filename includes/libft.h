@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 18:03:26 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/25 19:27:18 by ndionis          ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t		ft_strlen_char(char *str, char sep);
 int			ft_wd_count(char *str, char sep);
 long int	ft_atoi_err(char *str_nb);
 char		*ft_get_next_wd(char *sentence, char sep);
-void		error_msg(char *msg);
+void		ft_errmsg(char *msg);
 char		**ft_split(char const *s, char c);
 void		ft_free_split(char **tab);
 char		*ft_itoa(int n);

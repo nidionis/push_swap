@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/18 22:35:09 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 01:31:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	special_item(t_lnk *lst_a, int max)
 
 void	load_b(t_lnk **lst_a, t_lnk **lst_b, int max)
 {
-	int	i;
+	//int	i;
 
 	while (!is_sorted(*lst_a))
 	{
@@ -29,7 +29,8 @@ void	load_b(t_lnk **lst_a, t_lnk **lst_b, int max)
 			apply_instr(ra, lst_a, lst_b, 1);
 		else
 		{
-			reach_load_ncile(lst_a, lst_b, max_ncile);
+			//reach_load_ncile(lst_a, lst_b, max_ncile);
+			return ;
 		}
 	}
 }

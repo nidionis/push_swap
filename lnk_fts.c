@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lnk_fts.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/25 19:32:25 by ndionis          ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_lnk	*lnk_init(t_lnk *lnk)
 		lnk->prev = lnk;
 	}
 	else
-		error_msg("[lnk_init] NULL passed in params");
+		ft_errmsg("[lnk_init] NULL passed in params");
 	return (lnk);
 }
 
@@ -30,7 +30,7 @@ t_lnk	*ft_new_lnk(long int nb, int ind, int rank)
 
 	lnk = (t_lnk *) malloc(sizeof(t_lnk));
 	if (!lnk)
-		error_msg("Error creating a new link\n");
+		ft_errmsg("Error creating a new link\n");
 	lnk->nb = (int)nb;
 	lnk->ind = ind;
 	lnk->rank = rank;

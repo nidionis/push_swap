@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -86,7 +86,7 @@ static int	print_item(va_list ap, char c)
 	return (2);
 }
 
-int	ft_printf(const char *str, ...)
+int	printf(const char *str, ...)
 {
 	va_list	ap;
 	int		ret_val;

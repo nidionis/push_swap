@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/18 21:33:40 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	*itm_insert(t_lnk *lst_a, t_lnk *lst_b)
 
 	best_result = malloc(sizeof(int) * 2);
 	if (!best_result)
-		error_msg("[itm_insert] did not malloc");
+		ft_errmsg("[itm_insert] did not malloc");
 	best_result[1] = 2147483647;
 	instr = ra;
 	lst_a_init = lst_a;

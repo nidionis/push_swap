@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:15:10 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/19 01:30:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	finishing(t_lnk *lst_a, t_lnk *lst_b, char *instruction)
 {
 	if (is_sorted(lst_a) && lst_b == NULL)
-		ft_printf("OK\n");
+		printf("OK\n");
 	else
-		ft_printf("KO\n");
+		printf("KO\n");
 	free(instruction);
 	del_lst(&lst_a);
 	del_lst(&lst_b);
@@ -31,14 +31,15 @@ int	main(int argc, char **argv)
 	int		ind_max;
 
 	if (argc < 2)
-		error_msg(NULL);
+		ft_errmsg(NULL);
 	else if (argc == 2)
 		lst_a = get_args_allinone(argv[1]);
 	else
 		lst_a = get_args(argc, argv);
 	ind_max = lst_init_ranks(&lst_a);
+	(void)ind_max;
 	if (!ft_no_duplicate(lst_a))
-		error_msg("Error: duplicated items");
+		ft_errmsg("Error: duplicated items");
 	instruction = get_next_line(0);
 	while (instruction && *instruction != '\n')
 	{

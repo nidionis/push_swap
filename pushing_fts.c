@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushing_fts.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:32:32 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:15:30 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	push_item(t_lnk *lnk, t_lnk **lst)
 		}
 	}
 	if (!lnk)
-		ft_printf("[push item] pushing non existing link\n");
+		printf("[push item] pushing non existing link\n");
 }
 
 t_lnk	*pop_item(t_lnk **lst)

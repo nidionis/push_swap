@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 10:36:39 by supersko          #+#    #+#             */
-/*   Updated: 2024/11/16 15:47:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 			buff->next = new;
 	}
 	else
-		ft_errmsg(\
+		ft_ft_errmsg(\
 			"[ft_lstadd_back] passing null args, cannot you do better ?\n");
 }

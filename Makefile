@@ -6,13 +6,11 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/19 00:05:46 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/19 01:29:06 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c \
-rotate.c verifications.c swap.c apply_instr.c get_next_line.c \
-first_parsing.c algo.c reach.c small_lst.c b_dump.c
+SRCS = *.c
 
 OBJS := ${SRCS:c=o}
 

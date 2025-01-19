@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errmsg.c                                        :+:      :+:    :+:   */
+/*   ft_ft_errmsg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_errmsg(char *str)
+void	ft_ft_errmsg(char *str)
 {
 	write (2, str, ft_strlen(str));
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndionis <ndionis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/18 14:31:32 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, char **argv)
 		lst_a = get_args(argc, argv);
 	ind_max = lst_init_ranks(&lst_a);
 	if (!ft_no_duplicate(lst_a))
-		error_msg(NULL);
+		ft_errmsg(NULL);
 	if (!is_sorted(lst_a))
 		select_algo(lst_a, lst_b, ind_max);
 	del_lst(&lst_a);

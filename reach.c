@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/18 22:12:54 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	get_shortestway(int rank, t_lnk *lst)
 	int		found;
 
 	if (!lst)
-		error_msg("[get_shortestway] empty list passed");
+		ft_errmsg("[get_shortestway] empty list passed");
 	step_nb = 0;
 	len = 1;
 	last_lnk = lst;
@@ -76,7 +76,7 @@ int	get_shortestway(int rank, t_lnk *lst)
 	while (lst != last_lnk && len++)
 		shortestway_fucking_norminette(&lst, &step_nb, &found, &rank);
 	if (!found)
-		error_msg("[get_shortestway] rank not found");
+		ft_errmsg("[get_shortestway] rank not found");
 	if (step_nb > len / 2)
 		return (step_nb - len);
 	return (step_nb);

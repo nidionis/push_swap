@@ -6,13 +6,14 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:08:55 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:28:28 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <libft.h>
+# include <stdio.h>
 
 #define FIRST_INSTR 1
 #define SECOND_INSTR 3

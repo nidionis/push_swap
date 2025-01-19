@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_instr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/26 13:56:14 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
 	}
 	else
 	{
-		error_msg(NULL);
+		ft_errmsg(NULL);
 	}
 }
 
@@ -100,35 +100,35 @@ int	instr_to_i(char *str)
 	else
 		ret = fucking_normi_2(str);
 	if (ret == -1)
-		error_msg(NULL);
+		ft_errmsg(NULL);
 	return (ret);
 }
 
 void	i_to_instr(int i)
 {
 	if (i == rrr)
-		ft_printf("rrr");
+		printf("rrr");
 	else if (i == rra)
-		ft_printf("rra");
+		printf("rra");
 	else if (i == rrb)
-		ft_printf("rrb");
+		printf("rrb");
 	else if (i == ra)
-		ft_printf("ra");
+		printf("ra");
 	else if (i == rb)
-		ft_printf("rb");
+		printf("rb");
 	else if (i == rr)
-		ft_printf("rr");
+		printf("rr");
 	else if (i == pa)
-		ft_printf("pa");
+		printf("pa");
 	else if (i == pb)
-		ft_printf("pb");
+		printf("pb");
 	else if (i == sa)
-		ft_printf("sa");
+		printf("sa");
 	else if (i == sb)
-		ft_printf("sb");
+		printf("sb");
 	else if (i == ss)
-		ft_printf("ss");
+		printf("ss");
 	else
-		error_msg(NULL);
-	ft_printf("\n");
+		ft_errmsg(NULL);
+	printf("\n");
 }
