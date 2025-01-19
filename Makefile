@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/19 03:04:32 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/19 03:32:11 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ SRCS = *.c
 
 OBJS := ${SRCS:c=o}
 
-MAIN = main.c
+#MAIN = main.c
 BONUS_MAIN = checker.c
 
 NAME = push_swap
@@ -25,7 +25,7 @@ LIBFT_DIR = libft/
 LIBFT_AR = libft.a
 LIBS = $(LIBFT_DIR)$(LIBFT_AR)
 
-INCLUDES = $(HEADERS) -L./$(LIBFT_DIR) $(LIBS) -I./$(LIBFT_DIR)
+INCLUDES = $(HEADERS) -L./$(LIBFT_DIR) -L include $(LIBS) -I./$(LIBFT_DIR)
 CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc
@@ -65,7 +65,7 @@ test: ctags
 	rm a.out
 
 debugfile: ctags
-	$(CC) $(CFLAGS) -g $(SRCS) $(MAIN) $(INCLUDES) -o $(DEBUG_NAME) -fsanitize=address
+	$(CC) $(CFLAGS) -g $(SRCS) $(MAIN) $(INCLUDES) -o $(DEBUG_NAME)
 
 bonusdebugfile: ctags
 	$(CC) $(CFLAGS) -g $(SRCS) $(BONUS_MAIN) $(INCLUDES) -o $(BONUS_NAME) -fsanitize=address

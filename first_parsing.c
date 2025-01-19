@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   first_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:15:25 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/19 03:22:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+/* 
+
+premiere version franchement potable
 
 int	special_item(t_lnk *lst_a, int max)
 {
@@ -41,3 +45,4 @@ void	load_b(t_lnk **lst_a, t_lnk **lst_b, int max)
 	}
 	sort_3_nb(lst_a, max);
 }
+*/
