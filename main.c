@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:49:55 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:57:41 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	pusw_swpap(int argc, char **argv)
 	if (!lst_a)
 		return (1);
 	ind_max = lst_init_ranks(&lst_a);
-	if (ft_duplicate(lst_a))
+	if (ft_is_duplicate(lst_a))
 		return (ft_errmsg("error\n"), 1);
 	if (!is_sorted(lst_a))
 		select_algo(lst_a, lst_b, ind_max);
@@ -115,6 +115,6 @@ int	main(int argc, char *argv[])
 		push_item(lnk_ind, &lst);
 		i++;
 	}
-	printf("is_in_lst ? %d\n", is_in_lst(lst));
+	printf("ft_is_duplicate ? %d\n", ft_is_duplicate(lst));
 	return (0);
 }

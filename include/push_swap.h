@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:45:15 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:57:41 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*get_next_line(int fd);
 int		*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *b);
 int		*itm_insert(t_lnk *lst_a, t_lnk *lst_b);
 int		can_push(t_lnk *lst_a, t_lnk *lst_b);
-int		ft_duplicate(t_lnk *lst);
+int		ft_is_duplicate(t_lnk *lst);
 int		fucking_normi_2(char *str);
 int	get_shortestway(t_lnk *lst, int rank);
 int		instr_to_i(char *str);
