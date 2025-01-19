@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 03:10:12 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 05:26:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 #define MODULO_GIVING_REVERSE_ROTATE_INSTRUCTIONS 0
 
 #define PRINT 1
+#define QUIET 0
 
 #define ISSPACE " \t\f\n\r\v"
 

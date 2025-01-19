@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 04:22:08 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 04:51:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)
 	else
 	{
 		load_b(&lst_a, &lst_b, ind_max);
-		b_dump(&lst_a, &lst_b);
+		//b_dump(&lst_a, &lst_b);
 	}
-	reach_rank(&lst_a, 0, get_shortestway(0, lst_a));
+	reach_rank(&lst_a, 0, get_shortestway(0, lst_a), PRINT);
 }
 
 int	main(int argc, char **argv)
