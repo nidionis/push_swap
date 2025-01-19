@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 05:19:38 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:12:43 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,18 @@ int	reach_rank(t_lnk **lst, int rank, int direction, int to_print)
 	return (nb_instr);
 }
 
-int	next_step(t_lnk **lst, int *is_found, int target_rank)
+int	next_step(t_lnk **lst, int *steps, int *is_found, int target_rank)
 {
 	//if (!(*is_found))
 	(*steps)++;
 	*lst = (*lst)->next;
 	if ((*lst)->rank == target_rank)
-		*is_found = 1;
+		*is_found = TRUE;
 	return (*steps);
 }
 
 // renvoit un negatif si le chemin le plus court est en reverse
-int	get_shortestway(int rank, t_lnk *lst)
+int	get_shortestway(t_lnk *lst, int rank)
 {
 	int		step_nb;
 	int		len;

@@ -125,7 +125,7 @@ ft_memmove	libft/src/ft_memmove.c	/^void	*ft_memmove(void *dst, const void *src,
 ft_memrcpy	libft/src/ft_memmove.c	/^static void	ft_memrcpy(void *dst, const void *src, size_t len)$/;"	f	typeref:typename:void	file:
 ft_memset	libft/src/ft_memset.c	/^void	*ft_memset(void *b, int c, size_t len)$/;"	f	typeref:typename:void *
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(long int nb, int ind, int rank)$/;"	f	typeref:typename:t_lnk *
-ft_no_duplicate	verifications.c	/^int	ft_no_duplicate(t_lnk *lst)$/;"	f	typeref:typename:int
+ft_duplicate	verifications.c	/^int	ft_duplicate(t_lnk *lst)$/;"	f	typeref:typename:int
 ft_putchar_fd	libft/src/ft_putchar_fd.c	/^void	ft_putchar_fd(char c, int fd)$/;"	f	typeref:typename:void
 ft_putendl_fd	libft/src/ft_putendl_fd.c	/^void	ft_putendl_fd(char *s, int fd)$/;"	f	typeref:typename:void
 ft_putibase_fd	libft/src/ft_printf.c	/^static size_t	ft_putibase_fd(long long int n, char *base, size_t base_len, int fd)$/;"	f	typeref:typename:size_t	file:

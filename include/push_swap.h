@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 05:26:13 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:32:10 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ char	*get_next_line(int fd);
 int		*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *b);
 int		*itm_insert(t_lnk *lst_a, t_lnk *lst_b);
 int		can_push(t_lnk *lst_a, t_lnk *lst_b);
-int		ft_no_duplicate(t_lnk *lst);
+int		ft_duplicate(t_lnk *lst);
 int		fucking_normi_2(char *str);
-int		get_shortestway(int rank, t_lnk *lst);
+int	get_shortestway(t_lnk *lst, int rank);
 int		instr_to_i(char *str);
 int		is_median(t_lnk *lst_a, int max);
 int		is_sorted(t_lnk *lst);
@@ -91,7 +91,7 @@ void	print_lst(t_lnk *lst, char *header);
 void	print_lst_byrank(t_lnk *lst, char *header);
 void	push(t_lnk **from_lst, t_lnk **to_lst);
 void	push_item(t_lnk *lnk, t_lnk **lst);
-void	reach_rank(t_lnk **lst, int rank, int direction);
+int		reach_rank(t_lnk **lst, int rank, int direction, int to_print);
 void	rotate_lst(t_lnk **lst);
 void	rrotate_lst(t_lnk **lst);
 int		refresh_best_combs(int *best_comb, int instr, int steps, \
@@ -104,5 +104,6 @@ void	sort_3_nb(t_lnk **lst_a, int max);
 void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_lst(t_lnk **lst);
+int	is_in_lst(t_lnk *lst, int val);
 
 #endif

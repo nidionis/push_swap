@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 04:19:11 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:26:30 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 		lst_a = get_args(argc, argv);
 	ind_max = lst_init_ranks(&lst_a);
 	(void)ind_max;
-	if (!ft_no_duplicate(lst_a))
+	if (!ft_duplicate(lst_a))
 		ft_errmsg("Error: duplicated items");
 	instruction = get_next_line(0);
 	while (instruction && *instruction != '\n')

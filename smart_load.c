@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 05:47:21 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:10:24 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int get_dir(t_lnk *lst, int target_rank, int intermediate_target)
 {
 	int dir;
 
-	dir = get_shortestway(&lst, target_rank);
-	dir += get_shortestway(&lst, intermediate_target);
+	dir = get_shortestway(lst, target_rank);
+	dir += get_shortestway(lst, intermediate_target);
 	return (dir);
 }
 
