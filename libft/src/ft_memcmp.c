@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:50:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	str1 = (unsigned char *)s1;
 	str2 = (unsigned char *)s2;
 	if (!str1 || !str2)
-		ft_ft_errmsg("[ft_memcmp] (!str1 || !str2)\n");
+		ft_errmsg("[ft_memcmp] (!str1 || !str2)\n");
 	while (n--)
 	{
 		if (*str1 != *str2)

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 12:18:26 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:50:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 		lst = NULL;
 	}
 	if (!del)
-		ft_ft_errmsg("[ft_lstdelone] missing del function?\n");
+		ft_errmsg("[ft_lstdelone] missing del function?\n");
 }

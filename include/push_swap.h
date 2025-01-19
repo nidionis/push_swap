@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 02:04:51 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 03:10:12 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ enum	e_instr
 	INSTR_MAX = ss
 };
 
+long int       ft_atoi_err(char *str);
 char	*ft_realloc_cat(char *line, char c, int *len);
 char	*get_next_line(int fd);
 int		*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *b);

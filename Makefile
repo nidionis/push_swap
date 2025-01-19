@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/19 01:29:06 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/19 03:04:32 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ BONUS_MAIN = checker.c
 NAME = push_swap
 DEBUG_NAME = a.out
 BONUS_NAME = checker
-HEADERS = includes
+HEADERS = -I./include -I./libft/include
 LIBFT_DIR = libft/
 LIBFT_AR = libft.a
 LIBS = $(LIBFT_DIR)$(LIBFT_AR)
 
-INCLUDES = -I./$(HEADERS) $(LIBS) -I./$(LIBFT_DIR)
+INCLUDES = $(HEADERS) -L./$(LIBFT_DIR) $(LIBS) -I./$(LIBFT_DIR)
 CFLAGS = -Wall -Wextra -Werror
 
 CC = gcc

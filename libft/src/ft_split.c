@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/01 16:31:55 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 01:52:53 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:47:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static size_t	append_line(char *str, char sep, char **ret, size_t i_wd)
 	return (wd_len);
 }
 
-static int	ft_wd_count(char *str, char sep)
+int	ft_wd_count(char *str, char sep)
 {
 	int		wd_nb;
 

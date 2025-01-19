@@ -6,12 +6,13 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 01:30:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:56:02 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+/*
 void	finishing(t_lnk *lst_a, t_lnk *lst_b, char *instruction)
 {
 	if (is_sorted(lst_a) && lst_b == NULL)
@@ -50,3 +51,4 @@ int	main(int argc, char **argv)
 	finishing(lst_a, lst_b, instruction);
 	return (0);
 }
+*/

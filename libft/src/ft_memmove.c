@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:50:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	if (!dst && !src)
 	{
-		ft_ft_errmsg("[ft_memmove] sdt or src is NULL\n");
+		ft_errmsg("[ft_memmove] sdt or src is NULL\n");
 		return (NULL);
 	}
 	if (dst < src)

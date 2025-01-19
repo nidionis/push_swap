@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:50:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	byte = c;
 	if (!s)
 	{
-		ft_ft_errmsg("[ft_memchr] !s\n");
+		ft_errmsg("[ft_memchr] !s\n");
 		return (NULL);
 	}
 	if (n)

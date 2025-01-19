@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 03:08:48 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	clean_exit(t_lnk *lst_a, char **splited)
 	if (lst_a)
 		del_lst(&lst_a);
 	if (splited)
-		ft_free_split(splited);
+		ft_free_split(&splited);
 	ft_errmsg(NULL);
 }
 
@@ -46,7 +46,7 @@ t_lnk	*get_args_allinone(char *str)
 		if (nb > 2147483647 || nb < -2147483648)
 			clean_exit(lst_a, splited);
 	}
-	ft_free_split(splited);
+	ft_free_split(&splited);
 	return (lst_a);
 }
 

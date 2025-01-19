@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 18:03:26 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 03:08:02 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_list
 {
@@ -22,7 +24,7 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-void	ft_ft_errmsg(char *str);
+void	ft_errmsg(char *str);
 int		ft_ismaj(int c);
 int		ft_ismin(int c);
 int		ft_atoi(const char *str0);
@@ -69,6 +71,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int	printf(const char *str, ...);
+int    ft_wd_count(char *str, char sep);
+void	ft_free_split(char ***t);
 
 /* really useless fonction, dusefull for printf only */
 void	loop_norminette(char **str_addr, va_list ap, int *p_itm, int *ret_val);

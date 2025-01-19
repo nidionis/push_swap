@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 15:51:11 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:49:00 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 		*dst = '\0';
 	}
 	else
-		ft_ft_errmsg("[ft_strlcpy] dst is NULL\n");
+		ft_errmsg("[ft_strlcpy] dst is NULL\n");
 	return (src_len);
 }

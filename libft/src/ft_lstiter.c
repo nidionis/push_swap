@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/11 16:02:04 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 02:50:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		}
 	}
 	else
-		ft_ft_errmsg("[ft_lstclear] lst or del functions is/are NULL\n");
+		ft_errmsg("[ft_lstclear] lst or del functions is/are NULL\n");
 }
