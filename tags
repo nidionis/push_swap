@@ -81,7 +81,7 @@ b_dump	b_dump.c	/^void	b_dump(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typena
 best_insert	b_dump.c	/^int	*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_comb)$/;"	f	typeref:typename:int *
 bonus	Makefile	/^bonus:  make_libft$/;"	t
 c_to_i	main.c	/^int c_to_i(char c)$/;"	f	typeref:typename:int
-can_push	algobsolete.c	/^int	can_push(t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:int
+can_push_a	algobsolete.c	/^int	can_push_a(t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:int
 clean	Makefile	/^clean:$/;"	t
 clean	libft/Makefile	/^clean:$/;"	t
 clean_exit	get_args.c	/^int	clean_exit(t_lnk *lst_a, t_lnk *lst_b, char **splited)$/;"	f	typeref:typename:int

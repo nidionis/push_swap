@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 09:08:00 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 11:11:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 #define NB_FIRST_INSTR 0
 #define NB_SECOND_INSTR 2
 
-#define ROTATE 0
-#define REVERSE_ROTATE 1
+#define ROTATE rr
+#define REVERSE_ROTATE rrr
 
 #define MODULO_GIVING_ROTATE_INSTRUCTIONS 1
 #define MODULO_GIVING_REVERSE_ROTATE_INSTRUCTIONS 0
@@ -67,7 +67,11 @@ enum	e_instr
 	INSTR_MAX = ss,
 	ROTATE_MAX = rr,
 };
+int get_min(t_lnk *lst);
+int get_max(t_lnk *lst);
 
+int load_to_by(t_lnk **lst_a, t_lnk **lst_b, int target_rk, int intermediate_target);
+int reach_to_by(t_lnk **lst_a, t_lnk **lst_b, int target_rk, int intermediate_target, int to_print);
 long int       ft_atoi_err(char *str);
 char	*ft_realloc_cat(char *line, char c, int *len);
 char	*get_next_line(int fd);
@@ -81,7 +85,8 @@ int		instr_to_i(char *str);
 int		is_median(t_lnk *lst_a, int max);
 int		is_sorted(t_lnk *lst);
 int		lst_init_ranks(t_lnk **lst);
-int		special_item(t_lnk *lst_a, int max);
+//int		special_item(t_lnk *lst_a, int max);
+int	special_item(t_lnk *lst_a, int i1, int i2);
 t_lnk	*ft_new_lnk(long int n, int i, int rank);
 t_lnk	*get_args(int argc, char *argv[]);
 t_lnk	*get_args_allinone(char *str);
@@ -116,6 +121,5 @@ void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_lst(t_lnk **lst);
 int	is_in_lst(t_lnk *lst);
-int reach_to_by(t_lnk **lst_a, int target_rank, int intermediate_target, int to_print);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 11:12:27 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	b_dump(t_lnk **lst_a, t_lnk **lst_b)
 	best_comb = b;
 	while (*lst_b)
 	{
-		if (!can_push(*lst_a, *lst_b))
+		if (TRUE)//!can_push_a(*lst_a, *lst_b))
 		{
 			best_comb = best_insert(*lst_a, *lst_b, best_comb);
 			while (nb_instruction(&best_comb, FIRST_INSTR))

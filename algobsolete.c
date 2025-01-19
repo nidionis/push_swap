@@ -6,17 +6,25 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 11:06:41 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	can_push(t_lnk *lst_a, t_lnk *lst_b)
+int	can_push_a(t_lnk *lst_a, t_lnk *lst_b)
 {
 	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
+}
+
+int	can_push_b(t_lnk *lst_a, t_lnk *lst_b)
+{
+
+	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
+		return (TRUE);
+	return (FALSE);
 }
 
 void	itm_insert_loop(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_result)
@@ -24,7 +32,7 @@ void	itm_insert_loop(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_result)
 	int	steps;
 
 	steps = 0;
-	while (!can_push(lst_a, lst_b))
+	while (!can_push_a(lst_a, lst_b))
 	{
 		apply_instr(instr, &lst_a, &lst_b, 0);
 		if (steps >= best_result[1])
@@ -52,7 +60,7 @@ int	*itm_insert(t_lnk *lst_a, t_lnk *lst_b)
 	instr = ra;
 	lst_a_init = lst_a;
 	lst_b_init = lst_b;
-	if (!can_push(lst_a, lst_b))
+	if (!can_push_a(lst_a, lst_b))
 	{
 		while (instr <= rrr)
 		{
