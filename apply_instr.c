@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 00:41:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 04:17:40 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
 	}
 	else
 	{
-		ft_errmsg(NULL);
+		ft_errmsg("error\n");
 	}
 }
 
@@ -100,7 +100,7 @@ int	instr_to_i(char *str)
 	else
 		ret = fucking_normi_2(str);
 	if (ret == -1)
-		ft_errmsg(NULL);
+		ft_errmsg("error\n");
 	return (ret);
 }
 
@@ -129,6 +129,6 @@ void	i_to_instr(int i)
 	else if (i == ss)
 		printf("ss");
 	else
-		ft_errmsg(NULL);
+		ft_errmsg("error\n");
 	printf("\n");
 }

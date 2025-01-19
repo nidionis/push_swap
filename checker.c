@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 02:56:02 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 04:19:11 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	int		ind_max;
 
 	if (argc < 2)
-		ft_errmsg(NULL);
+		ft_errmsg("error\n");
 	else if (argc == 2)
 		lst_a = get_args_allinone(argv[1]);
 	else

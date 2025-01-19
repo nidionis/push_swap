@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 03:26:46 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 04:22:08 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,16 +83,18 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 	//	if (!(*argv[1]))
-			exit(0);
-	//	lst_a = get_args_allinone(argv[1]);
+			return (0);
+		//lst_a = get_args_allinone(argv[1]);
 	}
-	else
-		lst_a = get_args(argc, argv);
+	lst_a = get_args(argc, argv);
+	if (!lst_a)
+		return (1);
 	ind_max = lst_init_ranks(&lst_a);
-	if (!ft_no_duplicate(lst_a))
-		ft_errmsg(NULL);
+	if (ft_no_duplicate(lst_a))
+		return (ft_errmsg("error\n"), 1);
 	if (!is_sorted(lst_a))
 		select_algo(lst_a, lst_b, ind_max);
 	del_lst(&lst_a);
 	del_lst(&lst_b);
+	return (0);
 }

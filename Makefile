@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/19 03:32:11 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/19 03:59:44 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ make_libft:
 	make -C libft
 
 ctags:
-	ctags *
+	ctags -R .
 
 clean:
 	rm -f $(OBJS)
@@ -64,13 +64,8 @@ test: ctags
 	./$(NAME)
 	rm a.out
 
-debugfile: ctags
+debug: clean
 	$(CC) $(CFLAGS) -g $(SRCS) $(MAIN) $(INCLUDES) -o $(DEBUG_NAME)
-
-bonusdebugfile: ctags
-	$(CC) $(CFLAGS) -g $(SRCS) $(BONUS_MAIN) $(INCLUDES) -o $(BONUS_NAME) -fsanitize=address
-
-debug: debugfile
 	lldb $(DEBUG_NAME)
 	rm $(DEBUG_NAME)
 
