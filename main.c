@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:33:34 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:49:55 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,6 @@ int	main(int argc, char *argv[])
 		push_item(lnk_ind, &lst);
 		i++;
 	}
-	printf("is 5 in lst ? %d\n", is_in_lst(lst, 5));
+	printf("is_in_lst ? %d\n", is_in_lst(lst));
 	return (0);
 }

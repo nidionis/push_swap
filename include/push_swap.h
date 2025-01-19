@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:32:10 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:45:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,6 @@ void	sort_3_nb(t_lnk **lst_a, int max);
 void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_lst(t_lnk **lst);
-int	is_in_lst(t_lnk *lst, int val);
+int	is_in_lst(t_lnk *lst);
 
 #endif

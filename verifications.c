@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 06:29:54 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/19 06:50:46 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,22 @@ int	is_sorted(t_lnk *lst)
 	return (TRUE);
 }
 
-int	is_in_lst(t_lnk *lst, int val)
+int	is_in_lst(t_lnk *lst)
 {
 	t_lnk	*lnk_ind;
+	int		nb;
 
-	lnk_ind = lst;
-	while (lnk_ind->nb != val)
+	if (lst->next == lst)
+		return (FALSE);
+	lnk_ind = lst->next;
+	nb = lst->nb;
+	while (lnk_ind != lst)
 	{
+		if (lnk_ind->nb == nb)
+			return (TRUE);
 		lnk_ind = lnk_ind->next;
-		if (lnk_ind == lst)
-			return (FALSE);
 	}
-	return (TRUE);
+	return (FALSE);
 }
 int	ft_duplicate(t_lnk *lst)
 {
@@ -47,9 +51,9 @@ int	ft_duplicate(t_lnk *lst)
 	lnk_ind1 = lst;
 	do
 	{
-		if (is_in_lst(lnk_ind1->next, lnk_ind1->nb))
+		if (is_in_lst(lnk_ind1))
 			return (FALSE);
 		lnk_ind1 = lnk_ind1->next;
-	} while (lnk_ind1 != lst);
+	} while (lnk_ind1->next != lst);
 	return (TRUE);
 }
