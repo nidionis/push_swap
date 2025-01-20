@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 09:14:15 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 09:42:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,16 +119,13 @@ int	testing_env(int argc, char **argv)
 	(void)ind_max;
 	if (ft_is_duplicate(lst_a))
 		return (ft_errmsg("error\n"), 1);
-	print_lst_byrank(lst_a, "before selecting algo");
 		/* you probably want to test here */
 		//reach_to_by(&lst_a, &lst_b, 0, ind_max, PRINT);
 		//printf("reach_rank_lst_b_in_dir: %d\n", reach_rank_lst_a_in_dir(&lst_a, &lst_b, 0, REVERSE_ROTATE, PRINT));
 	smart_reach_and_push_max(&lst_a, &lst_b);
 	dump_max_next_to_zero(&lst_a, &lst_b);
 	sort_from_min_to_max(&lst_a, &lst_b);
-	//b_dump(&lst_a, &lst_b);
-	print_lst_byrank(lst_a, "after algo: a");
-	print_lst_byrank(lst_b, "after algo: b");
+	b_dump(&lst_a, &lst_b);
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 	return (0);

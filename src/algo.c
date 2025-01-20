@@ -75,6 +75,10 @@ void sort_from_min_to_max(t_lnk **lst_a, t_lnk **lst_b)
 int stack_on_the_way(t_lnk *lst_a, t_lnk *lst_b, int rank)
 {
     (void)lst_b;
+    if (is_a_softminmax_a(lst_a))
+        return (FALSE);
+    if (!lst_b)
+        return (TRUE);
     return (lst_a->rank < rank && lst_a->rank > lst_b->rank);
 }
 
