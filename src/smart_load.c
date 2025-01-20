@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 00:43:13 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 01:49:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,22 @@ int get_dir(t_lnk *lst, int target_rk, int intermediate_target)
 	return (dir);
 }
 
+int get_size(t_lnk *lst)
+{
+	t_lnk	*lnk;
+	int size;
+
+	if (!lst)
+		return (0);
+	size = 1;
+	lnk = lst->next;
+	while (lnk != lst)
+	{
+		size++;
+		lnk = lnk->next;
+	}
+	return (size);
+}
 
 int get_max(t_lnk *lst)
 {

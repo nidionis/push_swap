@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 00:56:59 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 01:36:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ enum	e_instr
 	ROTATE_MAX = rr,
 };
 
+int get_size(t_lnk *lst);
 int get_min(t_lnk *lst);
 int get_max(t_lnk *lst);
 int	reach_rank_lst_a_in_dir(t_lnk **lst_a, t_lnk **lst_b, int rank, int direction, int to_print);
