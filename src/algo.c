@@ -135,7 +135,7 @@ void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b)
             apply_instr(pb, lst_a, lst_b, PRINT);
         apply_instr(direction, lst_a, lst_b, PRINT);
     }
-    insert_target_in_a(lst_a, lst_b, max);
-    apply_instr(ra, lst_a, lst_b, PRINT);
+	reach_rank_lst_b(lst_a, lst_b, max, PRINT);
+    apply_instr(pa, lst_a, lst_b, PRINT);
 	b_dump(lst_a, lst_b);
 }
