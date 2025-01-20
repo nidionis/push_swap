@@ -18,6 +18,21 @@ int is_next_sorted_lst_a(t_lnk *lst)
     return (lst->rank + 1 == lst->next->rank);
 }
 
+int is_a_softminmax_b(t_lnk *lst)
+{
+    return (lst->rank <= get_softmin_in_b(lst) || lst->rank >= get_softmax_in_b(lst));
+}
+
+int is_a_softmax_a(t_lnk *lst)
+{
+    return (lst->rank >= get_softmax_in_a(lst));
+}
+
+int is_a_softminmax_a(t_lnk *lst)
+{
+    return (lst->rank <= get_softmin_in_a(lst) || lst->rank >= get_softmax_in_a(lst));
+}
+
 void if_next_softmin_in_b_insert_it(t_lnk **lst_a, t_lnk **lst_b)
 {
     t_lnk	*ind;
@@ -41,34 +56,26 @@ void    smart_push_in_b(t_lnk **lst_a, t_lnk **lst_b)
         apply_instr(pb, lst_a, lst_b, PRINT);
     else
     {
-        swap_b_if_needed(lst_b);
-        if (!is_a_softminmax_a(*lst_a))
+		if ((*lst_b)->next != (*lst_b))
+			swap_b_if_needed(lst_b);
+        if (!is_a_softmax_a(*lst_a))
             insert_target_in_b(lst_a, lst_b, (*lst_a)->rank);
     }
 
 }
 
-
-int is_a_softminmax_b(t_lnk *lst)
-{
-    return (lst->rank <= get_softmin_in_b(lst) || lst->rank >= get_softmax_in_b(lst));
-}
-
-
-int is_a_softminmax_a(t_lnk *lst)
-{
-    return (lst->rank <= get_softmin_in_a(lst) || lst->rank >= get_softmax_in_a(lst));
-}
-
 void sort_from_max_to_min(t_lnk **lst_a, t_lnk **lst_b)
 {
+	int softmax;
+
+	softmax = get_softmax_in_a(*lst_a);
     while (!is_sorted_a(*lst_a))
 	{
-    	if (is_a_softminmax_a(*lst_a))
-    	    apply_instr(rra, lst_a, lst_b, PRINT);
-    	else if (can_push_a(*lst_a, *lst_b))
-    	    insert_target_in_a(lst_a, lst_b, (*lst_a)->rank + 1);
-    	else if (!is_a_softminmax_a(*lst_a))
+    	if (is_a_softmax_a((*lst_a)->prev))
+    	    apply_instr(ra, lst_a, lst_b, PRINT);
+    	else if (is_in_lst(*lst_b, softmax - 1))
+    	    insert_target_in_a(lst_a, lst_b, softmax + 1);
+    	else// if (!is_a_softmax_a(*lst_a))
     	    smart_push_in_b(lst_a, lst_b);
 	}
 }
@@ -111,9 +118,12 @@ void smart_reach_and_push_max(t_lnk **lst_a, t_lnk **lst_b)
     {
         if (stack_if_higher(*lst_a, *lst_b, max))
             apply_instr(pb, lst_a, lst_b, PRINT);
-        apply_instr(direction, lst_a, lst_b, PRINT);
+		else
+			apply_instr(direction, lst_a, lst_b, PRINT);
     }
     apply_instr(pb, lst_a, lst_b, PRINT);
+	if (get_size(*lst_b) < 2)
+		apply_instr(rrb, lst_a, lst_b, PRINT);
 }
 
 /* rrb push max to allow to load even more */
@@ -128,7 +138,6 @@ void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b)
 		direction = ra;
     else
         direction = rra;
-    apply_instr(rrb, lst_a, lst_b, PRINT);
     while ((*lst_a)->rank != 0)
     {
         if (stack_if_higher(*lst_a, *lst_b, max / 2))
@@ -137,5 +146,4 @@ void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b)
     }
 	reach_rank_lst_b(lst_a, lst_b, max, PRINT);
     apply_instr(pa, lst_a, lst_b, PRINT);
-	b_dump(lst_a, lst_b);
 }

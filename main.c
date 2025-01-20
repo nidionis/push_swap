@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 17:11:28 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:15:37 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ int	testing_env(int argc, char **argv)
 		/* you probably want to test here */
 		//reach_to_by(&lst_a, &lst_b, 0, ind_max, PRINT);
 		//printf("reach_rank_lst_b_in_dir: %d\n", reach_rank_lst_a_in_dir(&lst_a, &lst_b, 0, REVERSE_ROTATE, PRINT));
-	print_lst_byrank(lst_a, "before : lst_a");
-	print_lst_byrank(lst_b, "before : lst_b");
+	//print_lst_byrank(lst_a, "before : lst_a");
+	//print_lst_byrank(lst_b, "before : lst_b");
 	//printf("[smart_reach_and_push_max]");
 	smart_reach_and_push_max(&lst_a, &lst_b);
 	//printf("[dump_max_next_to_zero]");

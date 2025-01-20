@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 05:23:57 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:07:06 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,9 @@ int	get_shortestway(t_lnk *lst, int rank)
 	t_lnk	*first_lnk;
 
 	if (!lst)
-		return (0);
+		return (MAYBE_A_WEAKNESS);
+	//if (lst == lst->next)
+	//	return (ROTATE);
 	step_nb = 0;
 	first_lnk = lst->prev;
 	while (lst->rank != rank && lst != first_lnk)

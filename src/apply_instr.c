@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/19 09:34:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:49:00 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,12 @@ void	foret_de_ifs(int instr, t_lnk **lst_a, t_lnk **lst_b)
 
 void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)
 {
+
+	//if (lst_a)
+	//	print_lst_byrank(*lst_a, "after : lst_a");
+	//if (lst_b)
+	//	print_lst_byrank(*lst_b, "after : lst_b");
+	//printf("--------------------------------------------");
 	if (instr == rra)
 		rrotate_lst(lst_a);
 	else if (instr == rrb)

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 07:56:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 19:14:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	is_in_lst(t_lnk *lst, int rank)
 			return (TRUE);
 		lnk_ind = lnk_ind->next;
 	}
+	if (lnk_ind->rank == rank)
+		return (TRUE);
 	return (FALSE);
 }
 
