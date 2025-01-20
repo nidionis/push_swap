@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 09:12:44 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:31:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ char	*ft_realloc_cat(char *line, char c, int *len);
 char	*get_next_line(int fd);
 int		*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *b);
 int		*itm_insert(t_lnk *lst_a, t_lnk *lst_b);
-int		can_push(t_lnk *lst_a, t_lnk *lst_b);
+int		can_push_a(t_lnk *lst_a, t_lnk *lst_b);
+int		can_push_b(t_lnk *lst_a, t_lnk *lst_b);
 int		ft_is_duplicate(t_lnk *lst);
 int		fucking_normi_2(char *str);
 int	get_shortestway(t_lnk *lst, int rank);
@@ -148,5 +149,7 @@ int is_a_softminmax_b(t_lnk *lst);
 
 void smart_reach_and_push_max(t_lnk **lst_a, t_lnk **lst_b);
 void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b);
+
+int is_rotate_instr(int instr);
 
 #endif

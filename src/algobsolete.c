@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 04:29:13 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:02:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 int	can_push_a(t_lnk *lst_a, t_lnk *lst_b)
 {
 	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
+		return (TRUE);
+	return (FALSE);
+}
+
+int is_rotate_instr(int instr)
+{
+	if (instr == ra || instr == rra || instr == rr)
+		return (TRUE);
+	if (instr == rb || instr == rrb || instr == rrr)
 		return (TRUE);
 	return (FALSE);
 }
@@ -32,17 +41,18 @@ void	itm_insert_loop(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_result)
 	int	steps;
 
 	steps = 0;
-	while (!can_push_a(lst_a, lst_b))
+	while (!can_push_b(lst_a, lst_b))
 	{
-		apply_instr(instr, &lst_a, &lst_b, 0);
-		if (steps >= best_result[1])
+		if (is_rotate_instr(instr))
+			apply_instr(instr, &lst_a, &lst_b, QUIET);
+		if (steps >= best_result[NB_FIRST_INSTR])
 			break ;
 		steps++;
 	}
-	if (steps < best_result[1])
+	if (steps < best_result[NB_FIRST_INSTR])
 	{
-		best_result[0] = instr;
-		best_result[1] = steps;
+		best_result[NB_FIRST_INSTR] = instr;
+		best_result[FIRST_INSTR] = steps;
 	}
 }
 
@@ -56,15 +66,16 @@ int	*itm_insert(t_lnk *lst_a, t_lnk *lst_b)
 	best_result = malloc(sizeof(int) * 2);
 	if (!best_result)
 		ft_errmsg("[itm_insert] did not malloc");
-	best_result[1] = 2147483647;
+	best_result[NB_FIRST_INSTR] = 2147483647;
 	instr = ROTATE_MIN;
 	lst_a_init = lst_a;
 	lst_b_init = lst_b;
-	if (!can_push_a(lst_a, lst_b))
+	if (!can_push_b(lst_a, lst_b))
 	{
 		while (instr <= ROTATE_MAX)
 		{
-			itm_insert_loop(lst_a, lst_b, instr, best_result);
+			if (is_rotate_instr(instr))
+				itm_insert_loop(lst_a, lst_b, instr, best_result);
 			lst_a = lst_a_init;
 			lst_b = lst_b_init;
 			instr++;
@@ -78,16 +89,16 @@ int	refresh_best_combs(int *best_comb, int instr, int steps, \
 {
 	int	steps_max;
 
-	steps_max = best_comb[1] + best_comb[3];
-	if (instr_steps_itm[1] + steps < steps_max)
+	steps_max = best_comb[NB_FIRST_INSTR] + best_comb[NB_SECOND_INSTR];
+	if (instr_steps_itm[NB_FIRST_INSTR] + steps < steps_max)
 	{
-		best_comb[0] = instr;
-		best_comb[1] = steps;
-		best_comb[2] = instr_steps_itm[0];
-		best_comb[3] = instr_steps_itm[1];
+		best_comb[FIRST_INSTR] = instr;
+		best_comb[NB_FIRST_INSTR] = steps;
+		best_comb[SECOND_INSTR] = instr_steps_itm[FIRST_INSTR];
+		best_comb[NB_SECOND_INSTR] = instr_steps_itm[NB_FIRST_INSTR];
 	}
 	free(instr_steps_itm);
-	return (best_comb[1] + best_comb[3]);
+	return (best_comb[NB_FIRST_INSTR] + best_comb[NB_SECOND_INSTR]); //initialement non NB_X mais X
 }
 
 void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \
@@ -98,12 +109,15 @@ void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \
 	int		*instr_steps_item;
 
 	steps = 0;
-	steps_max = best_comb[1] + best_comb[3];
+	steps_max = best_comb[NB_FIRST_INSTR] + best_comb[NB_SECOND_INSTR];
 	while (++steps < steps_max)
 	{
-		apply_instr(instr, &lst_a, &lst_b, 0);
-		instr_steps_item = itm_insert(lst_a, lst_b);
-		steps_max = refresh_best_combs(best_comb, instr, steps, \
-			instr_steps_item);
+		if (is_rotate_instr(instr))
+		{
+			apply_instr(instr, &lst_a, &lst_b, QUIET);
+			instr_steps_item = itm_insert(lst_a, lst_b);
+			steps_max = refresh_best_combs(best_comb, instr, steps, \
+				instr_steps_item);
+		}
 	}
 }
