@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 03:14:59 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 05:51:03 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ enum	e_instr
 	INSTR_MAX = ss,
 	ROTATE_MAX = rr,
 };
+
+void sort_from_min_to_max(t_lnk **lst_a, t_lnk **lst_b);
+void	insert_target_in_a(t_lnk **lst_a, t_lnk **lst_b, int target_rank);
+void	insert_target_in_b(t_lnk **lst_a, t_lnk **lst_b, int target_rank);
+int is_sorted_a(t_lnk *lst);
 
 int	get_softmin_in_a(t_lnk *lst);
 int	get_softmin_in_b(t_lnk *lst);
@@ -135,6 +140,7 @@ void	sort_3_nb(t_lnk **lst_a, int max);
 void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_lst(t_lnk **lst);
-int	is_in_lst(t_lnk *lst);
+int	is_in_lst(t_lnk *lst, int rank);
+int is_sorted_verif(t_lnk *lst);
 
 #endif

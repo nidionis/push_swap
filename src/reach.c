@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 02:44:10 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 05:23:57 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ int	reach_rank_lst_a(t_lnk **lst_a, t_lnk **lst_b, int rank, int to_print)
 int	reach_rank_lst_b(t_lnk **lst_a, t_lnk **lst_b, int rank, int to_print)
 {
 	int direction;
+	int steps;
 
+	steps = 0;
+	if (!*lst_b || (*lst_b)->rank == rank)
+		return (steps);
 	direction = get_shortestway(*lst_b, rank);
-	return (reach_rank_lst_b_in_dir(lst_a, lst_b, rank, direction, to_print));
+	steps = reach_rank_lst_b_in_dir(lst_a, lst_b, rank, direction, to_print);
+	return (steps);
 }
 
 int	reach_rank_lst_a_in_dir(t_lnk **lst_a, t_lnk **lst_b, int rank, int direction, int to_print)

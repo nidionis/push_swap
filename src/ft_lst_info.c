@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 03:14:18 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 03:59:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	is_min_or_max(t_lnk *lst_a, int i1, int i2)
 	return (MAYBE_A_WEAKNESS);
 }
 
+/*
+a du sens avec  enum utilisant des negatifs
 int get_dir(t_lnk *lst, int target_rk, int intermediate_target)
 {
 	int dir;
@@ -29,6 +31,7 @@ int get_dir(t_lnk *lst, int target_rk, int intermediate_target)
 	dir -= get_shortestway(lst, intermediate_target);
 	return (dir);
 }
+*/
 
 int get_size(t_lnk *lst)
 {

@@ -6,13 +6,11 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 00:14:10 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 04:29:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-/*
 
 int	can_push_a(t_lnk *lst_a, t_lnk *lst_b)
 {
@@ -59,12 +57,12 @@ int	*itm_insert(t_lnk *lst_a, t_lnk *lst_b)
 	if (!best_result)
 		ft_errmsg("[itm_insert] did not malloc");
 	best_result[1] = 2147483647;
-	instr = ra;
+	instr = ROTATE_MIN;
 	lst_a_init = lst_a;
 	lst_b_init = lst_b;
 	if (!can_push_a(lst_a, lst_b))
 	{
-		while (instr <= rrr)
+		while (instr <= ROTATE_MAX)
 		{
 			itm_insert_loop(lst_a, lst_b, instr, best_result);
 			lst_a = lst_a_init;
@@ -109,4 +107,3 @@ void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \
 			instr_steps_item);
 	}
 }
-*/
