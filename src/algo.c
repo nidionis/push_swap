@@ -71,3 +71,51 @@ void sort_from_min_to_max(t_lnk **lst_a, t_lnk **lst_b)
     if (!is_sorted_a(*lst_a))
         sort_from_min_to_max(lst_a, lst_b);
 }
+
+int stack_on_the_way(t_lnk *lst_a, t_lnk *lst_b, int rank)
+{
+    (void)lst_b;
+    return (lst_a->rank < rank && lst_a->rank > lst_b->rank);
+}
+
+void smart_reach_and_push_max(t_lnk **lst_a, t_lnk **lst_b)
+{
+    int max;
+    int direction;
+
+    max = get_max(*lst_a);
+	direction = get_shortestway(*lst_a, max);
+	if (direction == ROTATE)
+		direction = ra;
+    else
+        direction = rra;
+    while ((*lst_a)->rank != max)
+    {
+        if (stack_on_the_way(*lst_a, *lst_b, max / 2))
+            apply_instr(pb, lst_a, lst_b, PRINT);
+        apply_instr(direction, lst_a, lst_b, PRINT);
+    }
+    apply_instr(pb, lst_a, lst_b, PRINT);
+}
+
+void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b)
+{
+    int max;
+    int direction;
+
+    max = get_max(*lst_a);
+	direction = get_shortestway(*lst_a, 0);
+	if (direction == ROTATE)
+		direction = ra;
+    else
+        direction = rra;
+    apply_instr(rrb, lst_a, lst_b, PRINT);
+    while ((*lst_a)->rank != 0)
+    {
+        if (stack_on_the_way(*lst_a, *lst_b, max))
+            apply_instr(pb, lst_a, lst_b, PRINT);
+        apply_instr(direction, lst_a, lst_b, PRINT);
+    }
+    insert_target_in_a(lst_a, lst_b, max);
+    apply_instr(ra, lst_a, lst_b, PRINT);
+}
