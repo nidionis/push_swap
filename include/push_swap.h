@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 00:00:44 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 00:56:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ enum	e_instr
 	INSTR_MAX = ss,
 	ROTATE_MAX = rr,
 };
+
 int get_min(t_lnk *lst);
 int get_max(t_lnk *lst);
-int get_softmin_a(t_lnk *lst);
-int get_softmax_a(t_lnk *lst);
-int	reach_rank_lst_b(t_lnk **lst, int rank, int direction, int to_print);
-int	reach_rank_lst_a(t_lnk **lst, int rank, int direction, int to_print);
+int	reach_rank_lst_a_in_dir(t_lnk **lst_a, t_lnk **lst_b, int rank, int direction, int to_print);
+int	reach_rank_lst_b_in_dir(t_lnk **lst_a, t_lnk **lst_b, int rank, int direction, int to_print);
+//int get_softmin_a(t_lnk *lst);
+//int get_softmax_b(t_lnk *lst);
+//int	reach_rank_lst_b(t_lnk **lst_a, t_lnk **lst_b, int rank, int direction, int to_print);
+//int	reach_rank_lst_a(t_lnk **lst_a, t_lnk **lst_b, int rank, int direction, int to_print);
 int	get_shortestway(t_lnk *lst, int rank);
 
 int load_to_by(t_lnk **lst_a, t_lnk **lst_b, int target_rk, int intermediate_target);

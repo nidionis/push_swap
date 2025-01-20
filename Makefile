@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/20 00:35:07 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/20 00:46:01 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ all: $(NAME)
 
 # Create executable
 $(NAME): make_libft $(OBJ_DIR) $(OBJS)
-	$(CC) $(CFLAGS) $(HEADERS) $(OBJS) $(MAIN) -o $(NAME) $(LIBS)
+	$(CC) $(CFLAGS) $(HEADERS) $(OBJS) -o $(NAME) $(MAIN) $(LIBS)
 
 # Create obj directory and compile source files into obj directory
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

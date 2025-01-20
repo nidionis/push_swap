@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 00:02:42 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 01:00:39 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,11 @@ void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)
 		sort_5_nb(&lst_a, &lst_b);
 	else
 	{
-		reach_to_by(&lst_a, &lst_b, 0, ind_max, PRINT);
+		//reach_to_by(&lst_a, &lst_b, 0, ind_max, PRINT);
 		//load_b(&lst_a, &lst_b, ind_max);
 		//b_dump(&lst_a, &lst_b);
 	}
-	reach_rank(&lst_a, 0, get_shortestway(lst_a, 0), PRINT);
+	//reach_rank_lst_a(&lst_a, &lst_b, 0, get_shortestway(lst_a, 0), PRINT);
 }
 
 int	push_swap(int argc, char **argv)
@@ -124,7 +124,7 @@ int	testing_env(int argc, char **argv)
 	{
 		/* you probably want to test here */
 		//reach_to_by(&lst_a, &lst_b, 0, ind_max, PRINT);
-		get_softmin_a(lst_a);
+		printf("reach_rank_lst_a_in_dir: %d\n", reach_rank_lst_a_in_dir(&lst_a, &lst_b, 0, ROTATE, PRINT));
 	}
 	print_lst_byrank(lst_a, "after algo");
 	del_lst(&lst_a);
