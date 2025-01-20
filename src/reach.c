@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 00:57:43 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 01:22:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,19 @@ int	reach_rank_lst_a_in_dir(t_lnk **lst_a, t_lnk **lst_b, int rank, int directio
 	instr = rra;
 	if (direction == ROTATE)
 		instr = ra;
+	else if (direction != REVERSE_ROTATE)
+		ft_errmsg("[reach_rank_lst_b_in_dir] direction not set");
+	if (!*lst_a)
+		return (0);
 	first_lnk = *lst_a;
 	nb_instr = 0;
 	if (first_lnk->rank != rank)
 	{
-		apply_instr(instr, lst_a, NULL, to_print);
+		apply_instr(instr, lst_a, lst_b, to_print);
 		nb_instr++;
 		while ((*lst_a)->rank != rank && *lst_a != first_lnk)
 		{
-			apply_instr(instr, lst_a, NULL, to_print);
+			apply_instr(instr, lst_a, lst_b, to_print);
 			nb_instr++;
 		}
 	}
@@ -47,15 +51,19 @@ int	reach_rank_lst_b_in_dir(t_lnk **lst_a, t_lnk **lst_b, int rank, int directio
 	instr = rrb;
 	if (direction == ROTATE)
 		instr = rb;
+	else if (direction != REVERSE_ROTATE)
+		ft_errmsg("[reach_rank_lst_b_in_dir] direction not set");
+	if (!*lst_b)
+		return (0);
 	first_lnk = *lst_b;
 	nb_instr = 0;
 	if (first_lnk->rank != rank)
 	{
-		apply_instr(instr, lst_b, NULL, to_print);
+		apply_instr(instr, lst_a, lst_b, to_print);
 		nb_instr++;
 		while ((*lst_b)->rank != rank && *lst_b != first_lnk)
 		{
-			apply_instr(instr, lst_b, NULL, to_print);
+			apply_instr(instr, lst_a, lst_b, to_print);
 			nb_instr++;
 		}
 	}

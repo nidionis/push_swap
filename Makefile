@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/20 00:46:01 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/20 01:09:24 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,10 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 # Ensure obj directory exists
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
+
+debug: make_libft
+	$(CC) $(CFLAGS) -g3 $(HEADERS) $(SRCS) -o $(NAME) $(MAIN) $(LIBS)
+	lldb $(NAME)
 
 # Build libft
 make_libft:
