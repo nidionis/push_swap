@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 07:20:40 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:31:40 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	next_lower_rank(t_lnk *lst_b, int target_rank)
             apply_instr(rrb, NULL, &lst_b, QUIET);
         return (lst_b->rank);
     }
-    return (-1);
+    return (get_max(lst_b));
 }
 
 void	insert_target_in_b(t_lnk **lst_a, t_lnk **lst_b, int target_rank)

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 12:31:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:21:08 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 # include <libft.h>
 # include <stdio.h>
 
-#define FIRST_INSTR 1
-#define SECOND_INSTR 3
 #define NB_FIRST_INSTR 0
+#define FIRST_INSTR 1
 #define NB_SECOND_INSTR 2
+#define SECOND_INSTR 3
 
 #define ROTATE rr
 #define REVERSE_ROTATE rrr
@@ -38,6 +38,7 @@
 #define ISSPACE " \t\f\n\r\v"
 
 #define EMPTY_LIST -1
+#define LOOP_MAX 10000
 
 typedef struct s_lnk
 {
@@ -149,6 +150,7 @@ int is_a_softminmax_b(t_lnk *lst);
 
 void smart_reach_and_push_max(t_lnk **lst_a, t_lnk **lst_b);
 void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b);
+void sort_from_max_to_min(t_lnk **lst_a, t_lnk **lst_b);
 
 int is_rotate_instr(int instr);
 
