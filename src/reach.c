@@ -6,11 +6,29 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 01:57:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 02:18:43 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	reach_rank_lst_a(t_lnk **lst_a, t_lnk **lst_b, int rank, int to_print)
+{
+	int direction;
+	int steps;
+
+	direction = get_shortestway(*lst_a, rank);
+	steps = reach_rank_lst_a_in_dir(lst_a, lst_b, rank, direction, to_print);
+	return (steps);	
+}
+
+int	reach_rank_lst_b(t_lnk **lst_a, t_lnk **lst_b, int rank, int to_print)
+{
+	int direction;
+
+	direction = get_shortestway(*lst_b, rank);
+	return (reach_rank_lst_b_in_dir(lst_a, lst_b, rank, direction, to_print));
+}
 
 int	reach_rank_lst_a_in_dir(t_lnk **lst_a, t_lnk **lst_b, int rank, int direction, int to_print)
 {
@@ -110,6 +128,6 @@ int	get_shortestway(t_lnk *lst, int rank)
 		lst = lst->next;
 	}
 	if (step_nb <= get_size(lst) / 2)
-		return (REVERSE_ROTATE);
-	return (ROTATE);
+		return (ROTATE);
+	return (REVERSE_ROTATE);
 }
