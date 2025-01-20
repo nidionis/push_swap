@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 03:00:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 03:14:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 #define QUIET 0
 
 #define ISSPACE " \t\f\n\r\v"
+
+#define EMPTY_LIST -1
 
 typedef struct s_lnk
 {

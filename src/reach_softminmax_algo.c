@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 03:07:06 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 03:36:58 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,16 @@ int	get_softmax_in_b(t_lnk *lst)
 int	get_softmin_in_a(t_lnk *lst)
 {
     lst = reach_min(lst);
-    while (lst->rank == lst->next->rank + 1)
-        lst = lst->prev;
+    while (lst->rank == lst->next->rank - 1)
+        lst = lst->next;
     return (lst->rank);
 }
 
 int	get_softmin_in_b(t_lnk *lst)
 {
     lst = reach_min(lst);
-    while (lst->rank == lst->next->rank + 1)
-        lst = lst->next;
+    while (lst->rank == lst->prev->rank - 1)
+        lst = lst->prev;
     return (lst->rank);
 }
 

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 03:08:19 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 03:35:57 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ int	testing_env(int argc, char **argv)
 		/* you probably want to test here */
 		//reach_to_by(&lst_a, &lst_b, 0, ind_max, PRINT);
 		//printf("reach_rank_lst_b_in_dir: %d\n", reach_rank_lst_a_in_dir(&lst_a, &lst_b, 0, REVERSE_ROTATE, PRINT));
-	printf("get_max: %d\n", get_max(lst_a));
-	printf("get_softmax: %d\n", get_softmax_in_b(lst_a));
+	printf("get_min: %d\n", get_min(lst_a));
+	printf("get_softmin: %d\n", get_softmin_in_a(lst_a));
 	print_lst_byrank(lst_a, "after algo");
 	del_lst(&lst_a);
 	del_lst(&lst_b);

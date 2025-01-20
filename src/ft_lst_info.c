@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   smart_load.c                                       :+:      :+:    :+:   */
+/*   ft_lst_info.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 02:01:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 03:14:18 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ int get_max(t_lnk *lst)
 	t_lnk	*lnk;
 	int max;
 
-	max = INT_MIN;
+	if (!lst)
+		return (EMPTY_LIST);
+	max = lst->rank;
 	lnk = lst->next;
 	while (lnk != lst)
 	{
@@ -68,7 +70,9 @@ int get_min(t_lnk *lst)
 	t_lnk	*lnk;
 	int min;
 
-	min = INT_MAX;
+	if (!lst)
+		return (EMPTY_LIST);
+	min = lst->rank;
 	lnk = lst->next;
 	while (lnk != lst)
 	{
