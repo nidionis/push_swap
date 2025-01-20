@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 15:57:09 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 21:22:54 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,23 @@ void	init_best_comb(int *best_comb, int *itm_insert_result, t_lnk *lst_a, t_lnk 
 	best_comb[NB_SECOND_INSTR] = itm_insert_result[NB_FIRST_INSTR];
 	best_comb[SECOND_INSTR] = itm_insert_result[FIRST_INSTR];
 	free(itm_insert_result);
+}
+
+int	*best_dirty_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_comb)
+{
+	int	*itm_insert_result;
+	int	instr;
+
+	itm_insert_result = NULL;
+	init_best_comb(best_comb, itm_insert_result, lst_a, lst_b);
+	instr = ROTATE_MIN;
+	while (instr <= ROTATE_MAX)
+	{
+		if (is_rotate_instr(instr))
+			refresh_dirty_in_dir(lst_a, lst_b, instr, best_comb);
+		instr++;
+	}
+	return (best_comb);
 }
 
 int	*best_insert(t_lnk *lst_a, t_lnk *lst_b, int *best_comb)
@@ -58,6 +75,21 @@ void b_dump(t_lnk **lst_a, t_lnk **lst_b)
         if (!can_push_a(*lst_a, *lst_b))
         {
             best_insert(*lst_a, *lst_b, best_comb);
+            execute_best_comb(best_comb, lst_a, lst_b);
+        }
+        apply_instr(pa, lst_a, lst_b, PRINT);
+    }
+}
+
+void b_dump_dirty(t_lnk **lst_a, t_lnk **lst_b)
+{
+    int best_comb[4];
+
+    while (*lst_b)
+    {
+        if (!can_dirty_push_a(*lst_a, *lst_b))
+        {
+            best_dirty_insert(*lst_a, *lst_b, best_comb);
             execute_best_comb(best_comb, lst_a, lst_b);
         }
         apply_instr(pa, lst_a, lst_b, PRINT);

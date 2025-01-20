@@ -81,7 +81,7 @@ void sort_from_max_to_min(t_lnk **lst_a, t_lnk **lst_b)
     	    smart_push_in_b(lst_a, lst_b);
 		else
 		{
-			b_dump(lst_a, lst_b);
+			b_dump_dirty(lst_a, lst_b);
 			smart_reach_and_push_softmax(lst_a, lst_b, get_softmax_in_a(*lst_a));
 		}
 	}
