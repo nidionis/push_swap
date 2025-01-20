@@ -30,14 +30,37 @@ void if_next_softmin_in_b_insert_it(t_lnk **lst_a, t_lnk **lst_b)
                     insert_target_in_a(&ind, lst_b, ind->rank + 1);
 }
 
+void swap_b_if_needed(t_lnk **lst_b)
+{
+    if ((*lst_b)->rank > (*lst_b)->next->rank && !is_a_softminmax_b((*lst_b)))
+        apply_instr(sb, lst_b, lst_b, PRINT);
+}
+
 void    if_not_sorted_push_in_b(t_lnk **lst_a, t_lnk **lst_b)
 {
     if (!*lst_b)
         apply_instr(pb, lst_a, lst_b, PRINT);
-    if (get_size(*lst_b) == 3)
-        sort_3_nb(lst_b, 3);
-    if (!((*lst_a)->rank > get_softmin_in_a(*lst_a) && (*lst_a)->rank < get_softmax_in_a(*lst_a)))
-        insert_target_in_b(lst_a, lst_b, (*lst_a)->rank);
+    else
+    {
+        swap_b_if_needed(lst_b);
+        if (!is_a_softminmax_a(*lst_a))
+            insert_target_in_b(lst_a, lst_b, (*lst_a)->rank);
+        while ((*lst_a)->rank <= get_softmin_in_a(*lst_a))
+            apply_instr(ra, lst_a, lst_b, PRINT);
+    }
+
+}
+
+
+int is_a_softminmax_b(t_lnk *lst)
+{
+    return (lst->rank <= get_softmin_in_b(lst) || lst->rank >= get_softmax_in_b(lst));
+}
+
+
+int is_a_softminmax_a(t_lnk *lst)
+{
+    return (lst->rank <= get_softmin_in_a(lst) || lst->rank >= get_softmax_in_a(lst));
 }
 
 void sort_from_min_to_max(t_lnk **lst_a, t_lnk **lst_b)
@@ -53,10 +76,10 @@ void sort_from_min_to_max(t_lnk **lst_a, t_lnk **lst_b)
         print_lst(*lst_a, "lst_a");
         print_lst(*lst_b, "lst_b");
         apply_instr(ra, lst_a, lst_b, PRINT);
-        if ((*lst_a)->rank > softmax)
-            while ((*lst_a)->rank > softmax)
-                apply_instr(ra, lst_a, lst_b, PRINT);
-        if_not_sorted_push_in_b(lst_a, lst_b);
+        while (!is_a_softminmax_a(*lst_a))
+            if_not_sorted_push_in_b(lst_a, lst_b);
+        while (is_a_softminmax_a(*lst_a) && !is_sorted_a(*lst_a))
+            apply_instr(ra, lst_a, lst_b, PRINT);
         if (!is_sorted_a(*lst_a))
             sort_from_min_to_max(lst_a, lst_b);
     }

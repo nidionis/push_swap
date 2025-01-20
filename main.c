@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 04:29:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 07:25:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,8 @@ int	testing_env(int argc, char **argv)
 		//reach_to_by(&lst_a, &lst_b, 0, ind_max, PRINT);
 		//printf("reach_rank_lst_b_in_dir: %d\n", reach_rank_lst_a_in_dir(&lst_a, &lst_b, 0, REVERSE_ROTATE, PRINT));
 	sort_from_min_to_max(&lst_a, &lst_b);
-	print_lst_byrank(lst_a, "after algo");
+	print_lst_byrank(lst_a, "after algo: a");
+	print_lst_byrank(lst_b, "after algo: b");
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 	return (0);

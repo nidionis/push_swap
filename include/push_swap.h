@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 05:51:03 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 08:04:44 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,8 @@ void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_lst(t_lnk **lst);
 int	is_in_lst(t_lnk *lst, int rank);
 int is_sorted_verif(t_lnk *lst);
+int is_sorted_b(t_lnk *lst);
+int is_a_softminmax_a(t_lnk *lst);
+int is_a_softminmax_b(t_lnk *lst);
 
 #endif
