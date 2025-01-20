@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 21:17:16 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:43:23 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 
 #define EMPTY_LIST -1
 #define LOOP_MAX 10000
+
+#define GAP 5
+#define GAP_MAX 50
 
 typedef struct s_lnk
 {
@@ -156,4 +159,9 @@ int is_rotate_instr(int instr);
 void smart_reach_and_push_softmax(t_lnk **lst_a, t_lnk **lst_b, int softmax);
 int	can_dirty_push_a(t_lnk *lst_a, t_lnk *lst_b);
 
+void b_dump_dirty(t_lnk **lst_a, t_lnk **lst_b);
+void refresh_dirty_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_comb);
+
+void	dummy_reach_and_push_softmax(t_lnk **lst_a, t_lnk **lst_b);
+void dummy_reach_and_push_softmin(t_lnk **lst_a, t_lnk **lst_b);
 #endif
