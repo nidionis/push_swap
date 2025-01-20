@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 19:15:37 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:39:43 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ int	testing_env(int argc, char **argv)
 	//printf("[sort_from_max_to_min]");
 	sort_from_max_to_min(&lst_a, &lst_b);
 	//printf("[b_dump]");
-	b_dump(&lst_a, &lst_b);
+	//b_dump(&lst_a, &lst_b);
 	//while (lst_a)
 	//	apply_instr(pb, &lst_a, &lst_b, PRINT);
 	//apply_instr(pa, &lst_a, &lst_b, PRINT);
@@ -141,8 +141,8 @@ int	testing_env(int argc, char **argv)
 	//apply_instr(pa, &lst_a, &lst_b, PRINT);
 	//printf("[smart_reach_and_push_max]");
 	//reach_rank_lst_a(&lst_a, &lst_b, 0, PRINT);
-	//print_lst_byrank(lst_a, "after : lst_a");
-	//print_lst_byrank(lst_b, "after : lst_b");
+	print_lst_byrank(lst_a, "after : lst_a");
+	print_lst_byrank(lst_b, "after : lst_b");
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 17:51:07 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:22:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	insert_target_in_a(t_lnk **lst_a, t_lnk **lst_b, int target_rank)
 {
     reach_rank_lst_b(lst_a, lst_b, target_rank, PRINT);
     apply_instr(pa, lst_a, lst_b, PRINT);
+    apply_instr(ra, lst_a, lst_b, PRINT);
 }
 
 int can_insert_in_b(t_lnk *lst_b, int target_rank)

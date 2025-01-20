@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 16:21:08 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:49:11 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,6 @@ void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b);
 void sort_from_max_to_min(t_lnk **lst_a, t_lnk **lst_b);
 
 int is_rotate_instr(int instr);
+void smart_reach_and_push_softmax(t_lnk **lst_a, t_lnk **lst_b, int softmax);
 
 #endif
