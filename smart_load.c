@@ -38,7 +38,7 @@ int get_dir(t_lnk *lst, int target_rk, int intermediate_target)
 	int dir;
 
 	dir = get_shortestway(lst, target_rk);
-	dir -= get_shortestway(lst, intermediate_target);
+	dir += get_shortestway(lst, intermediate_target);
 	return (dir);
 }
 
@@ -81,7 +81,7 @@ int reach_to_by(t_lnk **lst_a, int target_rk, int intermediate_target, int to_pr
 	instr = ra;
 	target_ = intermediate_target;
 	if (move_needed(*lst_a, target_rk, intermediate_target))
-		dir = reach_rank(lst_a, target_, 1, PRINT);
+		dir = reach_rank(lst_a, target_, ROTATE, PRINT);
 	else 
 		dir = opti_reach_by(*lst_a, target_rk, intermediate_target);
 	if (dir < 0)
