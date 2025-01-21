@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 20:39:43 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/21 03:29:45 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,13 @@ int	testing_env(int argc, char **argv)
 	//print_lst_byrank(lst_a, "before : lst_a");
 	//print_lst_byrank(lst_b, "before : lst_b");
 	//printf("[smart_reach_and_push_max]");
-	smart_reach_and_push_max(&lst_a, &lst_b);
+	//smart_reach_and_push_max(&lst_a, &lst_b);
 	//printf("[dump_max_next_to_zero]");
-	dump_max_next_to_zero(&lst_a, &lst_b);
+	//dump_max_next_to_zero(&lst_a, &lst_b);
 	//printf("[reach_rank_lst_ar]");
-	reach_rank_lst_a(&lst_a, &lst_b, get_softmax_in_a(lst_a), PRINT);
+	//reach_rank_lst_a(&lst_a, &lst_b, get_softmax_in_a(lst_a), PRINT);
 	//printf("[sort_from_max_to_min]");
-	sort_from_max_to_min(&lst_a, &lst_b);
+	//sort_from_max_to_min(&lst_a, &lst_b);
 	//printf("[b_dump]");
 	//b_dump(&lst_a, &lst_b);
 	//while (lst_a)
@@ -140,7 +140,29 @@ int	testing_env(int argc, char **argv)
 	//apply_instr(pa, &lst_a, &lst_b, PRINT);
 	//apply_instr(pa, &lst_a, &lst_b, PRINT);
 	//printf("[smart_reach_and_push_max]");
-	//reach_rank_lst_a(&lst_a, &lst_b, 0, PRINT);
+	if (!is_sorted_a(lst_a))
+	{
+	print_lst_byrank(lst_a, "after start : lst_a");
+	print_lst_byrank(lst_b, "after start : lst_b");
+		load_high(&lst_a, &lst_b, GAP, 0, get_max(lst_a));
+	print_lst_byrank(lst_a, "after load_high : lst_a");
+	print_lst_byrank(lst_b, "after load_high : lst_b");
+		apply_instr(pb, &lst_a, &lst_b, PRINT);
+		reach_rank_lst_a(&lst_a, &lst_b, 0, PRINT);
+	print_lst_byrank(lst_a, "after reach_rank : lst_a");
+	print_lst_byrank(lst_b, "after reach_rank : lst_b");
+		apply_instr(pa, &lst_a, &lst_b, PRINT);
+		apply_instr(pa, &lst_a, &lst_b, PRINT);
+		dump_softmin(&lst_a, &lst_b);
+		//while (!is_sorted_a(lst_a))
+		//{
+		//	load_low(&lst_a, &lst_b, GAP, get_softmax_in_a(lst_a), get_softmin_in_a(lst_a));
+		//	dump_softmin(&lst_a, &lst_b);
+		//	load_high(&lst_a, &lst_b, GAP, get_softmax_in_a(lst_a), get_softmin_in_a(lst_a));
+		//	dump_softmax(&lst_a, &lst_b);
+		//}
+	}
+	reach_rank_lst_a(&lst_a, &lst_b, 0, PRINT);
 	print_lst_byrank(lst_a, "after : lst_a");
 	print_lst_byrank(lst_b, "after : lst_b");
 	del_lst(&lst_a);

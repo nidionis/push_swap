@@ -6,22 +6,11 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 21:21:14 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/21 01:09:32 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-int	can_dirty_push_a(t_lnk *lst_a, t_lnk *lst_b)
-{
-	if (!lst_a)
-		return (TRUE);
-	if (!lst_b)
-		return (FALSE);
-	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
-		return (TRUE);
-	return (FALSE);
-}
 
 int	can_push_a(t_lnk *lst_a, t_lnk *lst_b)
 {

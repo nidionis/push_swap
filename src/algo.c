@@ -1,21 +1,26 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:36:41 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/21 03:31:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int is_next_sorted_lst_a(t_lnk *lst)
+int	can_dirty_push_a(t_lnk *lst_a, t_lnk *lst_b)
 {
-    return (lst->rank + 1 == lst->next->rank);
+	if (!lst_a)
+		return (TRUE);
+	if (!lst_b)
+		return (FALSE);
+	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
+		return (TRUE);
+	return (FALSE);
 }
 
 int is_a_softminmax_b(t_lnk *lst)
@@ -38,195 +43,66 @@ int is_a_softminmax_a(t_lnk *lst)
     return (lst->rank <= get_softmin_in_a(lst) || lst->rank >= get_softmax_in_a(lst));
 }
 
-void if_next_softmin_in_b_insert_it(t_lnk **lst_a, t_lnk **lst_b)
+void	dump_softmax(t_lnk **lst_a, t_lnk **lst_b)
 {
-    t_lnk	*ind;
-
-    ind = *lst_a;
-    if (!is_next_sorted_lst_a(ind))
-        if (is_in_lst(*lst_b, ind->rank + 1))
-                while (is_in_lst(*lst_b, ind->rank + 1))
-                    insert_target_in_a(&ind, lst_b, ind->rank + 1);
-}
-
-void swap_b_if_needed(t_lnk **lst_b)
-{
-    if ((*lst_b)->rank > (*lst_b)->next->rank && !is_a_softminmax_b((*lst_b)))
-        apply_instr(sb, lst_b, lst_b, PRINT);
-}
-
-void    smart_push_in_b(t_lnk **lst_a, t_lnk **lst_b)
-{
-    if (!*lst_b)
-        apply_instr(pb, lst_a, lst_b, PRINT);
-    else
-    {
-		if ((*lst_b)->next != (*lst_b))
-			swap_b_if_needed(lst_b);
-        if (!is_a_softminmax_a(*lst_a))
-            insert_target_in_b(lst_a, lst_b, (*lst_a)->rank);
-		else
-		{
-			b_dump_dirty(lst_a, lst_b);
-			//dummy_reach_and_push_softmax(lst_a, lst_b);
-			////sort_from_min_to_max(lst_a, lst_b);
-		}
-    }
-}
-
-void sort_from_min_to_max(t_lnk **lst_a, t_lnk **lst_b)
-{
-	int softmin;
-
-	softmin = get_softmin_in_a(*lst_a);
-    while (!is_sorted_a(*lst_a))
+	if (is_a_softmax_a(*lst_a))
+		while (is_a_softmax_a(*lst_a) && !is_sorted_a(*lst_a))
+			apply_instr(TO_SOFTMIN, lst_a, lst_b, PRINT);
+	while (*lst_b)
 	{
-    	if (is_a_softmin_a((*lst_a)->prev))
-    	    apply_instr(rra, lst_a, lst_b, PRINT);
-    	else if (is_in_lst(*lst_b, softmin + 1))
-    	    insert_target_in_a(lst_a, lst_b, softmin - 1);
-		else if (is_a_softmin_a(*lst_a) && !*lst_b)
-    	    apply_instr(rra, lst_a, lst_b, PRINT);
-    	else if (!is_a_softmin_a(*lst_a))
-    	    smart_push_in_b(lst_a, lst_b);
+		if (can_dirty_push_a(*lst_a, *lst_b))
+			apply_instr(pa, lst_a, lst_b, PRINT);
 		else
-		{
-			b_dump_dirty(lst_a, lst_b);
-			dummy_reach_and_push_softmin(lst_a, lst_b);
-			sort_from_max_to_min(lst_a, lst_b);
-		}
+			apply_instr(TO_SOFTMIN, lst_a, lst_b, PRINT);
 	}
 }
 
-void sort_from_max_to_min(t_lnk **lst_a, t_lnk **lst_b)
+void	dump_softmin(t_lnk **lst_a, t_lnk **lst_b)
 {
-	int softmax;
-
-	softmax = get_softmax_in_a(*lst_a);
-    while (!is_sorted_a(*lst_a))
+	if (is_a_softmin_a(*lst_a))
+		while (is_a_softmin_a(*lst_a) && !is_sorted_a(*lst_a))
+			apply_instr(TO_SOFTMAX, lst_a, lst_b, PRINT);
+	while (*lst_b)
 	{
-    	if (is_a_softmax_a((*lst_a)->next))
-    	    apply_instr(ra, lst_a, lst_b, PRINT);
-    	else if (is_in_lst(*lst_b, softmax - 1))
-    	    insert_target_in_a(lst_a, lst_b, softmax + 1);
-		else if (is_a_softmax_a(*lst_a) && !*lst_b)
-    	    apply_instr(ra, lst_a, lst_b, PRINT);
-    	else if (!is_a_softmax_a(*lst_a))
-    	    smart_push_in_b(lst_a, lst_b);
+		if (can_dirty_push_a(*lst_a, *lst_b))
+			apply_instr(pa, lst_a, lst_b, PRINT);
 		else
-		{
-			b_dump_dirty(lst_a, lst_b);
-			dummy_reach_and_push_softmax(lst_a, lst_b);
-			sort_from_min_to_max(lst_a, lst_b);
-		}
+			apply_instr(TO_SOFTMAX, lst_a, lst_b, PRINT);
 	}
 }
 
-int dummy_stack_if_higher(t_lnk *lst_a, t_lnk *lst_b)
+int	is_loadable_high(t_lnk *lnk, int gap, int last_min)
 {
-    (void)lst_b;
-    if (is_a_softminmax_a(lst_a))
-        return (FALSE);
-    if (!lst_b)
-        return (TRUE);
-    return (lst_a->rank > lst_b->next->rank);
+	if (is_a_softminmax_a(lnk))
+			return (FALSE);
+	if (lnk->rank > last_min && lnk->rank <= last_min + gap)
+		return (TRUE);
+	return (FALSE);
 }
 
-int dummy_stack_if_lower(t_lnk *lst_a, t_lnk *lst_b)
+int nb_loaded_high(t_lnk *lnk, int gap, int softmin, int softmax)
 {
-    (void)lst_b;
-    if (is_a_softminmax_a(lst_a))
-        return (FALSE);
-    if (!lst_b)
-        return (TRUE);
-    return (lst_a->rank < lst_b->rank);
+	int	nb;
+	int	last_min;
+
+	nb = 0;
+	last_min = (softmax - softmin) / 2;
+	while (lnk->rank != softmax)
+	{
+		if (is_loadable_high(lnk, gap, last_min))
+		{
+			nb++;
+			last_min = lnk->rank;	
+		}
+		lnk = lnk->next;
+	}
+	return (nb);
 }
 
-int stack_if_higher(t_lnk *lst_a, t_lnk *lst_b, int rank)
+/* reach from softmin, push from median to softmax */
+int find_best_step_high(t_lnk *lst, int step, int softmin, int softmax)
 {
-    (void)lst_b;
-    if (is_a_softminmax_a(lst_a))
-        return (FALSE);
-    if (!lst_b)
-        return (TRUE);
-    return (lst_a->rank < rank && lst_a->rank < lst_b->next->rank);
-}
-
-void dummy_reach_and_push_softmin(t_lnk **lst_a, t_lnk **lst_b)
-{
-	int softmin;
-
-	softmin = get_softmax_in_a(*lst_a);
-    while ((*lst_a)->rank != softmin)
-    {
-        if (dummy_stack_if_higher(*lst_a, *lst_b))
-            apply_instr(pb, lst_a, lst_b, PRINT);
-		else
-			apply_instr(ra, lst_a, lst_b, PRINT);
-    }
-}
-
-void dummy_reach_and_push_softmax(t_lnk **lst_a, t_lnk **lst_b)
-{
-	int softmax;
-
-	softmax = get_softmax_in_a(*lst_a);
-    while ((*lst_a)->rank != softmax)
-    {
-        if (dummy_stack_if_lower(*lst_a, *lst_b))
-            apply_instr(pb, lst_a, lst_b, PRINT);
-		else
-			apply_instr(rra, lst_a, lst_b, PRINT);
-    }
-    //apply_instr(pb, lst_a, lst_b, PRINT);
-}
-
-/* rrb push max to allow to load even more */
-void dump_max_next_to_zero(t_lnk **lst_a, t_lnk **lst_b)
-{
-    int max;
-    int direction;
-
-    max = get_max(*lst_b);
-	direction = get_shortestway(*lst_a, 0);
-	if (direction == ROTATE)
-		direction = ra;
-    else
-        direction = rra;
-    while ((*lst_a)->rank != 0)
-    {
-        if (stack_if_higher(*lst_a, *lst_b, max))
-            apply_instr(pb, lst_a, lst_b, PRINT);
-        apply_instr(direction, lst_a, lst_b, PRINT);
-    }
-	reach_rank_lst_b(lst_a, lst_b, max, PRINT);
-    apply_instr(pa, lst_a, lst_b, PRINT);
-}
-
-void smart_reach_and_push_max(t_lnk **lst_a, t_lnk **lst_b)
-{
-    int max;
-    int direction;
-
-    max = get_max(*lst_a);
-	direction = get_shortestway(*lst_a, max);
-	if (direction == ROTATE)
-		direction = ra;
-    else
-        direction = rra;
-    while ((*lst_a)->rank != max)
-    {
-        if (stack_if_higher(*lst_a, *lst_b, max / 2))
-            apply_instr(pb, lst_a, lst_b, PRINT);
-		else
-			apply_instr(direction, lst_a, lst_b, PRINT);
-    }
-    apply_instr(pb, lst_a, lst_b, PRINT);
-}
-
-int find_best_step(t_lnk *lst_a, t_lnk *lst_b, int step)
-{
-	t_lnk	*ind;
+	(void)step;
 	int		gap;
 	int		best_gap;
 	int		best;
@@ -234,15 +110,109 @@ int find_best_step(t_lnk *lst_a, t_lnk *lst_b, int step)
 
 	gap = GAP_MAX;	
 	best = 0;
-	while (gap > GAP)
+	while (gap > 0)
 	{
-		ret = nb_loaded(lst_a, gap);
+		ret = nb_loaded_high(lst, gap, softmin, softmax);
 		if (ret > best)
 		{
 			best = ret;
 			best_gap = gap;
 		}
-		gap -= GAP
+		gap -= GAP;
 	}
 	return (best_gap);
+}
+
+/* reach from softmin, push from median to softmax */
+void	load_high(t_lnk **lst_a, t_lnk **lst_b, int step, int softmin, int softmax)
+{
+	(void)step;
+	int		gap;
+	int	last_min;
+
+	last_min = (softmax - softmin) / 2;
+	gap = find_best_step_high(*lst_a, step, softmin, softmax);
+	while ((*lst_a)->rank != softmax)
+	{
+		if (is_loadable_high(*lst_a, gap, last_min))
+		{
+			apply_instr(pb, lst_a, lst_b, PRINT);
+			last_min = (*lst_a)->rank;	
+		}
+		else
+			apply_instr(TO_SOFTMAX, lst_a, lst_b, PRINT);
+	}
+}
+
+int	is_loadable_low(t_lnk *lnk, int gap, int last_max)
+{
+	if (is_a_softminmax_a(lnk))
+			return (FALSE);
+	if (lnk->rank > last_max && lnk->rank >= last_max - gap)
+		return (TRUE);
+	return (FALSE);
+}
+
+
+int nb_loaded_low(t_lnk *lnk, int gap, int softmin, int softmax)
+{
+	int	nb;
+	int	last_max;
+
+	nb = 0;
+	last_max = (softmax - softmin) / 2;
+	while (lnk->rank != softmin)
+	{
+		if (is_loadable_low(lnk, gap, last_max))
+		{
+			nb++;
+			last_max = lnk->rank;	
+		}
+		lnk = lnk->prev;
+	}
+	return (nb);
+}
+
+/* reach from softmin, push from median to softmax */
+int find_best_step_low(t_lnk *lst, int step, int softmin, int softmax)
+{
+	(void)step;
+	int		gap;
+	int		best_gap;
+	int		best;
+	int		ret;
+
+	gap = GAP_MAX;	
+	best = 0;
+	while (gap > 0)
+	{
+		ret = nb_loaded_low(lst, gap, softmin, softmax);
+		if (ret > best)
+		{
+			best = ret;
+			best_gap = gap;
+		}
+		gap -= GAP;
+	}
+	return (best_gap);
+}
+
+/* reach from softmin, push from median to softmax */
+void	load_low(t_lnk **lst_a, t_lnk **lst_b, int step, int softmin, int softmax)
+{
+	int		gap;
+	int	last_max;
+
+	last_max = (softmax - softmin) / 2;
+	gap = find_best_step_low(*lst_a, step, softmin, softmax);
+	while ((*lst_a)->prev->rank != softmin)
+	{
+		if (is_loadable_low(*lst_a, gap, last_max))
+		{
+			apply_instr(pb, lst_a, lst_b, PRINT);
+			last_max = (*lst_a)->rank;	
+		}
+		else
+			apply_instr(TO_SOFTMIN, lst_a, lst_b, PRINT);
+	}
 }

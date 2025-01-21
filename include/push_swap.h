@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/20 23:43:23 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/21 03:27:20 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@
 
 #define GAP 5
 #define GAP_MAX 50
+
+#define TO_SOFTMAX ra
+#define TO_SOFTMIN rra
 
 typedef struct s_lnk
 {
@@ -164,4 +167,34 @@ void refresh_dirty_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_comb)
 
 void	dummy_reach_and_push_softmax(t_lnk **lst_a, t_lnk **lst_b);
 void dummy_reach_and_push_softmin(t_lnk **lst_a, t_lnk **lst_b);
+
+int nb_loaded_high(t_lnk *lnk, int gap, int softmin, int softmax);
+
+/* reach from softmin, push from median to softmax */
+int find_best_step_high(t_lnk *lst, int step, int softmin, int softmax);
+int	is_loadable_low(t_lnk *lnk, int gap, int last_max);
+int nb_loaded_low(t_lnk *lnk, int gap, int softmin, int softmax);
+/* reach from softmin, push from median to softmax */
+int find_best_step_low(t_lnk *lst, int step, int softmin, int softmax);
+
+void	dump_softmax(t_lnk **lst_a, t_lnk **lst_b);
+
+void	dump_softmin(t_lnk **lst_a, t_lnk **lst_b);
+
+int	is_loadable_high(t_lnk *lnk, int gap, int last_min);
+
+int nb_loaded_high(t_lnk *lnk, int gap, int softmin, int softmax);
+
+int find_best_step_high(t_lnk *lst, int step, int softmin, int softmax);
+
+void	load_high(t_lnk **lst_a, t_lnk **lst_b, int step, int softmin, int softmax);
+
+int	is_loadable_low(t_lnk *lnk, int gap, int last_max);
+
+int nb_loaded_low(t_lnk *lnk, int gap, int softmin, int softmax);
+
+int find_best_step_low(t_lnk *lst, int step, int softmin, int softmax);
+
+void	load_low(t_lnk **lst_a, t_lnk **lst_b, int step, int softmin, int softmax);
+
 #endif
