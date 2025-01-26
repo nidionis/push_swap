@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:46:25 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/26 15:58:55 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 # include <libft.h>
 # include <libftprintf.h>
 
+typedef struct s_data
+{
+	int	max_a;
+	int	max_b;
+	int	softmax_a;
+	int	softmax_b;
+}	t_data;
+
 typedef struct s_lnk
 {
 	int				nb;
 	int				ind;
 	int				rank;
+	t_data			d;
 	struct s_lnk	*next;
 	struct s_lnk	*prev;
 }	t_lnk;
