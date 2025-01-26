@@ -3,99 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:36:41 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:43:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	can_push(t_lnk *lst_a, t_lnk *lst_b)
+int	can_push_b()
 {
-	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
-		return (1);
-	return (0);
+	if (!d.lst_a)
+		return (FALSE);
+	if (!d.lst_b)
+		return (TRUE);
+	if (d.lst_b->rank > d.lst_a->rank && (d.lst_b->prev)->rank < d.lst_a->rank)
+		return (TRUE);
+	if (d.softmax_b == UNSET)
+		return (TRUE);
+	if (d.lst_b->rank == d.min_b && (d.lst_a->rank < d.min_b || d.lst_a->rank > d.max_b))
+		return (TRUE);
+	return (FALSE);
 }
 
-void	itm_insert_loop(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_result)
+int	can_push_a()
 {
-	int	steps;
-
-	steps = 0;
-	while (!can_push(lst_a, lst_b))
-	{
-		apply_instr(instr, &lst_a, &lst_b, 0);
-		if (steps >= best_result[1])
-			break ;
-		steps++;
-	}
-	if (steps < best_result[1])
-	{
-		best_result[0] = instr;
-		best_result[1] = steps;
-	}
+	if (!d.lst_b)
+		return (FALSE);
+	if (!d.lst_a)
+		return (TRUE);
+	if (d.lst_a->rank > d.lst_b->rank && (d.lst_a->prev)->rank < d.lst_b->rank)
+		return (TRUE);
+	if (d.softmax_a == UNSET)
+		return (TRUE);
+	if (d.lst_a->rank == d.min_a && (d.lst_b->rank < d.min_a || d.lst_b->rank > d.max_a))
+		return (TRUE);
+	return (FALSE);
 }
 
-int	*itm_insert(t_lnk *lst_a, t_lnk *lst_b)
+void save_best_instr(int instr_steps_itm[2])
 {
-	int		instr;
-	t_lnk	*lst_a_init;
-	t_lnk	*lst_b_init;
-	int		*best_result;
+	d.best_inst_step[FIRST_INSTR] = instr_steps_itm[FIRST_INSTR];
+	d.best_inst_step[NB_FIRST_INSTR] = instr_steps_itm[NB_FIRST_INSTR];
+}
 
-	best_result = malloc(sizeof(int) * 2);
-	if (!best_result)
-		error_msg("[itm_insert] did not malloc");
-	best_result[1] = 2147483647;
-	instr = ra;
-	lst_a_init = lst_a;
-	lst_b_init = lst_b;
-	if (!can_push(lst_a, lst_b))
+void	insert_target(t_lnk *target, int way)
+{
+	int instr;
+	t_lnk *lst_b_tmp;
+	int	instr_steps_itm[2];
+
+	(void)target;
+	lst_b_tmp = d.lst_b;
+	instr = 0;
+	d.best_inst_step[NB_FIRST_INSTR] = INT_MAX;
+	instr_steps_itm[FIRST_INSTR] = 0;
+	instr_steps_itm[NB_FIRST_INSTR] = 0;
+	while (instr < 4)
 	{
-		while (instr <= rrr)
+		instr_steps_itm[FIRST_INSTR] = d.rotate_instr[way][instr];
+		instr_steps_itm[NB_FIRST_INSTR] = 0;
+		if (can_push_b(d.lst_a, lst_b_tmp))
 		{
-			itm_insert_loop(lst_a, lst_b, instr, best_result);
-			lst_a = lst_a_init;
-			lst_b = lst_b_init;
-			instr++;
+			save_best_instr(instr_steps_itm);
+			return ;
 		}
-	}
-	return (best_result);
-}
+		lst_b_tmp = lst_b_tmp->next;
+		while (!can_push_b(d.lst_a, lst_b_tmp) && lst_b_tmp != d.lst_b)
+		{
 
-int	refresh_best_inst_steps(int *best_inst_step, int instr, int steps, \
-	int	*instr_steps_itm)
-{
-	int	steps_max;
-
-	steps_max = best_inst_step[1] + best_inst_step[3];
-	if (instr_steps_itm[1] + steps < steps_max)
-	{
-		best_inst_step[0] = instr;
-		best_inst_step[1] = steps;
-		best_inst_step[2] = instr_steps_itm[0];
-		best_inst_step[3] = instr_steps_itm[1];
-	}
-	free(instr_steps_itm);
-	return (best_inst_step[1] + best_inst_step[3]);
-}
-
-void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \
-	int *best_inst_step)
-{
-	int		steps;
-	int		steps_max;
-	int		*instr_steps_item;
-
-	steps = 0;
-	steps_max = best_inst_step[1] + best_inst_step[3];
-	while (++steps < steps_max)
-	{
-		apply_instr(instr, &lst_a, &lst_b, 0);
-		instr_steps_item = itm_insert(lst_a, lst_b);
-		steps_max = refresh_best_inst_steps(best_inst_step, instr, steps, \
-			instr_steps_item);
+			apply_instr(d.rotate_instr[way][instr], QUIET);
+		}
+		++instr;
+		lst_b_tmp = d.lst_b;
 	}
 }

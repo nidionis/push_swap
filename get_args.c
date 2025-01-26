@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:34:37 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/27 00:12:55 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 t_lnk	*get_args_allinone(char *str)
 {
-	t_lnk	*lst_a;
 	t_lnk	*lnk;
 	char	**splited;
 	int		argc;
@@ -24,31 +23,30 @@ t_lnk	*get_args_allinone(char *str)
 		error_msg(NULL);
 	splited = ft_split(str, ' ');
 	lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
-	lst_a = lnk;
+	d.lst_a = lnk;
 	while (argc--)
 	{
 		lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
-		push_item(lnk, &lst_a);
+		push_item(lnk, &d.lst_a);
 	}
 	ft_free_split(splited);
-	return (lst_a);
+	return (d.lst_a);
 }
 
 t_lnk	*get_args(int argc, char *argv[])
 {
-	t_lnk	*lst_a;
 	t_lnk	*lnk;
 
 	argc -= 2;
 	argv = &argv[1];
 	lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-	lst_a = lnk;
+	d.lst_a = lnk;
 	while (argc--)
 	{
 		lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-		push_item(lnk, &lst_a);
+		push_item(lnk, &d.lst_a);
 	}
-	return (lst_a);
+	return (d.lst_a);
 }
 
 t_lnk	*lst_cpy(t_lnk *lst)

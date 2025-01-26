@@ -6,54 +6,49 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/26 20:56:04 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/27 00:19:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)
+void	select_algo(int ind_max)
 {
 	if (ind_max == 1)
-		sort_2_nb(&lst_a);
+		sort_2_nb(1);
 	else if (ind_max == 2)
-		sort_3_nb(&lst_a, ind_max);
+		sort_3_nb(2);
 	else if (ind_max == 3)
-		sort_4_nb(&lst_a, &lst_b);
+		sort_4_nb(3);
 	else if (ind_max == 4)
-		sort_5_nb(&lst_a, &lst_b);
+		sort_5_nb(4);
 	else
 	{
-		load_b(&lst_a, &lst_b, ind_max);
-		b_dump(&lst_a, &lst_b);
-		reach_rank(&lst_a, 0, get_shortestway(0, lst_a));
+		// load_b();
+		// b_dump();
+		reach_rank(&d.lst_a, 0, get_shortestway(0, d.lst_a));
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	t_lnk	*lst_a;
-	t_lnk	*lst_b;
 	int		ind_max;
-	t_data	d;
 
+	d = (t_data){0};
 	if (argc < 2)
 		error_msg(NULL);
 	else if (argc == 2)
-		lst_a = get_args_allinone(argv[1]);
+		d.lst_a = get_args_allinone(argv[1]);
 	else
-		lst_a = get_args(argc, argv);
-	ind_max = lst_init_ranks(&lst_a);
+		d.lst_a = get_args(argc, argv);
+	ind_max = lst_init_ranks(&d.lst_a);
 	(void)ind_max;
-	lst_b = NULL;
-	if (!ft_no_duplicate(lst_a))
+	d.lst_b = NULL;
+	if (!ft_no_duplicate(d.lst_a))
 		error_msg("Error: duplicated items");
-	//select_algo(lst_a, lst_a, ind_max);
-	set_data(&d, lst_a, lst_b);
-	apply_instr(pb, &lst_a, &lst_b, PRINT);
-	apply_instr(pb, &lst_a, &lst_b, PRINT);
-	
+	set_data();
+	// select_algo();
 	print_data(&d);
-	del_lst(&lst_a);
-	del_lst(&lst_b);
+	del_lst(&d.lst_a);
+	del_lst(&d.lst_b);
 }

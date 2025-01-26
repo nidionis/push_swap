@@ -6,31 +6,31 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/26 20:46:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:44:36 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
+void	fucking_norminette(int instr)
 {
 	if (instr == sa)
-		swap_lst(lst_a);
+		swap_lst(&d.lst_a);
 	else if (instr == sb)
-		swap_lst(lst_b);
+		swap_lst(&d.lst_b);
 	else if (instr == ss)
 	{
-		swap_lst(lst_a);
-		swap_lst(lst_b);
+		swap_lst(&d.lst_a);
+		swap_lst(&d.lst_b);
 	}
 	else if (instr == ra)
-		rotate_lst(lst_a);
+		rotate_lst(&d.lst_a);
 	else if (instr == rb)
-		rotate_lst(lst_b);
+		rotate_lst(&d.lst_b);
 	else if (instr == rr)
 	{
-		rotate_lst(lst_b);
-		rotate_lst(lst_a);
+		rotate_lst(&d.lst_b);
+		rotate_lst(&d.lst_a);
 	}
 	else
 	{
@@ -38,29 +38,29 @@ void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)
 	}
 }
 
-void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)
+void	apply_instr(int instr, int to_print)
 {
 	if (instr == rra)
-		rrotate_lst(lst_a);
+		rrotate_lst(&d.lst_a);
 	else if (instr == rrb)
-		rrotate_lst(lst_b);
+		rrotate_lst(&d.lst_b);
 	else if (instr == rrr)
 	{
-		rrotate_lst(lst_b);
-		rrotate_lst(lst_a);
+		rrotate_lst(&d.lst_b);
+		rrotate_lst(&d.lst_a);
 	}
 	else if (instr == pa)
 	{
-		push(lst_b, lst_a);
-		data_update((*lst_a)->d, *lst_a, *lst_b);
+		push(&d.lst_b, &d.lst_a);
+		data_update();
 	}
 	else if (instr == pb)
 	{
-		push(lst_a, lst_b);
-		data_update((*lst_a)->d, *lst_a, *lst_b);
+		push(&d.lst_a, &d.lst_b);
+		data_update();
 	}
 	else
-		fucking_norminette(instr, lst_a, lst_b);
+		fucking_norminette(instr);
 	if (to_print)
 		i_to_instr(instr);
 }

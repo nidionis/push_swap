@@ -3,92 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   small_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:26:09 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/26 23:35:43 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	is_median(t_lnk *lst_a, int max)
+int	is_median(int max)
 {
-	if (lst_a->rank != 0 && lst_a->rank != max)
+	if (d.lst_a->rank != 0 && d.lst_a->rank != max)
 		return (1);
 	return (0);
 }
 
-void	sort_2_nb(t_lnk **lst_a)
+void	sort_2_nb()
 {
-	if ((*lst_a)->rank > (*lst_a)->next->rank)
-		apply_instr(sa, lst_a, NULL, 1);
+	if ((d.lst_a)->rank > (d.lst_a)->next->rank)
+		apply_instr(sa, 1);
 }
 
-void	sort_3_nb(t_lnk **lst_a, int max)
+void	sort_3_nb(int max)
 {
-	if ((*lst_a)->rank != 0)
+	if ((d.lst_a)->rank != 0)
 	{
-		if (is_median((*lst_a)->next, max))
+		if (is_median(max))
 		{
-			apply_instr(sa, lst_a, NULL, 1);
-			apply_instr(rra, lst_a, NULL, 1);
+			apply_instr(sa, 1);
+			apply_instr(rra, 1);
 		}
-		else if (is_median((*lst_a)->prev, max))
-			apply_instr(ra, lst_a, NULL, 1);
-		else if ((*lst_a)->prev->rank == max)
-			apply_instr(sa, lst_a, NULL, 1);
+		else if (is_median(max))
+			apply_instr(ra, 1);
+		else if ((d.lst_a)->prev->rank == max)
+			apply_instr(sa, 1);
 		else
-			apply_instr(rra, lst_a, NULL, 1);
+			apply_instr(rra, 1);
 	}
 	else
 	{
-		if (!is_median((*lst_a)->next, max))
+		if (!is_median(max))
 		{
-			apply_instr(ra, lst_a, NULL, 1);
-			apply_instr(sa, lst_a, NULL, 1);
-			apply_instr(rra, lst_a, NULL, 1);
+			apply_instr(ra, 1);
+			apply_instr(sa, 1);
+			apply_instr(rra, 1);
 		}
 	}
 }
 
-void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b)
+void	sort_4_nb()
 {
 	int	i;
 
 	i = 0;
 	while (i++ < 4)
 	{
-		if ((*lst_a)->rank > 1)
-			apply_instr(pb, lst_a, lst_b, 1);
+		if ((d.lst_a)->rank > 1)
+			apply_instr(pb, 1);
 		else
-			apply_instr(ra, lst_a, lst_b, 1);
+			apply_instr(ra, 1);
 	}
-	if ((*lst_a)->rank > (*lst_a)->next->rank)
-		apply_instr(sa, lst_a, lst_b, 1);
-	if ((*lst_a)->rank < (*lst_a)->next->rank)
-		apply_instr(sb, lst_a, lst_b, 1);
-	apply_instr(pa, lst_a, lst_b, 1);
-	apply_instr(pa, lst_a, lst_b, 1);
+	if ((d.lst_a)->rank > (d.lst_a)->next->rank)
+		apply_instr(sa, 1);
+	if ((d.lst_a)->rank < (d.lst_a)->next->rank)
+		apply_instr(sb, 1);
+	apply_instr(pa, 1);
+	apply_instr(pa, 1);
 }
 
-void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b)
+void	sort_5_nb()
 {
 	int	i;
 
 	i = 0;
 	while (i++ < 5)
 	{
-		if ((*lst_a)->rank > 2)
-			apply_instr(pb, lst_a, lst_b, 1);
+		if ((d.lst_a)->rank > 2)
+			apply_instr(pb, 1);
 		else
-			apply_instr(ra, lst_a, lst_b, 1);
+			apply_instr(ra, 1);
 	}
-	sort_3_nb(lst_a, 2);
-	if ((*lst_b)->rank < (*lst_b)->next->rank)
-		apply_instr(sb, lst_a, lst_b, 1);
-	apply_instr(pa, lst_a, lst_b, 1);
-	apply_instr(pa, lst_a, lst_b, 1);
-	apply_instr(ra, lst_a, lst_b, 1);
-	apply_instr(ra, lst_a, lst_b, 1);
+	sort_3_nb(2);
+	if ((d.lst_b)->rank < (d.lst_b)->next->rank)
+		apply_instr(sb, 1);
+	apply_instr(pa, 1);
+	apply_instr(pa, 1);
+	apply_instr(ra, 1);
+	apply_instr(ra, 1);
 }

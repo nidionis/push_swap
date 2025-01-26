@@ -28,25 +28,25 @@ NAME	Makefile	/^NAME = push_swap$/;"	m
 OBJS	Makefile	/^OBJS := ${SRCS:c=o}$/;"	m
 SRCS	Makefile	/^SRCS =  get_args.c lnk_fts.c pushing_fts.c print_lst.c \\$/;"	m
 all	Makefile	/^all: ${NAME}$/;"	t
-apply_instr	apply_instr.c	/^void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)$/;"	f	typeref:typename:void
-b_dump	b_dump.c	/^void	b_dump(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
-best_insert	b_dump.c	/^int	*best_insert(t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:int *
+apply_instr	apply_instr.c	/^void	apply_instr(int instr, t_lnk **d.lst_a, t_lnk **d.lst_b, int to_print)$/;"	f	typeref:typename:void
+b_dump	b_dump.c	/^void	b_dump(t_lnk **d.lst_a, t_lnk **d.lst_b)$/;"	f	typeref:typename:void
+best_insert	b_dump.c	/^int	*best_insert(t_lnk *d.lst_a, t_lnk *d.lst_b)$/;"	f	typeref:typename:int *
 bonus	Makefile	/^bonus: make_libftprintf make_libft$/;"	t
 bonusdebugfile	Makefile	/^bonusdebugfile: ctags$/;"	t
-can_push	algo.c	/^int	can_push(t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:int
+can_push_a	algo.c	/^int	can_push_a(t_lnk *d.lst_a, t_lnk *d.lst_b)$/;"	f	typeref:typename:int
 clean	Makefile	/^clean:$/;"	t
 ctags	Makefile	/^ctags:$/;"	t
-data_update	data.c	/^void    data_update(t_data *d, t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:void
+data_update	data.c	/^void    data_update(t_data *d, t_lnk *d.lst_a, t_lnk *d.lst_b)$/;"	f	typeref:typename:void
 debug	Makefile	/^debug: debugfile$/;"	t
 debugfile	Makefile	/^debugfile: ctags$/;"	t
 del_lst	lnk_fts.c	/^void	del_lst(t_lnk **lst)$/;"	f	typeref:typename:void
 fclean	Makefile	/^fclean: clean$/;"	t
-finishing	checker.c	/^void	finishing(t_lnk *lst_a, t_lnk *lst_b, char *instruction)$/;"	f	typeref:typename:void
+finishing	checker.c	/^void	finishing(t_lnk *d.lst_a, t_lnk *d.lst_b, char *instruction)$/;"	f	typeref:typename:void
 ft_new_lnk	lnk_fts.c	/^t_lnk	*ft_new_lnk(int nb, int ind, int rank)$/;"	f	typeref:typename:t_lnk *
 ft_no_duplicate	verifications.c	/^int	ft_no_duplicate(t_lnk *lst)$/;"	f	typeref:typename:int
 ft_realloc_cat	get_next_line.c	/^char	*ft_realloc_cat(char *line, char c, int *len)$/;"	f	typeref:typename:char *
 fucking_normi_2	apply_instr.c	/^int	fucking_normi_2(char *str)$/;"	f	typeref:typename:int
-fucking_norminette	apply_instr.c	/^void	fucking_norminette(int instr, t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
+fucking_norminette	apply_instr.c	/^void	fucking_norminette(int instr, t_lnk **d.lst_a, t_lnk **d.lst_b)$/;"	f	typeref:typename:void
 get_args	get_args.c	/^t_lnk	*get_args(int argc, char *argv[])$/;"	f	typeref:typename:t_lnk *
 get_args_allinone	get_args.c	/^t_lnk	*get_args_allinone(char *str)$/;"	f	typeref:typename:t_lnk *
 get_max	data.c	/^t_lnk     *get_max(t_lnk *lst)$/;"	f	typeref:typename:t_lnk *
@@ -57,12 +57,12 @@ get_softmax	data.c	/^t_lnk *get_softmax(t_lnk *lst)$/;"	f	typeref:typename:t_lnk
 get_softmin	data.c	/^t_lnk *get_softmin(t_lnk *lst)$/;"	f	typeref:typename:t_lnk *
 i_to_instr	apply_instr.c	/^void	i_to_instr(int i)$/;"	f	typeref:typename:void
 instr_to_i	apply_instr.c	/^int	instr_to_i(char *str)$/;"	f	typeref:typename:int
-is_median	small_lst.c	/^int	is_median(t_lnk *lst_a, int max)$/;"	f	typeref:typename:int
+is_median	small_lst.c	/^int	is_median(t_lnk *d.lst_a, int max)$/;"	f	typeref:typename:int
 is_sorted	verifications.c	/^int	is_sorted(t_lnk *lst)$/;"	f	typeref:typename:int
-itm_insert	algo.c	/^int	*itm_insert(t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:int *
-itm_insert_loop	algo.c	/^void	itm_insert_loop(t_lnk *lst_a, t_lnk *lst_b, int instr, int *best_result)$/;"	f	typeref:typename:void
+itm_insert	algo.c	/^int	*itm_insert(t_lnk *d.lst_a, t_lnk *d.lst_b)$/;"	f	typeref:typename:int *
+itm_insert_loop	algo.c	/^void	itm_insert_loop(t_lnk *d.lst_a, t_lnk *d.lst_b, int instr, int *best_result)$/;"	f	typeref:typename:void
 lnk_init	lnk_fts.c	/^t_lnk	*lnk_init(t_lnk *lnk)$/;"	f	typeref:typename:t_lnk *
-load_b	first_parsing.c	/^void	load_b(t_lnk **lst_a, t_lnk **lst_b, int max)$/;"	f	typeref:typename:void
+load_b	first_parsing.c	/^void	load_b(t_lnk **d.lst_a, t_lnk **d.lst_b, int max)$/;"	f	typeref:typename:void
 loop	lnk_fts.c	/^void	loop(t_lnk *lnk, t_lnk *l_i, int *max)$/;"	f	typeref:typename:void
 lst_cpy	get_args.c	/^t_lnk	*lst_cpy(t_lnk *lst)$/;"	f	typeref:typename:t_lnk *
 lst_init_ranks	lnk_fts.c	/^int	lst_init_ranks(t_lnk **lst)$/;"	f	typeref:typename:int
@@ -73,23 +73,23 @@ make_libftprintf	Makefile	/^make_libftprintf:$/;"	t
 pop_item	pushing_fts.c	/^t_lnk	*pop_item(t_lnk **lst)$/;"	f	typeref:typename:t_lnk *
 print_data	data.c	/^void print_data(t_data *d)$/;"	f	typeref:typename:void
 print_lst	print_lst.c	/^void	print_lst(t_lnk *lst, char *header)$/;"	f	typeref:typename:void
-print_lst_byrank	print_lst.c	/^void	print_lst_byrank(t_lnk *lst, char *header)$/;"	f	typeref:typename:void
+print_d.lst_byrank	print_lst.c	/^void	print_d.lst_byrank(t_lnk *lst, char *header)$/;"	f	typeref:typename:void
 push	pushing_fts.c	/^void	push(t_lnk **from_lst, t_lnk **to_lst)$/;"	f	typeref:typename:void
 push_item	pushing_fts.c	/^void	push_item(t_lnk *lnk, t_lnk **lst)$/;"	f	typeref:typename:void
 re	Makefile	/^re: fclean all$/;"	t
 reach_rank	reach.c	/^void	reach_rank(t_lnk **lst, int rank, int direction)$/;"	f	typeref:typename:void
 refresh_best_inst_steps	algo.c	/^int	refresh_best_inst_steps(int *best_inst_step, int instr, int steps, \\$/;"	f	typeref:typename:int
-refresh_in_dir	algo.c	/^void	refresh_in_dir(t_lnk *lst_a, t_lnk *lst_b, int instr, \\$/;"	f	typeref:typename:void
+refresh_in_dir	algo.c	/^void	refresh_in_dir(t_lnk *d.lst_a, t_lnk *d.lst_b, int instr, \\$/;"	f	typeref:typename:void
 rotate_lst	rotate.c	/^void	rotate_lst(t_lnk **lst)$/;"	f	typeref:typename:void
 rrotate_lst	rotate.c	/^void	rrotate_lst(t_lnk **lst)$/;"	f	typeref:typename:void
-select_algo	main.c	/^void	select_algo(t_lnk *lst_a, t_lnk *lst_b, int ind_max)$/;"	f	typeref:typename:void
-set_softmax	data.c	/^void set_softmax(t_data *d, t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:void
-set_softmin	data.c	/^void set_softmin(t_data *d, t_lnk *lst_a, t_lnk *lst_b)$/;"	f	typeref:typename:void
+select_algo	main.c	/^void	select_algo(t_lnk *d.lst_a, t_lnk *d.lst_b, int ind_max)$/;"	f	typeref:typename:void
+set_softmax	data.c	/^void set_softmax(t_data *d, t_lnk *d.lst_a, t_lnk *d.lst_b)$/;"	f	typeref:typename:void
+set_softmin	data.c	/^void set_softmin(t_data *d, t_lnk *d.lst_a, t_lnk *d.lst_b)$/;"	f	typeref:typename:void
 shortestway_fucking_norminette	reach.c	/^void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, \\$/;"	f	typeref:typename:void
-sort_2_nb	small_lst.c	/^void	sort_2_nb(t_lnk **lst_a)$/;"	f	typeref:typename:void
-sort_3_nb	small_lst.c	/^void	sort_3_nb(t_lnk **lst_a, int max)$/;"	f	typeref:typename:void
-sort_4_nb	small_lst.c	/^void	sort_4_nb(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
-sort_5_nb	small_lst.c	/^void	sort_5_nb(t_lnk **lst_a, t_lnk **lst_b)$/;"	f	typeref:typename:void
-special_item	first_parsing.c	/^int	special_item(t_lnk *lst_a, int max)$/;"	f	typeref:typename:int
+sort_2_nb	small_lst.c	/^void	sort_2_nb(t_lnk **d.lst_a)$/;"	f	typeref:typename:void
+sort_3_nb	small_lst.c	/^void	sort_3_nb(t_lnk **d.lst_a, int max)$/;"	f	typeref:typename:void
+sort_4_nb	small_lst.c	/^void	sort_4_nb(t_lnk **d.lst_a, t_lnk **d.lst_b)$/;"	f	typeref:typename:void
+sort_5_nb	small_lst.c	/^void	sort_5_nb(t_lnk **d.lst_a, t_lnk **d.lst_b)$/;"	f	typeref:typename:void
+special_item	first_parsing.c	/^int	special_item(t_lnk *d.lst_a, int max)$/;"	f	typeref:typename:int
 swap_lst	swap.c	/^void	swap_lst(t_lnk **lst)$/;"	f	typeref:typename:void
 test	Makefile	/^test: ctags$/;"	t

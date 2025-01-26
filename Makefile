@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/26 20:51:03 by nidionis         ###   ########.fr        #
+#    Updated: 2025/01/27 00:22:25 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,15 +57,9 @@ ctags:
 
 clean:
 	rm -f $(OBJS)
-	rm -f $(DEBUG_NAME)
-	make clean -C libft
-	make clean -C libftprintf
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f $(BONUS_NAME)
-	make fclean -C libft
-	make fclean -C libftprintf
 
 re: fclean all
 

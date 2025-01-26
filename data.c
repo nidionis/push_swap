@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/26 19:33:56 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/26 22:54:37 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,69 +76,68 @@ t_lnk *get_softmin(t_lnk *lst)
     return (tmp);
 }
 
-void set_softmax(t_data *d, t_lnk *lst_a, t_lnk *lst_b)
+void set_softmax()
 {
-    if (!lst_a || lst_a->next == lst_a)
-        d->softmax_a = UNSET;
+    if (!d.lst_a || d.lst_a->next == d.lst_a)
+        d.softmax_a = UNSET;
     else 
-        d->softmax_a = get_softmax(lst_a)->rank;
-    if (!lst_b || lst_b->next == lst_b)
-        d->softmax_b = UNSET;
+        d.softmax_a = get_softmax(d.lst_a)->rank;
+    if (!d.lst_b || d.lst_b->next == d.lst_b)
+        d.softmax_b = UNSET;
     else 
-        d->softmax_b = get_softmax(lst_b)->rank;
+        d.softmax_b = get_softmax(d.lst_b)->rank;
 }
 
-void set_softmin(t_data *d, t_lnk *lst_a, t_lnk *lst_b)
+void set_softmin()
 {
-    if (!lst_a || lst_a->next == lst_a)
-        d->softmin_a = UNSET;
+    if (!d.lst_a || d.lst_a->next == d.lst_a)
+        d.softmin_a = UNSET;
     else 
-        d->softmin_a = get_softmin(lst_a)->rank;
-    if (!lst_b || lst_b->next == lst_b)
-        d->softmin_b = UNSET;
+        d.softmin_a = get_softmin(d.lst_a)->rank;
+    if (!d.lst_b || d.lst_b->next == d.lst_b)
+        d.softmin_b = UNSET;
     else 
-        d->softmin_b = get_softmin(lst_b)->rank;
+        d.softmin_b = get_softmin(d.lst_b)->rank;
 }
 
-void    data_update(t_data *d, t_lnk *lst_a, t_lnk *lst_b)
+void    data_update()
 {
     t_lnk   *tmp;
-    tmp = get_max(lst_a);
+    tmp = get_max(d.lst_a);
     if (tmp)
-        d->max_a = tmp->rank;
+        d.max_a = tmp->rank;
     else
-        d->max_a = UNSET;
-    tmp = get_max(lst_b);
+        d.max_a = UNSET;
+    tmp = get_max(d.lst_b);
     if (tmp)
-        d->max_b = tmp->rank;
+        d.max_b = tmp->rank;
     else
-        d->max_b = UNSET;
-    tmp = get_min(lst_a);
+        d.max_b = UNSET;
+    tmp = get_min(d.lst_a);
     if (tmp)
-        d->min_a = tmp->rank;
+        d.min_a = tmp->rank;
     else
-        d->min_a = UNSET;
-    tmp = get_min(lst_b);
+        d.min_a = UNSET;
+    tmp = get_min(d.lst_b);
     if (tmp)
-        d->min_b = tmp->rank;
+        d.min_b = tmp->rank;
     else
-        d->min_b = UNSET;
-    set_softmax(d, lst_a, lst_b);
-    set_softmin(d, lst_a, lst_b);
+        d.min_b = UNSET;
+    set_softmax();
+    set_softmin();
 }
 
-void set_data(t_data *d, t_lnk *lst_a, t_lnk *lst_b)
+void set_data()
 {
-    t_lnk   *tmp;
-
-    tmp = lst_a;
-    while (tmp->next != lst_a)
-    {
-        tmp->d = d;
-        tmp = tmp->next;
-    }
-    tmp->d = d;
-    data_update(d, lst_a, lst_b);
+    data_update();
+    d.rotate_instr[ROTATE][0] = ra;
+    d.rotate_instr[ROTATE][1] = rr;
+    d.rotate_instr[ROTATE][2] = rb;
+    d.rotate_instr[ROTATE][3] = rrb;
+    d.rotate_instr[RROTATE][0] = rra;
+    d.rotate_instr[RROTATE][1] = rrr;
+    d.rotate_instr[RROTATE][2] = rb;
+    d.rotate_instr[RROTATE][3] = rrb;
 }
 
 #include <stdio.h>
