@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:36:00 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:56:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	t_lnk	*lst_a;
 	t_lnk	*lst_b;
 	int		ind_max;
+	t_data	d;
 
 	if (argc < 2)
 		error_msg(NULL);
@@ -43,9 +44,16 @@ int	main(int argc, char **argv)
 	else
 		lst_a = get_args(argc, argv);
 	ind_max = lst_init_ranks(&lst_a);
+	(void)ind_max;
+	lst_b = NULL;
 	if (!ft_no_duplicate(lst_a))
 		error_msg("Error: duplicated items");
-	select_algo(lst_a, lst_a, ind_max);
+	//select_algo(lst_a, lst_a, ind_max);
+	set_data(&d, lst_a, lst_b);
+	apply_instr(pb, &lst_a, &lst_b, PRINT);
+	apply_instr(pb, &lst_a, &lst_b, PRINT);
+	
+	print_data(&d);
 	del_lst(&lst_a);
 	del_lst(&lst_b);
 }

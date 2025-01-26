@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   apply_instr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 19:17:09 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/26 20:46:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,15 @@ void	apply_instr(int instr, t_lnk **lst_a, t_lnk **lst_b, int to_print)
 		rrotate_lst(lst_a);
 	}
 	else if (instr == pa)
+	{
 		push(lst_b, lst_a);
+		data_update((*lst_a)->d, *lst_a, *lst_b);
+	}
 	else if (instr == pb)
+	{
 		push(lst_a, lst_b);
+		data_update((*lst_a)->d, *lst_a, *lst_b);
+	}
 	else
 		fucking_norminette(instr, lst_a, lst_b);
 	if (to_print)
