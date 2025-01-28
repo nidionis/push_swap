@@ -6,11 +6,12 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/27 00:19:31 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:47:38 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <stdio.h>
 
 void	select_algo(int ind_max)
 {
@@ -30,6 +31,8 @@ void	select_algo(int ind_max)
 	}
 }
 
+t_data d;
+
 int	main(int argc, char **argv)
 {
 	int		ind_max;
@@ -47,8 +50,14 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		error_msg("Error: duplicated items");
 	set_data();
+	apply_instr(pb, QUIET);
+	apply_instr(pb, QUIET);
+	print_lst_byrank(d.lst_a, "lst_a");
+	print_lst_byrank(d.lst_b, "lst_b");
+	insert_target_to_b(d.lst_a, ROTATE);
+	printf("best_inst_step: %d %d\n", d.best_inst_step[FIRST_INSTR], d.best_inst_step[NB_FIRST_INSTR]);
 	// select_algo();
-	print_data(&d);
+	//print_data(&d);
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);
 }

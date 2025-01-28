@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/26 22:54:37 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:16:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,7 @@ void    data_update()
 void set_data()
 {
     data_update();
-    d.rotate_instr[ROTATE][0] = ra;
-    d.rotate_instr[ROTATE][1] = rr;
-    d.rotate_instr[ROTATE][2] = rb;
-    d.rotate_instr[ROTATE][3] = rrb;
-    d.rotate_instr[RROTATE][0] = rra;
-    d.rotate_instr[RROTATE][1] = rrr;
-    d.rotate_instr[RROTATE][2] = rb;
-    d.rotate_instr[RROTATE][3] = rrb;
+    d.best_inst_step[NB_FIRST_INSTR] = INT_MAX;
 }
 
 #include <stdio.h>

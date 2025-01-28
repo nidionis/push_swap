@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/27 00:15:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/28 20:18:43 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ROTATE 0
 # define RROTATE 1
 # define INT_MAX 2147483647
+# define LOOP_END 2147483647
 
 typedef struct s_lnk t_lnk;
 
@@ -105,6 +106,7 @@ void    sort_5_nb();
 void    swap_lst(t_lnk **lst);
 int             is_sorted(t_lnk *lst);
 int             ft_no_duplicate(t_lnk *lst);
+void	insert_target_to_b(t_lnk *target, int way);
 
 
 #endif
