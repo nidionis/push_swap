@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/28 20:18:43 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 00:01:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ extern struct s_data d;
 int             can_push_b();
 int             can_push_a();
 void             insert_target(t_lnk *target, int way);
-void    fucking_norminette(int instr);
-void    apply_instr(int instr, int to_print);
+void	apply_instr(t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print);
 int             fucking_normi_2(char *str);
 int             instr_to_i(char *str);
 void    i_to_instr(int i);
@@ -106,7 +105,9 @@ void    sort_5_nb();
 void    swap_lst(t_lnk **lst);
 int             is_sorted(t_lnk *lst);
 int             ft_no_duplicate(t_lnk *lst);
-void	insert_target_to_b(t_lnk *target, int way);
+//void	insert_target_to_b(t_lnk *target, int way);
+void	insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_lnk *lst_a, t_lnk *lst_b));
+void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
 
 
 #endif

@@ -6,31 +6,31 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/26 23:44:36 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 00:00:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-void	fucking_norminette(int instr)
+void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr)
 {
 	if (instr == sa)
-		swap_lst(&d.lst_a);
+		swap_lst(lst_a);
 	else if (instr == sb)
-		swap_lst(&d.lst_b);
+		swap_lst(lst_b);
 	else if (instr == ss)
 	{
-		swap_lst(&d.lst_a);
-		swap_lst(&d.lst_b);
+		swap_lst(lst_a);
+		swap_lst(lst_b);
 	}
 	else if (instr == ra)
-		rotate_lst(&d.lst_a);
+		rotate_lst(lst_a);
 	else if (instr == rb)
-		rotate_lst(&d.lst_b);
+		rotate_lst(lst_b);
 	else if (instr == rr)
 	{
-		rotate_lst(&d.lst_b);
-		rotate_lst(&d.lst_a);
+		rotate_lst(lst_b);
+		rotate_lst(lst_a);
 	}
 	else
 	{
@@ -38,29 +38,29 @@ void	fucking_norminette(int instr)
 	}
 }
 
-void	apply_instr(int instr, int to_print)
+void	apply_instr(t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print)
 {
 	if (instr == rra)
-		rrotate_lst(&d.lst_a);
+		rrotate_lst(lst_a);
 	else if (instr == rrb)
-		rrotate_lst(&d.lst_b);
+		rrotate_lst(lst_b);
 	else if (instr == rrr)
 	{
-		rrotate_lst(&d.lst_b);
-		rrotate_lst(&d.lst_a);
+		rrotate_lst(lst_b);
+		rrotate_lst(lst_a);
 	}
 	else if (instr == pa)
 	{
-		push(&d.lst_b, &d.lst_a);
+		push(lst_b, lst_a);
 		data_update();
 	}
 	else if (instr == pb)
 	{
-		push(&d.lst_a, &d.lst_b);
+		push(lst_a, lst_b);
 		data_update();
 	}
 	else
-		fucking_norminette(instr);
+		fucking_norminette(lst_a, lst_b, instr);
 	if (to_print)
 		i_to_instr(instr);
 }

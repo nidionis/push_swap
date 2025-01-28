@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/28 20:22:19 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 00:00:03 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,6 @@ int	can_push_a()
 	return (FALSE);
 }
 
-void save_best_instr(int instr_steps_itm[2])
-{
-	d.best_inst_step[FIRST_INSTR] = instr_steps_itm[FIRST_INSTR];
-	d.best_inst_step[NB_FIRST_INSTR] = instr_steps_itm[NB_FIRST_INSTR];
-}
-
 void	update_best_instr(int instr_steps_itm[2])
 {
 	if (instr_steps_itm[NB_FIRST_INSTR] < d.best_inst_step[NB_FIRST_INSTR])
@@ -55,6 +49,29 @@ void	update_best_instr(int instr_steps_itm[2])
 		d.best_inst_step[FIRST_INSTR] = instr_steps_itm[FIRST_INSTR];
 		d.best_inst_step[NB_FIRST_INSTR] = instr_steps_itm[NB_FIRST_INSTR];
 	}
+}
+
+void set_instr_step_itm(int instr, int instr_steps_itm[2])
+{
+	instr_steps_itm[FIRST_INSTR] = instr;
+	instr_steps_itm[NB_FIRST_INSTR] = 0;
+}
+
+int opposite_instr(int instr)
+{
+	if (instr == ra)
+		return (rra);
+	if (instr == rb)
+		return (rrb);
+	if (instr == rra)
+		return (ra);
+	if (instr == rrb)
+		return (rb);
+	if (instr == rr)
+		return (rrr);
+	if (instr == rrr)
+		return (rr);
+	return (-42);
 }
 
 void	insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_lnk *lst_a, t_lnk *lst_b))
@@ -68,21 +85,21 @@ void	insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int
 	i_instr = 0;
 	instr_steps_itm[FIRST_INSTR] = lst_instr[0];
 	instr_steps_itm[NB_FIRST_INSTR] = 0;
-	if (can_push(d.lst_a, lst_orig))
+	if (can_push(target, lst))
 	{
-		save_best_instr(instr_steps_itm);
+		update_best_instr(instr_steps_itm);
 		return ;
 	}
 	while (lst_instr[i_instr] != LOOP_END)
 	{
-		instr_steps_itm[FIRST_INSTR] = lst_instr[i_instr];
-		instr_steps_itm[NB_FIRST_INSTR] = 0;
-		lst_orig = lst_orig->next;
-		while (lst_orig != d.lst_b)
+		set_instr_step_itm(lst_instr[i_instr], instr_steps_itm);
+		apply_instr(&d.lst_a, &d.lst_b, lst_instr[i_instr], QUIET);
+		instr_steps_itm[FIRST_INSTR]++;
+		while (lst_orig != lst)
 		{
-			if (can_push_b(d.lst_a, lst_orig))
+			if (can_push(d.lst_a, d.lst_b))
 				break;
-			apply_instr(d.rotate_instr[way][i_instr], QUIET);
+			apply_instr(&d.lst_a, &d.lst_b, lst_instr[i_instr], QUIET);
 			instr_steps_itm[FIRST_INSTR]++;
 		}
 		update_best_instr(instr_steps_itm);

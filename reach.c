@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/26 23:36:07 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 00:00:03 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	reach_rank(t_lnk **lst, int rank, int direction)
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)
 	{
-		apply_instr(instr, 1);
+		apply_instr(&d.lst_a, &d.lst_b, instr, 1);
 		while ((*lst)->rank != rank && *lst != first_lnk)
-			apply_instr(instr, 1);
+			apply_instr(&d.lst_a, &d.lst_b, instr, 1);
 	}
 }
 
