@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 23:40:52 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 23:59:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_data
 	t_lnk *lst_b;
 	int	best_inst_step[2];
 	int	best_comb[4];
-	int	best_cost_instr;
+	//int	best_cost_instr;
 	int	best_cost_comb;
 }	t_data;
 
