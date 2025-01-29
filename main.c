@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 14:15:18 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:40:35 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_data d;
 int	main(int argc, char **argv)
 {
 	int		ind_max;
-	int		lst_instr[] = {ra, rb, rra, rrb, LOOP_END};
+	int		lst_instr[] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
 
 	d = (t_data){0};
 	if (argc < 2)
@@ -56,10 +56,11 @@ int	main(int argc, char **argv)
 	while (d.lst_a)
 	{
 		int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b);
-		print_instr_steps(instr_steps_itm);
+		//print_instr_steps(instr_steps_itm);
 		//printf("coucou");
 		apply_instr_step_itm(&instr_steps_itm);
 		apply_instr(&d, &d.lst_a, &d.lst_b, pb, 1);
+	//print_lst_byrank(d.lst_b, "lst_b");
 	}
 	while (d.lst_b)
 		apply_instr(&d, &d.lst_a, &d.lst_b, pa, 1);

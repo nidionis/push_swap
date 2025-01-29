@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 14:22:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:38:03 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,25 @@ int	can_push_b(t_data *data, t_lnk *a, t_lnk *b)
 		else if (a->rank > b->rank && b->prev->rank > a->rank)
 				return (TRUE);
 	}
-	if (b->rank == data->max_b)
+	else
 	{
-		if (a->rank > data->max_b)
-			return (TRUE);
-		if (a->rank < data->min_b)
-			return (TRUE);
-		if (b->rank > a->rank && b->prev->rank > a->rank)
+		if (b->rank == data->max_b)
+		{
+			if (a->rank > data->max_b)
+				return (TRUE);
+			if (a->rank < data->min_b)
+				return (TRUE);
+		}
+		else if (b->prev->rank == data->min_b)
+		{
+			if (a->rank < data->min_b)
+				return (TRUE);
+			if (a->rank > data->max_b)
+				return (TRUE);
+		}
+		else if (a->rank > b->rank && a->rank < b->prev->rank)
 			return (TRUE);
 	}
-	if (b->rank == data->min_b)
-	{
-		if (a->rank > b->rank && a->prev->rank < b->rank)
-			return (TRUE);
-	}
-	 if (a->rank > b->rank && b->prev->rank > a->rank)
-		return (TRUE);
 	return (FALSE);
 }
 
