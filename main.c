@@ -6,12 +6,11 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 00:00:03 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 00:59:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-#include <stdio.h>
 
 void	select_algo(int ind_max)
 {
@@ -36,7 +35,7 @@ t_data d;
 int	main(int argc, char **argv)
 {
 	int		ind_max;
-	int		lst_instr[] = {rb, rrb, LOOP_END};
+	int		lst_instr[] = {ra, rb, rra, rrb, LOOP_END};
 
 	d = (t_data){0};
 	if (argc < 2)
@@ -55,10 +54,8 @@ int	main(int argc, char **argv)
 	apply_instr(&d.lst_a, &d.lst_b, pb, QUIET);
 	print_lst_byrank(d.lst_a, "lst_a");
 	print_lst_byrank(d.lst_b, "lst_b");
-	insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_a);
-	printf("best_inst_step push_a: %d %d\n", d.best_inst_step[FIRST_INSTR], d.best_inst_step[NB_FIRST_INSTR]);
-	insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b);
-	printf("best_inst_step push_b: %d %d\n", d.best_inst_step[FIRST_INSTR], d.best_inst_step[NB_FIRST_INSTR]);
+	print_instr_steps(insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_a));
+	print_instr_steps(insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b));
 	// select_algo();
 	//print_data(&d);
 	del_lst(&d.lst_a);

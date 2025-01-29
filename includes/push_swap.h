@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 00:37:36 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 00:58:11 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include <libft.h>
 # include <libftprintf.h>
+#include <stdio.h>
 # define TRUE 1
 # define FALSE 0
 # define UNSET -1
@@ -125,6 +126,7 @@ int             ft_no_duplicate(t_lnk *lst);
 int	*insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_lnk *lst_a, t_lnk *lst_b));
 void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
 int ft_lstsize(t_lnk *lst);
+void print_instr_steps(int instr_steps_itm[2]);
 
 
 #endif

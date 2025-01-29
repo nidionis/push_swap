@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 00:43:55 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 00:56:08 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,11 @@ int ft_lstsize(t_lnk *lst)
 		count++;
 	}
 	return (count);
+}
+
+void print_instr_steps(int instr_steps_itm[2])
+{
+	printf("instr %d nb_instr %d\n", instr_steps_itm[INSTR], instr_steps_itm[NB_INSTR]);
 }
 
 int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_lnk *lst_a, t_lnk *lst_b))
