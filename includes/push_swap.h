@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 02:54:42 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:50:37 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define INT_MAX 2147483647
 # define LOOP_END 2147483647
 # define CANT_INSERT 2147483647
+# define NO_INSTR -42
 
 typedef struct s_lnk t_lnk;
 

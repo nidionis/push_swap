@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 14:38:03 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:52:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	update_best_instr(t_data *data, int instr_steps_itm[2])
 void set_instr_step_itm(int instr, int *instr_steps_itm)
 {
 	instr_steps_itm[INSTR] = instr;
-	instr_steps_itm[NB_INSTR] = 0;
+	instr_steps_itm[NB_INSTR] = INT_MAX;
 }
 
 int opposite_instr(int instr)
@@ -209,3 +209,15 @@ int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], in
 	}
 	return (malloc_instr_steps_itm(&data));
 }
+
+void set_best_comb(int *best_comb)
+{
+	set_instr_step_itm(NO_INSTR, best_comb);
+}
+
+//int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
+//{
+//	int best_comb[4];
+//
+//	set_best_comb(best_comb);
+//}
