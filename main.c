@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 02:32:39 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 02:54:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	d.lst_b = NULL;
 	if (!ft_no_duplicate(d.lst_a))
 		error_msg("Error: duplicated items");
-	set_data();
+	set_data(&d, &d.lst_a, &d.lst_b);
 	//print_lst_byrank(d.lst_a, "lst_a");
 	print_lst_byrank(d.lst_b, "lst_b");
 	printf("\n");

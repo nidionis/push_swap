@@ -6,38 +6,38 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 02:33:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 03:07:33 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	can_push_b()
+int	can_push_b(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 {
-	if (!d.lst_a)
+	if (!lst_a)
 		return (FALSE);
-	if (!d.lst_b)
+	if (!lst_b)
 		return (TRUE);
-	if (d.softmax_b == UNSET)
+	if (data->softmax_b == UNSET)
 		return (TRUE);
-	if (d.lst_b->rank < d.lst_a->rank && (d.lst_b->prev)->rank > d.lst_a->rank)
+	if (lst_a->rank > lst_b->rank && ((lst_b->prev)->rank > lst_a->rank))// && lst_b->rank != data->min_b))
 		return (TRUE);
-	if (d.lst_b->rank == d.max_b && (d.lst_a->rank > d.max_b || d.lst_a->rank < d.min_b))
+	if (lst_b->rank == data->max_b && (lst_a->rank > data->max_b || lst_a->rank < data->min_b))
 		return (TRUE);
 	return (FALSE);
 }
 
-int	can_push_a()
+int	can_push_a(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 {
-	if (!d.lst_b)
+	if (!lst_b)
 		return (FALSE);
-	if (!d.lst_a)
+	if (!lst_a)
 		return (TRUE);
-	if (d.softmax_a == UNSET)
+	if (data->softmax_a == UNSET)
 		return (TRUE);
-	if (d.lst_a->rank > d.lst_b->rank && (d.lst_a->prev)->rank < d.lst_b->rank)
+	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
 		return (TRUE);
-	if (d.lst_a->rank == d.min_a && (d.lst_b->rank < d.min_a || d.lst_b->rank > d.max_a))
+	if (lst_a->rank == data->min_a && (lst_b->rank < data->min_a || lst_b->rank > data->max_a))
 		return (TRUE);
 	return (FALSE);
 }
@@ -74,7 +74,7 @@ int opposite_instr(int instr)
 	return (-42);
 }
 
-int count_instr(t_lnk *lst_a, t_lnk *lst_b, int instr, int (*can_push)(t_lnk *lst_a, t_lnk *lst_b))
+int count_instr(t_data *data, t_lnk *lst_a, t_lnk *lst_b, int instr, int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
 {
 	int count;
 	int max;
@@ -85,9 +85,9 @@ int count_instr(t_lnk *lst_a, t_lnk *lst_b, int instr, int (*can_push)(t_lnk *ls
 	orig_a = lst_a;
 	orig_b = lst_b;
 	max = ft_lstsize(orig_a) + ft_lstsize(orig_b); // yolo
-	while (!can_push(lst_a, lst_b) && count < max)
+	while (!can_push(data, lst_a, lst_b) && count < max)
 	{
-		apply_instr(&d, &lst_a, &lst_b, instr, QUIET);
+		apply_instr(data, &lst_a, &lst_b, instr, QUIET);
 		count++;
 	}
 	if (count == max)
@@ -137,17 +137,19 @@ void apply_instr_step_itm(int **instr_steps_itm_addr)
 	apply_instr_step_itm_test(&d.lst_a, &d.lst_b, instr_steps_itm_addr, PRINT);
 }
 
-int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_lnk *lst_a, t_lnk *lst_b))
+int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
 {
 	int i_instr;
 	int	*instr_steps_itm;
 	int instr;
+	t_data data;
 
 	i_instr = 0;
+	set_data(&data, &lst_a, &lst_b);
 	instr = lst_instr[i_instr];
 	instr_steps_itm = malloc(2 * sizeof(int));
 	set_instr_step_itm(instr, instr_steps_itm);
-	if (can_push(lst_a, lst_b))
+	if (can_push(&data, lst_a, lst_b))
 	{
 		update_best_instr(instr_steps_itm);
 		return (instr_steps_itm);
@@ -155,7 +157,7 @@ int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], in
 	while (instr != LOOP_END)
 	{
 		set_instr_step_itm(instr, instr_steps_itm);
-		instr_steps_itm[NB_INSTR] = count_instr(lst_a, lst_b, instr, can_push);
+		instr_steps_itm[NB_INSTR] = count_instr(&data, lst_a, lst_b, instr, can_push);
 		update_best_instr(instr_steps_itm);
 		instr = lst_instr[i_instr++];
 	}

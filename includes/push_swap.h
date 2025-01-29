@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 02:31:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 02:54:42 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ enum	e_instr {
 extern struct s_data d;
 
 
-int             can_push_b();
-int             can_push_a();
+int	can_push_a(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
+int	can_push_b(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
 void             insert_target(t_lnk *target, int way);
 void	apply_instr(t_data *d, t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print);
 int             fucking_normi_2(char *str);
@@ -92,8 +92,8 @@ t_lnk *get_softmin(t_lnk *lst);
 void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
 void	set_softmin(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
 void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
-void set_data();
 void print_data(t_data *d);
+void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 t_lnk   *get_args_allinone(char *str);
 t_lnk   *get_args(int argc, char *argv[]);
 t_lnk   *lst_cpy(t_lnk *lst);
@@ -123,7 +123,7 @@ void    swap_lst(t_lnk **lst);
 int             is_sorted(t_lnk *lst);
 int             ft_no_duplicate(t_lnk *lst);
 //void	insert_target_to_b(t_lnk *target, int way);
-int	*insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_lnk *lst_a, t_lnk *lst_b));
+int	*insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b));
 void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
 int ft_lstsize(t_lnk *lst);
 void print_instr_steps(int instr_steps_itm[2]);
