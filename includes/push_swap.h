@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 18:50:37 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:35:12 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_data
 	t_lnk *lst_a;
 	t_lnk *lst_b;
 	int	best_inst_step[2];
+	int	best_comb[4];
 }	t_data;
 
 typedef struct s_lnk
@@ -129,6 +130,8 @@ void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
 int ft_lstsize(t_lnk *lst);
 void print_instr_steps(int instr_steps_itm[2]);
 void apply_instr_step_itm(int **instr_steps_itm_addr);
+void apply_best_comb(int *best_comb);
+int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b));
 
 
 #endif

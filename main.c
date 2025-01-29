@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 14:40:35 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:36:18 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,12 @@ int	main(int argc, char **argv)
 	//printf("\n");
 	while (d.lst_a)
 	{
-		int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b);
+		//int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b);
+		int *best_insert_itm = best_insert(d.lst_a, d.lst_b, lst_instr, can_push_b);
+		apply_best_comb(best_insert_itm);
 		//print_instr_steps(instr_steps_itm);
 		//printf("coucou");
-		apply_instr_step_itm(&instr_steps_itm);
+		//apply_instr_step_itm(&instr_steps_itm);
 		apply_instr(&d, &d.lst_a, &d.lst_b, pb, 1);
 	//print_lst_byrank(d.lst_b, "lst_b");
 	}
