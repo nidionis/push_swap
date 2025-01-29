@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 22:34:36 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 22:49:56 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,19 +217,18 @@ int *malloc_best_insert(t_data *data)
 int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
 {
 	int i_instr;
-	int	*instr_steps_itm;
+	int	instr_steps_itm[2];
 	int instr;
 	t_data data;
 
 	i_instr = 0;
 	set_data(&data, &lst_a, &lst_b);
 	instr = lst_instr[0];
-	instr_steps_itm = malloc(2 * sizeof(int));
 	set_instr_step_itm(instr, 0, instr_steps_itm);
 	if (can_push(&data, lst_a, lst_b))
 	{
 		update_best_instr(&data, instr_steps_itm);
-		return (instr_steps_itm);
+		return (malloc_instr_steps_itm(&data));
 	}
 	while (instr != LOOP_END)
 	{
