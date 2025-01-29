@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 22:33:42 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 23:40:52 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,10 @@
 # define SECOND_INSTR 2
 # define NB_SECOND_INSTR 3
 # define INT_MAX 2147483647
-# define LOOP_END 2147483647
-# define CANT_INSERT 2147483647
+# define LOOP_END 123456789
+# define CANT_INSERT 101
 # define NO_INSTR -42
+# define SIZE_MAX 1000
 
 typedef struct s_lnk t_lnk;
 
@@ -48,6 +49,8 @@ typedef struct s_data
 	t_lnk *lst_b;
 	int	best_inst_step[2];
 	int	best_comb[4];
+	int	best_cost_instr;
+	int	best_cost_comb;
 }	t_data;
 
 typedef struct s_lnk
@@ -125,13 +128,14 @@ void    swap_lst(t_lnk **lst);
 int             is_sorted(t_lnk *lst);
 int             ft_no_duplicate(t_lnk *lst);
 //void	insert_target_to_b(t_lnk *target, int way);
-int	*insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b));
+int	*insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b), int cost);
 void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
 int ft_lstsize(t_lnk *lst);
 void print_instr_steps(int instr_steps_itm[2]);
 void apply_instr_step_itm(int **instr_steps_itm_addr);
 void apply_best_comb(t_data *data, int *best_comb);
 int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b));
+int ft_cost(int *best_comb);
 
 
 void print_instr_steps(int instr_steps_itm[2]);
