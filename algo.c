@@ -6,48 +6,58 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 03:07:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 06:48:57 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	can_push_b(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
+int	can_push_b(t_data *data, t_lnk *a, t_lnk *b)
 {
-	if (!lst_a)
-		return (FALSE);
-	if (!lst_b)
-		return (TRUE);
-	if (data->softmax_b == UNSET)
-		return (TRUE);
-	if (lst_a->rank > lst_b->rank && ((lst_b->prev)->rank > lst_a->rank))// && lst_b->rank != data->min_b))
-		return (TRUE);
-	if (lst_b->rank == data->max_b && (lst_a->rank > data->max_b || lst_a->rank < data->min_b))
-		return (TRUE);
-	return (FALSE);
-}
+	int size_b;
 
-int	can_push_a(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
-{
-	if (!lst_b)
+	if (!a)
 		return (FALSE);
-	if (!lst_a)
+	if (!b)
 		return (TRUE);
-	if (data->softmax_a == UNSET)
+	size_b = ft_lstsize(b);
+	if (size_b == 1)
 		return (TRUE);
-	if (lst_a->rank > lst_b->rank && (lst_a->prev)->rank < lst_b->rank)
-		return (TRUE);
-	if (lst_a->rank == data->min_a && (lst_b->rank < data->min_a || lst_b->rank > data->max_a))
-		return (TRUE);
-	return (FALSE);
-}
-
-void	update_best_instr(int instr_steps_itm[2])
-{
-	if (instr_steps_itm[NB_INSTR] < d.best_inst_step[NB_INSTR])
+	if (size_b == 2)
 	{
-		d.best_inst_step[INSTR] = instr_steps_itm[INSTR];
-		d.best_inst_step[NB_INSTR] = instr_steps_itm[NB_INSTR];
+		if (b->rank == data->max_b)
+		{
+			if (a->rank > data->max_b || a->rank < data->min_b)
+				return (TRUE);
+		}
+		else if (a->rank > b->rank && b->prev->rank > a->rank)
+				return (TRUE);
+	}
+	if (b->rank == data->max_b)
+	{
+		if (a->rank > data->max_b)
+			return (TRUE);
+		if (a->rank < data->min_b)
+			return (TRUE);
+		if (b->rank > a->rank && b->prev->rank > a->rank)
+			return (TRUE);
+	}
+	if (b->rank == data->min_b)
+	{
+		if (a->rank > b->rank && a->prev->rank < b->rank)
+			return (TRUE);
+	}
+	 if (a->rank > b->rank && b->prev->rank > a->rank)
+		return (TRUE);
+	return (FALSE);
+}
+
+void	update_best_instr(t_data *data, int instr_steps_itm[2])
+{
+	if (instr_steps_itm[NB_INSTR] < data->best_inst_step[NB_INSTR])
+	{
+		data->best_inst_step[INSTR] = instr_steps_itm[INSTR];
+		data->best_inst_step[NB_INSTR] = instr_steps_itm[NB_INSTR];
 	}
 }
 
@@ -117,7 +127,28 @@ int ft_lstsize(t_lnk *lst)
 
 void print_instr_steps(int instr_steps_itm[2])
 {
-	printf("instr %d nb_instr %d\n", instr_steps_itm[INSTR], instr_steps_itm[NB_INSTR]);
+	int instr = instr_steps_itm[INSTR];
+
+	printf("instr: %i ", instr_steps_itm[NB_INSTR]);
+	if (instr == ra)
+		printf("ra ");
+	else if (instr == rb)
+		printf("rb ");
+	else if (instr == rra)
+		printf("rra ");
+	else if (instr == rrb)
+		printf("rrb ");
+	else if (instr == rr)
+		printf("rr ");
+	else if (instr == rrr)
+		printf("rrr ");
+	else if (instr == pa)
+		printf("pa ");
+	else if (instr == pb)
+		printf("pb ");
+	else
+		printf("%i is weird instruction", instr);
+	printf("\n");
 }
 
 void apply_instr_step_itm_test(t_lnk **lst_a, t_lnk **lst_b, int **instr_steps_itm_addr, int verbose)
@@ -146,20 +177,20 @@ int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], in
 
 	i_instr = 0;
 	set_data(&data, &lst_a, &lst_b);
-	instr = lst_instr[i_instr];
+	instr = lst_instr[0];
 	instr_steps_itm = malloc(2 * sizeof(int));
 	set_instr_step_itm(instr, instr_steps_itm);
 	if (can_push(&data, lst_a, lst_b))
 	{
-		update_best_instr(instr_steps_itm);
+		update_best_instr(&data, instr_steps_itm);
 		return (instr_steps_itm);
 	}
 	while (instr != LOOP_END)
 	{
 		set_instr_step_itm(instr, instr_steps_itm);
 		instr_steps_itm[NB_INSTR] = count_instr(&data, lst_a, lst_b, instr, can_push);
-		update_best_instr(instr_steps_itm);
-		instr = lst_instr[i_instr++];
+		update_best_instr(&data, instr_steps_itm);
+		instr = lst_instr[++i_instr];
 	}
 	return (instr_steps_itm);
 }

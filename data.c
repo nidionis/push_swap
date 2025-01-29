@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 02:24:54 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 04:09:34 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,10 @@ t_lnk *get_softmin(t_lnk *lst)
 
 void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 {
-    if (!lst_a || lst_a->next == lst_a)
+    if (!lst_a)
         data->softmax_a = UNSET;
+    else if (lst_a->next == lst_a)
+        data->softmax_a = lst_a->rank;
     else 
         data->softmax_a = get_softmax(lst_a)->rank;
     if (!lst_b || lst_b->next == lst_b)
@@ -90,8 +92,10 @@ void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 
 void	set_softmin(t_data *data, t_lnk*lst_a, t_lnk *lst_b)
 {
-    if (!lst_a || lst_a->next == lst_a)
+    if (!lst_a)
         data->softmin_a = UNSET;
+    else if (lst_a->next == lst_a)
+        data->softmin_a = lst_a->rank;
     else 
         data->softmin_a = get_softmin(lst_a)->rank;
     if (!lst_b || lst_b->next == lst_b)
@@ -99,6 +103,7 @@ void	set_softmin(t_data *data, t_lnk*lst_a, t_lnk *lst_b)
     else 
         data->softmin_b = get_softmin(lst_b)->rank;
 }
+
 void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
     t_lnk   *tmp;
