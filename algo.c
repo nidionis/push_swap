@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 06:48:57 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:22:41 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	update_best_instr(t_data *data, int instr_steps_itm[2])
 	}
 }
 
-void set_instr_step_itm(int instr, int instr_steps_itm[2])
+void set_instr_step_itm(int instr, int *instr_steps_itm)
 {
 	instr_steps_itm[INSTR] = instr;
 	instr_steps_itm[NB_INSTR] = 0;
@@ -168,6 +168,18 @@ void apply_instr_step_itm(int **instr_steps_itm_addr)
 	apply_instr_step_itm_test(&d.lst_a, &d.lst_b, instr_steps_itm_addr, PRINT);
 }
 
+int *malloc_instr_steps_itm(t_data *data)
+{
+	int *instr_steps_itm;
+
+	instr_steps_itm = malloc(2 * sizeof(int));
+	if (!instr_steps_itm)
+		return (NULL);
+	instr_steps_itm[NB_INSTR] = data->best_inst_step[NB_INSTR];
+	instr_steps_itm[INSTR] = data->best_inst_step[INSTR];
+	return (instr_steps_itm);
+}
+
 int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
 {
 	int i_instr;
@@ -192,5 +204,5 @@ int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], in
 		update_best_instr(&data, instr_steps_itm);
 		instr = lst_instr[++i_instr];
 	}
-	return (instr_steps_itm);
+	return (malloc_instr_steps_itm(&data));
 }
