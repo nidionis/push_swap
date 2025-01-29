@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 00:00:21 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 02:34:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr)
 	}
 }
 
-void	apply_instr(t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print)
+void	apply_instr(t_data *data, t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print)
 {
 	if (instr == rra)
 		rrotate_lst(lst_a);
@@ -52,12 +52,12 @@ void	apply_instr(t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print)
 	else if (instr == pa)
 	{
 		push(lst_b, lst_a);
-		data_update();
+		data_update(data, lst_a, lst_b);
 	}
 	else if (instr == pb)
 	{
 		push(lst_a, lst_b);
-		data_update();
+		data_update(data, lst_a, lst_b);
 	}
 	else
 		fucking_norminette(lst_a, lst_b, instr);

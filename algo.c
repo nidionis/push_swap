@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 00:56:08 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 02:33:41 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int count_instr(t_lnk *lst_a, t_lnk *lst_b, int instr, int (*can_push)(t_lnk *ls
 	max = ft_lstsize(orig_a) + ft_lstsize(orig_b); // yolo
 	while (!can_push(lst_a, lst_b) && count < max)
 	{
-		apply_instr(&lst_a, &lst_b, instr, QUIET);
+		apply_instr(&d, &lst_a, &lst_b, instr, QUIET);
 		count++;
 	}
 	if (count == max)
@@ -120,29 +120,44 @@ void print_instr_steps(int instr_steps_itm[2])
 	printf("instr %d nb_instr %d\n", instr_steps_itm[INSTR], instr_steps_itm[NB_INSTR]);
 }
 
+void apply_instr_step_itm_test(t_lnk **lst_a, t_lnk **lst_b, int **instr_steps_itm_addr, int verbose)
+{
+	int *instr_steps_itm;
+
+	instr_steps_itm = *instr_steps_itm_addr;
+	if (instr_steps_itm[NB_INSTR] != CANT_INSERT)
+		while (instr_steps_itm[NB_INSTR]--)
+			apply_instr(&d, lst_a, lst_b, instr_steps_itm[INSTR], verbose);
+	free(instr_steps_itm);
+	instr_steps_itm = NULL;
+}
+
+void apply_instr_step_itm(int **instr_steps_itm_addr)
+{
+	apply_instr_step_itm_test(&d.lst_a, &d.lst_b, instr_steps_itm_addr, PRINT);
+}
+
 int	*insert_target_to_list_steps(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_lnk *lst_a, t_lnk *lst_b))
 {
 	int i_instr;
 	int	*instr_steps_itm;
 	int instr;
 
+	i_instr = 0;
+	instr = lst_instr[i_instr];
 	instr_steps_itm = malloc(2 * sizeof(int));
+	set_instr_step_itm(instr, instr_steps_itm);
 	if (can_push(lst_a, lst_b))
 	{
 		update_best_instr(instr_steps_itm);
 		return (instr_steps_itm);
 	}
-	i_instr = 0;
-	instr = lst_instr[i_instr];
 	while (instr != LOOP_END)
 	{
-		instr_steps_itm[INSTR] = instr;
-		instr_steps_itm[NB_INSTR] = 0;
 		set_instr_step_itm(instr, instr_steps_itm);
 		instr_steps_itm[NB_INSTR] = count_instr(lst_a, lst_b, instr, can_push);
 		update_best_instr(instr_steps_itm);
-		++i_instr;
-		instr = lst_instr[i_instr];
+		instr = lst_instr[i_instr++];
 	}
 	return (instr_steps_itm);
 }

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 00:58:11 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 02:31:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ extern struct s_data d;
 int             can_push_b();
 int             can_push_a();
 void             insert_target(t_lnk *target, int way);
-void	apply_instr(t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print);
+void	apply_instr(t_data *d, t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print);
 int             fucking_normi_2(char *str);
 int             instr_to_i(char *str);
 void    i_to_instr(int i);
@@ -89,9 +89,9 @@ t_lnk     *get_max(t_lnk *lst);
 t_lnk *get_min(t_lnk *lst);
 t_lnk *get_softmax(t_lnk *lst);
 t_lnk *get_softmin(t_lnk *lst);
-void set_softmax();
-void set_softmin();
-void    data_update();
+void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
+void	set_softmin(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
+void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 void set_data();
 void print_data(t_data *d);
 t_lnk   *get_args_allinone(char *str);
@@ -127,6 +127,7 @@ int	*insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int
 void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
 int ft_lstsize(t_lnk *lst);
 void print_instr_steps(int instr_steps_itm[2]);
+void apply_instr_step_itm(int **instr_steps_itm_addr);
 
 
 #endif

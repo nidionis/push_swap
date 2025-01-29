@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 00:59:13 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/29 02:32:39 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,18 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		error_msg("Error: duplicated items");
 	set_data();
-	apply_instr(&d.lst_a, &d.lst_b, pb, QUIET);
-	apply_instr(&d.lst_a, &d.lst_b, pb, QUIET);
-	print_lst_byrank(d.lst_a, "lst_a");
+	//print_lst_byrank(d.lst_a, "lst_a");
 	print_lst_byrank(d.lst_b, "lst_b");
-	print_instr_steps(insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_a));
-	print_instr_steps(insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b));
+	printf("\n");
+	while (d.lst_a)
+	{
+		int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b);
+		//printf("coucou");
+		apply_instr_step_itm(&instr_steps_itm);
+		apply_instr(&d, &d.lst_a, &d.lst_b, pb, 1);
+	print_lst_byrank(d.lst_b, "lst_b");
+	printf("\n");
+	}
 	// select_algo();
 	//print_data(&d);
 	del_lst(&d.lst_a);
