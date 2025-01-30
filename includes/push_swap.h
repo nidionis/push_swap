@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 21:15:02 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:46:17 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 # define CANT_INSERT 101
 # define NO_INSTR -42
 # define SIZE_MAX 1000
+# define BREAK_BEST_COMB 1
+# define IGNORE 0
 
 typedef struct s_lnk t_lnk;
 
@@ -146,8 +148,8 @@ int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b);
 int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b);
 void apply_best_comb_until_softmin(t_data *data, int *best_comb);
 int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b);
-void swap_if_high(t_data *data, int instr);
-int apply_best_comb_and(void (*f_do)(t_data *d, int instr), t_data *data, int *best_comb);
+int swap_if_high(t_data *data, int instr);
+int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb);
 
 
 void print_instr_steps(int instr_steps_itm[2]);

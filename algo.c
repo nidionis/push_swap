@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 21:15:37 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:47:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,36 +272,41 @@ void apply_best_comb_until_softmin(t_data *data, int *best_comb)
 	free(best_comb);
 }
 
-void swap_if_high(t_data *data, int instr)
+int swap_if_high(t_data *data, int instr)
 {
 	t_lnk *lst_a = data->lst_a;
 
 	if (instr == ra || instr == rr)
-		return ; 
+		return (IGNORE); 
 	if (lst_a->rank >= data->mediane_a && lst_a->next->rank >= data->mediane_a)
 	{
 		if (lst_a->next->rank < lst_a->rank)
 			apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
 	}
+	return (IGNORE);
 }
 
-int apply_best_comb_and(void (*f_do)(t_data *d, int instr), t_data *data, int *best_comb)
+int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb)
 {
 	if (best_comb[FIRST_INSTR] == CANT_INSERT)
 		return (CANT_INSERT);
 	while (best_comb[NB_FIRST_INSTR]--)
 	{
-		f_do(data, best_comb[FIRST_INSTR]);
+		if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
+			return (BREAK_BEST_COMB);
 		apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
-		f_do(data, best_comb[FIRST_INSTR]);
+		if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
+			return (BREAK_BEST_COMB);
 	}
 	if (best_comb[SECOND_INSTR] != NO_INSTR)
 	{
 		while (best_comb[NB_SECOND_INSTR]--)
 		{
-			f_do(data, best_comb[SECOND_INSTR]);
+			if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
+				return (BREAK_BEST_COMB);
 			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[SECOND_INSTR], PRINT);
-			f_do(data, best_comb[SECOND_INSTR]);
+			if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
+				return (BREAK_BEST_COMB);
 		}
 	}
 	free(best_comb);
