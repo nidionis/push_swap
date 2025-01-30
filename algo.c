@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 20:30:17 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:15:37 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,42 @@ void apply_best_comb_until_softmin(t_data *data, int *best_comb)
 		}
 	}
 	free(best_comb);
+}
+
+void swap_if_high(t_data *data, int instr)
+{
+	t_lnk *lst_a = data->lst_a;
+
+	if (instr == ra || instr == rr)
+		return ; 
+	if (lst_a->rank >= data->mediane_a && lst_a->next->rank >= data->mediane_a)
+	{
+		if (lst_a->next->rank < lst_a->rank)
+			apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+	}
+}
+
+int apply_best_comb_and(void (*f_do)(t_data *d, int instr), t_data *data, int *best_comb)
+{
+	if (best_comb[FIRST_INSTR] == CANT_INSERT)
+		return (CANT_INSERT);
+	while (best_comb[NB_FIRST_INSTR]--)
+	{
+		f_do(data, best_comb[FIRST_INSTR]);
+		apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
+		f_do(data, best_comb[FIRST_INSTR]);
+	}
+	if (best_comb[SECOND_INSTR] != NO_INSTR)
+	{
+		while (best_comb[NB_SECOND_INSTR]--)
+		{
+			f_do(data, best_comb[SECOND_INSTR]);
+			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[SECOND_INSTR], PRINT);
+			f_do(data, best_comb[SECOND_INSTR]);
+		}
+	}
+	free(best_comb);
+	return (TRUE);
 }
 
 int apply_best_comb(t_data *data, int *best_comb)

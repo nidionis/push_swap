@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 20:28:52 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:03:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	main(int argc, char **argv)
 			//print_lst_byrank(d.lst_b, "lst_b");
 			int *best_insert_itm = best_insert(d.lst_a, d.lst_b, d.full_instr, load_b_low_and_max);
 			//print_best_insert(best_insert_itm);
-			if (apply_best_comb(&d, best_insert_itm) != CANT_INSERT)
+			if (apply_best_comb_and(swap_if_high, &d, best_insert_itm) != CANT_INSERT)
 				apply_instr(&d, &d.lst_a, &d.lst_b, pb, PRINT);
 			else
 				break;

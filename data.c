@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 20:28:01 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 21:02:55 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
         data->min_b = UNSET;
     set_softmax(data, *lst_a, *lst_b);
     set_softmin(data, *lst_a, *lst_b);
+    data->mediane_a = (data->softmax_a - data->softmin_a) / 2 + data->softmin_a;
+    data->mediane_b = (data->softmax_b - data->softmin_b) / 2 + data->softmin_b;
 }
 
 void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
