@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 01:39:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:04:34 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	print_lst_byrank(t_lnk *lst, char *header)
 {
 	t_lnk	*lnk_ind;
 
+	printf("----------------------------------------------------------------\n");
 	if (header)
 		printf("%s\t", header);
 	printf("\n");
@@ -53,5 +54,6 @@ void	print_lst_byrank(t_lnk *lst, char *header)
 	}
 	else
 		printf("	[ empty list ]");
+	printf("\n----------------------------------------------------------------");
 	printf("\n\t\n");
 }

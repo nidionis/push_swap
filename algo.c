@@ -6,11 +6,21 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 08:10:42 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:30:17 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b)
+{
+	if (ft_lstsize(b) > 2)
+		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
+			return (TRUE);
+	if (a->rank > data->rank_max / 2)
+		return (FALSE);
+	return (load_b_minmax(data, a, b));
+}
 
 int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b)
 {
@@ -262,15 +272,17 @@ void apply_best_comb_until_softmin(t_data *data, int *best_comb)
 	free(best_comb);
 }
 
-void apply_best_comb(t_data *data, int *best_comb)
+int apply_best_comb(t_data *data, int *best_comb)
 {
-	if (best_comb[FIRST_INSTR] != NO_INSTR)
-		while (best_comb[NB_FIRST_INSTR]--)
-			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
+	if (best_comb[FIRST_INSTR] == CANT_INSERT)
+		return (CANT_INSERT);
+	while (best_comb[NB_FIRST_INSTR]--)
+		apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
 	if (best_comb[SECOND_INSTR] != NO_INSTR)
 		while (best_comb[NB_SECOND_INSTR]--)
 			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[SECOND_INSTR], PRINT);
 	free(best_comb);
+	return (TRUE);
 }
 
 void apply_instr_step_itm(int **instr_steps_itm_addr)
@@ -285,10 +297,13 @@ int *malloc_instr_steps_itm(t_data *data)
 	instr_steps_itm = ft_calloc(4, sizeof(int));
 	if (!instr_steps_itm)
 		return (NULL);
-	instr_steps_itm[NB_INSTR] = CANT_INSERT;
+	instr_steps_itm[NB_INSTR] = SIZE_MAX;
 	instr_steps_itm[INSTR] = NO_INSTR;
 	if (!data)
+	{
+		instr_steps_itm[NB_INSTR] = 0;
 		return (instr_steps_itm);
+	}
 	instr_steps_itm[NB_INSTR] = data->best_inst_step[NB_INSTR];
 	instr_steps_itm[INSTR] = data->best_inst_step[INSTR];
 	return (instr_steps_itm);
@@ -391,7 +406,9 @@ int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_
 		t_lnk *lst_b_original = lst_b;
 		set_instr_step_itm(lst_instr[i_instr], 0, first_instr_steps);
 		if (can_push(&d, lst_a, lst_b))
+		{
 			return (malloc_instr_steps_itm(NULL));
+		}
 		int j_instr = 0;
 		while (first_instr_steps[NB_INSTR]++ < ft_cost(d.best_comb))
 		{

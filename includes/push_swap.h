@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 07:55:56 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:26:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,13 +136,14 @@ void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
 int ft_lstsize(t_lnk *lst);
 void print_instr_steps(int instr_steps_itm[2]);
 void apply_instr_step_itm(int **instr_steps_itm_addr);
-void apply_best_comb(t_data *data, int *best_comb);
+int apply_best_comb(t_data *data, int *best_comb);
 int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b));
 int ft_cost(int *best_comb);
 void	reach_rank_lst_b(t_lnk **lst, int rank, int direction);
 int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b);
 int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b);
 void apply_best_comb_until_softmin(t_data *data, int *best_comb);
+int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b);
 
 
 void print_instr_steps(int instr_steps_itm[2]);

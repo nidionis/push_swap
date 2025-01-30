@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 04:53:29 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:28:01 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,13 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
     data_update(data, lst_a, lst_b);
+    if (lst_a && *lst_a)
+    {
+        data->rank_max = get_max(*lst_a)->rank;
+        if (lst_b && *lst_b)
+            if (data->rank_max < get_max(*lst_b)->rank)
+                data->rank_max = get_max(*lst_b)->rank;
+    }
     data->best_inst_step[NB_FIRST_INSTR] = INT_MAX;
     //data->best_cost_instr = SIZE_MAX;
     data->best_cost_comb = SIZE_MAX;
@@ -142,10 +149,9 @@ void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
     data->full_instr[1] = rrr;
     data->full_instr[2] = ra;
     data->full_instr[3] = rb;
-    data->full_instr[4] = rb;
+    data->full_instr[4] = rra;
     data->full_instr[5] = rrb;
-    data->full_instr[6] = rra;
-    data->full_instr[7] = LOOP_END;
+    data->full_instr[6] = LOOP_END;
     data->b_only_instr[0] = rb;
     data->b_only_instr[1] = rrb;
     data->b_only_instr[2] = LOOP_END;

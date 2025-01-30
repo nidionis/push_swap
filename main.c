@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 08:24:14 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 20:28:52 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,15 @@ int	main(int argc, char **argv)
 	{
 		while (!(d.max_b == d.rank_max && d.min_b == 0))
 		{
-			int *best_insert_itm = best_insert(d.lst_a, d.lst_b, no_rra_instr, load_b_minmax);
-			load_minmax(&d, best_insert_itm);
-		}
-		reach_rank_lst_b(&d.lst_b, 0, get_shortestway(0, d.lst_b));
-		apply_instr(&d, &d.lst_a, &d.lst_b, pa, PRINT);
-		apply_instr(&d, &d.lst_a, &d.lst_b, pa, PRINT);
-		while (d.softmax_b >= d.softmax_a / 2)
-		{
-			if (d.lst_a->rank >= d.rank_max / 2)
-				apply_instr(&d, &d.lst_a, &d.lst_b, pa, PRINT);
+			//print_lst_byrank(d.lst_a, "lst_a");
+			//print_lst_byrank(d.lst_b, "lst_b");
+			int *best_insert_itm = best_insert(d.lst_a, d.lst_b, d.full_instr, load_b_low_and_max);
+			//print_best_insert(best_insert_itm);
+			if (apply_best_comb(&d, best_insert_itm) != CANT_INSERT)
+				apply_instr(&d, &d.lst_a, &d.lst_b, pb, PRINT);
 			else
-				apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);
+				break;
 		}
-		reach_softmin(&d);
 		//while (!is_sorted(d.lst_a) || d.lst_b)
 		//{
 		//	apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);
