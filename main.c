@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 02:37:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 04:53:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,14 @@ int	main(int argc, char **argv)
 	//printf("\n");
 	while (!is_sorted(d.lst_a))
 	{
-		while (d.max_b != d.rank_max && d.min_b != 0)
+		while (!(d.max_b == d.rank_max && d.min_b == 0))
 		{
 			int *best_insert_itm = best_insert(d.lst_a, d.lst_b, load_minmax_rot, can_push_b);
 			load_minimax(&d, best_insert_itm);
 			//print_data(&d);
+	//print_lst_byrank(d.lst_b, "lst_b");
 		}
+	//print_lst_byrank(d.lst_a, "lst_a");
 		break ;
 		//int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b);
 		//print_best_insert(best_insert_itm);

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 02:39:53 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 04:48:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,11 +171,10 @@ void load_minimax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->full_instr, can_push_b, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_push_b, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);
-				free(best_insert_itm);
 				return ;
 			}
 			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
@@ -189,11 +188,10 @@ void load_minimax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->full_instr, can_push_b, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_push_b, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);
-				free(best_insert_itm);
 				return ;
 			}
 			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[SECOND_INSTR], PRINT);

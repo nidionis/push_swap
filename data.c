@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 02:17:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 04:53:29 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,10 @@ void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
     data->full_instr[4] = rb;
     data->full_instr[5] = rrb;
     data->full_instr[6] = rra;
+    data->full_instr[7] = LOOP_END;
+    data->b_only_instr[0] = rb;
+    data->b_only_instr[1] = rrb;
+    data->b_only_instr[2] = LOOP_END;
 }
 
 #include <stdio.h>
