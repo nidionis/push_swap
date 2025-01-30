@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 21:46:17 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 22:38:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ void apply_best_comb_until_softmin(t_data *data, int *best_comb);
 int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b);
 int swap_if_high(t_data *data, int instr);
 int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb);
+int swap_if_high_to_dump(t_data *data, int instr);
 
 
 void print_instr_steps(int instr_steps_itm[2]);

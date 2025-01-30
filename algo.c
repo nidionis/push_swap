@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 21:47:59 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 22:39:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,13 +272,21 @@ void apply_best_comb_until_softmin(t_data *data, int *best_comb)
 	free(best_comb);
 }
 
+int swap_if_high_to_dump(t_data *data, int instr)
+{
+	if (data->max_b == data->rank_max || data->min_b == 0)
+		if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
+			return (BREAK_BEST_COMB);
+	return (swap_if_high(data, instr));
+}
+
 int swap_if_high(t_data *data, int instr)
 {
 	t_lnk *lst_a = data->lst_a;
 
 	if (instr == ra || instr == rr)
 		return (IGNORE); 
-	if (lst_a->rank >= data->mediane_a && lst_a->next->rank >= data->mediane_a)
+	if (lst_a->rank > data->mediane_a && lst_a->next->rank > data->mediane_a)
 	{
 		if (lst_a->next->rank < lst_a->rank)
 			apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
