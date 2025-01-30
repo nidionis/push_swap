@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 22:40:39 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 23:20:14 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,44 @@ void reach_softmin(t_data *data)
 	{
 		best_load_b = best_insert(data->lst_a, data->lst_b, no_rra_instr, load_b_but_softmax_and_hight);
 		apply_best_comb_until_softmin(data, best_load_b);
-		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
-
+		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
 	}
 }
 
 t_data d;
+
+void first_dump(t_data *data)
+{
+	apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+	if (data->lst_a->rank == 0)
+	{
+		reach_rank_lst_b(&d.lst_b, data->rank_max, get_shortestway(data->rank_max, data->lst_b));
+		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+		apply_instr(data, &data->lst_a, &data->lst_b, ra, PRINT);
+		apply_instr(data, &data->lst_a, &data->lst_b, ra, PRINT);
+	}
+	else
+	{
+		apply_instr(data, &data->lst_a, &data->lst_b, ra, PRINT);
+		reach_rank_lst_b(&data->lst_b, data->max_b, get_shortestway(data->max_b, data->lst_b));
+	}
+	while (data->lst_b)
+		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+}
+
+void gather_min_and_max(t_data *data)
+{
+	int *best_insert_itm;
+
+	while (!(data->max_b == data->rank_max && data->min_b == 0))
+	{
+		best_insert_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_low_and_max);
+		if (apply_best_comb_and(swap_if_high_to_dump, data, best_insert_itm) != CANT_INSERT)
+			apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+		else
+			break ;
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -84,17 +116,8 @@ int	main(int argc, char **argv)
 	//printf("\n");
 	if (!is_sorted(d.lst_a))
 	{
-		while (!(d.max_b == d.rank_max && d.min_b == 0))
-		{
-			//print_lst_byrank(d.lst_a, "lst_a");
-			//print_lst_byrank(d.lst_b, "lst_b");
-			int *best_insert_itm = best_insert(d.lst_a, d.lst_b, no_rra_instr, load_b_low_and_max);
-			//print_best_insert(best_insert_itm);
-			if (apply_best_comb_and(swap_if_high_to_dump, &d, best_insert_itm) != CANT_INSERT)
-				apply_instr(&d, &d.lst_a, &d.lst_b, pb, PRINT);
-			else
-				break;
-		}
+		gather_min_and_max(&d);
+		first_dump(&d);
 		//while (!is_sorted(d.lst_a) || d.lst_b)
 		//{
 		//	apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);
