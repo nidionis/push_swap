@@ -6,13 +6,22 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 04:48:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 07:22:23 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int	can_push_b(t_data *data, t_lnk *a, t_lnk *b)
+int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
+{
+	if (a->rank < data->softmin_a / 2)
+		return (FALSE);
+	if (a->rank >= data->softmax_a)
+		return (FALSE);
+	return (load_b_minmax(data, a, b));
+}
+
+int	load_b_minmax(t_data *data, t_lnk *a, t_lnk *b)
 {
 	int size_b;
 
@@ -52,6 +61,19 @@ int	can_push_b(t_data *data, t_lnk *a, t_lnk *b)
 		else if (a->rank > b->rank && a->rank < b->prev->rank)
 			return (TRUE);
 	}
+	return (FALSE);
+}
+
+int	can_push_a(t_data *data, t_lnk *a, t_lnk *b)
+{
+	if (!a)
+		return (TRUE);
+	if (!b)
+		return (FALSE);
+	if (a->rank == data->softmax_a && b->rank == data->softmax_a - 1)
+		return (TRUE);
+	if (a->prev->rank == data->softmin_a && b->rank == data->softmin_a + 1)
+		return (TRUE);
 	return (FALSE);
 }
 
@@ -161,7 +183,7 @@ void apply_instr_step_itm_test(t_lnk **lst_a, t_lnk **lst_b, int **instr_steps_i
 	instr_steps_itm = NULL;
 }
 
-void load_minimax(t_data *data, int *best_comb)
+void load_minmax(t_data *data, int *best_comb)
 {
 	if (best_comb[FIRST_INSTR] != NO_INSTR)
 	{
@@ -171,7 +193,7 @@ void load_minimax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_push_b, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, load_b_minmax, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);
@@ -188,7 +210,7 @@ void load_minimax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_push_b, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, load_b_minmax, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);

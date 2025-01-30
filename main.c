@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 04:53:51 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 07:30:27 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	select_algo(int ind_max)
 	{
 		// load_b();
 		// b_dump();
-		reach_rank(&d.lst_a, 0, get_shortestway(0, d.lst_a));
+		reach_rank_lst_a(&d.lst_a, 0, get_shortestway(0, d.lst_a));
 	}
 }
 
@@ -38,15 +38,29 @@ void print_best_insert(int *best_insert_itm)
 	print_instr_steps(best_insert_itm + 2);
 }
 
+void reach_softmin(t_data *data)
+{
+	int *best_load_b;
+	//int		no_rra_instr[] = {ra, rb, rrb, rr, LOOP_END};
+
+	while (data->max_b != data->softmax_a - 1)
+	{
+		best_load_b = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_but_softmins_and_low);
+		apply_best_comb(data, best_load_b);
+		free(best_load_b);
+		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+	}
+}
+
 t_data d;
 
 int	main(int argc, char **argv)
 {
 	int		lst_instr[] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
-	int		load_minmax_rot[] = {ra, rb, rrb, rr, rrr, LOOP_END};
+	int		no_rra_instr[] = {ra, rb, rrb, rr, rrr, LOOP_END};
 
 	(void)lst_instr;
-	(void)load_minmax_rot;
+	(void)no_rra_instr;
 	d = (t_data){0};
 	if (argc < 2)
 		error_msg(NULL);
@@ -62,18 +76,30 @@ int	main(int argc, char **argv)
 	//print_lst_byrank(d.lst_a, "lst_a");
 	//print_lst_byrank(d.lst_b, "lst_b");
 	//printf("\n");
-	while (!is_sorted(d.lst_a))
+	if (!is_sorted(d.lst_a))
 	{
 		while (!(d.max_b == d.rank_max && d.min_b == 0))
 		{
-			int *best_insert_itm = best_insert(d.lst_a, d.lst_b, load_minmax_rot, can_push_b);
-			load_minimax(&d, best_insert_itm);
-			//print_data(&d);
-	//print_lst_byrank(d.lst_b, "lst_b");
+			int *best_insert_itm = best_insert(d.lst_a, d.lst_b, no_rra_instr, load_b_minmax);
+			load_minmax(&d, best_insert_itm);
 		}
-	//print_lst_byrank(d.lst_a, "lst_a");
-		break ;
-		//int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_push_b);
+		reach_rank_lst_b(&d.lst_b, 0, get_shortestway(0, d.lst_b));
+		apply_instr(&d, &d.lst_a, &d.lst_b, pa, PRINT);
+		apply_instr(&d, &d.lst_a, &d.lst_b, pa, PRINT);
+		while (d.softmax_b >= d.softmax_a / 2)
+		{
+			if (d.lst_a->rank >= d.rank_max / 2)
+				apply_instr(&d, &d.lst_a, &d.lst_b, pa, PRINT);
+			else
+				apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);
+		}
+		//while (!is_sorted(d.lst_a) || d.lst_b)
+		//{
+		//	apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);
+		//	reach_soft_min(&d);
+		//	dump_b(&d);
+		//}
+		//int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, load_b_minmax);
 		//print_best_insert(best_insert_itm);
 	//print_lst_byrank(d.lst_a, "lst_a");
 	//print_lst_byrank(d.lst_b, "lst_b");
