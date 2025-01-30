@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 00:00:40 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 02:39:53 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,48 @@ void apply_instr_step_itm_test(t_lnk **lst_a, t_lnk **lst_b, int **instr_steps_i
 	instr_steps_itm = NULL;
 }
 
+void load_minimax(t_data *data, int *best_comb)
+{
+	if (best_comb[FIRST_INSTR] != NO_INSTR)
+	{
+		while (best_comb[NB_FIRST_INSTR]--)
+		{
+			if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
+			{
+				int *best_insert_itm;
+
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->full_instr, can_push_b, SIZE_MAX);
+				apply_instr_step_itm(&best_insert_itm);
+				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+				free(best_comb);
+				free(best_insert_itm);
+				return ;
+			}
+			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
+		}
+	}
+	if (best_comb[SECOND_INSTR] != NO_INSTR)
+	{
+		while (best_comb[NB_SECOND_INSTR]--)
+		{
+			if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
+			{
+				int *best_insert_itm;
+
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->full_instr, can_push_b, SIZE_MAX);
+				apply_instr_step_itm(&best_insert_itm);
+				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+				free(best_comb);
+				free(best_insert_itm);
+				return ;
+			}
+			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[SECOND_INSTR], PRINT);
+		}
+	}
+	apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+	free(best_comb);
+}
+
 void apply_best_comb(t_data *data, int *best_comb)
 {
 	if (best_comb[FIRST_INSTR] != NO_INSTR)
@@ -272,10 +314,6 @@ void update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm
 		best_comb[NB_SECOND_INSTR] = new_best_comb[NB_SECOND_INSTR];
 	}
 }
-
-
-
-
 
 
 int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))

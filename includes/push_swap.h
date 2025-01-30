@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 23:59:09 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 01:43:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_lnk t_lnk;
 
 typedef struct s_data
 {
+	int rank_max;
 	int	max_a;
 	int	min_a;
 	int	max_b;
@@ -51,6 +52,7 @@ typedef struct s_data
 	int	best_comb[4];
 	//int	best_cost_instr;
 	int	best_cost_comb;
+	int full_instr[8];
 }	t_data;
 
 typedef struct s_lnk
@@ -139,5 +141,6 @@ int ft_cost(int *best_comb);
 
 
 void print_instr_steps(int instr_steps_itm[2]);
+void load_minimax(t_data *data, int *best_comb);
 
 #endif

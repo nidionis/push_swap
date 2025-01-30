@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 00:01:00 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 02:17:27 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,13 @@ void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
     data->best_inst_step[NB_FIRST_INSTR] = INT_MAX;
     //data->best_cost_instr = SIZE_MAX;
     data->best_cost_comb = SIZE_MAX;
+    data->full_instr[0] = rr;
+    data->full_instr[1] = rrr;
+    data->full_instr[2] = ra;
+    data->full_instr[3] = rb;
+    data->full_instr[4] = rb;
+    data->full_instr[5] = rrb;
+    data->full_instr[6] = rra;
 }
 
 #include <stdio.h>
@@ -151,4 +158,6 @@ void print_data(t_data *d)
     printf("softmax_b: %d\n", d->softmax_b);
     printf("softmin_a: %d\n", d->softmin_a);
     printf("softmin_b: %d\n", d->softmin_b);
+    printf("rank_max: %d\n", d->rank_max);
+    printf("best_cost_comb: %d\n", d->best_cost_comb);
 }
