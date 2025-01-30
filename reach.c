@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 06:19:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 07:58:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	reach_rank_lst_b(t_lnk **lst, int rank, int direction)
 	int		instr;
 
 	instr = rb;
-	if (direction < 0)
+	if (direction == RROTATE)
 		instr = rrb;
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)
@@ -78,6 +78,6 @@ int	get_shortestway(int rank, t_lnk *lst)
 	if (!found)
 		error_msg("[get_shortestway] rank not found");
 	if (step_nb > len / 2)
-		return (step_nb - len);
-	return (step_nb);
+		return (ROTATE);
+	return (RROTATE);
 }

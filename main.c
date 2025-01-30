@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 07:30:27 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 08:24:14 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,20 @@ void print_best_insert(int *best_insert_itm)
 void reach_softmin(t_data *data)
 {
 	int *best_load_b;
-	//int		no_rra_instr[] = {ra, rb, rrb, rr, LOOP_END};
+	int		no_rra_instr[] = {ra, rb, rrb, rr, LOOP_END};
 
-	while (data->max_b != data->softmax_a - 1)
+	while (data->min_b != data->softmin_a + 1)
 	{
-		best_load_b = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_but_softmins_and_low);
+		best_load_b = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_but_softmax_and_hight);
 		apply_best_comb(data, best_load_b);
-		free(best_load_b);
 		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+	}
+	while (data->lst_a->prev->rank != data->softmin_a)
+	{
+		best_load_b = best_insert(data->lst_a, data->lst_b, no_rra_instr, load_b_but_softmax_and_hight);
+		apply_best_comb_until_softmin(data, best_load_b);
+		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+
 	}
 }
 
@@ -93,6 +99,7 @@ int	main(int argc, char **argv)
 			else
 				apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);
 		}
+		reach_softmin(&d);
 		//while (!is_sorted(d.lst_a) || d.lst_b)
 		//{
 		//	apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);

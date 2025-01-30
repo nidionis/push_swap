@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 07:22:32 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 07:55:56 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_
 int ft_cost(int *best_comb);
 void	reach_rank_lst_b(t_lnk **lst, int rank, int direction);
 int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b);
+int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b);
+void apply_best_comb_until_softmin(t_data *data, int *best_comb);
 
 
 void print_instr_steps(int instr_steps_itm[2]);

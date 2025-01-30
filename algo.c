@@ -6,11 +6,20 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 07:22:23 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/30 08:10:42 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b)
+{
+	if (a->rank > data->softmax_a / 2)
+		return (FALSE);
+	if (a->rank <= data->softmin_a)
+		return (FALSE);
+	return (load_b_minmax(data, a, b));
+}
 
 int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
 {
@@ -220,6 +229,36 @@ void load_minmax(t_data *data, int *best_comb)
 		}
 	}
 	apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+	free(best_comb);
+}
+
+void apply_best_comb_until_softmin(t_data *data, int *best_comb)
+{
+	if (best_comb[FIRST_INSTR] != NO_INSTR)
+	{
+		while (best_comb[NB_FIRST_INSTR]--)
+		{
+			if (data->lst_a->prev->rank == data->softmin_a)
+			{
+				free(best_comb);
+				return ;
+
+			}
+			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
+		}
+	}
+	if (best_comb[SECOND_INSTR] != NO_INSTR)
+	{
+		while (best_comb[NB_SECOND_INSTR]--)
+		{
+			if (data->lst_a->prev->rank == data->softmin_a)
+			{
+				free(best_comb);
+				return ;
+			}
+			apply_instr(data, &data->lst_a, &data->lst_b, best_comb[SECOND_INSTR], PRINT);
+		}
+	}
 	free(best_comb);
 }
 
