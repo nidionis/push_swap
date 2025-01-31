@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 18:51:39 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 00:00:24 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,9 @@ void load_or_dump_high(t_data *data)
        {
                print_best_insert(load_a_itm);
                apply_best_comb_and(swap_if_low, data, load_a_itm);
+	print_lst_byrank(d.lst_a, "lst_a");
+	print_lst_byrank(d.lst_b, "lst_b");
+	printf("\n");
                apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
                free(dump_b_itm);
        }
@@ -109,6 +112,9 @@ void load_or_dump_high(t_data *data)
        {
                print_best_insert(dump_b_itm);
                apply_best_comb_and(swap_if_low, data, dump_b_itm);
+	print_lst_byrank(d.lst_a, "lst_a");
+	print_lst_byrank(d.lst_b, "lst_b");
+	printf("\n");
                apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
                free(load_a_itm);
        }
