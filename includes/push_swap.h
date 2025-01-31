@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 01:25:21 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 03:20:03 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void    print_lst_byrank(t_lnk *lst, char *header);
 void    push(t_lnk **from_lst, t_lnk **to_lst);
 void    push_item(t_lnk *lnk, t_lnk **lst);
 t_lnk   *pop_item(t_lnk **lst);
-void    reach_rank_lst_a(t_lnk **lst, int rank, int direction);
+void    reach_rank_lst_a(t_lnk **lst, int rank, int direction, int verbose);
 int             get_shortestway(int rank, t_lnk *lst);
 void    rotate_lst(t_lnk **lst);
 void    rrotate_lst(t_lnk **lst);
@@ -143,7 +143,7 @@ void apply_instr_step_itm(int **instr_steps_itm_addr);
 int apply_best_comb(t_data *data, int *best_comb);
 int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b));
 int ft_cost(int *best_comb);
-void	reach_rank_lst_b(t_lnk **lst, int rank, int direction);
+void	reach_rank_lst_b(t_lnk **lst, int rank, int direction, int verbose);
 int	can_load_high(t_data *data, t_lnk *a, t_lnk *b);
 int	can_load_low(t_data *data, t_lnk *a, t_lnk *b);
 void apply_best_comb_until_softmin(t_data *data, int *best_comb);
