@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 22:39:15 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 16:29:08 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b)
 			return (TRUE);
 	if (a->rank > data->rank_max / 2)
 		return (FALSE);
-	return (load_b_minmax(data, a, b));
+	return (can_load_b(data, a, b));
 }
 
 int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b)
@@ -28,7 +28,7 @@ int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b)
 		return (FALSE);
 	if (a->rank <= data->softmin_a)
 		return (FALSE);
-	return (load_b_minmax(data, a, b));
+	return (can_load_b(data, a, b));
 }
 
 int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
@@ -37,10 +37,10 @@ int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
 		return (FALSE);
 	if (a->rank >= data->softmax_a)
 		return (FALSE);
-	return (load_b_minmax(data, a, b));
+	return (can_load_b(data, a, b));
 }
 
-int	load_b_minmax(t_data *data, t_lnk *a, t_lnk *b)
+int	can_load_b(t_data *data, t_lnk *a, t_lnk *b)
 {
 	int size_b;
 
@@ -83,7 +83,7 @@ int	load_b_minmax(t_data *data, t_lnk *a, t_lnk *b)
 	return (FALSE);
 }
 
-int	can_push_a(t_data *data, t_lnk *a, t_lnk *b)
+int	can_dump(t_data *data, t_lnk *a, t_lnk *b)
 {
 	if (!a)
 		return (TRUE);
@@ -212,7 +212,7 @@ void load_minmax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, load_b_minmax, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_load_b, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);
@@ -229,7 +229,7 @@ void load_minmax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, load_b_minmax, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_load_b, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);
@@ -278,6 +278,20 @@ int swap_if_high_to_dump(t_data *data, int instr)
 		if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
 			return (BREAK_BEST_COMB);
 	return (swap_if_high(data, instr));
+}
+
+int swap_if_low(t_data *data, int instr)
+{
+       t_lnk *lst_a = data->lst_a;
+
+       if (instr == ra || instr == rr)
+               return (IGNORE); 
+       if (lst_a->rank < data->mediane_a && lst_a->next->rank < data->mediane_a)
+       {
+               if (lst_a->next->rank < lst_a->rank)
+                       apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+       }
+       return (IGNORE);
 }
 
 int swap_if_high(t_data *data, int instr)
