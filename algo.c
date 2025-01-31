@@ -6,13 +6,13 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 16:29:08 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:29:37 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b)
+int can_firt_load(t_data *data, t_lnk *a, t_lnk *b)
 {
 	if (ft_lstsize(b) > 2)
 		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
@@ -22,23 +22,23 @@ int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b)
 	return (can_load_b(data, a, b));
 }
 
-int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b)
+int	can_load_high(t_data *data, t_lnk *a, t_lnk *b)
 {
-	if (a->rank > data->softmax_a / 2)
-		return (FALSE);
-	if (a->rank <= data->softmin_a)
-		return (FALSE);
-	return (can_load_b(data, a, b));
-}
-
-int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
-{
-	if (a->rank < data->softmin_a / 2)
+	if (a->rank <= data->mediane_a)
 		return (FALSE);
 	if (a->rank >= data->softmax_a)
 		return (FALSE);
 	return (can_load_b(data, a, b));
 }
+
+//int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
+//{
+//	if (a->rank < data->softmin_a / 2)
+//		return (FALSE);
+//	if (a->rank >= data->softmax_a)
+//		return (FALSE);
+//	return (can_load_b(data, a, b));
+//}
 
 int	can_load_b(t_data *data, t_lnk *a, t_lnk *b)
 {
@@ -289,7 +289,7 @@ int swap_if_low(t_data *data, int instr)
        if (lst_a->rank < data->mediane_a && lst_a->next->rank < data->mediane_a)
        {
                if (lst_a->next->rank < lst_a->rank)
-                       apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+                    apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
        }
        return (IGNORE);
 }
@@ -473,7 +473,7 @@ int *best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[], int (*can_push)(t_
 			return (malloc_instr_steps_itm(NULL));
 		}
 		int j_instr = 0;
-		while (first_instr_steps[NB_INSTR]++ < ft_cost(d.best_comb))
+		while (lst_instr[j_instr] != LOOP_END && first_instr_steps[NB_INSTR]++ < ft_cost(d.best_comb))
 		{
 			apply_instr(&d, &lst_a, &lst_b, lst_instr[i_instr], QUIET);
 			second_instr_steps = insert_target_to_list_steps(lst_a, lst_b, lst_instr, can_push, ft_cost(d.best_comb));

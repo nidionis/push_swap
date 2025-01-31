@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verifications.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:22:22 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:33:30 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 int	is_sorted(t_lnk *lst)
 {
-	if (lst->rank != 0)
-		return (0);
-	lst = lst->next;
-	while (lst->rank != 0)
+	t_lnk	*lst_orig;
+
+	lst = reach_rank(lst, 0);
+	print_lst_byrank(lst, "is_sorted");
+	lst_orig = lst;
+	while (lst != lst_orig->prev)
 	{
-		if (lst->rank == lst->prev->rank + 1)
+		if (lst->rank == lst->next->rank - 1)
 			lst = lst->next;
 		else
-			return (0);
+			return (FALSE);
 	}
-	return (1);
+	return (TRUE);
 }
 
 int	ft_no_duplicate(t_lnk *lst)

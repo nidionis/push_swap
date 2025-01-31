@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 07:58:59 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:32:10 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	reach_rank_lst_b(t_lnk **lst, int rank, int direction)
 	}
 }
 
-void	reach_rank_lst_a(t_lnk **lst, int rank, int direction)
+void	reach_rank_lst_a(t_lnk **lst, int rank, int direction, int verbose)
 {
 	t_lnk	*first_lnk;
 	int		instr;
@@ -40,11 +40,26 @@ void	reach_rank_lst_a(t_lnk **lst, int rank, int direction)
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)
 	{
-		apply_instr(&d, &d.lst_a, &d.lst_b, instr, 1);
+		apply_instr(&d, &d.lst_a, &d.lst_b, instr, verbose);
 		while ((*lst)->rank != rank && *lst != first_lnk)
-			apply_instr(&d, &d.lst_a, &d.lst_b, instr, 1);
+			apply_instr(&d, &d.lst_a, &d.lst_b, instr, verbose);
 	}
 }
+
+t_lnk	*reach_rank(t_lnk *lst, int rank)
+{
+	t_lnk	*first_lnk;
+
+	first_lnk = lst;
+	if (first_lnk->rank != rank)
+	{
+		apply_instr(NULL, &lst, NULL, ra, QUIET);
+		while (lst->rank != rank && lst != first_lnk)
+			apply_instr(NULL, &lst, NULL, ra, QUIET);
+	}
+	return (lst);
+}
+
 
 void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, \
 	int *found, int *rank)

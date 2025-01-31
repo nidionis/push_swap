@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 15:47:30 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 17:38:24 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	select_algo(int ind_max)
 		sort_5_nb(4);
 	else
 	{
-		// load_b();
-		// b_dump();
-		reach_rank_lst_a(&d.lst_a, 0, get_shortestway(0, d.lst_a));
+		printf("Error\n");
 	}
 }
 
@@ -38,24 +36,24 @@ void print_best_insert(int *best_insert_itm)
 	print_instr_steps(best_insert_itm + 2);
 }
 
-void reach_softmin(t_data *data)
-{
-	int *best_load_b;
-	int		no_rra_instr[] = {ra, rb, rrb, rr, LOOP_END};
-
-	while (data->min_b != data->softmin_a + 1)
-	{
-		best_load_b = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_but_softmax_and_hight);
-		apply_best_comb(data, best_load_b);
-		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
-	}
-	while (data->lst_a->prev->rank != data->softmin_a)
-	{
-		best_load_b = best_insert(data->lst_a, data->lst_b, no_rra_instr, load_b_but_softmax_and_hight);
-		apply_best_comb_until_softmin(data, best_load_b);
-		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
-	}
-}
+//void reach_softmin(t_data *data)
+//{
+//	int *best_load_b;
+//	int		no_rra_instr[] = {ra, rb, rrb, rr, LOOP_END};
+//
+//	while (data->min_b != data->softmin_a + 1)
+//	{
+//		best_load_b = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_but_softmax_and_hight);
+//		apply_best_comb(data, best_load_b);
+//		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+//	}
+//	while (data->lst_a->prev->rank != data->softmin_a)
+//	{
+//		best_load_b = best_insert(data->lst_a, data->lst_b, no_rra_instr, load_b_but_softmax_and_hight);
+//		apply_best_comb_until_softmin(data, best_load_b);
+//		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+//	}
+//}
 
 t_data d;
 
@@ -84,12 +82,36 @@ void gather_min_and_max(t_data *data)
 
 	while (!(data->max_b == data->rank_max && data->min_b == 0))
 	{
-		best_insert_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_low_and_max);
+		best_insert_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, can_firt_load);
 		if (apply_best_comb_and(swap_if_high_to_dump, data, best_insert_itm) != CANT_INSERT)
 			apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 		else
 			break ;
 	}
+}
+
+
+void load_or_dump_high(t_data *data)
+{
+       int *load_a_itm;
+       int *dump_b_itm;
+
+       load_a_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, can_load_high);
+       dump_b_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, can_dump);
+       if (ft_cost(load_a_itm) < ft_cost(dump_b_itm))
+       {
+               //print_best_insert(load_a_itm);
+               apply_best_comb_and(swap_if_low, data, load_a_itm);
+               apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+               free(dump_b_itm);
+       }
+       else
+       {
+               //print_best_insert(dump_b_itm);
+               apply_best_comb_and(swap_if_low, data, dump_b_itm);
+               apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+               free(load_a_itm);
+       }
 }
 
 int	main(int argc, char **argv)
@@ -116,11 +138,13 @@ int	main(int argc, char **argv)
 	//printf("\n");
 	if (!is_sorted(d.lst_a))
 	{
-		gather_min_and_max(&d);
-		first_dump(&d);
-		//while (!is_sorted(d.lst_a) || d.lst_b)
-		//{
-		//	apply_instr(&d, &d.lst_a, &d.lst_b, ra, PRINT);
+		printf("not sorted\n");
+//		gather_min_and_max(&d);
+//		first_dump(&d);
+//		while (!is_sorted(d.lst_a))
+//		{
+//			load_or_dump_high(&d);
+//		}
 		//	reach_soft_min(&d);
 		//	dump_b(&d);
 		//}
@@ -130,6 +154,8 @@ int	main(int argc, char **argv)
 	//print_lst_byrank(d.lst_b, "lst_b");
 		//apply_best_comb(&d, best_insert_itm);
 	}
+	else
+		printf("already sorted\n");
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);
 }
