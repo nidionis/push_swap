@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 18:33:30 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:35:28 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	is_sorted(t_lnk *lst)
 	t_lnk	*lst_orig;
 
 	lst = reach_rank(lst, 0);
-	print_lst_byrank(lst, "is_sorted");
 	lst_orig = lst;
 	while (lst != lst_orig->prev)
 	{

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 17:38:24 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 18:51:39 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,14 @@ void load_or_dump_high(t_data *data)
        dump_b_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, can_dump);
        if (ft_cost(load_a_itm) < ft_cost(dump_b_itm))
        {
-               //print_best_insert(load_a_itm);
+               print_best_insert(load_a_itm);
                apply_best_comb_and(swap_if_low, data, load_a_itm);
                apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
                free(dump_b_itm);
        }
        else
        {
-               //print_best_insert(dump_b_itm);
+               print_best_insert(dump_b_itm);
                apply_best_comb_and(swap_if_low, data, dump_b_itm);
                apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
                free(load_a_itm);
@@ -138,13 +138,12 @@ int	main(int argc, char **argv)
 	//printf("\n");
 	if (!is_sorted(d.lst_a))
 	{
-		printf("not sorted\n");
-//		gather_min_and_max(&d);
-//		first_dump(&d);
-//		while (!is_sorted(d.lst_a))
-//		{
-//			load_or_dump_high(&d);
-//		}
+		gather_min_and_max(&d);
+		first_dump(&d);
+		while (!is_sorted(d.lst_a))
+		{
+			load_or_dump_high(&d);
+		}
 		//	reach_soft_min(&d);
 		//	dump_b(&d);
 		//}

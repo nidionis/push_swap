@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 21:02:55 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 21:13:48 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,10 @@ void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
         data->softmax_a = lst_a->rank;
     else 
         data->softmax_a = get_softmax(lst_a)->rank;
-    if (!lst_b || lst_b->next == lst_b)
+    if (!lst_b)
         data->softmax_b = UNSET;
+    else if (lst_b->next == lst_b)
+        data->softmax_b = lst_b->rank;
     else 
         data->softmax_b = get_softmax(lst_b)->rank;
 }
@@ -98,8 +100,10 @@ void	set_softmin(t_data *data, t_lnk*lst_a, t_lnk *lst_b)
         data->softmin_a = lst_a->rank;
     else 
         data->softmin_a = get_softmin(lst_a)->rank;
-    if (!lst_b || lst_b->next == lst_b)
-        data->softmin_b = UNSET;
+    if (!lst_b)
+        data->softmax_b = UNSET;
+    else if (lst_b->next == lst_b)
+        data->softmax_b = lst_b->rank;
     else 
         data->softmin_b = get_softmin(lst_b)->rank;
 }
@@ -108,6 +112,8 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
     t_lnk   *tmp;
 
+    if (!data)
+        return ;
     tmp = get_max(*lst_a);
     if (tmp)
         data->max_a = tmp->rank;

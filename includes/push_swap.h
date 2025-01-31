@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 18:32:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 20:12:07 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define NO_INSTR -42
 # define SIZE_MAX 1000
 # define BREAK_BEST_COMB 1
+# define BREAK 1
 # define IGNORE 0
 
 typedef struct s_lnk t_lnk;
