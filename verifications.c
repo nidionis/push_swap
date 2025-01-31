@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verifications.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/24 18:22:22 by supersko         ###   ########.fr       */
+/*   Updated: 2025/01/31 01:05:35 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	is_sorted(t_lnk *lst)
 {
+	reach_rank_lst_a(&lst, 0, 0);
 	if (lst->rank != 0)
 		return (0);
 	lst = lst->next;

@@ -6,41 +6,54 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 22:39:15 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/01/31 02:45:25 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int load_b_low_and_max(t_data *data, t_lnk *a, t_lnk *b)
+int can_dump(t_data *data, t_lnk *a, t_lnk *b)
+{
+	if (!a)
+		return (TRUE);
+	if (!b)
+		return (TRUE);
+	if (a->rank == data->softmax_a && b->rank == data->softmax_a - 1)
+		return (TRUE);
+	if (a->prev->rank == data->softmin_a && b->rank == data->softmin_a + 1)
+		return (TRUE);
+	return (FALSE);
+}
+
+int can_first_load_b(t_data *data, t_lnk *a, t_lnk *b)
 {
 	if (ft_lstsize(b) > 2)
 		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
 			return (TRUE);
 	if (a->rank > data->rank_max / 2)
 		return (FALSE);
-	return (load_b_minmax(data, a, b));
+	return (can_load_b(data, a, b));
 }
 
-int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b)
+int	can_load_low(t_data *data, t_lnk *a, t_lnk *b)
 {
 	if (a->rank > data->softmax_a / 2)
 		return (FALSE);
 	if (a->rank <= data->softmin_a)
 		return (FALSE);
-	return (load_b_minmax(data, a, b));
+	return (can_load_b(data, a, b));
 }
 
-int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
+int	can_load_high(t_data *data, t_lnk *a, t_lnk *b)
 {
-	if (a->rank < data->softmin_a / 2)
+	if (a->rank < data->mediane_a)
 		return (FALSE);
 	if (a->rank >= data->softmax_a)
 		return (FALSE);
-	return (load_b_minmax(data, a, b));
+	return (can_load_b(data, a, b));
 }
 
-int	load_b_minmax(t_data *data, t_lnk *a, t_lnk *b)
+int	can_load_b(t_data *data, t_lnk *a, t_lnk *b)
 {
 	int size_b;
 
@@ -212,7 +225,7 @@ void load_minmax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, load_b_minmax, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_load_b, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);
@@ -229,7 +242,7 @@ void load_minmax(t_data *data, int *best_comb)
 			{
 				int *best_insert_itm;
 
-				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, load_b_minmax, SIZE_MAX);
+				best_insert_itm = insert_target_to_list_steps(data->lst_a, data->lst_b, data->b_only_instr, can_load_b, SIZE_MAX);
 				apply_instr_step_itm(&best_insert_itm);
 				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 				free(best_comb);
@@ -272,12 +285,26 @@ void apply_best_comb_until_softmin(t_data *data, int *best_comb)
 	free(best_comb);
 }
 
-int swap_if_high_to_dump(t_data *data, int instr)
+int swap_and_break_init(t_data *data, int instr)
 {
 	if (data->max_b == data->rank_max || data->min_b == 0)
 		if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
 			return (BREAK_BEST_COMB);
 	return (swap_if_high(data, instr));
+}
+
+int swap_if_low(t_data *data, int instr)
+{
+	t_lnk *lst_a = data->lst_a;
+
+	if (instr == ra || instr == rr)
+		return (IGNORE); 
+	if (lst_a->rank < data->mediane_a && lst_a->next->rank < data->mediane_a)
+	{
+		if (lst_a->next->rank < lst_a->rank)
+			apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+	}
+	return (IGNORE);
 }
 
 int swap_if_high(t_data *data, int instr)
@@ -306,7 +333,7 @@ int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *be
 		if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
 			return (BREAK_BEST_COMB);
 	}
-	if (best_comb[SECOND_INSTR] != NO_INSTR)
+	if (best_comb[SECOND_INSTR] != NO_INSTR && best_comb[NB_SECOND_INSTR] != CANT_INSERT)
 	{
 		while (best_comb[NB_SECOND_INSTR]--)
 		{
