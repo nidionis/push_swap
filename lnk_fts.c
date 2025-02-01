@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 05:44:13 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 06:04:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ int ft_dlstsize(t_lnk *lst)
 
 	i = 0;
 	lnk = lst;
+	if (!lnk)
+		return (0);
 	while (lnk->next != lst)
 	{
 		i++;

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_get_next_wd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/21 13:09:43 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/15 22:29:05 by supersko         ###   ########.fr       */
+/*   Updated: 2025/02/01 06:03:40 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
 char	*ft_get_next_wd(char *sentence, char sep)
 {
