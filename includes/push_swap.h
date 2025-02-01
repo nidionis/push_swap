@@ -6,15 +6,14 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 23:52:11 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 05:43:40 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <libft.h>
-# include <libftprintf.h>
-#include <stdio.h>
+# include <stdio.h>
 # define TRUE 1
 # define FALSE 0
 # define UNSET -1
@@ -91,6 +90,7 @@ enum	e_instr {
 extern struct s_data d;
 
 
+int ft_dlstsize(t_lnk *lst);
 t_lnk	*reach_rank(t_lnk *lst, int rank);
 void	reach_rank_lst_a(t_lnk **lst, int rank, int direction, int verbose);
 int	can_load_high(t_data *data, t_lnk *a, t_lnk *b);
@@ -141,7 +141,6 @@ int             ft_no_duplicate(t_lnk *lst);
 //void	insert_target_to_b(t_lnk *target, int way);
 int	*insert_target_to_list_steps(t_lnk *target, t_lnk *lst, int lst_instr[], int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b), int cost);
 void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr);
-int ft_lstsize(t_lnk *lst);
 void print_instr_steps(int instr_steps_itm[2]);
 void apply_instr_step_itm(int **instr_steps_itm_addr);
 int apply_best_comb(t_data *data, int *best_comb);

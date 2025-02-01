@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 21:46:34 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 05:48:05 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	can_firt_load(t_data *data, t_lnk *a, t_lnk *b)
 {
-	if (ft_lstsize(b) > 2)
+	if (ft_dlstsize(b) > 2)
 		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
 			return (TRUE);
 	if (a->rank > data->rank_max / 2)
@@ -48,7 +48,7 @@ int	can_load_b(t_data *data, t_lnk *a, t_lnk *b)
 		return (FALSE);
 	if (!b)
 		return (TRUE);
-	size_b = ft_lstsize(b);
+	size_b = ft_dlstsize(b);
 	if (size_b == 1)
 		return (TRUE);
 	if (size_b == 2)
@@ -144,24 +144,6 @@ int	count_instr(t_data *data, t_lnk *lst_a, t_lnk *lst_b, int instr,
 	}
 	if (count >= data->best_cost_comb)
 		return (CANT_INSERT);
-	return (count);
-}
-
-int	ft_lstsize(t_lnk *lst)
-{
-	int		count;
-	t_lnk	*orig;
-
-	if (!lst)
-		return (0);
-	count = 1;
-	orig = lst;
-	lst = lst->next;
-	while (lst != orig)
-	{
-		lst = lst->next;
-		count++;
-	}
 	return (count);
 }
 

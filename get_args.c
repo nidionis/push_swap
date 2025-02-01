@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 17:24:38 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 05:45:45 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_lnk	*get_args_allinone(char *str)
 
 	argc = ft_wd_count(str, ' ') - 1;
 	if (argc < 0)
-		error_msg(NULL);
+		ft_errmsg(NULL);
 	splited = ft_split(str, ' ');
 	lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
 	d.lst_a = lnk;
@@ -29,7 +29,7 @@ t_lnk	*get_args_allinone(char *str)
 		lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
 		push_item(lnk, &d.lst_a);
 	}
-	ft_free_split(splited);
+	ft_free_split(&splited);
 	return (d.lst_a);
 }
 

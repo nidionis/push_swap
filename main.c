@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 00:00:24 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 05:27:55 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int	main(int argc, char **argv)
 	(void)no_rra_instr;
 	d = (t_data){0};
 	if (argc < 2)
-		error_msg(NULL);
+		ft_errmsg(NULL);
 	else if (argc == 2)
 		d.lst_a = get_args_allinone(argv[1]);
 	else
@@ -137,7 +137,7 @@ int	main(int argc, char **argv)
 	d.rank_max = lst_init_ranks(&d.lst_a);
 	d.lst_b = NULL;
 	if (!ft_no_duplicate(d.lst_a))
-		error_msg("Error: duplicated items");
+		ft_errmsg("Error: duplicated items");
 	set_data(&d, &d.lst_a, &d.lst_b);
 	//print_lst_byrank(d.lst_a, "lst_a");
 	//print_lst_byrank(d.lst_b, "lst_b");

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 20:20:15 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 05:27:55 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	fucking_norminette(t_lnk **lst_a, t_lnk **lst_b, int instr)
 	}
 	else
 	{
-		error_msg("[apply_instr] instruction probably wrong");
+		ft_errmsg("[apply_instr] instruction probably wrong");
 	}
 }
 
@@ -105,35 +105,35 @@ int	instr_to_i(char *str)
 	else
 		ret = fucking_normi_2(str);
 	if (ret == -1)
-		error_msg("[instr_to_i] Error");
+		ft_errmsg("[instr_to_i] Error");
 	return (ret);
 }
 
 void	i_to_instr(int i)
 {
 	if (i == rrr)
-		ft_printf("rrr");
+		printf("rrr");
 	else if (i == rra)
-		ft_printf("rra");
+		printf("rra");
 	else if (i == rrb)
-		ft_printf("rrb");
+		printf("rrb");
 	else if (i == ra)
-		ft_printf("ra");
+		printf("ra");
 	else if (i == rb)
-		ft_printf("rb");
+		printf("rb");
 	else if (i == rr)
-		ft_printf("rr");
+		printf("rr");
 	else if (i == pa)
-		ft_printf("pa");
+		printf("pa");
 	else if (i == pb)
-		ft_printf("pb");
+		printf("pb");
 	else if (i == sa)
-		ft_printf("sa");
+		printf("sa");
 	else if (i == sb)
-		ft_printf("sb");
+		printf("sb");
 	else if (i == ss)
-		ft_printf("ss");
+		printf("ss");
 	else
-		error_msg("[i_to_instr]: instruction non reconnue\n");
-	ft_printf("\n");
+		ft_errmsg("[i_to_instr]: instruction non reconnue\n");
+	printf("\n");
 }

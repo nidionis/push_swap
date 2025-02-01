@@ -9,10 +9,10 @@ CFLAGS	Makefile	/^CFLAGS = -Wall -Wextra -Werror$/;"	m
 LIBFT_H	libft.h	14;"	d
 NAME	Makefile	/^NAME = libft.a$/;"	m
 OBJS	Makefile	/^OBJS := ${SRCS:c=o}$/;"	m
-SRCS	Makefile	/^SRCS = error_msg.c ft_atoi.c ft_atoi_arg.c ft_bzero.c ft_calloc.c \\$/;"	m
+SRCS	Makefile	/^SRCS = ft_errmsg.c ft_atoi.c ft_atoi_arg.c ft_bzero.c ft_calloc.c \\$/;"	m
 c_to_i	ft_atoi.c	/^static long int	c_to_i(char c)$/;"	f	file:
 carry_negative	ft_itoa.c	/^static char	*carry_negative(int *n, char *n_strn, int *len)$/;"	f	file:
-error_msg	error_msg.c	/^void	error_msg(char *msg)$/;"	f
+ft_errmsg	ft_errmsg.c	/^void	ft_errmsg(char *msg)$/;"	f
 ft_atoi	ft_atoi.c	/^int	ft_atoi(const char *str0)$/;"	f
 ft_atoi_arg	ft_atoi_arg.c	/^int	ft_atoi_arg(char *str_nb)$/;"	f
 ft_bzero	ft_bzero.c	/^void	*ft_bzero(void *s, size_t n)$/;"	f

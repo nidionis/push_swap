@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 17:24:03 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 05:44:13 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_lnk	*lnk_init(t_lnk *lnk)
 		lnk->prev = lnk;
 	}
 	else
-		error_msg("[lnk_init] NULL passed in params");
+		ft_errmsg("[lnk_init] NULL passed in params");
 	return (lnk);
 }
 
@@ -30,7 +30,7 @@ t_lnk	*ft_new_lnk(int nb, int ind, int rank)
 
 	lnk = (t_lnk *) malloc(sizeof(t_lnk));
 	if (!lnk)
-		error_msg("Error creating a new link\n");
+		ft_errmsg("Error creating a new link\n");
 	lnk->nb = nb;
 	lnk->ind = ind;
 	lnk->rank = rank;
@@ -100,4 +100,19 @@ int	lst_init_ranks(t_lnk **lst)
 		lnk = lnk->next;
 	}
 	return (max);
+}
+
+int ft_dlstsize(t_lnk *lst)
+{
+	int		i;
+	t_lnk	*lnk;
+
+	i = 0;
+	lnk = lst;
+	while (lnk->next != lst)
+	{
+		i++;
+		lnk = lnk->next;
+	}
+	return (i);
 }

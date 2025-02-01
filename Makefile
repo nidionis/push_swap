@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/01/27 00:22:25 by nidionis         ###   ########.fr        #
+#    Updated: 2025/02/01 05:34:16 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,22 +24,20 @@ DEBUG_NAME = a.out
 BONUS_NAME = checker
 HEADERS = includes
 LIBFT_DIR = libft/
-LIBFTPRINTF_DIR = libftprintf/
 LIBFT_AR = libft.a
-LIBFTPRINTF_AR = libftprintf.a
-LIBS = $(LIBFTPRINTF_DIR)$(LIBFTPRINTF_AR) $(LIBFT_DIR)$(LIBFT_AR)
+LIBS =  $(LIBFT_DIR)$(LIBFT_AR)
 
-INCLUDES = -I./$(HEADERS) $(LIBS) -I./$(LIBFTPRINTF_DIR) -I./$(LIBFT_DIR)
+INCLUDES = -I./$(HEADERS) $(LIBS)  -I./$(LIBFT_DIR)include
 CFLAGS = -Wall -Wextra -Werror -g3
 
 CC = gcc
 
 all: ${NAME}
 
-${NAME}: make_libftprintf make_libft
+${NAME}: make_libft
 	$(CC) $(CFLAGS) $(SRCS) $(MAIN) $(INCLUDES) -o $(NAME)
 
-bonus: make_libftprintf make_libft
+bonus: make_libft
 	$(CC) $(CFLAGS) $(INCLUDES) $(SRCS) $(BONUS_MAIN) -o $(BONUS_NAME)
 	
 %.o: %.c
@@ -47,9 +45,6 @@ bonus: make_libftprintf make_libft
 
 make_libft:
 	make -C libft
-
-make_libftprintf:
-	make -C libftprintf
 
 .PHONY: ctags
 ctags:
