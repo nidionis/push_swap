@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 05:27:55 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 22:15:44 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,41 +58,4 @@ t_lnk	*reach_rank(t_lnk *lst, int rank)
 			apply_instr(NULL, &lst, NULL, ra, QUIET);
 	}
 	return (lst);
-}
-
-
-void	shortestway_fucking_norminette(t_lnk **lst, int *step_nb, \
-	int *found, int *rank)
-{
-	if (!(*found))
-		(*step_nb)++;
-	if ((*lst)->rank == *rank)
-		*found = 1;
-	*lst = (*lst)->next;
-}
-
-// renvoit un negatif si le chemin le plus court est en reverse
-int	get_shortestway(int rank, t_lnk *lst)
-{
-	int		step_nb;
-	int		len;
-	t_lnk	*last_lnk;
-	int		found;
-
-	if (!lst)
-		ft_errmsg("[get_shortestway] empty list passed");
-	step_nb = 0;
-	len = 1;
-	last_lnk = lst;
-	found = 0;
-	if (lst->rank == rank)
-		return (0);
-	lst = lst->next;
-	while (lst != last_lnk && len++)
-		shortestway_fucking_norminette(&lst, &step_nb, &found, &rank);
-	if (!found)
-		ft_errmsg("[get_shortestway] rank not found");
-	if (step_nb > len / 2)
-		return (ROTATE);
-	return (RROTATE);
 }

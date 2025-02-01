@@ -1,8 +1,0 @@
-*\.o
-*\.swp
-*\.swo
-*\.gch
-modified:   tags
-ft_print_int.c
-libft-war-machine/
-test.c

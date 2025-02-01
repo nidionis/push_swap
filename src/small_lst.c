@@ -6,18 +6,11 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/29 02:32:39 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/01 22:08:38 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-int	is_median(int max)
-{
-	if (d.lst_a->rank != 0 && d.lst_a->rank != max)
-		return (1);
-	return (0);
-}
 
 void	sort_2_nb()
 {

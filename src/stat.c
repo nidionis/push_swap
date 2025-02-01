@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   stat.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 11:12:03 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 05:47:15 by nidionis         ###   ########.fr       */
+/*   Created: 2025/02/01 22:08:58 by nidionis          #+#    #+#             */
+/*   Updated: 2025/02/01 22:09:19 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <push_swap.h>
 
-void	ft_putchar_fd(char c, int fd)
+int	is_median(int max)
 {
-	write(fd, &c, 1);
+	if (d.lst_a->rank != 0 && d.lst_a->rank != max)
+		return (1);
+	return (0);
 }
