@@ -6,95 +6,11 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 18:40:32 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 23:48:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
-
-int	can_firt_load(t_data *data, t_lnk *a, t_lnk *b)
-{
-	if (ft_dlstsize(b) > 2)
-		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
-			return (TRUE);
-	if (a->rank > data->rank_max / 2)
-		return (FALSE);
-	return (can_load_b(data, a, b));
-}
-
-int	can_load_high(t_data *data, t_lnk *a, t_lnk *b)
-{
-	if (a->rank < data->mediane_a)
-		return (FALSE);
-	if (a->rank >= data->softmax_a)
-		return (FALSE);
-	return (can_load_b(data, a, b));
-}
-
-// int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b)
-//{
-//	if (a->rank < data->softmin_a / 2)
-//		return (FALSE);
-//	if (a->rank >= data->softmax_a)
-//		return (FALSE);
-//	return (can_load_b(data, a, b));
-//}
-
-int	can_load_b(t_data *data, t_lnk *a, t_lnk *b)
-{
-	int	size_b;
-
-	if (!a)
-		return (FALSE);
-	if (!b)
-		return (TRUE);
-	size_b = ft_dlstsize(b);
-	if (size_b == 1)
-		return (TRUE);
-	if (size_b == 2)
-	{
-		if (b->rank == data->max_b)
-		{
-			if (a->rank > data->max_b || a->rank < data->min_b)
-				return (TRUE);
-		}
-		else if (a->rank > b->rank && b->prev->rank > a->rank)
-			return (TRUE);
-	}
-	else
-	{
-		if (b->rank == data->max_b)
-		{
-			if (a->rank > data->max_b)
-				return (TRUE);
-			if (a->rank < data->min_b)
-				return (TRUE);
-		}
-		else if (b->prev->rank == data->min_b)
-		{
-			if (a->rank < data->min_b)
-				return (TRUE);
-			if (a->rank > data->max_b)
-				return (TRUE);
-		}
-		else if (a->rank > b->rank && a->rank < b->prev->rank)
-			return (TRUE);
-	}
-	return (FALSE);
-}
-
-int	can_dump(t_data *data, t_lnk *a, t_lnk *b)
-{
-	if (!a)
-		return (TRUE);
-	if (!b)
-		return (FALSE);
-	if (a->rank == data->softmax_a && b->rank == data->softmax_a - 1)
-		return (TRUE);
-	if (a->prev->rank == data->softmin_a && b->rank == data->softmin_a + 1)
-		return (TRUE);
-	return (FALSE);
-}
 
 void	update_best_instr(t_data *data, int instr_steps_itm[2])
 {
@@ -102,7 +18,6 @@ void	update_best_instr(t_data *data, int instr_steps_itm[2])
 	{
 		data->best_inst_step[INSTR] = instr_steps_itm[INSTR];
 		data->best_inst_step[NB_INSTR] = instr_steps_itm[NB_INSTR];
-		// data->best_cost_instr = ft_cost(data->best_inst_step);
 	}
 }
 
@@ -147,33 +62,6 @@ int	count_instr(t_data *data, t_lnk *lst_a, t_lnk *lst_b, int instr,
 	return (count);
 }
 
-void	print_instr_steps(int instr_steps_itm[2])
-{
-	int	instr;
-
-	instr = instr_steps_itm[INSTR];
-	printf("instr: %i ", instr_steps_itm[NB_INSTR]);
-	if (instr == ra)
-		printf("ra ");
-	else if (instr == rb)
-		printf("rb ");
-	else if (instr == rra)
-		printf("rra ");
-	else if (instr == rrb)
-		printf("rrb ");
-	else if (instr == rr)
-		printf("rr ");
-	else if (instr == rrr)
-		printf("rrr ");
-	else if (instr == pa)
-		printf("pa ");
-	else if (instr == pb)
-		printf("pb ");
-	else
-		printf("%i is weird instruction", instr);
-	printf("\n");
-}
-
 void	apply_instr_step_itm_test(t_lnk **lst_a, t_lnk **lst_b,
 		int **instr_steps_itm_addr, int verbose)
 {
@@ -187,144 +75,6 @@ void	apply_instr_step_itm_test(t_lnk **lst_a, t_lnk **lst_b,
 	instr_steps_itm = NULL;
 }
 
-//void	load_minmax(t_data *data, int *best_comb)
-//{
-//	int *best_insert_itm;
-//
-//	if (best_comb[FIRST_INSTR] != NO_INSTR)
-//	{
-//		while (best_comb[NB_FIRST_INSTR]--)
-//		{
-//			if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
-//			{
-//				best_insert_itm = insert_target_to_list_steps(data->lst_a,
-//						data->lst_b, data->b_only_instr, can_load_b, SIZE_MAX);
-//				apply_instr_step_itm(&best_insert_itm);
-//				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
-//				free(best_comb);
-//				return ;
-//			}
-//			apply_instr(data, &data->lst_a, &data->lst_b,
-//				best_comb[FIRST_INSTR], PRINT);
-//		}
-//	}
-//	if (best_comb[SECOND_INSTR] != NO_INSTR)
-//	{
-//		while (best_comb[NB_SECOND_INSTR]--)
-//		{
-//			if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
-//			{
-//				best_insert_itm = insert_target_to_list_steps(data->lst_a,
-//						data->lst_b, data->b_only_instr, can_load_b, SIZE_MAX);
-//				apply_instr_step_itm(&best_insert_itm);
-//				apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
-//				free(best_comb);
-//				return ;
-//			}
-//			apply_instr(data, &data->lst_a, &data->lst_b,
-//				best_comb[SECOND_INSTR], PRINT);
-//		}
-//	}
-//	apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
-//	free(best_comb);
-//}
-
-void	apply_best_comb_until_softmin(t_data *data, int *best_comb)
-{
-	if (best_comb[FIRST_INSTR] != NO_INSTR)
-	{
-		while (best_comb[NB_FIRST_INSTR]--)
-		{
-			if (data->lst_a->prev->rank == data->softmin_a)
-			{
-				free(best_comb);
-				return ;
-			}
-			apply_instr(data, &data->lst_a, &data->lst_b,
-				best_comb[FIRST_INSTR], PRINT);
-		}
-	}
-	if (best_comb[SECOND_INSTR] != NO_INSTR)
-	{
-		while (best_comb[NB_SECOND_INSTR]--)
-		{
-			if (data->lst_a->prev->rank == data->softmin_a)
-			{
-				free(best_comb);
-				return ;
-			}
-			apply_instr(data, &data->lst_a, &data->lst_b,
-				best_comb[SECOND_INSTR], PRINT);
-		}
-	}
-	free(best_comb);
-}
-
-int	swap_if_high_to_dump(t_data *data, int instr)
-{
-	if (data->max_b == data->rank_max || data->min_b == 0)
-		if (data->lst_a->rank == data->rank_max || data->lst_a->rank == 0)
-			return (BREAK_BEST_COMB);
-	return (swap_if_high(data, instr));
-}
-
-int	swap_if_softmax(t_data *data, int instr)
-{
-	t_lnk	*lst_a;
-
-	(void)lst_a;
-	(void)instr;
-	(void)data;
-	lst_a = data->lst_a;
-	if (lst_a->rank == data->softmax_a - 1 && lst_a->next->next->rank == data->softmax_a)
-	{
-		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
-		return (BREAK);
-	}
-	if (lst_a->prev->rank == data->softmin_a + 1 && lst_a->prev->rank == data->softmin_a)
-	{
-		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
-		return (BREAK);
-	}
-	return (IGNORE);
-}
-
-int	swap_if_low(t_data *data, int instr)
-{
-	t_lnk	*lst_a;
-
-	(void)lst_a;
-	lst_a = data->lst_a;
-	if (instr == ra || instr == rr)
-		return (IGNORE);
-	//if (swap_if_softmax(data, instr))
-	//	return (IGNORE);
-	//if (lst_a->rank < data->mediane_a && lst_a->next->rank < data->mediane_a)
-	//{
-	//	if (lst_a->next->rank < lst_a->rank)
-	//		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
-	//}
-	return (IGNORE);
-}
-
-int	swap_if_high(t_data *data, int instr)
-{
-	t_lnk	*lst_a;
-
-	(void)instr;
-	(void)lst_a;
-	lst_a = data->lst_a;
-	if (instr == ra || instr == rr)
-		return (IGNORE);
-	//if (swap_if_softmax(data, instr))
-	//	return (IGNORE);
-	//if (lst_a->rank > data->mediane_a && lst_a->next->rank > data->mediane_a)
-	//{
-	//	if (lst_a->next->rank < lst_a->rank)
-	//		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
-	//}
-	return (IGNORE);
-}
 
 int	apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data,
 		int *best_comb)
@@ -480,44 +230,44 @@ void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1,
 	}
 }
 
-int	*best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[],
-		int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
-{
-	t_data d;
-	int i_instr;
-	int first_instr_steps[2];
-
-	set_data(&d, &lst_a, &lst_b);
-	set_best_comb(d.best_comb);
-	i_instr = 0;
-	while (lst_instr[i_instr] != LOOP_END)
-	{
-		int *second_instr_steps;
-		t_lnk *lst_a_original = lst_a;
-		t_lnk *lst_b_original = lst_b;
-		set_instr_step_itm(lst_instr[i_instr], 0, first_instr_steps);
-		if (can_push(&d, lst_a, lst_b))
-		{
-			return (malloc_instr_steps_itm(NULL));
-		}
-		int j_instr = 0;
-		while (lst_instr[j_instr] != LOOP_END
-			&& first_instr_steps[NB_INSTR]++ < ft_cost(d.best_comb))
-		{
-			apply_instr(&d, &lst_a, &lst_b, lst_instr[i_instr], QUIET);
-			second_instr_steps = insert_target_to_list_steps(lst_a, lst_b,
-					lst_instr, can_push, ft_cost(d.best_comb));
-			update_best_comb(&d.best_comb, first_instr_steps,
-				second_instr_steps);
-			d.best_cost_comb = ft_cost(d.best_comb);
-			free(second_instr_steps);
-			if (can_push(&d, lst_a, lst_b))
-				break ;
-			j_instr++;
-		}
-		lst_a = lst_a_original;
-		lst_b = lst_b_original;
-		i_instr++;
-	}
-	return (malloc_best_insert(&d));
-}
+//int	*best_insert(t_lnk *lst_a, t_lnk *lst_b, int lst_instr[],
+//		int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
+//{
+//	t_data d;
+//	int i_instr;
+//	int first_instr_steps[2];
+//
+//	set_data(&d, &lst_a, &lst_b);
+//	set_best_comb(d.best_comb);
+//	i_instr = 0;
+//	while (lst_instr[i_instr] != LOOP_END)
+//	{
+//		int *second_instr_steps;
+//		t_lnk *lst_a_original = lst_a;
+//		t_lnk *lst_b_original = lst_b;
+//		set_instr_step_itm(lst_instr[i_instr], 0, first_instr_steps);
+//		if (can_push(&d, lst_a, lst_b))
+//		{
+//			return (malloc_instr_steps_itm(NULL));
+//		}
+//		int j_instr = 0;
+//		while (lst_instr[j_instr] != LOOP_END
+//			&& first_instr_steps[NB_INSTR]++ < ft_cost(d.best_comb))
+//		{
+//			apply_instr(&d, &lst_a, &lst_b, lst_instr[i_instr], QUIET);
+//			second_instr_steps = insert_target_to_list_steps(lst_a, lst_b,
+//					lst_instr, can_push, ft_cost(d.best_comb));
+//			update_best_comb(&d.best_comb, first_instr_steps,
+//				second_instr_steps);
+//			d.best_cost_comb = ft_cost(d.best_comb);
+//			free(second_instr_steps);
+//			if (can_push(&d, lst_a, lst_b))
+//				break ;
+//			j_instr++;
+//		}
+//		lst_a = lst_a_original;
+//		lst_b = lst_b_original;
+//		i_instr++;
+//	}
+//	return (malloc_best_insert(&d));
+//}
