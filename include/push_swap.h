@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 18:38:01 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 19:01:06 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,20 @@ enum	e_instr {
 	RROTATE = rrr,
 	INSTR_MAX = ss
 };
+
+typedef struct s_instr_map
+{
+    char    *name;
+    int     code;
+}   t_instr_map;
+
+typedef struct s_cmd_map
+{
+    int     code;
+    void    (*func)(t_lnk **, t_lnk **);
+}   t_cmd_map;
+
+
 
 extern struct s_data d;
 
