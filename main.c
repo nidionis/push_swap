@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 18:58:02 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 21:39:36 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void gather_min_and_max(t_data *data)
 			apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 		else
 			break ;
+	print_lst_byrank(d.lst_a, "lst_a");
+	print_lst_byrank(d.lst_b, "lst_b");
 	}
 }
 
@@ -145,9 +147,10 @@ int	main(int argc, char **argv)
 	//printf("\n");
 	if (!is_sorted(d.lst_a))
 	{
-		gather_min_and_max(&d);
+		apply_instr(&d, &d.lst_a, &d.lst_b, pb, PRINT);
 	print_lst_byrank(d.lst_a, "lst_a");
 	print_lst_byrank(d.lst_b, "lst_b");
+		//gather_min_and_max(&d);
 	//	first_dump(&d);
 		//while (!is_sorted(d.lst_a))
 		//{

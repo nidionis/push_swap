@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 21:00:21 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 21:25:37 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@
 
 typedef struct s_lnk t_lnk;
 
+typedef struct s_instr_map
+{
+    char    *name;
+    int     code;
+    void    (*func)(t_lnk **, t_lnk **);
+}   t_instr_map;
+
 typedef struct s_data
 {
 	int rank_max;
@@ -58,6 +65,7 @@ typedef struct s_data
 	//int	best_cost_instr;
 	int	best_cost_comb;
 	int r_instr[7];
+	t_instr_map instr_map[12];
 }	t_data;
 
 typedef struct s_lnk
@@ -86,20 +94,6 @@ enum	e_instr {
 	RROTATE = rrr,
 	INSTR_MAX = ss
 };
-
-typedef struct s_instr_map
-{
-    char    *name;
-    int     code;
-}   t_instr_map;
-
-typedef struct s_cmd_map
-{
-    int     code;
-    void    (*func)(t_lnk **, t_lnk **);
-}   t_cmd_map;
-
-
 
 extern struct s_data d;
 
@@ -183,5 +177,6 @@ void	rrotate_a(t_lnk **lst_a, t_lnk **lst_b);
 void	rrotate_b(t_lnk **lst_a, t_lnk **lst_b);
 void	rotate_both(t_lnk **lst_a, t_lnk **lst_b);
 void	rrotate_both(t_lnk **lst_a, t_lnk **lst_b);
+void	init_instr_map(t_instr_map *instr_map);
 
 #endif
