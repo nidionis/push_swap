@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 19:01:06 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 21:00:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define BREAK_BEST_COMB 1
 # define BREAK 1
 # define IGNORE 0
+# define EXE_CMD_ERROR 666
 
 typedef struct s_lnk t_lnk;
 

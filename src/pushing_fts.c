@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 17:52:14 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 21:15:12 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ t_lnk	*pop_item(t_lnk **lst)
 
 void	push_a(t_lnk **lst_a, t_lnk **lst_b)
 {
-	if (*lst_a)
+	if (*lst_b)
 		push(lst_a, lst_b);
 }
 
 void	push_b(t_lnk **lst_a, t_lnk **lst_b)
 {
-	if (*lst_b)
+	if (*lst_a)
 		push(lst_b, lst_a);
 }
