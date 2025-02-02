@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: supersko <supersko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2022/05/16 17:55:12 by supersko         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:47:34 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,22 @@ void	swap_lst(t_lnk **lst)
 		else
 			rotate_lst(lst);
 	}
+}
+
+void	swap_a(t_lnk **lst_a, t_lnk **lst_b)
+{
+	(void)lst_b;
+	swap_lst(lst_a);
+}
+
+void	swap_b(t_lnk **lst_a, t_lnk **lst_b)
+{
+	(void)lst_a;
+	swap_lst(lst_b);
+}
+
+void	swap_both(t_lnk **lst_a, t_lnk **lst_b)
+{
+	swap_lst(lst_a);
+	swap_lst(lst_b);
 }

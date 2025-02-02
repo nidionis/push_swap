@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 05:27:55 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:58:02 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void print_best_insert(int *best_insert_itm)
 //
 //	while (data->min_b != data->softmin_a + 1)
 //	{
-//		best_load_b = best_insert(data->lst_a, data->lst_b, data->full_instr, load_b_but_softmax_and_hight);
+//		best_load_b = best_insert(data->lst_a, data->lst_b, data->r_instr, load_b_but_softmax_and_hight);
 //		apply_best_comb(data, best_load_b);
 //		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 //	}
@@ -82,7 +82,7 @@ void gather_min_and_max(t_data *data)
 
 	while (!(data->max_b == data->rank_max && data->min_b == 0))
 	{
-		best_insert_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, can_firt_load);
+		best_insert_itm = best_insert(data->lst_a, data->lst_b, data->r_instr, can_firt_load);
 		if (apply_best_comb_and(swap_if_high_to_dump, data, best_insert_itm) != CANT_INSERT)
 			apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
 		else
@@ -96,8 +96,8 @@ void load_or_dump_high(t_data *data)
        int *load_a_itm;
        int *dump_b_itm;
 
-       load_a_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, can_load_high);
-       dump_b_itm = best_insert(data->lst_a, data->lst_b, data->full_instr, can_dump);
+       load_a_itm = best_insert(data->lst_a, data->lst_b, data->r_instr, can_load_high);
+       dump_b_itm = best_insert(data->lst_a, data->lst_b, data->r_instr, can_dump);
        if (ft_cost(load_a_itm) < ft_cost(dump_b_itm))
        {
                print_best_insert(load_a_itm);
@@ -129,7 +129,10 @@ int	main(int argc, char **argv)
 	(void)no_rra_instr;
 	d = (t_data){0};
 	if (argc < 2)
+	{
 		ft_errmsg(NULL);
+		exit(0);
+	}
 	else if (argc == 2)
 		d.lst_a = get_args_allinone(argv[1]);
 	else
@@ -139,17 +142,17 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		ft_errmsg("Error: duplicated items");
 	set_data(&d, &d.lst_a, &d.lst_b);
-	//print_lst_byrank(d.lst_a, "lst_a");
-	//print_lst_byrank(d.lst_b, "lst_b");
 	//printf("\n");
 	if (!is_sorted(d.lst_a))
 	{
 		gather_min_and_max(&d);
-		first_dump(&d);
-		while (!is_sorted(d.lst_a))
-		{
-			load_or_dump_high(&d);
-		}
+	print_lst_byrank(d.lst_a, "lst_a");
+	print_lst_byrank(d.lst_b, "lst_b");
+	//	first_dump(&d);
+		//while (!is_sorted(d.lst_a))
+		//{
+		//	load_or_dump_high(&d);
+		//}
 		//	reach_soft_min(&d);
 		//	dump_b(&d);
 		//}

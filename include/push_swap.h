@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 05:43:40 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:38:01 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ typedef struct s_data
 	int	best_comb[4];
 	//int	best_cost_instr;
 	int	best_cost_comb;
-	int full_instr[8];
-	int b_only_instr[8];
+	int r_instr[7];
 }	t_data;
 
 typedef struct s_lnk
@@ -155,8 +154,19 @@ int swap_if_high(t_data *data, int instr);
 int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb);
 int swap_if_high_to_dump(t_data *data, int instr);
 
-
 void print_instr_steps(int instr_steps_itm[2]);
 void load_minmax(t_data *data, int *best_comb);
+
+void	swap_a(t_lnk **lst_a, t_lnk **lst_b);
+void	swap_b(t_lnk **lst_a, t_lnk **lst_b);
+void	swap_both(t_lnk **lst_a, t_lnk **lst_b);
+void	push_a(t_lnk **lst_a, t_lnk **lst_b);
+void	push_b(t_lnk **lst_a, t_lnk **lst_b);
+void	rotate_a(t_lnk **lst_a, t_lnk **lst_b);
+void	rotate_b(t_lnk **lst_a, t_lnk **lst_b);
+void	rrotate_a(t_lnk **lst_a, t_lnk **lst_b);
+void	rrotate_b(t_lnk **lst_a, t_lnk **lst_b);
+void	rotate_both(t_lnk **lst_a, t_lnk **lst_b);
+void	rrotate_both(t_lnk **lst_a, t_lnk **lst_b);
 
 #endif

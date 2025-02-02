@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 21:16:34 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 21:13:48 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:38:01 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,16 +153,13 @@ void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
     data->best_inst_step[NB_FIRST_INSTR] = INT_MAX;
     //data->best_cost_instr = SIZE_MAX;
     data->best_cost_comb = SIZE_MAX;
-    data->full_instr[0] = rr;
-    data->full_instr[1] = rrr;
-    data->full_instr[2] = ra;
-    data->full_instr[3] = rb;
-    data->full_instr[4] = rra;
-    data->full_instr[5] = rrb;
-    data->full_instr[6] = LOOP_END;
-    data->b_only_instr[0] = rb;
-    data->b_only_instr[1] = rrb;
-    data->b_only_instr[2] = LOOP_END;
+    data->r_instr[0] = rr;
+    data->r_instr[1] = rrr;
+    data->r_instr[2] = ra;
+    data->r_instr[3] = rb;
+    data->r_instr[4] = rra;
+    data->r_instr[5] = rrb;
+    data->r_instr[6] = LOOP_END;
 }
 
 #include <stdio.h>
