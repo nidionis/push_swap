@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:41:34 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/03 00:08:45 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/03 00:10:14 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	can_firt_load(t_data *data)
 			return (TRUE);
 	if (a->rank > data->rank_max / 2)
 		return (FALSE);
-	return (can_load_b(data, a, b));
+	return (can_load_b(data));
 }
 
 int	can_load_high(t_data *data)
@@ -38,7 +38,7 @@ int	can_load_high(t_data *data)
 		return (FALSE);
 	if (a->rank >= data->softmax_a)
 		return (FALSE);
-	return (can_load_b(data, a, b));
+	return (can_load_b(data));
 }
 
 int	can_insert_at_max_b(t_lnk *a, t_data *data)
