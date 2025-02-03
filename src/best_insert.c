@@ -6,11 +6,31 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:49:48 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/02 23:59:47 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/03 01:14:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1,
+		int *instr_steps_itm2)
+{
+	int	*best_comb;
+	int	new_best_comb[4];
+
+	best_comb = *b_c;
+	new_best_comb[FIRST_INSTR] = instr_steps_itm1[INSTR];
+	new_best_comb[NB_FIRST_INSTR] = instr_steps_itm1[NB_INSTR];
+	new_best_comb[SECOND_INSTR] = instr_steps_itm2[INSTR];
+	new_best_comb[NB_SECOND_INSTR] = instr_steps_itm2[NB_INSTR];
+	if (ft_cost(new_best_comb) < ft_cost(best_comb))
+	{
+		best_comb[FIRST_INSTR] = new_best_comb[FIRST_INSTR];
+		best_comb[NB_FIRST_INSTR] = new_best_comb[NB_FIRST_INSTR];
+		best_comb[SECOND_INSTR] = new_best_comb[SECOND_INSTR];
+		best_comb[NB_SECOND_INSTR] = new_best_comb[NB_SECOND_INSTR];
+	}
+}
 
 int	*best_insert(t_data *d, int lst_instr[],
 		int (*can_push)(t_data *))

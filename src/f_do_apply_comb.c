@@ -6,11 +6,11 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:45:30 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/02 23:45:50 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/03 01:10:39 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <pushswap.h>
+#include <push_swap.h>
 
 int	swap_if_high_to_dump(t_data *data, int instr)
 {

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 21:25:37 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/03 01:10:22 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,10 +101,10 @@ extern struct s_data d;
 int ft_dlstsize(t_lnk *lst);
 t_lnk	*reach_rank(t_lnk *lst, int rank);
 void	reach_rank_lst_a(t_lnk **lst, int rank, int direction, int verbose);
-int	can_load_high(t_data *data, t_lnk *a, t_lnk *b);
+int	can_load_high(t_data *data);
 int swap_if_low(t_data *data, int instr);
-int	can_dump(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
-int	can_load_b(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
+int	can_dump(t_data *data);
+int	can_load_b(t_data *data);
 void             insert_target(t_lnk *target, int way);
 void	apply_instr(t_data *d, t_lnk **lst_a, t_lnk **lst_b, int instr, int to_print);
 int             fucking_normi_2(char *str);
@@ -158,7 +158,7 @@ void	reach_rank_lst_b(t_lnk **lst, int rank, int direction);
 int	load_b_but_softmins_and_low(t_data *data, t_lnk *a, t_lnk *b);
 int	load_b_but_softmax_and_hight(t_data *data, t_lnk *a, t_lnk *b);
 void apply_best_comb_until_softmin(t_data *data, int *best_comb);
-int can_firt_load(t_data *data, t_lnk *a, t_lnk *b);
+int can_firt_load(t_data *data);
 int swap_if_high(t_data *data, int instr);
 int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb);
 int swap_if_high_to_dump(t_data *data, int instr);
