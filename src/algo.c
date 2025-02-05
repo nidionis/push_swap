@@ -22,7 +22,7 @@
 //	{
 //		if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
 //			return (BREAK_BEST_COMB);
-//		apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR],
+//		apply_instr(data, best_comb[FIRST_INSTR],
 //			PRINT);
 //		if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
 //			return (BREAK_BEST_COMB);
@@ -33,7 +33,7 @@
 //		{
 //			if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
 //				return (BREAK_BEST_COMB);
-//			apply_instr(data, &data->lst_a, &data->lst_b,
+//			apply_instr(data,
 //				best_comb[SECOND_INSTR], PRINT);
 //			if (f_do(data, best_comb[FIRST_INSTR]) == BREAK_BEST_COMB)
 //				return (BREAK_BEST_COMB);

@@ -12,21 +12,21 @@
 
 #include <push_swap.h>
 
-void	select_algo(int ind_max)
-{
-	if (ind_max == 1)
-		sort_2_nb(1);
-	else if (ind_max == 2)
-		sort_3_nb(2);
-	else if (ind_max == 3)
-		sort_4_nb(3);
-	else if (ind_max == 4)
-		sort_5_nb(4);
-	else
-	{
-		printf("Error\n");
-	}
-}
+//void	select_algo(int ind_max)
+//{
+//	if (ind_max == 1)
+//		sort_2_nb(1);
+//	else if (ind_max == 2)
+//		sort_3_nb(2);
+//	else if (ind_max == 3)
+//		sort_4_nb(3);
+//	else if (ind_max == 4)
+//		sort_5_nb(4);
+//	else
+//	{
+//		printf("Error\n");
+//	}
+//}
 
 void print_best_insert(int *best_insert_itm)
 {
@@ -45,13 +45,13 @@ void print_best_insert(int *best_insert_itm)
 //	{
 //		best_load_b = best_insert(data->lst_a, data->lst_b, data->r_instr, load_b_but_softmax_and_hight);
 //		apply_best_comb(data, best_load_b);
-//		apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+//		apply_instr(data, pb, PRINT);
 //	}
 //	while (data->lst_a->prev->rank != data->softmin_a)
 //	{
 //		best_load_b = best_insert(data->lst_a, data->lst_b, no_rra_instr, load_b_but_softmax_and_hight);
 //		apply_best_comb_until_softmin(data, best_load_b);
-//		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+//		apply_instr(data, pa, PRINT);
 //	}
 //}
 
@@ -59,21 +59,21 @@ t_data d;
 
 void first_dump(t_data *data)
 {
-	apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+	apply_instr(data, pa, PRINT);
 	if (data->lst_a->rank == 0)
 	{
 		reach_rank_lst_b(&d.lst_b, data->rank_max, get_shortestway(data->rank_max, data->lst_b));
-		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
-		apply_instr(data, &data->lst_a, &data->lst_b, ra, PRINT);
-		apply_instr(data, &data->lst_a, &data->lst_b, ra, PRINT);
+		apply_instr(data, pa, PRINT);
+		apply_instr(data, ra, PRINT);
+		apply_instr(data, ra, PRINT);
 	}
 	else
 	{
-		apply_instr(data, &data->lst_a, &data->lst_b, ra, PRINT);
+		apply_instr(data, ra, PRINT);
 		reach_rank_lst_b(&data->lst_b, data->max_b, get_shortestway(data->max_b, data->lst_b));
 	}
 	while (data->lst_b)
-		apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+		apply_instr(data, pa, PRINT);
 }
 
 void gather_min_and_max(t_data *data)
@@ -84,7 +84,7 @@ void gather_min_and_max(t_data *data)
 	{
 		best_insert_itm = best_insert(data->lst_a, data->lst_b, data->r_instr, can_firt_load);
 		if (apply_best_comb_and(swap_if_high_to_dump, data, best_insert_itm) != CANT_INSERT)
-			apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+			apply_instr(data, pb, PRINT);
 		else
 			break ;
 	print_lst_byrank(d.lst_a, "lst_a");
@@ -107,7 +107,7 @@ void load_or_dump_high(t_data *data)
 	print_lst_byrank(d.lst_a, "lst_a");
 	print_lst_byrank(d.lst_b, "lst_b");
 	printf("\n");
-               apply_instr(data, &data->lst_a, &data->lst_b, pb, PRINT);
+               apply_instr(data, pb, PRINT);
                free(dump_b_itm);
        }
        else
@@ -117,7 +117,7 @@ void load_or_dump_high(t_data *data)
 	print_lst_byrank(d.lst_a, "lst_a");
 	print_lst_byrank(d.lst_b, "lst_b");
 	printf("\n");
-               apply_instr(data, &data->lst_a, &data->lst_b, pa, PRINT);
+               apply_instr(data, pa, PRINT);
                free(load_a_itm);
        }
 }
@@ -147,7 +147,7 @@ int	main(int argc, char **argv)
 	//printf("\n");
 	if (!is_sorted(d.lst_a))
 	{
-		apply_instr(&d, &d.lst_a, &d.lst_b, pb, PRINT);
+		apply_instr(&d, pb, PRINT);
 	print_lst_byrank(d.lst_a, "lst_a");
 	print_lst_byrank(d.lst_b, "lst_b");
 		//gather_min_and_max(&d);

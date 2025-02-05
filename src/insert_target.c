@@ -13,7 +13,7 @@
 #include <push_swap.h>
 
 int *insert_target_to_list_steps(t_data *data, int lst_instr[],
-    int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b), int cost)
+    int (*can_push)(t_data *data), int cost)
 {
     t_data d;
     int instr_steps_itm[2];
@@ -27,7 +27,7 @@ int *insert_target_to_list_steps(t_data *data, int lst_instr[],
 }
 
 int try_initial_push(t_data *d, int instr,
-    int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b), int instr_steps_itm[2])
+    int (*can_push)(t_data *data), int instr_steps_itm[2])
 {
     set_instr_step_itm(instr, 0, instr_steps_itm);
     if (can_push(d, d->lst_a, d->lst_b))
@@ -39,7 +39,7 @@ int try_initial_push(t_data *d, int instr,
 }
 
 void iterate_instructions(t_data *d, int lst_instr[],
-    int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b))
+    int (*can_push)(t_data *data))
 {
     int i_instr = 0;
     int instr = lst_instr[i_instr];
@@ -47,7 +47,7 @@ void iterate_instructions(t_data *d, int lst_instr[],
     while (instr != LOOP_END)
     {
         set_instr_step_itm(instr, INT_MAX, instr_steps_itm);
-        instr_steps_itm[NB_INSTR] = count_instr(d, d->lst_a, d->lst_b, instr, can_push);
+        instr_steps_itm[NB_INSTR] = count_instr(d, instr, can_push);
         update_best_instr(d, instr_steps_itm);
         d->best_cost_comb = ft_cost(d->best_comb);
         instr = lst_instr[++i_instr];

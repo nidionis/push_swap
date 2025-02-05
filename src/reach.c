@@ -12,50 +12,29 @@
 
 #include "push_swap.h"
 
-void	reach_rank_lst_b(t_lnk **lst, int rank, int direction)
+int	instr_direction(int instr)
+{
+	if (instr == ra || instr == rb)
+		return (rr);
+	if (instr == rra || instr == rrb)
+		return (rrr);
+	if (instr == rr || instr == rrr)
+		return (instr);
+	return (ERR_INSTR);
+}
+
+void	reach_rank(t_lnk **lst, int rank, int instr, int verbose)
 {
 	t_lnk	*first_lnk;
-	int		instr;
+	t_data	data;
 
-	instr = rb;
-	if (direction == RROTATE)
-		instr = rrb;
+	data.lst_a = *lst;
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)
 	{
-		apply_instr(&d, &d.lst_a, &d.lst_b, instr, 1);
+		apply_instr(&data, instr, verbose);
 		while ((*lst)->rank != rank && *lst != first_lnk)
-			apply_instr(&d, &d.lst_a, &d.lst_b, instr, 1);
+			apply_instr(&data, instr, verbose);
 	}
-}
-
-void	reach_rank_lst_a(t_lnk **lst, int rank, int direction, int verbose)
-{
-	t_lnk	*first_lnk;
-	int		instr;
-
-	instr = ra;
-	if (direction < 0)
-		instr = rra;
-	first_lnk = *lst;
-	if (first_lnk->rank != rank)
-	{
-		apply_instr(&d, &d.lst_a, &d.lst_b, instr, verbose);
-		while ((*lst)->rank != rank && *lst != first_lnk)
-			apply_instr(&d, &d.lst_a, &d.lst_b, instr, verbose);
-	}
-}
-
-t_lnk	*reach_rank(t_lnk *lst, int rank)
-{
-	t_lnk	*first_lnk;
-
-	first_lnk = lst;
-	if (first_lnk->rank != rank)
-	{
-		apply_instr(NULL, &lst, NULL, ra, QUIET);
-		while (lst->rank != rank && lst != first_lnk)
-			apply_instr(NULL, &lst, NULL, ra, QUIET);
-	}
-	return (lst);
+	*lst = data.lst_a;
 }

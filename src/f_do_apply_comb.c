@@ -30,12 +30,12 @@ int	swap_if_softmax(t_data *data, int instr)
 	lst_a = data->lst_a;
 	if (lst_a->rank == data->softmax_a - 1 && lst_a->next->next->rank == data->softmax_a)
 	{
-		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+		apply_instr(data, sa, PRINT);
 		return (BREAK);
 	}
 	if (lst_a->prev->rank == data->softmin_a + 1 && lst_a->prev->rank == data->softmin_a)
 	{
-		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+		apply_instr(data, sa, PRINT);
 		return (BREAK);
 	}
 	return (IGNORE);
@@ -54,7 +54,7 @@ int	swap_if_low(t_data *data, int instr)
 	//if (lst_a->rank < data->mediane_a && lst_a->next->rank < data->mediane_a)
 	//{
 	//	if (lst_a->next->rank < lst_a->rank)
-	//		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+	//		apply_instr(data, sa, PRINT);
 	//}
 	return (IGNORE);
 }
@@ -73,7 +73,7 @@ int	swap_if_high(t_data *data, int instr)
 	//if (lst_a->rank > data->mediane_a && lst_a->next->rank > data->mediane_a)
 	//{
 	//	if (lst_a->next->rank < lst_a->rank)
-	//		apply_instr(data, &data->lst_a, &data->lst_b, sa, PRINT);
+	//		apply_instr(data, sa, PRINT);
 	//}
 	return (IGNORE);
 }

@@ -65,9 +65,13 @@ void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr)
 	ft_errmsg("[execute_command] Invalid instruction");
 }
 
-void	apply_instr(t_data *data, t_lnk **lst_a, t_lnk **lst_b, int instr,
-		int to_print)
+void	apply_instr(t_data *data, int instr, int to_print)
 {
+	t_lnk	*lst_a;
+	t_lnk	*lst_b;
+
+	lst_a = data->lst_a;
+	lst_b = data->lst_b;
 	execute_command(lst_a, lst_b, instr);
 	if (to_print == PRINT)
 		print_instr(instr);

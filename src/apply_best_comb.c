@@ -30,13 +30,13 @@ void	apply_instr_step_itm(int **instr_steps_itm_addr)
 	apply_instr_step_itm_test(&d.lst_a, &d.lst_b, instr_steps_itm_addr, PRINT);
 }
 
-int apply_instructions(t_data *data, int *best_comb, int instr_idx, int nb_instr_idx)
+int apply_instr(t_data *data, int *best_comb, int instr_idx, int nb_instr_idx)
 {
     while (best_comb[nb_instr_idx]--)
     {
         if (f_do(data, best_comb[instr_idx]) == BREAK_BEST_COMB)
             return BREAK_BEST_COMB;
-        apply_instr(data, &data->lst_a, &data->lst_b, best_comb[instr_idx], PRINT);
+        apply_instr(data, best_comb[instr_idx], PRINT);
         if (f_do(data, best_comb[instr_idx]) == BREAK_BEST_COMB)
             return BREAK_BEST_COMB;
     }
@@ -48,14 +48,14 @@ int apply_first_set(t_data *data, int *best_comb)
     if (best_comb[FIRST_INSTR] == CANT_INSERT)
         return CANT_INSERT;
     
-    return apply_instructions(data, best_comb, FIRST_INSTR, NB_FIRST_INSTR);
+    return apply_instr(data, best_comb, FIRST_INSTR, NB_FIRST_INSTR);
 }
 
 int apply_second_set(t_data *data, int *best_comb)
 {
     if (best_comb[SECOND_INSTR] != NO_INSTR && best_comb[NB_SECOND_INSTR] != CANT_INSERT)
     {
-        return apply_instructions(data, best_comb, SECOND_INSTR, NB_SECOND_INSTR);
+        return apply_instr(data, best_comb, SECOND_INSTR, NB_SECOND_INSTR);
     }
     return TRUE;
 }
@@ -81,10 +81,10 @@ int	apply_best_comb(t_data *data, int *best_comb)
 	if (best_comb[FIRST_INSTR] == CANT_INSERT)
 		return (CANT_INSERT);
 	while (best_comb[NB_FIRST_INSTR]--)
-		apply_instr(data, &data->lst_a, &data->lst_b, best_comb[FIRST_INSTR], PRINT);
+		apply_instr(data, best_comb[FIRST_INSTR], PRINT);
 	if (best_comb[SECOND_INSTR] != NO_INSTR && best_comb[NB_SECOND_INSTR] != CANT_INSERT)
 		while (best_comb[NB_SECOND_INSTR]--)
-			apply_instr(data, &data->lst_a, &data->lst_b,
+			apply_instr(data,
 				best_comb[SECOND_INSTR], PRINT);
 	free(best_comb);
 	return (TRUE);
