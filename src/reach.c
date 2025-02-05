@@ -28,6 +28,7 @@ void	reach_rank(t_lnk **lst, int rank, int instr, int verbose)
 	t_lnk	*first_lnk;
 	t_data	data;
 
+	ft_bzero(&data, sizeof(t_data));
 	data.lst_a = *lst;
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)

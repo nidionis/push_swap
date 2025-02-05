@@ -129,7 +129,7 @@ int	main(int argc, char **argv)
 
 	(void)lst_instr;
 	(void)no_rra_instr;
-	d = (t_data){0};
+	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)
 	{
 		ft_errmsg(NULL);

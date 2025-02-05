@@ -12,8 +12,7 @@
 
 #include <push_swap.h>
 
-void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1,
-		int *instr_steps_itm2)
+void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm2)
 {
 	int	*best_comb;
 	int	new_best_comb[4];
