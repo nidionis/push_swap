@@ -62,7 +62,7 @@ void first_dump(t_data *data)
 	apply_instr(data, pa, PRINT);
 	if (data->lst_a->rank == 0)
 	{
-		reach_rank_lst_b(&d.lst_b, data->rank_max, get_shortestway(data->rank_max, data->lst_b));
+		reach_rank(&d.lst_b, data->rank_max, get_shortestway(data->rank_max, data->lst_b), PRINT);
 		apply_instr(data, pa, PRINT);
 		apply_instr(data, ra, PRINT);
 		apply_instr(data, ra, PRINT);
@@ -70,7 +70,7 @@ void first_dump(t_data *data)
 	else
 	{
 		apply_instr(data, ra, PRINT);
-		reach_rank_lst_b(&data->lst_b, data->max_b, get_shortestway(data->max_b, data->lst_b));
+		reach_rank(&data->lst_b, data->max_b, get_shortestway(data->max_b, data->lst_b), PRINT);
 	}
 	while (data->lst_b)
 		apply_instr(data, pa, PRINT);
@@ -82,7 +82,7 @@ void gather_min_and_max(t_data *data)
 
 	while (!(data->max_b == data->rank_max && data->min_b == 0))
 	{
-		best_insert_itm = best_insert(data->lst_a, data->lst_b, data->r_instr, can_firt_load);
+		best_insert_itm = best_insert(data, data->r_instr, can_firt_load);
 		if (apply_best_comb_and(swap_if_high_to_dump, data, best_insert_itm) != CANT_INSERT)
 			apply_instr(data, pb, PRINT);
 		else
@@ -98,8 +98,8 @@ void load_or_dump_high(t_data *data)
        int *load_a_itm;
        int *dump_b_itm;
 
-       load_a_itm = best_insert(data->lst_a, data->lst_b, data->r_instr, can_load_high);
-       dump_b_itm = best_insert(data->lst_a, data->lst_b, data->r_instr, can_dump);
+       load_a_itm = best_insert(data, data->r_instr, can_load_high);
+       dump_b_itm = best_insert(data, data->r_instr, can_dump);
        if (ft_cost(load_a_itm) < ft_cost(dump_b_itm))
        {
                print_best_insert(load_a_itm);
@@ -135,10 +135,10 @@ int	main(int argc, char **argv)
 		ft_errmsg(NULL);
 		exit(0);
 	}
-	else if (argc == 2)
-		d.lst_a = get_args_allinone(argv[1]);
+	//else if (argc == 2)
+	//	d.lst_a = get_args_allinone(argv[1]);
 	else
-		d.lst_a = get_args(argc, argv);
+		d.lst_a = get_args(&d, argc, argv);
 	d.rank_max = lst_init_ranks(&d.lst_a);
 	d.lst_b = NULL;
 	if (!ft_no_duplicate(d.lst_a))

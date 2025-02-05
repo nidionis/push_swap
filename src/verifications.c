@@ -16,7 +16,7 @@ int	is_sorted(t_lnk *lst)
 {
 	t_lnk	*lst_orig;
 
-	lst = reach_rank(lst, 0);
+	reach_rank(&lst, 0, rr, QUIET);
 	lst_orig = lst;
 	while (lst != lst_orig->prev)
 	{

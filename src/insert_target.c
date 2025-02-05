@@ -26,11 +26,11 @@ int *insert_target_to_list_steps(t_data *data, int lst_instr[],
     return malloc_instr_steps_itm(&d);
 }
 
-int try_initial_push(t_data *d, int instr,
+int try_initial_push(t_data *d, int instr, \
     int (*can_push)(t_data *data), int instr_steps_itm[2])
 {
     set_instr_step_itm(instr, 0, instr_steps_itm);
-    if (can_push(d, d->lst_a, d->lst_b))
+    if (can_push(d))
     {
         update_best_instr(d, instr_steps_itm);
         return 1;

@@ -33,6 +33,7 @@
 # define BREAK 1
 # define IGNORE 0
 # define EXE_CMD_ERROR 666
+# define NO_MOVE 13531
 
 # define NO_INSTR -42
 # define ERR_INSTR -43
@@ -97,6 +98,7 @@ enum	e_instr {
 	INSTR_MAX = ss
 };
 
+void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm2);
 void    apply_instr_step_itm(int **instr_steps_itm_addr);
 void	apply_instr(t_data *data, int instr, int to_print);
 int apply_ninstr(t_data *data, int *best_comb, int instr_idx, int nb_instr_idx);
@@ -116,7 +118,7 @@ int             can_insert_at_min_b(t_lnk *a, t_data *data, t_lnk *b);
 int             can_load_b(t_data *data);
 int             can_dump(t_data *data);
 int             ft_cost(int *best_comb);
-int             count_instr(t_data *data, int instr, int (*can_push)(t_data *data, t_lnk *lst_a, t_lnk *lst_b));
+int             count_instr(t_data *data, int instr, int (*can_push)(t_data *data));
 t_lnk     *get_max(t_lnk *lst);
 t_lnk *get_min(t_lnk *lst);
 t_lnk *get_softmax(t_lnk *lst);
@@ -131,8 +133,9 @@ int             swap_if_high_to_dump(t_data *data, int instr);
 int             swap_if_softmax(t_data *data, int instr);
 int             swap_if_low(t_data *data, int instr);
 int             swap_if_high(t_data *data, int instr);
-t_lnk   *get_args_allinone(char *str);
-t_lnk   *get_args(int argc, char *argv[]);
+//t_lnk   *get_args_allinone(char *str);
+//t_lnk   *get_args(int argc, char *argv[]);
+t_lnk	*get_args(t_data *d, int argc, char *argv[]);
 t_lnk   *lst_cpy(t_lnk *lst);
 char    *ft_realloc_cat(char *line, char c, int *len);
 char    *get_next_line(int fd);
@@ -170,7 +173,6 @@ void    sort_2_nb();
 void    sort_3_nb(int max);
 void    sort_4_nb();
 void    sort_5_nb();
-int             is_median(int max);
 void    swap_lst(t_lnk **lst);
 void    swap_a(t_lnk **lst_a, t_lnk **lst_b);
 void    swap_b(t_lnk **lst_a, t_lnk **lst_b);
@@ -182,5 +184,8 @@ int *insert_target_to_list_steps(t_data *data, int lst_instr[],
     int (*can_push)(t_data *data), int cost);
 int try_initial_push(t_data *d, int instr,
     int (*can_push)(t_data *data), int instr_steps_itm[2]);
+void iterate_instructions(t_data *d, int lst_instr[],
+    int (*can_push)(t_data *data));
+int	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *));
 
 #endif

@@ -12,6 +12,7 @@
 
 #include <push_swap.h>
 
+/*
 t_lnk	*get_args_allinone(char *str)
 {
 	t_lnk	*lnk;
@@ -32,21 +33,22 @@ t_lnk	*get_args_allinone(char *str)
 	ft_free_split(&splited);
 	return (d.lst_a);
 }
+*/
 
-t_lnk	*get_args(int argc, char *argv[])
+t_lnk	*get_args(t_data *d, int argc, char *argv[])
 {
 	t_lnk	*lnk;
 
 	argc -= 2;
 	argv = &argv[1];
 	lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-	d.lst_a = lnk;
+	d->lst_a = lnk;
 	while (argc--)
 	{
 		lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-		push_item(lnk, &d.lst_a);
+		push_item(lnk, &d->lst_a);
 	}
-	return (d.lst_a);
+	return (d->lst_a);
 }
 
 t_lnk	*lst_cpy(t_lnk *lst)

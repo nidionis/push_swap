@@ -72,8 +72,8 @@ void	apply_instr(t_data *data, int instr, int to_print)
 
 	lst_a = data->lst_a;
 	lst_b = data->lst_b;
-	execute_command(lst_a, lst_b, instr);
+	execute_command(&data->lst_a, &data->lst_b, instr);
 	if (to_print == PRINT)
 		print_instr(instr);
-	data_update(data, lst_a, lst_b);
+	data_update(data, &data->lst_a, &data->lst_b);
 }
