@@ -23,13 +23,14 @@ int	instr_direction(int instr)
 	return (ERR_INSTR);
 }
 
-void	reach_rank(t_lnk **lst, int rank, int instr, int verbose)
+void	reach_rank_dir(t_lnk **lst, int rank, int instr, int verbose)
 {
 	t_lnk	*first_lnk;
 	t_data	data;
 
 	ft_bzero(&data, sizeof(t_data));
 	data.lst_a = *lst;
+	data.lst_b = *lst;
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)
 	{
@@ -41,5 +42,13 @@ void	reach_rank(t_lnk **lst, int rank, int instr, int verbose)
 			apply_instr(&data, instr, verbose);
 		}
 	}
-	*lst = data.lst_a;
+	if (*lst != data.lst_a)
+		*lst = data.lst_a;
+	else
+		*lst = data.lst_b;
+}
+
+void	reach_rank(t_lnk **lst, int rank)
+{
+	reach_rank_dir(lst, rank, get_shortestway(rank, *lst), QUIET);
 }

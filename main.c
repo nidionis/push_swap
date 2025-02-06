@@ -62,7 +62,7 @@ void first_dump(t_data *data)
 	apply_instr(data, pa, PRINT);
 	if (data->lst_a->rank == 0)
 	{
-		reach_rank(&d.lst_b, data->rank_max, get_shortestway(data->rank_max, data->lst_b), PRINT);
+		reach_rank_dir(&d.lst_b, data->rank_max, get_shortestway(data->rank_max, data->lst_b), PRINT);
 		apply_instr(data, pa, PRINT);
 		apply_instr(data, ra, PRINT);
 		apply_instr(data, ra, PRINT);
@@ -70,7 +70,7 @@ void first_dump(t_data *data)
 	else
 	{
 		apply_instr(data, ra, PRINT);
-		reach_rank(&data->lst_b, data->max_b, get_shortestway(data->max_b, data->lst_b), PRINT);
+		reach_rank_dir(&data->lst_b, data->max_b, get_shortestway(data->max_b, data->lst_b), PRINT);
 	}
 	while (data->lst_b)
 		apply_instr(data, pa, PRINT);
@@ -144,8 +144,7 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		ft_errmsg("Error: duplicated items");
 	set_data(&d, &d.lst_a, &d.lst_b);
-	reach_rank(&d.lst_a, 0, rr, PRINT);
-	print_lst_byrank(d.lst_a, "lst_a");
+	printf("%i\n", is_sorted(d.lst_a));
 		//gather_min_and_max(&d);
 	//	first_dump(&d);
 		//while (!is_sorted(d.lst_a))

@@ -160,7 +160,7 @@ void    push_item(t_lnk *lnk, t_lnk **lst);
 t_lnk   *pop_item(t_lnk **lst);
 void    push_a(t_lnk **lst_a, t_lnk **lst_b);
 void    push_b(t_lnk **lst_a, t_lnk **lst_b);
-void	reach_rank(t_lnk **lst, int rank, int instr, int verbose);
+void	reach_rank_dir(t_lnk **lst, int rank, int instr, int verbose);
 void    rotate_lst(t_lnk **lst);
 void    rrotate_lst(t_lnk **lst);
 void    rotate_both(t_lnk **lst_a, t_lnk **lst_b);
@@ -187,5 +187,6 @@ int try_initial_push(t_data *d, int instr,
 void iterate_instructions(t_data *d, int lst_instr[],
     int (*can_push)(t_data *data));
 int	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *));
+void	reach_rank(t_lnk **lst, int rank);
 
 #endif
