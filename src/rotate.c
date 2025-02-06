@@ -16,30 +16,32 @@ void	rotate_lst(t_lnk **lst)
 {
 	if (*lst)
 		*lst = (*lst)->next;
+	else
+		write(2, "[rotate] empty list\n", 20);
 }
 
 void	rrotate_lst(t_lnk **lst)
 {
 	if (*lst)
 		*lst = (*lst)->prev;
+	else
+		write(2, "[rotate] empty list\n", 20);
 }
 
 void	rotate_both(t_lnk **lst_a, t_lnk **lst_b)
 {
-	if (*lst_a && *lst_b)
-	{
+	if (*lst_a)
 		rotate_lst(lst_a);
+	if (*lst_b)
 		rotate_lst(lst_b);
-	}
 }
 
 void	rrotate_both(t_lnk **lst_a, t_lnk **lst_b)
 {
-	if (*lst_a && *lst_b)
-	{
+	if (*lst_a)
 		rrotate_lst(lst_a);
+	if (*lst_b)
 		rrotate_lst(lst_b);
-	}
 }
 
 void	rotate_a(t_lnk **lst_a, t_lnk **lst_b)

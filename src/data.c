@@ -114,6 +114,8 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 
     if (!data)
         return ;
+    data->lst_a = *lst_a;
+    data->lst_b = *lst_b;
     tmp = get_max(*lst_a);
     if (tmp)
         data->max_a = tmp->rank;

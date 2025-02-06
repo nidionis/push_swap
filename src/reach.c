@@ -34,8 +34,12 @@ void	reach_rank(t_lnk **lst, int rank, int instr, int verbose)
 	if (first_lnk->rank != rank)
 	{
 		apply_instr(&data, instr, verbose);
-		while ((*lst)->rank != rank && *lst != first_lnk)
+		while (data.lst_a != first_lnk)
+		{
+			if (data.lst_a->rank == rank)
+				break ;
 			apply_instr(&data, instr, verbose);
+		}
 	}
 	*lst = data.lst_a;
 }

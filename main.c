@@ -144,12 +144,8 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		ft_errmsg("Error: duplicated items");
 	set_data(&d, &d.lst_a, &d.lst_b);
-	//printf("\n");
-	if (!is_sorted(d.lst_a))
-	{
-		apply_instr(&d, pb, PRINT);
+	reach_rank(&d.lst_a, 0, rr, PRINT);
 	print_lst_byrank(d.lst_a, "lst_a");
-	print_lst_byrank(d.lst_b, "lst_b");
 		//gather_min_and_max(&d);
 	//	first_dump(&d);
 		//while (!is_sorted(d.lst_a))
@@ -164,9 +160,6 @@ int	main(int argc, char **argv)
 	//print_lst_byrank(d.lst_a, "lst_a");
 	//print_lst_byrank(d.lst_b, "lst_b");
 		//apply_best_comb(&d, best_insert_itm);
-	}
-	else
-		printf("already sorted\n");
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);
 }
