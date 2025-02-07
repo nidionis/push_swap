@@ -82,13 +82,11 @@ void gather_min_and_max(t_data *data)
 
 	while (!(data->max_b == data->rank_max && data->min_b == 0))
 	{
-		best_insert_itm = best_insert(data, data->r_instr, can_firt_load);
+		best_insert_itm = best_insert(data, data->r_instr, can_first_load);
 		if (apply_best_comb_and(swap_if_high_to_dump, data, best_insert_itm) != CANT_INSERT)
 			apply_instr(data, pb, PRINT);
 		else
 			break ;
-	print_lst_byrank(d.lst_a, "lst_a");
-	print_lst_byrank(d.lst_b, "lst_b");
 	}
 }
 
@@ -104,9 +102,6 @@ void load_or_dump_high(t_data *data)
        {
                print_best_insert(load_a_itm);
                apply_best_comb_and(swap_if_low, data, load_a_itm);
-	print_lst_byrank(d.lst_a, "lst_a");
-	print_lst_byrank(d.lst_b, "lst_b");
-	printf("\n");
                apply_instr(data, pb, PRINT);
                free(dump_b_itm);
        }
@@ -114,9 +109,6 @@ void load_or_dump_high(t_data *data)
        {
                print_best_insert(dump_b_itm);
                apply_best_comb_and(swap_if_low, data, dump_b_itm);
-	print_lst_byrank(d.lst_a, "lst_a");
-	print_lst_byrank(d.lst_b, "lst_b");
-	printf("\n");
                apply_instr(data, pa, PRINT);
                free(load_a_itm);
        }
@@ -144,21 +136,20 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		ft_errmsg("Error: duplicated items");
 	set_data(&d, &d.lst_a, &d.lst_b);
-	printf("%i\n", is_sorted(d.lst_a));
-		//gather_min_and_max(&d);
-	//	first_dump(&d);
-		//while (!is_sorted(d.lst_a))
-		//{
-		//	load_or_dump_high(&d);
-		//}
-		//	reach_soft_min(&d);
-		//	dump_b(&d);
-		//}
-		//int *instr_steps_itm = insert_target_to_list_steps(d.lst_a, d.lst_b, lst_instr, can_load_b);
-		//print_best_insert(best_insert_itm);
-	//print_lst_byrank(d.lst_a, "lst_a");
-	//print_lst_byrank(d.lst_b, "lst_b");
-		//apply_best_comb(&d, best_insert_itm);
+	//while (d.lst_a)
+	//{
+	//	int *best_insert_itm;
+	//	best_insert_itm = best_insert(&d, d.r_instr, can_load_b);
+	//	if (apply_best_comb_and(NULL, &d, best_insert_itm) != CANT_INSERT)
+	//		apply_instr(&d, pb, PRINT);
+	//	else
+	//		break ;
+		printf("ft_dlstsize: %i\n", ft_dlstsize(d.lst_a));
+	print_lst(&d);
+	//print_lst(&d);
+	//}
+	//gather_min_and_max(&d);
+	//first_dump(&d);
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);
 }

@@ -12,7 +12,7 @@
 
 #include <push_swap.h>
 
-int	can_firt_load(t_data *data)
+int	can_first_load(t_data *data)
 {
     t_lnk *a;
     t_lnk *b;
@@ -41,50 +41,75 @@ int	can_load_high(t_data *data)
 	return (can_load_b(data));
 }
 
-int	can_insert_at_max_b(t_lnk *a, t_data *data)
+int	can_insert_at_max_b(t_data *data)
 {
+	t_lnk *a;
+
+	a = data->lst_a;
 	if (a->rank > data->max_b || a->rank < data->min_b)
 		return (TRUE);
 	return (FALSE);
 }
 
-int	can_insert_between(t_lnk *a, t_lnk *b)
+int	can_insert_between(t_data *data)
 {
-	if (a->rank > b->rank && a->rank < b->prev->rank)
-		return (TRUE);
-	return (FALSE);
+	t_lnk *a;
+	t_lnk *b;
+
+	a = data->lst_a;
+	b = data->lst_b;
+	return (a->rank > b->rank && a->rank < b->prev->rank);
 }
 
-int	can_insert_at_min_b(t_lnk *a, t_data *data, t_lnk *b)
+int	can_insert_at_min_b(t_data *data)
 {
-	if (b->prev->rank == data->min_b)
-		return (a->rank < data->min_b || a->rank > data->max_b);
-	return (FALSE);
+	t_lnk *a;
+
+	a = data->lst_a;
+	return (a->rank < data->min_b || a->rank > data->max_b);
 }
 
 int	can_load_b(t_data *data)
 {
-	t_lnk *a = data->lst_a;
-	t_lnk *b = data->lst_b;
+	t_lnk *lst_a = data->lst_a;
+	t_lnk *lst_b = data->lst_b;
 	int size_b;
 
-	if (!a)
+	if (!lst_a)
 		return (FALSE);
-	if (!b)
+	if (!lst_b)
 		return (TRUE);
-	size_b = ft_dlstsize(b);
-	if (size_b == 1 || (size_b == 2 && can_insert_between(a, b)))
+	size_b = ft_dlstsize(lst_b);
+	if (size_b == 1)
 		return (TRUE);
-	if (b->rank == data->max_b && can_insert_at_max_b(a, data))
-		return (TRUE);
-	if (can_insert_at_min_b(a, data, b))
-		return (TRUE);
-	if (can_insert_between(a, b))
-		return (TRUE);
+	if (size_b == 2)
+	{
+		if (lst_b->rank == data->max_b)
+		{
+			if (lst_a->rank > data->max_b || lst_a->rank < data->min_b)
+				return (TRUE);
+		}
+		else
+			return (FALSE);
+	}
+	else
+	{
+		if (lst_b->rank == data->max_b)
+		{
+		 	if (can_insert_at_max_b(data))
+				return (TRUE);
+		}
+		else if (lst_b->rank == data->min_b)
+			return (lst_a->rank < data->min_b);
+		else if (can_insert_between(data))
+			return (TRUE);
+	}
 	return (FALSE);
 }
+
 //int	can_load_b(t_data *data)
 //{
+
 //    t_lnk *a;
 //    t_lnk *b;
 //	int	size_b;

@@ -107,7 +107,7 @@ int ft_dlstsize(t_lnk *lst)
 	int		i;
 	t_lnk	*lnk;
 
-	i = 0;
+	i = 1;
 	lnk = lst;
 	if (!lnk)
 		return (0);

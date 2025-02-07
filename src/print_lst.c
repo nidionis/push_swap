@@ -12,28 +12,6 @@
 
 #include <push_swap.h>
 
-void	print_lst(t_lnk *lst, char *header)
-{
-	t_lnk	*lnk_ind;
-
-	if (header)
-		printf("%s\t", header);
-	printf("\n");
-	if (lst)
-	{
-		printf("-%d-\t", lst->nb);
-		lnk_ind = lst->next;
-		while (lnk_ind != lst)
-		{
-			printf("-%d-\t", lnk_ind->nb);
-			lnk_ind = lnk_ind->next;
-		}
-	}
-	else
-		printf("	[ empty list ]");
-	printf("\n\t\n");
-}
-
 void	print_lst_byrank(t_lnk *lst, char *header)
 {
 	t_lnk	*lnk_ind;
@@ -55,5 +33,17 @@ void	print_lst_byrank(t_lnk *lst, char *header)
 	else
 		printf("	[ empty list ]");
 	printf("\n----------------------------------------------------------------");
-	printf("\n\t\n");
+}
+
+void	print_lst(t_data *d)
+{
+	t_lnk	*a;
+	t_lnk	*b;
+
+	a = d->lst_a;
+	b = d->lst_b;
+	print_lst_byrank(b, "B");
+	print_lst_byrank(a, "A");
+	printf("\n###################################################################");
+	printf("\n\n");
 }
