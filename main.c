@@ -136,18 +136,16 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		ft_errmsg("Error: duplicated items");
 	set_data(&d, &d.lst_a, &d.lst_b);
-	//while (d.lst_a)
-	//{
-	//	int *best_insert_itm;
-	//	best_insert_itm = best_insert(&d, d.r_instr, can_load_b);
-	//	if (apply_best_comb_and(NULL, &d, best_insert_itm) != CANT_INSERT)
-	//		apply_instr(&d, pb, PRINT);
-	//	else
-	//		break ;
-		printf("ft_dlstsize: %i\n", ft_dlstsize(d.lst_a));
+	while (d.lst_a)
+	{
+		int *best_insert_itm;
+		best_insert_itm = best_insert(&d, d.r_instr, can_load_b);
+		if (apply_best_comb_and(NULL, &d, best_insert_itm) != CANT_INSERT)
+			apply_instr(&d, pb, PRINT);
+		else
+			break ;
 	print_lst(&d);
-	//print_lst(&d);
-	//}
+	}
 	//gather_min_and_max(&d);
 	//first_dump(&d);
 	del_lst(&d.lst_a);
