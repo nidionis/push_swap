@@ -50,3 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+complexity
+imgui.ini
+push_swap
+push_swap_tester
+push_swap_visualizer
