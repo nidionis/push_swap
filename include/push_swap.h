@@ -127,7 +127,7 @@ int             can_insert_at_max_b(t_data *data);
 int             can_insert_at_max_b(t_data *data);
 int             can_load_b(t_data *data);
 int             can_dump(t_data *data);
-int             ft_cost(int *best_comb);
+int             ft_cost(t_list *best_comb);
 //int             count_instr(t_data *data, int instr, int (*can_push)(t_data *data));
 int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data), int max);
 t_lnk     *get_max(t_lnk *lst);
@@ -199,5 +199,6 @@ void iterate_instructions(t_data *d, int lst_instr[],
     int (*can_push)(t_data *data));
 void	reach_rank(t_lnk **lst, int rank);
 t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost);
+t_list	*best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost);
 
 #endif

@@ -48,12 +48,14 @@ int	main(int argc, char **argv)
 	while (d.lst_a)
 	{
 		t_list *insertion_step;
-		insertion_step = best_insert(&d, d.r_instr, can_load_b, SIZE_MAX);
-		if (apply_best_comb_and(NULL, &d, insertion_step, PRINT) != CANT_INSERT)
+		if (can_load_b(&d))
 			apply_instr(&d, pb, PRINT);
 		else
-			break ;
-	print_lst(&d);
+		{
+			insertion_step = best_insert_dir(&d, ra, can_load_b, SIZE_MAX);
+			apply_best_comb_and(NULL, &d, insertion_step, PRINT);
+		}
+		print_lst(&d);
 	}
 	//gather_min_and_max(&d);
 	//first_dump(&d);

@@ -12,16 +12,22 @@
 
 #include <push_swap.h>
 
-int	ft_cost(int *best_comb)
+int	ft_cost(t_list *best_comb)
 {
 	int	cost;
+	t_instr_step *instr_step;
 
-	cost = SIZE_MAX;
-	if (best_comb[FIRST_INSTR] != NO_INSTR
-		&& best_comb[FIRST_INSTR] != CANT_INSERT)
-		cost = best_comb[NB_FIRST_INSTR];
-	if (best_comb[SECOND_INSTR] != NO_INSTR
-		&& best_comb[SECOND_INSTR] != CANT_INSERT)
-		cost += best_comb[NB_SECOND_INSTR];
+	cost = 0;
+	if (best_comb)
+		while (best_comb)
+		{
+			instr_step = best_comb->content;
+			if (instr_step->instr == NO_INSTR)
+				break ;
+			if (instr_step->nb_instr == CANT_INSERT)
+				return (SIZE_MAX);
+			cost += instr_step->nb_instr;
+			best_comb = best_comb->next;
+		}
 	return (cost);
 }
