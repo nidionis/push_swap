@@ -82,7 +82,7 @@
 //	int i_instr;
 //	int first_instr_steps[2];
 //
-//	set_data(&d, &lst_a, &lst_b);
+//	init_data(&d, &lst_a, &lst_b);
 //	set_best_comb(d.best_comb);
 //	i_instr = 0;
 //	while (lst_instr[i_instr] != LOOP_END)

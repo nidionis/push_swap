@@ -47,6 +47,12 @@ typedef struct s_instr_map
     void    (*func)(t_lnk **, t_lnk **);
 }   t_instr_map;
 
+typedef struct s_instr_step
+{
+	int		instr;
+	int		nb_instr;
+}	t_instr_step;
+
 typedef struct s_data
 {
 	int rank_max;
@@ -63,10 +69,13 @@ typedef struct s_data
 	int rotate_instr[2][4];
 	t_lnk *lst_a;
 	t_lnk *lst_b;
-	int	best_inst_step[2];
-	int	best_comb[4];
+	//int	first_instr_step[2];
+	//int	best_inst_step[2];
+	//int	best_comb[4];
 	//int	best_cost_instr;
-	int	best_cost_comb;
+	//int	best_cost_comb;
+	t_list *tmp_instr_step;
+	t_list *best_instr_step;
 	int r_instr[7];
 	t_instr_map instr_map[12];
 }	t_data;
@@ -98,13 +107,14 @@ enum	e_instr {
 	INSTR_MAX = ss
 };
 
+//int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data));
 void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm2);
 void    apply_instr_step_itm(int **instr_steps_itm_addr);
 void	apply_instr(t_data *data, int instr, int to_print);
 int apply_ninstr(t_data *data, int *best_comb, int instr_idx, int nb_instr_idx);
 int apply_first_set(t_data *data, int *best_comb);
 int apply_second_set(t_data *data, int *best_comb);
-int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb);
+int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, t_list *best_comb, int verbose);
 int             apply_best_comb(t_data *data, int *best_comb);
 void    init_instr_map(t_instr_map *instr_map);
 void    print_instr(int instr);
@@ -118,7 +128,8 @@ int             can_insert_at_max_b(t_data *data);
 int             can_load_b(t_data *data);
 int             can_dump(t_data *data);
 int             ft_cost(int *best_comb);
-int             count_instr(t_data *data, int instr, int (*can_push)(t_data *data));
+//int             count_instr(t_data *data, int instr, int (*can_push)(t_data *data));
+int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data), int max);
 t_lnk     *get_max(t_lnk *lst);
 t_lnk *get_min(t_lnk *lst);
 t_lnk *get_softmax(t_lnk *lst);
@@ -126,7 +137,7 @@ t_lnk *get_softmin(t_lnk *lst);
 void    set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
 void    set_softmin(t_data *data, t_lnk*lst_a, t_lnk *lst_b);
 void    data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
-void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
+void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 void print_data(t_data *d);
 void    print_instr_steps(int instr_steps_itm[2]);
 int             swap_if_high_to_dump(t_data *data, int instr);
@@ -186,7 +197,7 @@ int try_initial_push(t_data *d, int instr,
     int (*can_push)(t_data *data), int instr_steps_itm[2]);
 void iterate_instructions(t_data *d, int lst_instr[],
     int (*can_push)(t_data *data));
-int	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *));
 void	reach_rank(t_lnk **lst, int rank);
+t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost);
 
 #endif

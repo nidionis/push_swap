@@ -12,6 +12,7 @@
 
 #include <push_swap.h>
 
+/*
 void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm2)
 {
 	int	*best_comb;
@@ -20,8 +21,16 @@ void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm
 	best_comb = *b_c;
 	new_best_comb[FIRST_INSTR] = instr_steps_itm1[INSTR];
 	new_best_comb[NB_FIRST_INSTR] = instr_steps_itm1[NB_INSTR];
-	new_best_comb[SECOND_INSTR] = instr_steps_itm2[INSTR];
-	new_best_comb[NB_SECOND_INSTR] = instr_steps_itm2[NB_INSTR];
+	if (instr_steps_itm2)
+	{
+		new_best_comb[SECOND_INSTR] = instr_steps_itm2[INSTR];
+		new_best_comb[NB_SECOND_INSTR] = instr_steps_itm2[NB_INSTR];
+	}
+	else
+	{
+		new_best_comb[SECOND_INSTR] = NO_INSTR;
+		new_best_comb[NB_SECOND_INSTR] = 0;
+	}
 	if (ft_cost(new_best_comb) < ft_cost(best_comb))
 	{
 		best_comb[FIRST_INSTR] = new_best_comb[FIRST_INSTR];
@@ -43,6 +52,7 @@ void	update_best_instr(t_data *data, int instr_steps_itm[2])
 	{
 		data->best_inst_step[INSTR] = instr_steps_itm[INSTR];
 		data->best_inst_step[NB_INSTR] = instr_steps_itm[NB_INSTR];
+		data->best_cost_instr = ft_cost(data->best_inst_step);
 	}
 }
 
@@ -51,3 +61,4 @@ void	set_instr_step_itm(int instr, int nb_instr, int *instr_steps_itm)
 	instr_steps_itm[INSTR] = instr;
 	instr_steps_itm[NB_INSTR] = nb_instr;
 }
+	*/

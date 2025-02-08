@@ -62,7 +62,8 @@ void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr)
 		}
 		i++;
 	}
-	ft_errmsg("[execute_command] Invalid instruction");
+	fprintf(stderr, "[execute_command] Invalid instruction %i\n", instr);
+	//ft_errmsg("[execute_command] Invalid instruction");
 }
 
 void	apply_instr(t_data *data, int instr, int to_print)

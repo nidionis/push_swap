@@ -142,7 +142,7 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
     data->mediane_b = (data->softmax_b - data->softmin_b) / 2 + data->softmin_b;
 }
 
-void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
+void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
     data_update(data, lst_a, lst_b);
     if (lst_a && *lst_a)
@@ -152,9 +152,10 @@ void set_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
             if (data->rank_max < get_max(*lst_b)->rank)
                 data->rank_max = get_max(*lst_b)->rank;
     }
-    data->best_inst_step[NB_FIRST_INSTR] = INT_MAX;
+    data->best_instr_step = NULL;
+    //data->best_inst_step[NB_FIRST_INSTR] = INT_MAX;
     //data->best_cost_instr = SIZE_MAX;
-    data->best_cost_comb = SIZE_MAX;
+    //data->best_cost_comb = SIZE_MAX;
     data->r_instr[0] = rr;
     data->r_instr[1] = rrr;
     data->r_instr[2] = ra;
@@ -177,5 +178,5 @@ void print_data(t_data *d)
     printf("softmin_a: %d\n", d->softmin_a);
     printf("softmin_b: %d\n", d->softmin_b);
     printf("rank_max: %d\n", d->rank_max);
-    printf("best_cost_comb: %d\n", d->best_cost_comb);
+    //printf("best_cost_comb: %d\n", d->best_cost_comb);
 }

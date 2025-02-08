@@ -12,6 +12,7 @@
 
 #include <push_swap.h>
 
+/*
 int	*malloc_instr_steps_itm(t_data *data)
 {
 	int	*instr_steps_itm;
@@ -44,3 +45,4 @@ int	*malloc_best_insert(t_data *data)
 	best_comb[NB_SECOND_INSTR] = data->best_comb[NB_SECOND_INSTR];
 	return (best_comb);
 }
+	*/

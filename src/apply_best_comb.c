@@ -12,27 +12,32 @@
 
 #include <push_swap.h>
 
-int apply_set_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb_set)
+int apply_set_and(int (*f_do)(t_data *d, int instr), t_data *data, t_instr_step *instr_step, int verbose)
 {
-    if (best_comb_set[INSTR] == NO_INSTR || best_comb_set[NB_INSTR] == CANT_INSERT)
+    if (instr_step->instr == NO_INSTR || instr_step->nb_instr == CANT_INSERT || instr_step->nb_instr == SIZE_MAX)
         return (NO_MOVE);
-    while (best_comb_set[NB_INSTR]--)
+    while (instr_step->nb_instr--)
     {
-        apply_instr(data, best_comb_set[INSTR], PRINT);
+        apply_instr(data, instr_step->instr, verbose);
         if (f_do)
-            if (f_do(data, best_comb_set[INSTR]) == BREAK_BEST_COMB)
+            if (f_do(data, instr_step->instr) == BREAK_BEST_COMB)
                 return (BREAK_BEST_COMB);
     }
     return (TRUE);
 }
 
-int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, int *best_comb)
+int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, t_list *best_comb, int verbose)
 {
-    int result;
+    int status;
 
-    result = apply_set_and(f_do, data, &best_comb[FIRST_INSTR]);
-    if (result != TRUE)
-        return result;
-    result = apply_set_and(f_do, data, &best_comb[SECOND_INSTR]);
+    status = TRUE;
+    if (best_comb)
+        while (best_comb)
+        {
+            status = apply_set_and(f_do, data, best_comb->content, verbose);
+            best_comb = best_comb->next;
+        }
+    if (status != TRUE)
+        return status;
     return (TRUE);
 }
