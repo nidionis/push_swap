@@ -34,24 +34,15 @@ t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int m
 	}
 	else
 	{
+		int cost = SIZE_MAX;
 		while (lst_instr[i_instr] != LOOP_END)
 		{
-			instr_step->instr = lst_instr[i_instr];
-			while (!can_push(&d_copy))
+			cost = count_instr(&d_copy, lst_instr[i_instr], can_push, max_cost);
+			if (cost < instr_step->nb_instr)
 			{
-				if (instr_step->nb_instr >= max_cost)
-				{
-					instr_step->instr = NO_INSTR;
-					instr_step->nb_instr = CANT_INSERT;
-					break ;
-				}
-				else
-				{
-					apply_instr(&d_copy, lst_instr[i_instr], QUIET);
-					instr_step->nb_instr++;
-					if (can_push(&d_copy))
-						break ;
-				}
+				instr_step->instr = lst_instr[i_instr];
+				instr_step->nb_instr = cost;
+				max_cost = cost;
 			}
 			i_instr++;
 		}

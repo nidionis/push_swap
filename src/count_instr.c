@@ -14,18 +14,15 @@
 
 int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data), int max)
 {
-	t_lnk	*lst_a;
-	t_lnk	*lst_b;
 	int		count;
+	t_data	data_copy;
 
-	lst_a = data->lst_a;
-	lst_b = data->lst_b;
+	ft_memcpy(&data_copy, data, sizeof(t_data));
+
 	count = 0;
-	if (can_push(data))
-		return (0);
-	while (!can_push(data) && count < max)
+	while (!can_push(&data_copy) && count < max)
 	{
-		apply_instr(data, instr, QUIET);
+		apply_instr(&data_copy, instr, QUIET);
 		count++;
 	}
 	if (count >= max)
