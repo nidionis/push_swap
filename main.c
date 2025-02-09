@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 		else
 		{
 			insertion_step = best_insert_dir(&d, ra, can_load_b, SIZE_MAX);
+			//print_instr_ls(insertion_step);
 			apply_best_comb_and(NULL, &d, insertion_step, PRINT);
 		}
 		print_lst(&d);
