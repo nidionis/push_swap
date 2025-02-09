@@ -203,4 +203,7 @@ void	reach_rank(t_lnk **lst, int rank);
 t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost);
 t_list	*best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost);
 
+t_list *init_instr_step_node(int instr, int nb_instr_init);
+int get_steps(t_list *instr_step_node);
+
 #endif

@@ -90,7 +90,7 @@ int	can_load_b(t_data *data)
 				return (TRUE);
 		}
 		else
-			return (FALSE);
+			return (can_insert_between(data));
 	}
 	else
 	{
@@ -103,6 +103,8 @@ int	can_load_b(t_data *data)
 		{
 			if (lst_b->next->rank != data->max_b)
 				return (lst_a->rank < data->min_b);
+			else
+				return (can_insert_between(data));
 		}
 		else if (can_insert_between(data))
 			return (TRUE);

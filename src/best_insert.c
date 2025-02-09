@@ -74,41 +74,6 @@ t_list *init_instr_step_node(int instr, int nb_instr_init)
 
 
 
-t_list	*best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost)
-{
-	t_data d_copy;
-	t_list *first_intr_step_node;
-	t_list *best_comb;
-
-	ft_memcpy(&d_copy, d, sizeof(t_data));
-	best_comb = NULL;
-	first_intr_step_node = init_instr_step_node(instr, 0);
-	t_instr_step *first_intr_step;
-	first_intr_step = first_intr_step_node->content;
-	while (first_intr_step->nb_instr < max_cost)
-	{
-		t_list *instr_step_node;
-		instr_step_node = best_insert(&d_copy, d_copy.r_instr, can_push, max_cost);
-		if (instr_step_node && first_intr_step->nb_instr + get_steps(instr_step_node) < max_cost - 1)
-		{
-			t_list *saved_first_instr;
-			if (best_comb)
-				ft_lstclear(&best_comb, free);
-			best_comb = instr_step_node;
-			saved_first_instr = init_instr_step_node(instr, first_intr_step->nb_instr);
-			ft_lstadd_front(&best_comb, saved_first_instr);
-			max_cost = ft_cost(best_comb);
-		}
-		else
-		{
-			first_intr_step->nb_instr++;
-			apply_instr(&d_copy, instr, QUIET);
-			ft_lstclear(&instr_step_node, free);
-		}
-	}
-	ft_lstclear(&first_intr_step_node, free);
-	return (best_comb);
-}
 
 //void	explore_insert_paths(t_data *d, int lst_instr[], int first_instr_steps[], int (*can_push)(t_data *))
 //{
