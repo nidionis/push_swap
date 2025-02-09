@@ -106,6 +106,8 @@ enum	e_instr {
 	RROTATE = rrr,
 	INSTR_MAX = ss
 };
+void print_instr_ls(t_list *ls);
+void print_instr_step(t_instr_step *instr_step);
 
 //int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data));
 void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm2);

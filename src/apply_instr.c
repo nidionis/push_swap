@@ -39,7 +39,7 @@ void	print_instr(int instr)
 	{
 		if (instr_map[i].code == instr)
 		{
-			printf("%s\n", instr_map[i].name);
+			printf("%s", instr_map[i].name);
 			return ;
 		}
 		i++;

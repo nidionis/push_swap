@@ -47,3 +47,27 @@ void	print_lst(t_data *d)
 	printf("\n###################################################################");
 	printf("\n\n");
 }
+
+void print_instr_step(t_instr_step *instr_step)
+{
+	printf("instr: ");
+	print_instr(instr_step->instr);
+	printf(" x%i", instr_step->nb_instr);
+}
+
+void print_instr_ls(t_list *ls)
+{
+	t_instr_step *instr_step;
+
+	if (ls)
+	{
+		while (ls)
+		{
+			instr_step = ls->content;
+			print_instr_step(instr_step);
+			printf(" -> ");
+			ls = ls->next;
+		}
+	}
+	printf(" NULL\n");
+}
