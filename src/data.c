@@ -152,18 +152,18 @@ void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
             if (data->rank_max < get_max(*lst_b)->rank)
                 data->rank_max = get_max(*lst_b)->rank;
     }
-    data->best_instr_step = NULL;
+    //data->best_instr_step = NULL;
     //data->best_inst_step[NB_FIRST_INSTR] = INT_MAX;
     //data->best_cost_instr = SIZE_MAX;
     //data->best_cost_comb = SIZE_MAX;
-    data->r_instr[0] = rr;
-    data->r_instr[1] = rrr;
-    data->r_instr[2] = ra;
-    data->r_instr[3] = rb;
-    data->r_instr[4] = rra;
-    data->r_instr[5] = rrb;
-    data->r_instr[6] = LOOP_END;
-    init_instr_map(data->instr_map);
+    //data->r_instr[0] = rr;
+    //data->r_instr[1] = rrr;
+    //data->r_instr[2] = ra;
+    //data->r_instr[3] = rb;
+    //data->r_instr[4] = rra;
+    //data->r_instr[5] = rrb;
+    //data->r_instr[6] = LOOP_END;
+    //init_instr_map(data->instr_map);
 }
 
 #include <stdio.h>

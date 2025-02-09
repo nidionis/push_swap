@@ -112,54 +112,6 @@ int	can_load_b(t_data *data)
 	return (FALSE);
 }
 
-//int	can_load_b(t_data *data)
-//{
-
-//    t_lnk *a;
-//    t_lnk *b;
-//	int	size_b;
-//
-//    a = data->lst_a;
-//    b = data->lst_b;
-//	if (!a)
-//		return (FALSE);
-//	if (!b)
-//		return (TRUE);
-//	size_b = ft_dlstsize(b);
-//	if (size_b == 1)
-//		return (TRUE);
-//	if (size_b == 2)
-//	{
-//		if (b->rank == data->max_b)
-//		{
-//			if (a->rank > data->max_b || a->rank < data->min_b)
-//				return (TRUE);
-//		}
-//		else if (a->rank > b->rank && b->prev->rank > a->rank)
-//			return (TRUE);
-//	}
-//	else
-//	{
-//		if (b->rank == data->max_b)
-//		{
-//			if (a->rank > data->max_b)
-//				return (TRUE);
-//			if (a->rank < data->min_b)
-//				return (TRUE);
-//		}
-//		else if (b->prev->rank == data->min_b)
-//		{
-//			if (a->rank < data->min_b)
-//				return (TRUE);
-//			if (a->rank > data->max_b)
-//				return (TRUE);
-//		}
-//		else if (a->rank > b->rank && a->rank < b->prev->rank)
-//			return (TRUE);
-//	}
-//	return (FALSE);
-//}
-
 int	can_dump(t_data *data)
 {
     t_lnk *a;

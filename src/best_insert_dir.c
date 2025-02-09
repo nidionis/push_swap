@@ -56,7 +56,7 @@ t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max
 	while (first_intr_step->nb_instr < best.max_cost)
 	{
 		t_list *instr_step_node;
-		instr_step_node = best_insert(&d_copy, d_copy.r_instr, can_push, best.max_cost);
+		instr_step_node = best_insert(&d_copy, d_copy.r_instr, can_push, best.max_cost - first_intr_step->nb_instr);
 		if (!instr_step_node)
 			ft_errmsg("[best_insert_dir] best_insert returned NULL");
 		else if (should_update(&best, instr_step_node, first_intr_step->nb_instr))

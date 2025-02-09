@@ -19,6 +19,7 @@ int	ft_cost(t_list *best_comb)
 
 	cost = 0;
 	if (best_comb)
+	{
 		while (best_comb)
 		{
 			instr_step = best_comb->content;
@@ -29,5 +30,8 @@ int	ft_cost(t_list *best_comb)
 			cost += instr_step->nb_instr;
 			best_comb = best_comb->next;
 		}
+	}
+	else
+		return (SIZE_MAX);
 	return (cost);
 }

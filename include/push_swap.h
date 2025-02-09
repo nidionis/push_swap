@@ -28,7 +28,7 @@
 # define INT_MAX 2147483647
 # define LOOP_END 123456789
 # define CANT_INSERT 2147483646
-# define SIZE_MAX 1000
+# define SIZE_MAX 500
 # define BREAK_BEST_COMB 1
 # define BREAK 1
 # define IGNORE 0
@@ -66,7 +66,7 @@ typedef struct s_data
 	int	softmin_b;
 	int mediane_a;
 	int mediane_b;
-	int rotate_instr[2][4];
+	//int rotate_instr[2][4];
 	t_lnk *lst_a;
 	t_lnk *lst_b;
 	//int	first_instr_step[2];
@@ -74,10 +74,10 @@ typedef struct s_data
 	//int	best_comb[4];
 	//int	best_cost_instr;
 	//int	best_cost_comb;
-	t_list *tmp_instr_step;
-	t_list *best_instr_step;
-	int r_instr[7];
-	t_instr_map instr_map[12];
+	//t_list *tmp_instr_step;
+	//t_list *best_instr_step;
+	int *r_instr;
+	t_instr_map *instr_map;
 }	t_data;
 
 typedef struct s_lnk
@@ -120,7 +120,7 @@ int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, t_list 
 int             apply_best_comb(t_data *data, int *best_comb);
 void    init_instr_map(t_instr_map *instr_map);
 void    print_instr(int instr);
-void    execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr);
+void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_map[]);
 void    explore_insert_paths(t_data *d, int lst_instr[], int first_instr_steps[], int (*can_push)(t_data *));
 int             can_first_load(t_data *data);
 int             can_load_high(t_data *data);
@@ -205,5 +205,6 @@ t_list	*best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max
 
 t_list *init_instr_step_node(int instr, int nb_instr_init);
 int get_steps(t_list *instr_step_node);
+t_list *ft_best_comb(t_data *d, int *instr_ls, int (*can_push)(t_data *), int max_cost);
 
 #endif

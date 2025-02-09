@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/09 16:34:37 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/09 21:05:35 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,10 @@ void	print_instr(int instr)
 	}
 }
 
-void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr)
+void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_map[])
 {
-	t_instr_map			instr_map[12];
 	int					i;
 
-	init_instr_map(instr_map);
 	i = 0;
 	while (instr_map[i].code != -1)
 	{
@@ -66,6 +64,13 @@ void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr)
 	//ft_errmsg("[execute_command] Invalid instruction");
 }
 
+int	is_rotating(int instr)
+{
+	if (instr == ra || instr == rb || instr == rra || instr == rrb || instr == rr || instr == rrr)
+		return (1);
+	return (0);
+}
+
 void	apply_instr(t_data *data, int instr, int to_print)
 {
 	t_lnk	*lst_a;
@@ -73,8 +78,9 @@ void	apply_instr(t_data *data, int instr, int to_print)
 
 	lst_a = data->lst_a;
 	lst_b = data->lst_b;
-	execute_command(&data->lst_a, &data->lst_b, instr);
+	execute_command(&data->lst_a, &data->lst_b, instr, data->instr_map);
 	if (to_print == PRINT)
 		print_instr(instr);
-	data_update(data, &data->lst_a, &data->lst_b);
+	if (!is_rotating(instr))
+		data_update(data, &data->lst_a, &data->lst_b);
 }
