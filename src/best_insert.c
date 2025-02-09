@@ -6,12 +6,79 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:49:48 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/09 16:33:19 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/09 17:01:47 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
+t_instr_step *create_instr_step(int instr)
+{
+    t_instr_step *instr_step;
+
+    instr_step = malloc(sizeof(t_instr_step));
+    if (!instr_step)
+        return (NULL);
+    instr_step->instr = instr;
+    instr_step->nb_instr = SIZE_MAX;
+    return (instr_step);
+}
+
+t_list *initialize_instr_step(int instr)
+{
+    t_instr_step *instr_step;
+
+    instr_step = create_instr_step(instr);
+    if (!instr_step)
+        return (NULL);
+    return (ft_lstnew(instr_step));
+}
+
+int find_best_instr(t_data *d_copy, int lst_instr[], int (*can_push)(t_data *), int max_cost)
+{
+    int i_instr = 0;
+    int cost;
+    int best_instr = lst_instr[0];
+    int min_cost = SIZE_MAX;
+
+    while (lst_instr[i_instr] != LOOP_END)
+    {
+        cost = count_instr(d_copy, lst_instr[i_instr], can_push, max_cost);
+        if (cost < min_cost)
+        {
+            best_instr = lst_instr[i_instr];
+            min_cost = cost;
+            max_cost = cost;
+        }
+        i_instr++;
+    }
+    return best_instr;
+}
+
+t_list *best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost)
+{
+    t_data d_copy;
+    t_list *instr_step_node;
+
+    ft_memcpy(&d_copy, d, sizeof(t_data));
+    instr_step_node = initialize_instr_step(lst_instr[0]);
+    if (!instr_step_node)
+        return (NULL);
+
+    t_instr_step *instr_step = (t_instr_step *)instr_step_node->content;
+    if (can_push(&d_copy))
+    {
+        instr_step->nb_instr = 0;
+    }
+    else
+    {
+        instr_step->instr = find_best_instr(&d_copy, lst_instr, can_push, max_cost);
+        instr_step->nb_instr = count_instr(&d_copy, instr_step->instr, can_push, max_cost);
+    }
+    return (instr_step_node);
+}
+
+/*
 t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost)
 {
 	t_data d_copy;
@@ -49,6 +116,7 @@ t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int m
 	}
 	return (instr_step_node);
 }
+*/
 
 int get_steps(t_list *instr_step_node)
 {
@@ -109,32 +177,3 @@ t_list	*best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max
 	ft_lstclear(&first_intr_step_node, free);
 	return (best_comb);
 }
-
-//void	explore_insert_paths(t_data *d, int lst_instr[], int first_instr_steps[], int (*can_push)(t_data *))
-//{
-//	int	*second_instr_steps;
-//	int	j_instr = 0;
-//
-//	while (first_instr_steps[NB_INSTR]++ < ft_cost(d->best_comb))
-//	{
-//		apply_instr(d, lst_instr[j_instr], QUIET);
-//		second_instr_steps = insert_target_to_list_steps(d, lst_instr, can_push, ft_cost(d->best_comb));
-//		j_instr++;
-//	}
-//	//while (lst_instr[j_instr] != LOOP_END && first_instr_steps[NB_INSTR]++ < ft_cost(d->best_comb))
-//	//{
-//	//	apply_instr(d, lst_instr[j_instr], QUIET);
-//	//	second_instr_steps = insert_target_to_list_steps(d, lst_instr, can_push, ft_cost(d->best_comb));
-//	//	if (can_push(d))
-//	//	{
-//	//		update_best_comb(&d->best_comb, first_instr_steps, second_instr_steps);
-//	//		d->best_cost_comb = ft_cost(d->best_comb);
-//	//		free(second_instr_steps);
-//	//		break;
-//	//	}
-//	//	else
-//	//		free(second_instr_steps);
-//	//	j_instr++;
-//	//}
-//}
-//
