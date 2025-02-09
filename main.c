@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 21:39:36 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:30:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(int argc, char **argv)
 			insertion_step = best_insert_dir(&d, ra, can_load_b, SIZE_MAX);
 			//print_instr_ls(insertion_step);
 			apply_best_comb_and(NULL, &d, insertion_step, PRINT);
+			ft_lstclear(&insertion_step, free);
 		}
 		print_lst(&d);
 	}

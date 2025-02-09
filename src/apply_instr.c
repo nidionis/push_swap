@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 21:44:58 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:34:37 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_instr(int instr)
 	{
 		if (instr_map[i].code == instr)
 		{
-			printf("%s", instr_map[i].name);
+			printf("%s\n", instr_map[i].name);
 			return ;
 		}
 		i++;

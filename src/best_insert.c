@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:49:48 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/09 16:03:06 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/02/09 16:33:19 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ t_list	*best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max
 		{
 			first_intr_step->nb_instr++;
 			apply_instr(&d_copy, instr, QUIET);
-			free(instr_step_node);
+			ft_lstclear(&instr_step_node, free);
 		}
 	}
 	ft_lstclear(&first_intr_step_node, free);
