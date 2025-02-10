@@ -28,3 +28,18 @@ int	opposite_instr(int instr)
 		return (rr);
 	return (-42);
 }
+
+int ft_nb_instr(t_list *instr_step_node)
+{
+	int nb_instr;
+	t_instr_step *instr_step;
+
+	nb_instr = 0;
+	while (instr_step_node)
+	{
+		instr_step = instr_step_node->content;
+		nb_instr += instr_step->nb_instr;
+		instr_step_node = instr_step_node->next;
+	}
+	return (nb_instr);	
+}

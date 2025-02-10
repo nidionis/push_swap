@@ -71,7 +71,7 @@ int	is_rotating(int instr)
 	return (0);
 }
 
-void	apply_instr(t_data *data, int instr, int to_print)
+int	apply_instr(t_data *data, int instr, int to_print)
 {
 	t_lnk	*lst_a;
 	t_lnk	*lst_b;
@@ -83,4 +83,5 @@ void	apply_instr(t_data *data, int instr, int to_print)
 		print_instr(instr);
 	if (!is_rotating(instr))
 		data_update(data, &data->lst_a, &data->lst_b);
+	return (1);
 }

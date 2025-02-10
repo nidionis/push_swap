@@ -106,13 +106,18 @@ enum	e_instr {
 	RROTATE = rrr,
 	INSTR_MAX = ss
 };
+
+int set_minmax_breaking(t_data *data, int verbose);
+int set_minmax_load_low(t_data *data, int verbose);
+
 void print_instr_ls(t_list *ls);
 void print_instr_step(t_instr_step *instr_step);
+int ft_nb_instr(t_list *instr_step_node);
 
 //int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data));
 void	update_best_comb(int (*b_c)[4], int *instr_steps_itm1, int *instr_steps_itm2);
 void    apply_instr_step_itm(int **instr_steps_itm_addr);
-void	apply_instr(t_data *data, int instr, int to_print);
+int	apply_instr(t_data *data, int instr, int to_print);
 int apply_ninstr(t_data *data, int *best_comb, int instr_idx, int nb_instr_idx);
 int apply_first_set(t_data *data, int *best_comb);
 int apply_second_set(t_data *data, int *best_comb);
