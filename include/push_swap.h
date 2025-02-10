@@ -35,9 +35,15 @@
 # define EXE_CMD_ERROR 666
 # define NO_MOVE 13531
 
-#define NOT_FOUND -41
+# define LOW 432
+# define HIGH 433
+
+# define NOT_FOUND -41
 # define NO_INSTR -42
 # define ERR_INSTR -43
+# define ERR_IS_LOW_OR_HIGH -44
+# define ERR_CAN_ACCEPT -45
+# define ERR_BUTT -46
 
 typedef struct s_lnk t_lnk;
 
@@ -210,5 +216,6 @@ t_list *init_instr_step_node(int instr, int nb_instr_init);
 int get_steps(t_list *instr_step_node);
 t_list *ft_best_comb(t_data *d, int *instr_ls, int (*can_push)(t_data *), int max_cost);
 int reach_rank(t_data *data, int rank, int verbose);
+void print_instr_from_int_heavy(int i);
 
 #endif

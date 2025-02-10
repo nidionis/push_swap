@@ -33,7 +33,6 @@
 int	main(int argc, char **argv)
 {
 	t_data d;
-	t_instr_map	*instr_map;
 
 	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)

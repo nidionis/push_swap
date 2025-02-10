@@ -51,7 +51,7 @@ void	print_lst(t_data *d)
 void print_instr_step(t_instr_step *instr_step)
 {
 	printf("instr: ");
-	print_instr(instr_step->instr);
+	print_instr_from_int_heavy(instr_step->instr);
 	printf(" x%i", instr_step->nb_instr);
 }
 
