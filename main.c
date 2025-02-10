@@ -33,7 +33,7 @@
 int	main(int argc, char **argv)
 {
 	t_data d;
-	t_instr_map instr_map[12];
+	t_instr_map	*instr_map;
 
 	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)
@@ -48,9 +48,11 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		ft_errmsg("Error: duplicated items");
 	init_data(&d, &d.lst_a, &d.lst_b);
-	init_instr_map(instr_map);
-	d.instr_map = instr_map;
-	set_minmax_load_low(&d, PRINT);
+	d.instr_map = init_instr_map();
+	//set_minmax_load_low(&d, PRINT);
+	reach_rank(&d, d.rank_max, PRINT);
+	print_lst(&d);
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);
+	free(d.instr_map);
 }

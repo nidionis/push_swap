@@ -12,8 +12,13 @@
 
 #include <push_swap.h>
 
-void	init_instr_map(t_instr_map *instr_map)
+t_instr_map	*init_instr_map(void)
 {
+	t_instr_map *instr_map;
+	
+	instr_map = malloc(sizeof(t_instr_map) * 12);
+	if (!instr_map)
+		return (NULL);
 	instr_map[0] = (t_instr_map){"sa", sa, swap_a};
 	instr_map[1] = (t_instr_map){"sb", sb, swap_b};
 	instr_map[2] = (t_instr_map){"ss", ss, swap_both};
@@ -26,15 +31,16 @@ void	init_instr_map(t_instr_map *instr_map)
 	instr_map[9] = (t_instr_map){"pa", pa, push_a};
 	instr_map[10] = (t_instr_map){"pb", pb, push_b};
 	instr_map[11] = (t_instr_map){NULL, -1, NULL};
+	return (instr_map);
 }
 
-void	print_instr(int instr)
+void	print_instr(t_data *data, int instr)
 {
-	t_instr_map	instr_map[12];
+	t_instr_map	*instr_map;
 	int			i;
 
 	i = 0;
-	init_instr_map(instr_map);
+	instr_map = data->instr_map;
 	while (instr_map[i].name)
 	{
 		if (instr_map[i].code == instr)
@@ -44,6 +50,25 @@ void	print_instr(int instr)
 		}
 		i++;
 	}
+}
+
+void	print_instr_from_int_heavy(int instr)
+{
+	t_instr_map	*instr_map;
+	int			i;
+
+	i = 0;
+	instr_map = init_instr_map();
+	while (instr_map[i].name)
+	{
+		if (instr_map[i].code == instr)
+		{
+			printf("%s\n", instr_map[i].name);
+			return ;
+		}
+		i++;
+	}
+	free(instr_map);
 }
 
 void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_map[])
@@ -80,7 +105,7 @@ int	apply_instr(t_data *data, int instr, int to_print)
 	lst_b = data->lst_b;
 	execute_command(&data->lst_a, &data->lst_b, instr, data->instr_map);
 	if (to_print == PRINT)
-		print_instr(instr);
+		print_instr(data, instr);
 	if (!is_rotating(instr))
 		data_update(data, &data->lst_a, &data->lst_b);
 	return (1);

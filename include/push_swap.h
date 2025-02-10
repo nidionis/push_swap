@@ -35,6 +35,7 @@
 # define EXE_CMD_ERROR 666
 # define NO_MOVE 13531
 
+#define NOT_FOUND -41
 # define NO_INSTR -42
 # define ERR_INSTR -43
 
@@ -66,16 +67,10 @@ typedef struct s_data
 	int	softmin_b;
 	int mediane_a;
 	int mediane_b;
-	//int rotate_instr[2][4];
 	t_lnk *lst_a;
 	t_lnk *lst_b;
-	//int	first_instr_step[2];
-	//int	best_inst_step[2];
-	//int	best_comb[4];
-	//int	best_cost_instr;
-	//int	best_cost_comb;
-	//t_list *tmp_instr_step;
-	//t_list *best_instr_step;
+	int min_to_load;
+	int max_to_load;
 	int *r_instr;
 	t_instr_map *instr_map;
 }	t_data;
@@ -107,6 +102,9 @@ enum	e_instr {
 	INSTR_MAX = ss
 };
 
+int is_rank_in_lst_forward(int target_rank, t_lnk *list);
+int mirror_instr(const int instr);
+void	search_target_rank(t_lnk *list, int target_rank, int *steps_forward, int *list_length, int *found);
 int set_minmax_breaking(t_data *data, int verbose);
 int set_minmax_load_low(t_data *data, int verbose);
 
@@ -123,8 +121,8 @@ int apply_first_set(t_data *data, int *best_comb);
 int apply_second_set(t_data *data, int *best_comb);
 int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, t_list *best_comb, int verbose);
 int             apply_best_comb(t_data *data, int *best_comb);
-void    init_instr_map(t_instr_map *instr_map);
-void    print_instr(int instr);
+t_instr_map		*init_instr_map(void);
+void    print_instr(t_data *data, int instr);
 void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_map[]);
 void    explore_insert_paths(t_data *d, int lst_instr[], int first_instr_steps[], int (*can_push)(t_data *));
 int             can_first_load(t_data *data);
@@ -195,7 +193,7 @@ void    swap_lst(t_lnk **lst);
 void    swap_a(t_lnk **lst_a, t_lnk **lst_b);
 void    swap_b(t_lnk **lst_a, t_lnk **lst_b);
 void    swap_both(t_lnk **lst_a, t_lnk **lst_b);
-int             opposite_instr(int instr);
+int             ft_rev_instr(int instr);
 int             is_sorted(t_lnk *lst);
 int             ft_no_duplicate(t_lnk *lst);
 int *insert_target_to_list_steps(t_data *data, int lst_instr[],
@@ -204,12 +202,13 @@ int try_initial_push(t_data *d, int instr,
     int (*can_push)(t_data *data), int instr_steps_itm[2]);
 void iterate_instructions(t_data *d, int lst_instr[],
     int (*can_push)(t_data *data));
-void	reach_rank(t_lnk **lst, int rank);
+void	reach_rank_ls_quiet(t_lnk **lst, int rank);
 t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost);
 t_list	*best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost);
 
 t_list *init_instr_step_node(int instr, int nb_instr_init);
 int get_steps(t_list *instr_step_node);
 t_list *ft_best_comb(t_data *d, int *instr_ls, int (*can_push)(t_data *), int max_cost);
+int reach_rank(t_data *data, int rank, int verbose);
 
 #endif

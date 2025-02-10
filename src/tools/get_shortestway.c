@@ -19,6 +19,21 @@ void	initialize_search(int *steps_forward, int *list_length, int *found, t_lnk *
 	*found = (list->rank == target_rank);
 }
 
+int is_rank_in_lst_forward(int target_rank, t_lnk *list)
+{
+	int	steps_forward;
+	int	list_length;
+	int	found;
+
+	initialize_search(&steps_forward, &list_length, &found, list, target_rank);
+	if (found)
+		return (0);
+	search_target_rank(list, target_rank, &steps_forward, &list_length, &found);
+	if (!found)
+		return (NOT_FOUND);
+	return (steps_forward);
+}
+
 void	search_target_rank(t_lnk *list, int target_rank, int *steps_forward, int *list_length, int *found)
 {
 	t_lnk	*current;
