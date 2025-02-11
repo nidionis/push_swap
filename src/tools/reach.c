@@ -78,7 +78,7 @@ int reach_rank(t_data *data, int rank, int verbose)
 	way = get_shortestway(rank, lst);
 	if (way == RROTATE)
 		instr = ft_rev_instr(instr);
-	while (reached_rank(rank, data))
+	while (!reached_rank(rank, data))
 		nb_instr += apply_instr(data, instr, verbose);
 	return (nb_instr);
 }

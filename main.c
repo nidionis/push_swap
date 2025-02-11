@@ -68,10 +68,10 @@ int	main(int argc, char **argv)
 	init_data(&d, &d.lst_a, &d.lst_b);
 	d.instr_map = init_instr_map();
 	//set_minmax_load_low(&d, PRINT);
-	while (d.lst_a)
-		apply_instr(&d, pb, QUIET);
+	//while (d.lst_a)
+	//	apply_instr(&d, pb, QUIET);
 	print_lst(&d);
-	reach_rank(&d, 0, PRINT);
+	reach_rank(&d, 0, QUIET);
 	print_lst(&d);
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);

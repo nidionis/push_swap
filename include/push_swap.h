@@ -44,6 +44,7 @@
 # define ERR_IS_LOW_OR_HIGH -44
 # define ERR_CAN_ACCEPT -45
 # define ERR_BUTT -46
+# define PRINT_COUCOU "printf(\"coucou\");"
 
 typedef struct s_lnk t_lnk;
 
