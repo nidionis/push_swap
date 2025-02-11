@@ -53,10 +53,16 @@ void	reach_rank_ls_quiet(t_lnk **lst, int rank)
 	reach_rank_dir(lst, rank, get_shortestway(rank, *lst), QUIET);
 }
 
+int	reached_rank(int rank, t_data *data)
+{
+	return (get_shortestway(rank, data->lst_a) == 0 ||  get_shortestway(rank, data->lst_b) == 0);
+}
+
 int reach_rank(t_data *data, int rank, int verbose)
 {
 	int nb_instr;
 	int instr;
+	int way;
 	t_lnk *lst;
 
 	nb_instr = 0;
@@ -66,11 +72,13 @@ int reach_rank(t_data *data, int rank, int verbose)
 	{
 		lst = data->lst_b;
 		instr = rb;
+		if (is_rank_in_lst_forward(rank, lst) == NOT_FOUND)
+			return (NOT_FOUND);
 	}
-	instr = get_shortestway(rank, lst);
-	if (instr == RROTATE)
+	way = get_shortestway(rank, lst);
+	if (way == RROTATE)
 		instr = ft_rev_instr(instr);
-	while (data->lst_a->rank != rank)
+	while (reached_rank(rank, data))
 		nb_instr += apply_instr(data, instr, verbose);
 	return (nb_instr);
 }

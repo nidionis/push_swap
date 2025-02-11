@@ -25,6 +25,8 @@ int is_rank_in_lst_forward(int target_rank, t_lnk *list)
 	int	list_length;
 	int	found;
 
+	if (!list)
+		return (NOT_FOUND);
 	initialize_search(&steps_forward, &list_length, &found, list, target_rank);
 	if (found)
 		return (0);
@@ -60,8 +62,8 @@ int	get_shortestway(int target_rank, t_lnk *list)
 
 	if (!list)
 	{
-		ft_errmsg("[get_shortestway] empty list passed");
-		return (0);
+		//ft_errmsg("[get_shortestway] empty list passed");
+		return (NOT_FOUND);
 	}
 	initialize_search(&steps_forward, &list_length, &found, list, target_rank);
 	if (found)
@@ -70,7 +72,7 @@ int	get_shortestway(int target_rank, t_lnk *list)
 	if (!found)
 	{
 		ft_errmsg("[get_shortestway] rank not found");
-		return (0);
+		return (NOT_FOUND);
 	}
 	if (steps_forward > list_length / 2)
 		return (RROTATE);

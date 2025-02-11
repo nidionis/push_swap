@@ -28,7 +28,26 @@
 //	}
 //}
 
+int	calc_apply_push_b(t_data *data, int (*can_do)(t_data *data), int verbose)
+{
+	t_list *insertion_step;
+	int nb_instr;
 
+	nb_instr = -1;
+	if (can_do(data))
+		apply_instr(data, pb, verbose);
+	else
+	{
+		insertion_step = ft_best_comb(data, data->r_instr, can_do, SIZE_MAX);
+		if (!insertion_step)
+			return (-1);
+		nb_instr = ft_nb_instr(insertion_step);
+		if (apply_best_comb_and(NULL, data, insertion_step, verbose) == BREAK_BEST_COMB)
+			return (BREAK_BEST_COMB);
+		ft_lstclear(&insertion_step, free);
+	}
+	return (nb_instr);
+}
 
 int	main(int argc, char **argv)
 {
@@ -49,7 +68,10 @@ int	main(int argc, char **argv)
 	init_data(&d, &d.lst_a, &d.lst_b);
 	d.instr_map = init_instr_map();
 	//set_minmax_load_low(&d, PRINT);
-	reach_rank(&d, d.rank_max, PRINT);
+	while (d.lst_a)
+		apply_instr(&d, pb, QUIET);
+	print_lst(&d);
+	reach_rank(&d, 0, PRINT);
 	print_lst(&d);
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);
