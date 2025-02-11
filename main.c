@@ -28,22 +28,23 @@
 //	}
 //}
 
-int	calc_apply_push_b(t_data *data, int (*can_do)(t_data *data), int verbose)
+int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
 {
 	t_list *insertion_step;
 	int nb_instr;
 
 	nb_instr = -1;
 	if (can_do(data))
-		apply_instr(data, pb, verbose);
+		nb_instr = apply_instr(data, pb, verbose);
 	else
 	{
 		insertion_step = ft_best_comb(data, data->r_instr, can_do, SIZE_MAX);
 		if (!insertion_step)
 			return (-1);
 		nb_instr = ft_nb_instr(insertion_step);
-		if (apply_best_comb_and(NULL, data, insertion_step, verbose) == BREAK_BEST_COMB)
+		if (apply_best_comb_and(should_swap_b_, data, insertion_step, verbose) == BREAK_BEST_COMB)
 			return (BREAK_BEST_COMB);
+		else
 		ft_lstclear(&insertion_step, free);
 	}
 	return (nb_instr);
@@ -70,9 +71,28 @@ int	main(int argc, char **argv)
 	//set_minmax_load_low(&d, PRINT);
 	//while (d.lst_a)
 	//	apply_instr(&d, pb, QUIET);
-	print_lst(&d);
-	reach_rank(&d, 0, QUIET);
-	print_lst(&d);
+	//print_lst(&d);
+	//reach_rank(&d, 0, PRINT);
+
+
+
+	while (d.lst_a)
+	{
+		//print_lst(&d);
+		int r_instr[] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
+		d.r_instr = r_instr;
+		//printf("can_butterfly: %d\n", can_butterfly(&d));
+	d.softmax_a = d.rank_max;
+	d.softmin_a = 0;
+		d.max_to_load = d.rank_max;
+		d.min_to_load = 0;
+		//load_butterfly(&d, PRINT);
+		load_butterfly(&d, can_butterfly, PRINT);
+	}
+
+
+
+	//print_lst(&d);
 	del_lst(&d.lst_a);
 	del_lst(&d.lst_b);
 	free(d.instr_map);

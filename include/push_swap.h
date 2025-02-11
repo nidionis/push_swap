@@ -44,7 +44,6 @@
 # define ERR_IS_LOW_OR_HIGH -44
 # define ERR_CAN_ACCEPT -45
 # define ERR_BUTT -46
-# define PRINT_COUCOU "printf(\"coucou\");"
 
 typedef struct s_lnk t_lnk;
 
@@ -108,6 +107,11 @@ enum	e_instr {
 	RROTATE = rrr,
 	INSTR_MAX = ss
 };
+
+int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose);
+int can_butterfly(t_data *data);
+int should_swap_b(t_lnk *lst);
+int should_swap_b_(t_data *data, int instr);
 
 int is_rank_in_lst_forward(int target_rank, t_lnk *list);
 int mirror_instr(const int instr);
