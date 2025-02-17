@@ -71,7 +71,7 @@ int	get_shortestway(int target_rank, t_lnk *list)
 	search_target_rank(list, target_rank, &steps_forward, &list_length, &found);
 	if (!found)
 	{
-		ft_errmsg("[get_shortestway] rank not found");
+		//ft_errmsg("[get_shortestway] rank not found");
 		return (NOT_FOUND);
 	}
 	if (steps_forward > list_length / 2)

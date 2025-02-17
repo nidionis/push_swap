@@ -12,19 +12,30 @@
 
 #include <push_swap.h>
 
-int should_swap_b(t_lnk *lst)
+int should_swap_b_unsafe(t_lnk *lst)
 {
+    return (lst->rank < lst->next->rank && lst->rank != get_max(lst)->rank);
+}
+
+int should_swap_b(t_lnk *lst, int mediane)
+{
+    int nb;
+    int next;
+    (void)mediane;
+
+    nb = lst->rank;
+    next = lst->next->rank;
     if (!lst || ft_dlstsize(lst) == 1)
         return (FALSE);
-    if (lst == get_min(lst) && lst->next != get_max(lst))
-        return (TRUE);
-    if (lst->rank < lst->next->rank)
+    //if (nb < mediane && next > mediane)
+    //    return (FALSE);
+    if (nb > next && nb != get_max(lst)->rank)
         return (TRUE);
     return (FALSE);
 }
 
-int should_swap_b_(t_data *data, int instr)
-{
-    (void)instr;
-    return (should_swap_b(data->lst_b));
-}
+//int should_swap_b_(t_data *data, int instr)
+//{
+//    (void)instr;
+//    return (should_swap_b(data->lst_b));
+//}

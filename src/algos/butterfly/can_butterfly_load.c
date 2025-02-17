@@ -85,13 +85,7 @@ int is_set_for(int (*is_low_or_high)(const t_data *data, const int nb), t_data *
         data->min_to_load = 0;
     if (!lst)
         return (TRUE);
-    if (is_low_or_high == is_low)
-        return (TRUE);
-        //return (is_low(data, lst->rank));
-    if (is_low_or_high == is_high)
-        return (is_high(data, lst->rank));
-    ft_errmsg("[is_set_for] the function passed sucks\n");
-    return (ERR_IS_LOW_OR_HIGH);
+    return (is_low_or_high(data, lst->rank));
 }
 
 int can_butterfly(t_data *data)

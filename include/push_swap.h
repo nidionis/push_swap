@@ -47,6 +47,12 @@
 
 typedef struct s_lnk t_lnk;
 
+typedef struct s_best_comb
+{
+	t_list *best_comb;
+	int max_cost;
+} t_best_comb;
+
 typedef struct s_instr_map
 {
     char    *name;
@@ -110,8 +116,9 @@ enum	e_instr {
 
 int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose);
 int can_butterfly(t_data *data);
-int should_swap_b(t_lnk *lst);
+int should_swap_b(t_lnk *lst, int mediane);
 int should_swap_b_(t_data *data, int instr);
+int    get_kinda_mediane(t_data *data, t_lnk *lst);
 
 int is_rank_in_lst_forward(int target_rank, t_lnk *list);
 int mirror_instr(const int instr);
@@ -222,5 +229,6 @@ int get_steps(t_list *instr_step_node);
 t_list *ft_best_comb(t_data *d, int *instr_ls, int (*can_push)(t_data *), int max_cost);
 int reach_rank(t_data *data, int rank, int verbose);
 void print_instr_from_int_heavy(int i);
+int get_ntil(t_lnk *lst, int min, int max);
 
 #endif

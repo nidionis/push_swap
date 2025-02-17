@@ -12,12 +12,6 @@
 
 #include <push_swap.h>
 
-typedef struct s_best_comb
-{
-	t_list *best_comb;
-	int max_cost;
-} t_best_comb;
-
 t_list *handle_best_comb(t_best_comb *best, t_list *instr_step_node, int instr, int nb_instr)
 {
 	t_list *saved_first_instr;
@@ -53,7 +47,7 @@ t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max
 	first_intr_step_node = init_instr_step_node(instr, 0);
 	first_intr_step = first_intr_step_node->content;
 
-	while (first_intr_step->nb_instr < best.max_cost)
+	while (best.max_cost && first_intr_step->nb_instr < best.max_cost)
 	{
 		t_list *instr_step_node;
 		instr_step_node = best_insert(&d_copy, d_copy.r_instr, can_push, best.max_cost - first_intr_step->nb_instr);

@@ -28,22 +28,56 @@
 //	}
 //}
 
+int	is_on_min_or_max(t_data *data, t_lnk *lst)
+{
+	if (lst == data->lst_a)
+	{
+		if (data->max_a == lst->rank || data->min_a == lst->rank)
+			return (TRUE);
+	}
+	else if (lst == data->lst_b)
+	{
+		if (data->max_b == lst->rank || data->min_b == lst->rank)
+			return (TRUE);
+	}
+	return (FALSE);
+}
+
 int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
 {
 	t_list *insertion_step;
 	int nb_instr;
+	int	mediane;
 
 	nb_instr = -1;
+	mediane = get_kinda_mediane(data, data->lst_a);
+	data->max_to_load = data->rank_max;
+	data->min_to_load = 0;
 	if (can_do(data))
+	{
 		nb_instr = apply_instr(data, pb, verbose);
+		//data_update(data, &data->lst_a, &data->lst_b);
+		if (should_swap_b(data->lst_b, mediane))
+			nb_instr += apply_instr(data, sb, verbose);
+		//printf("is_on_min_or_max: %d\n", is_on_min_or_max(data, data->lst_b));
+		////printf("reach_rank: %d\n", reach_rank(data, data->max_b, verbose));
+		//print_lst(data);
+		if (!is_on_min_or_max(data, data->lst_b))
+			reach_rank(data, get_min(data->lst_b)->prev->rank, verbose);
+	}
 	else
 	{
+		data->min_to_load = 0;
+		data->min_to_load = data->rank_max;
 		insertion_step = ft_best_comb(data, data->r_instr, can_do, SIZE_MAX);
 		if (!insertion_step)
 			return (-1);
 		nb_instr = ft_nb_instr(insertion_step);
-		if (apply_best_comb_and(should_swap_b_, data, insertion_step, verbose) == BREAK_BEST_COMB)
+		if (apply_best_comb_and(NULL, data, insertion_step, verbose) == BREAK_BEST_COMB)
+		{
+			ft_lstclear(&insertion_step, free);
 			return (BREAK_BEST_COMB);
+		}
 		else
 		ft_lstclear(&insertion_step, free);
 	}
