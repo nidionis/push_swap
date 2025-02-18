@@ -56,6 +56,7 @@ int is_high(const t_data *data, const int nb)
     return (!is_low(data, nb));
 }
 
+/*
 int is_to_load(const t_data *data, const int nb, const t_lnk *lst)
 {
     int min;
@@ -76,6 +77,7 @@ int is_to_load(const t_data *data, const int nb, const t_lnk *lst)
         return (TRUE);
     return (FALSE);
 }
+*/
 
 int is_set_for(int (*is_low_or_high)(const t_data *data, const int nb), t_data *data, const t_lnk *lst)
 {
@@ -95,7 +97,7 @@ int can_butterfly(t_data *data)
     int     nb;
 
     lst_b = data->lst_b;
-    lst_a = data->lst_b;
+    lst_a = data->lst_a;
     //if (!lst_b) || ft_dlstsize(lst_b) < 5)
     //    return (TRUE);
     if (!lst_b || ft_dlstsize(lst_b) < 2)
@@ -107,6 +109,20 @@ int can_butterfly(t_data *data)
     //data->min_to_load = data->softmin_a;
     //printf("[can_butterfly] is_set_for(is_low...) = %i\n", is_set_for(is_low, data, lst_b));
 	//print_lst(data);
+    if (lst_a->rank > data->max_b)
+    {
+        if (lst_b->rank == data->min_b)
+            return (TRUE);
+        else
+            return (FALSE);
+    }
+    if (lst_a->rank < data->min_b)
+    {
+        if (lst_b->rank == data->min_b)
+            return (TRUE);
+        else
+            return (FALSE);
+    }
     if (is_set_for(is_low, data, lst_b))
         return (is_low(data, nb));
     else if (is_set_for(is_high, data, lst_b))

@@ -29,7 +29,8 @@ int should_swap_b(t_lnk *lst, int mediane)
         return (FALSE);
     //if (nb < mediane && next > mediane)
     //    return (FALSE);
-    if (nb > next && nb != get_max(lst)->rank)
+    if (nb > next)
+        if (nb != get_max(lst)->rank || next != get_min(lst)->rank)
         return (TRUE);
     return (FALSE);
 }

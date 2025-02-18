@@ -92,8 +92,8 @@ void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_
 int	is_rotating(int instr)
 {
 	if (instr == ra || instr == rb || instr == rra || instr == rrb || instr == rr || instr == rrr)
-		return (1);
-	return (0);
+		return (TRUE);
+	return (FALSE);
 }
 
 int	apply_instr(t_data *data, int instr, int to_print)
@@ -103,7 +103,7 @@ int	apply_instr(t_data *data, int instr, int to_print)
 
 	lst_a = data->lst_a;
 	lst_b = data->lst_b;
-	execute_command(&data->lst_a, &data->lst_b, instr, data->instr_map);
+	execute_command(&(data->lst_a), &(data->lst_b), instr, data->instr_map);
 	if (to_print == PRINT)
 		print_instr(data, instr);
 	if (!is_rotating(instr))

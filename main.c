@@ -53,8 +53,11 @@ int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
 	mediane = get_kinda_mediane(data, data->lst_a);
 	data->max_to_load = data->rank_max;
 	data->min_to_load = 0;
+
+	print_lst(data);
 	if (can_do(data))
 	{
+		//printf("can_do: %d\n", can_do(data));
 		nb_instr = apply_instr(data, pb, verbose);
 		//data_update(data, &data->lst_a, &data->lst_b);
 		if (should_swap_b(data->lst_b, mediane))
@@ -62,8 +65,6 @@ int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
 		//printf("is_on_min_or_max: %d\n", is_on_min_or_max(data, data->lst_b));
 		////printf("reach_rank: %d\n", reach_rank(data, data->max_b, verbose));
 		//print_lst(data);
-		if (!is_on_min_or_max(data, data->lst_b))
-			reach_rank(data, get_min(data->lst_b)->prev->rank, verbose);
 	}
 	else
 	{
