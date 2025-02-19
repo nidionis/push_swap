@@ -54,7 +54,7 @@ int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
 	data->max_to_load = data->rank_max;
 	data->min_to_load = 0;
 
-	print_lst(data);
+	//print_lst(data);
 	if (can_do(data))
 	{
 		//printf("can_do: %d\n", can_do(data));
@@ -69,7 +69,7 @@ int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
 	else
 	{
 		data->min_to_load = 0;
-		data->min_to_load = data->rank_max;
+		data->max_to_load = data->rank_max;
 		insertion_step = ft_best_comb(data, data->r_instr, can_do, SIZE_MAX);
 		if (!insertion_step)
 			return (-1);
