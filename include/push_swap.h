@@ -115,7 +115,8 @@ enum	e_instr {
 };
 
 int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose);
-int can_butterfly(t_data *data);
+int can_butterfly_dec(t_data *data);
+int can_butterfly_inc(t_data *data);
 int should_swap_b(t_lnk *lst, int mediane);
 int should_swap_b_(t_data *data, int instr);
 int    get_kinda_mediane(t_data *data, t_lnk *lst);

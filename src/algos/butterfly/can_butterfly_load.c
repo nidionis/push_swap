@@ -79,7 +79,7 @@ int is_to_load(const t_data *data, const int nb, const t_lnk *lst)
 }
 */
 
-int is_set_for(int (*is_low_or_high)(const t_data *data, const int nb), t_data *data, const t_lnk *lst)
+int dec_is_set_for(int (*is_low_or_high)(const t_data *data, const int nb), t_data *data, const t_lnk *lst)
 {
     if (data->max_to_load == UNSET)
         data->max_to_load = data->rank_max;
@@ -90,7 +90,30 @@ int is_set_for(int (*is_low_or_high)(const t_data *data, const int nb), t_data *
     return (is_low_or_high(data, lst->rank));
 }
 
-int can_butterfly(t_data *data)
+int inc_is_set_for(int (*is_low_or_high)(const t_data *data, const int nb), t_data *data, const t_lnk *lst)
+{
+    if (data->max_to_load == UNSET)
+        data->max_to_load = data->rank_max;
+    if (data->min_to_load == UNSET)
+        data->min_to_load = 0;
+    if (!lst)
+        return (TRUE);
+    return (is_low_or_high(data, lst->rank));
+}
+
+/*
+./complexity 500 50
+Démarrage du test : 500 éléments, 50 itérations (seed 4194043554)
+Pire = 1928 instructions
+Moyenne = 1528 instructions
+Meilleur = 1264 instructions
+Écart-type = 168.1 instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+100 % effectué
+Complexity 1.7.1 (2024-11-12)
+*/
+int can_butterfly_inc(t_data *data)
 {
     t_lnk   *lst_b;
     t_lnk   *lst_a;
@@ -107,7 +130,7 @@ int can_butterfly(t_data *data)
     nb = lst_a->rank;
     //data->max_to_load = data->softmax_a;
     //data->min_to_load = data->softmin_a;
-    //printf("[can_butterfly] is_set_for(is_low...) = %i\n", is_set_for(is_low, data, lst_b));
+    //printf("[can_butterfly_inc] inc_is_set_for(is_low...) = %i\n", inc_is_set_for(is_low, data, lst_b));
 	//print_lst(data);
     if (lst_a->rank > data->max_b)
     {
@@ -123,71 +146,9 @@ int can_butterfly(t_data *data)
         else
             return (FALSE);
     }
-    if (is_set_for(is_low, data, lst_b))
+    if (inc_is_set_for(is_low, data, lst_b))
         return (is_low(data, nb));
-    else if (is_set_for(is_high, data, lst_b))
+    else if (inc_is_set_for(is_high, data, lst_b))
         return (is_high(data, nb));
     return (ERR_CAN_ACCEPT);
 }
-
-//int load_butterfly(t_data *data, int verbose)
-//{
-//    int nb_instr;
-//    int was_set_on_lowest;
-//
-//    nb_instr = 0;
-//    was_set_on_lowest = 1;
-//    if (data->lst_b)
-//        if (get_min(data->lst_b)->rank != data->lst_b->rank)
-//            was_set_on_lowest = 0;
-//    if (can_butterfly(data))
-//		nb_instr = apply_instr(data, pb, verbose);
-//    if (was_set_on_lowest)
-//    {
-//        //printf("[load_butterfly] was set on lowest\n");
-//        if (should_swap_b(data->lst_b))
-//            nb_instr = apply_instr(data, sb, verbose);
-//        nb_instr = apply_instr(data, rb, verbose);
-//    }
-//    else //was set on highest
-//    {
-//        if (is_set_for(is_high, data, data->lst_b))
-//        {
-//            if (should_swap_b(data->lst_b))
-//                nb_instr = apply_instr(data, sb, verbose);
-//        }
-//        else if (data->lst_b->prev->rank == data->min_b)
-//        {
-//            nb_instr = apply_instr(data, rrb, verbose);
-//            //while (data->lst_a->rank < data->lst_b->rank)
-//            //    nb_instr = apply_instr(data, pb, verbose);
-//            nb_instr = apply_instr(data, sb, verbose);
-//            nb_instr = apply_instr(data, rb, verbose);
-//        }
-//    }
-//    return (nb_instr);
-//}
-
-/*
-    the vars min_to_load, max_to_load should be set
-*/
-//int	can_butterfly_load(t_data *data)
-//{
-//    int mediane;
-//    t_lnk *a;
-//    t_lnk *b;
-//
-//    a = data->lst_a;
-//    b = data->lst_b;
-//    if (!data->min_to_load && !data->max_to_load)
-//    {
-//        data->min_to_load = data->softmin_a;
-//        data->max_to_load = data->softmax_a;
-//    }
-//	if (a->rank <= data->min_to_load || a->rank >= data->max_to_load)
-//		return (FALSE);
-//    if (ft_dlstsize(b) < 5)
-//        return (can_load_b(data));
-//    mediane = (data->max_to_load - data->min_to_load) / 2 + data->min_to_load;
-//    return (can_butterfly(data, a->rank, a));
-//}

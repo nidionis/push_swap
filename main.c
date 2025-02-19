@@ -116,13 +116,13 @@ int	main(int argc, char **argv)
 		//print_lst(&d);
 		int r_instr[] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
 		d.r_instr = r_instr;
-		//printf("can_butterfly: %d\n", can_butterfly(&d));
+		//printf("can_butterfly_inc: %d\n", can_butterfly_inc(&d));
 	d.softmax_a = d.rank_max;
 	d.softmin_a = 0;
 		d.max_to_load = d.rank_max;
 		d.min_to_load = 0;
 		//load_butterfly(&d, PRINT);
-		load_butterfly(&d, can_butterfly, PRINT);
+		load_butterfly(&d, can_butterfly_inc, PRINT);
 	}
 
 
