@@ -6,7 +6,7 @@
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/03/02 16:35:55 by nidionis         ###   ########.fr        #
+#    Updated: 2025/03/02 16:40:32 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,8 +79,7 @@ install_visualizer:
 
 visual:
 	make
-	cd push_swap_visualizer/build
-	./push_swap_visualizer/build/bin/visualizer
+	cd push_swap_visualizer/build && ./bin/visualizer && cd -
 	cd -
 
 .PHONY: all clean fclean re make_libs
