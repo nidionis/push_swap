@@ -48,6 +48,26 @@ void	print_lst(t_data *d)
 	printf("\n\n");
 }
 
+void print_lst_inline(t_lnk *lst)
+{
+	t_lnk	*lnk_ind;
+
+	if (!lst)
+	{
+		ft_putstr_fd("[ empty list ]", 1);
+		return;
+	}
+
+	ft_putnbr_fd(lst->rank, 1);
+	lnk_ind = lst->next;
+	while (lnk_ind != lst)
+	{
+		ft_putstr_fd(" ", 1);
+		ft_putnbr_fd(lnk_ind->rank, 1);
+		lnk_ind = lnk_ind->next;
+	}
+}
+
 void print_instr_step(t_instr_step *instr_step)
 {
 	printf("instr: ");

@@ -190,6 +190,7 @@ int             *malloc_instr_steps_itm(t_data *data);
 int             *malloc_best_insert(t_data *data);
 void    print_lst(t_data *d);
 void    print_lst_byrank(t_lnk *lst, char *header);
+void    print_lst_inline(t_lnk *lst);
 void    push(t_lnk **from_lst, t_lnk **to_lst);
 void    push_item(t_lnk *lnk, t_lnk **lst);
 t_lnk   *pop_item(t_lnk **lst);
