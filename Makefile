@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile.test                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/02 15:16:38 by supersko          #+#    #+#              #
-#    Updated: 2025/03/02 16:40:32 by nidionis         ###   ########.fr        #
+#    Updated: 2025/03/07 21:22:35 by nidionis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,37 +49,24 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJ_DIR)/main.o: main.c | $(OBJ_DIR)
+$(OBJ_DIR)/main.o: $(MAIN) | $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
+	rm -rf $(OBJ_DIR)
 	@for lib in $(LIB_NAMES); do \
 		$(MAKE) -C $(LIB_DIR)/$$lib clean; \
 	done
-	rm -rf $(OBJ_DIR)
 
 fclean: clean
+	rm -f $(NAME)
 	@for lib in $(LIB_NAMES); do \
 		$(MAKE) -C $(LIB_DIR)/$$lib fclean; \
 	done
-	rm -f $(NAME)
 
 re: fclean all
-
-install_visualizer:
-	git clone https://github.com/o-reo/push_swap_visualizer.git
-	cd push_swap_visualizer
-	mkdir build
-	cd build
-	cmake ..
-	make
-
-visual:
-	make
-	cd push_swap_visualizer/build && ./bin/visualizer && cd -
-	cd -
 
 .PHONY: all clean fclean re make_libs
