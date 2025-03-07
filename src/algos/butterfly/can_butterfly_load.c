@@ -124,7 +124,7 @@ int can_butterfly_inc(t_data *data)
     //if (!lst_b) || ft_dlstsize(lst_b) < 5)
     //    return (TRUE);
     if (!lst_b || ft_dlstsize(lst_b) < 2)
-        return (can_load_b(data));
+        return (cool_push_b(data));
     if (!lst_a)
         return (FALSE);
     nb = lst_a->rank;

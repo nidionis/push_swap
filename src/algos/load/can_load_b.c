@@ -28,7 +28,7 @@ int	can_load_high(t_data *data)
 		return (FALSE);
 	if (a->rank >= data->softmax_a)
 		return (FALSE);
-	return (can_load_b(data));
+	return (cool_push_b(data));
 }
 
 /**
@@ -79,7 +79,7 @@ int	can_insert_to_b_between(t_data *data)
  * @param data Structure contenant les données
  * @return int TRUE si l'insertion est possible, FALSE sinon
  */
-int	can_load_b(t_data *data)
+int	cool_push_b(t_data *data)
 {
 	t_lnk *a;
 	t_lnk *b;

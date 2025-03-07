@@ -29,7 +29,7 @@ int first_load_and_break_loop(t_data *data, int verbose)
 	int nb_instr;
 
 	nb_instr = -1;
-	if (can_load_b(data))
+	if (cool_push_b(data))
 		apply_instr(data, pb, verbose);
 	else
 	{

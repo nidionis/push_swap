@@ -31,7 +31,7 @@ int	can_load_legacy(t_data *data)
 			return (TRUE);
 	if (a->rank > data->rank_max / 2)
 		return (FALSE);
-	return (can_load_b(data));
+	return (cool_push_b(data));
 }
 
 /**
@@ -76,5 +76,5 @@ int	can_load_by_partition(t_data *data, int partition_type)
 	// else if (partition_type == EVEN_ODD) { ... }
 	
 	// Vérification finale: l'élément peut-il être inséré dans B ?
-	return (can_load_b(data));
+	return (cool_push_b(data));
 }
