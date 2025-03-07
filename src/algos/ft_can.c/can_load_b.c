@@ -14,11 +14,11 @@
 
 int	can_first_load(t_data *data)
 {
-    t_lnk *a;
-    t_lnk *b;
+	t_lnk *a;
+	t_lnk *b;
 
-    a = data->lst_a;
-    b = data->lst_b;
+	a = data->lst_a;
+	b = data->lst_b;
 	if (ft_dlstsize(b) > 2)
 		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
 			return (TRUE);
@@ -35,9 +35,9 @@ int	can_first_load(t_data *data)
  */
 int	can_load_high(t_data *data)
 {
-    t_lnk *a;
+	t_lnk *a;
 
-    a = data->lst_a;
+	a = data->lst_a;
 	if (a->rank < data->mediane_a)
 		return (FALSE);
 	if (a->rank >= data->softmax_a)
@@ -45,16 +45,35 @@ int	can_load_high(t_data *data)
 	return (can_load_b(data));
 }
 
-int	can_insert_at_max_b(t_data *data)
+/**
+ * @brief Vérifie si l'élément est soit plus grand que le max, soit plus petit que le min de B
+ */
+int	can_insert_at_extremes(t_data *data)
 {
 	t_lnk *a;
 
 	a = data->lst_a;
-	if (a->rank > data->max_b || a->rank < data->min_b)
-		return (TRUE);
-	return (FALSE);
+	return (a->rank > data->max_b || a->rank < data->min_b);
 }
 
+/**
+ * @brief Vérifie si la pile B a ses valeurs extremes au sommet et en-dessous
+ * (max au sommet avec min en-dessous, ou min au sommet avec max en-dessous)
+ */
+int	is_extreme_b(t_data *data)
+{
+	t_lnk *b;
+
+	b = data->lst_b;
+	if (!b || ft_dlstsize(b) < 2)
+		return (FALSE);
+	return ((b->rank == data->max_b && b->prev->rank == data->min_b) || 
+		(b->rank == data->min_b && b->prev->rank == data->max_b));
+}
+
+/**
+ * @brief Vérifie si l'élément a une valeur entre le haut et le bas de B
+ */
 int	can_insert_to_b_between(t_data *data)
 {
 	t_lnk *a;
@@ -65,54 +84,39 @@ int	can_insert_to_b_between(t_data *data)
 	return (a->rank > b->rank && a->rank < b->prev->rank);
 }
 
-int	can_insert_at_min_b(t_data *data)
-{
-	t_lnk *a;
 
-	a = data->lst_a;
-	return (a->rank < data->min_b || a->rank > data->max_b);
-}
 
+/**
+ * @brief Vérifie si l'élément du haut de la pile A peut être inséré dans B
+ * tout en maintenant B triée en ordre inverse
+ * 
+ * @param data Structure contenant les données
+ * @return int TRUE si l'insertion est possible, FALSE sinon
+ */
 int	can_load_b(t_data *data)
 {
-	t_lnk *lst_a = data->lst_a;
-	t_lnk *lst_b = data->lst_b;
+	t_lnk *a;
+	t_lnk *b;
 	int size_b;
 
-	if (!lst_a)
+	a = data->lst_a;
+	b = data->lst_b;
+	if (!a)
 		return (FALSE);
-	if (!lst_b)
+	if (!b)
 		return (TRUE);
-	size_b = ft_dlstsize(lst_b);
+	size_b = ft_dlstsize(b);
 	if (size_b == 1)
 		return (TRUE);
-	if (size_b == 2)
-	{
-		if (lst_b->rank == data->max_b)
-		{
-			if (lst_a->rank > data->max_b || lst_a->rank < data->min_b)
-				return (TRUE);
-		}
-		else
-			return (can_insert_to_b_between(data));
-	}
-	else
-	{
-		if (lst_b->rank == data->max_b)
-		{
-		 	if (can_insert_at_max_b(data))
-				return (TRUE);
-		}
-		else if (lst_b->rank == data->min_b)
-		{
-			if (lst_b->next->rank != data->max_b)
-				return (lst_a->rank < data->min_b);
-			else
-				return (can_insert_to_b_between(data));
-		}
-		else if (can_insert_to_b_between(data))
-			return (TRUE);
-	}
+	// Si B a ses extremes au sommet et en-dessous, vérifions si A peut être inséré
+	if (is_extreme_b(data))
+		return (can_insert_at_extremes(data));
+	// Cas où l'élément serait un nouveau min ou max de B
+	if (can_insert_at_extremes(data))
+		return (TRUE);
+	// Cas où l'élément s'insèrerait entre deux éléments de B
+	if (can_insert_to_b_between(data))
+		return (TRUE);
 	return (FALSE);
 }
 

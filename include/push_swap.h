@@ -146,9 +146,8 @@ void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_
 void    explore_insert_paths(t_data *d, int lst_instr[], int first_instr_steps[], int (*can_push)(t_data *));
 int             can_first_load(t_data *data);
 int             can_load_high(t_data *data);
-int             can_insert_at_max_b(t_data *data);
-int             can_insert_at_max_b(t_data *data);
-int             can_insert_at_max_b(t_data *data);
+int             can_insert_at_extremes(t_data *data);
+int             is_extreme_b(t_data *data);
 int             can_load_b(t_data *data);
 int             can_dump(t_data *data);
 int             ft_cost(t_list *best_comb);
