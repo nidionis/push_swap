@@ -45,3 +45,21 @@ int	set_mediane(t_lnk **lst)
 	free(tab);
 	return (mediane);
 }
+
+/**
+ * @brief Calcule une médiane approximative pour la liste
+ * 
+ * @param data Structure de données principale
+ * @param lst_a Liste A
+ * @return int Médiane approximative
+ */
+int	get_kinda_mediane(t_data *data, t_lnk *lst_a)
+{
+	int mediane;
+	
+	if (!lst_a)
+		return (0);
+	
+	mediane = (data->min_a + data->max_a) / 2;
+	return (mediane);
+}

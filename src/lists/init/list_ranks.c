@@ -1,65 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lnk_fts.c                                          :+:      :+:    :+:   */
+/*   list_ranks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 06:04:04 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/07 21:33:10 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-t_lnk	*lnk_init(t_lnk *lnk)
-{
-	if (lnk)
-	{
-		lnk->next = lnk;
-		lnk->prev = lnk;
-	}
-	else
-		ft_errmsg("[lnk_init] NULL passed in params");
-	return (lnk);
-}
-
-t_lnk	*ft_new_lnk(int nb, int ind, int rank)
-{
-	t_lnk		*lnk;
-
-	lnk = (t_lnk *) malloc(sizeof(t_lnk));
-	if (!lnk)
-		ft_errmsg("Error creating a new link\n");
-	lnk->nb = nb;
-	lnk->ind = ind;
-	lnk->rank = rank;
-	lnk_init(lnk);
-	return (lnk);
-}
-
-void	del_lst(t_lnk **lst)
-{
-	t_lnk	*next_lnk;
-	t_lnk	*first_lnk;
-
-	if (*lst && (*lst)->next != *lst)
-	{
-		first_lnk = *lst;
-		while ((*lst)->next != first_lnk)
-		{
-			next_lnk = (*lst)->next;
-			free(*lst);
-			*lst = next_lnk;
-		}
-	}
-	if (*lst)
-	{
-		free(*lst);
-		*lst = NULL;
-	}
-}
-
+/**
+ * @brief Boucle auxiliaire pour l'initialisation des rangs
+ * 
+ * @param lnk Élément courant
+ * @param l_i Élément d'itération
+ * @param max Pointeur vers le rang maximum
+ */
 void	loop(t_lnk *lnk, t_lnk *l_i, int *max)
 {
 	if (lnk->nb > l_i->nb)
@@ -81,7 +40,12 @@ void	loop(t_lnk *lnk, t_lnk *l_i, int *max)
 	}
 }
 
-// return ind max
+/**
+ * @brief Initialise les rangs dans une liste chaînée
+ * 
+ * @param lst Liste à initialiser
+ * @return int Rang maximum
+ */
 int	lst_init_ranks(t_lnk **lst)
 {
 	t_lnk	*lnk;
@@ -100,21 +64,4 @@ int	lst_init_ranks(t_lnk **lst)
 		lnk = lnk->next;
 	}
 	return (max);
-}
-
-int ft_dlstsize(t_lnk *lst)
-{
-	int		i;
-	t_lnk	*lnk;
-
-	i = 1;
-	lnk = lst;
-	if (!lnk)
-		return (0);
-	while (lnk->next != lst)
-	{
-		i++;
-		lnk = lnk->next;
-	}
-	return (i);
 }

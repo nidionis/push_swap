@@ -46,11 +46,10 @@ void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 	(void)lst_a;
 	if (!lst_b)
 		return ;
-	data->softmax = get_softmax(lst_b);
-	if (data->softmax)
+	t_lnk *softmax = get_softmax(lst_b);
+	if (softmax)
 	{
-		data->softmax_b = data->softmax->rank;
-		data->softmax_b_pos = get_shortestway(data, data->softmax->rank, B);
+		data->softmax_b = softmax->rank;
 	}
 	else
 		data->softmax_b = -1;
@@ -68,11 +67,10 @@ void	set_softmin(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 	(void)lst_a;
 	if (!lst_b)
 		return ;
-	data->softmin = get_softmin(lst_b);
-	if (data->softmin)
+	t_lnk *softmin = get_softmin(lst_b);
+	if (softmin)
 	{
-		data->softmin_b = data->softmin->rank;
-		data->softmin_b_pos = get_shortestway(data, data->softmin->rank, B);
+		data->softmin_b = softmin->rank;
 	}
 	else
 		data->softmin_b = -1;
@@ -90,11 +88,16 @@ void	print_data(t_data *d)
 	else
 	{
 		printf("data ={\n");
-		printf("\tmin_idx : %d\n", d->min_idx);
-		printf("\tmax_idx : %d\n", d->max_idx);
-		printf("\tmax_rank : %d\n", d->max_rank);
-		printf("\tlst_len_a : %d\n", d->lst_len_a);
-		printf("\tlst_len_b : %d\n", d->lst_len_b);
+		printf("\tmin_a : %d\n", d->min_a);
+		printf("\tmax_a : %d\n", d->max_a);
+		printf("\tmediane_a : %d\n", d->mediane_a);
+		printf("\tsoftmin_a : %d\n", d->softmin_a);
+		printf("\tsoftmax_a : %d\n", d->softmax_a);
+		printf("\tmin_b : %d\n", d->min_b);
+		printf("\tmax_b : %d\n", d->max_b);
+		printf("\tmediane_b : %d\n", d->mediane_b);
+		printf("\tsoftmin_b : %d\n", d->softmin_b);
+		printf("\tsoftmax_b : %d\n", d->softmax_b);
 		printf("}\n");
 	}
 }
