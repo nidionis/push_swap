@@ -70,8 +70,6 @@ int	can_insert_to_b_between(t_data *data)
 	return (a->rank > b->rank && a->rank < b->prev->rank);
 }
 
-
-
 /**
  * @brief Vérifie si l'élément du haut de la pile A peut être inséré dans B
  * tout en maintenant B triée en ordre inverse
@@ -96,6 +94,29 @@ int	cool_push_b(t_data *data)
 		return (TRUE);
 	// Si B a ses extremes au sommet et en-dessous, vérifions si A peut être inséré
 	if (b->rank == data->max_b || b->prev->rank == data->min_b)
+		return (can_insert_at_extremes(data));
+	else if (can_insert_to_b_between(data))
+		return (TRUE);
+	return (FALSE);
+}
+
+int	can_push_b(t_data *data)
+{
+	t_lnk *a;
+	t_lnk *b;
+	int size_b;
+
+	a = data->lst_a;
+	b = data->lst_b;
+	if (!a)
+		return (FALSE);
+	if (!b)
+		return (TRUE);
+	size_b = ft_dlstsize(b);
+	if (size_b == 1)
+		return (TRUE);
+	// Si B a ses extremes au sommet et en-dessous, vérifions si A peut être inséré
+	if (b->rank == data->max_b && b->prev->rank == data->min_b)
 		return (can_insert_at_extremes(data));
 	else if (can_insert_to_b_between(data))
 		return (TRUE);

@@ -153,6 +153,7 @@ int             can_load_high(t_data *data);
 int             can_insert_at_extremes(t_data *data);
 int             is_extreme_b(t_data *data);
 int             cool_push_b(t_data *data);
+int             can_push_b(t_data *data);
 int             can_dump(t_data *data);
 int             ft_cost(t_list *best_comb);
 //int             count_instr(t_data *data, int instr, int (*can_push)(t_data *data));

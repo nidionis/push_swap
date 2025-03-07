@@ -198,7 +198,7 @@ int	main_algo(t_data *data, int verbose)
 	nb_instr = 0;
 
 	/* Étape 1: Pousser les éléments de A vers B en les triant */
-	sort_recursive(data, cool_push_b, verbose);
+	sort_recursive(data, can_push_b, verbose);
 
 	/* Étape 2: Positionner B sur son maximum */
 	nb_instr += position_b_on_max(data, verbose);
