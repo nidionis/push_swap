@@ -29,6 +29,20 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 		set_softmin(data, *lst_a, *lst_b);
 		data->lst_a = *lst_a;
 		data->lst_b = *lst_b;
+		
+		/* Mettre à jour min_b et max_b si B n'est pas vide */
+		if (*lst_b)
+		{
+			t_lnk *max_b_elem = get_max(*lst_b);
+			t_lnk *min_b_elem = get_min(*lst_b);
+			data->max_b = max_b_elem ? max_b_elem->rank : 0;
+			data->min_b = min_b_elem ? min_b_elem->rank : 0;
+		}
+		else
+		{
+			data->max_b = 0;
+			data->min_b = 0;
+		}
 	}
 }
 

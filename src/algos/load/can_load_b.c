@@ -95,13 +95,9 @@ int	can_load_b(t_data *data)
 	if (size_b == 1)
 		return (TRUE);
 	// Si B a ses extremes au sommet et en-dessous, vérifions si A peut être inséré
-	if (is_extreme_b(data))
+	if (b->rank == data->max_b || b->prev->rank == data->min_b)
 		return (can_insert_at_extremes(data));
-	// Cas où l'élément serait un nouveau min ou max de B
-	if (can_insert_at_extremes(data))
-		return (TRUE);
-	// Cas où l'élément s'insèrerait entre deux éléments de B
-	if (can_insert_to_b_between(data))
+	else if (can_insert_to_b_between(data))
 		return (TRUE);
 	return (FALSE);
 }
