@@ -27,13 +27,17 @@ int	can_first_load(t_data *data)
 	return (can_load_b(data));
 }
 
+/**
+ * @brief Vérifie si l'élément du haut de la pile A peut être chargé dans B (haute valeur)
+ * 
+ * @param data Structure contenant les données
+ * @return int TRUE si l'élément peut être chargé, FALSE sinon
+ */
 int	can_load_high(t_data *data)
 {
     t_lnk *a;
-    t_lnk *b;
 
     a = data->lst_a;
-    b = data->lst_b;
 	if (a->rank < data->mediane_a)
 		return (FALSE);
 	if (a->rank >= data->softmax_a)

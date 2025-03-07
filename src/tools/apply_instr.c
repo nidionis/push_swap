@@ -96,17 +96,26 @@ int	is_rotating(int instr)
 	return (FALSE);
 }
 
+/**
+ * @brief Applique une instruction aux piles et met à jour la structure de données
+ *
+ * @param data Structure contenant les données
+ * @param instr Code de l'instruction à appliquer
+ * @param to_print Indique si l'instruction doit être affichée
+ * @return int Toujours 1 (succès)
+ */
 int	apply_instr(t_data *data, int instr, int to_print)
 {
-	t_lnk	*lst_a;
-	t_lnk	*lst_b;
-
-	lst_a = data->lst_a;
-	lst_b = data->lst_b;
+	/* Exécuter la commande sur les piles */
 	execute_command(&(data->lst_a), &(data->lst_b), instr, data->instr_map);
+	
+	/* Afficher l'instruction si nécessaire */
 	if (to_print == PRINT)
 		print_instr(data, instr);
+	
+	/* Mettre à jour les données si l'instruction n'est pas une rotation */
 	if (!is_rotating(instr))
 		data_update(data, &data->lst_a, &data->lst_b);
+		
 	return (1);
 }
