@@ -12,20 +12,6 @@
 
 #include <push_swap.h>
 
-int	can_first_load(t_data *data)
-{
-	t_lnk *a;
-	t_lnk *b;
-
-	a = data->lst_a;
-	b = data->lst_b;
-	if (ft_dlstsize(b) > 2)
-		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
-			return (TRUE);
-	if (a->rank > data->rank_max / 2)
-		return (FALSE);
-	return (can_load_b(data));
-}
 
 /**
  * @brief Vérifie si l'élément du haut de la pile A peut être chargé dans B (haute valeur)

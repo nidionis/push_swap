@@ -22,7 +22,9 @@ int first_load_low_and_minmax(t_data *data, int verbose)
 		apply_instr(data, pb, verbose);
 	else
 	{
-		insertion_step = ft_best_comb(data, data->r_instr, can_first_load, SIZE_MAX);
+		/* Utilisation de la partition LOW pour séparer les plus petits éléments */
+		insertion_step = ft_best_comb(data, data->r_instr, 
+			(int (*)(t_data *))can_load_legacy, SIZE_MAX);
 		if (!insertion_step)
 			return (-1);
 		nb_instr = ft_nb_instr(insertion_step);
