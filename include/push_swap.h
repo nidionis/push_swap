@@ -115,6 +115,9 @@ enum	e_instr {
 };
 
 int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose);
+void	sort_recursive(t_data *data, int (*can_do)(t_data *), int verbose);
+int	main_algo(t_data *data, int verbose);
+int	is_on_min_or_max(t_data *data, t_lnk *lst);
 int can_butterfly_dec(t_data *data);
 int can_butterfly_inc(t_data *data);
 int should_swap_b(t_lnk *lst, int mediane);
