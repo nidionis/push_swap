@@ -114,12 +114,11 @@ enum	e_instr {
 	INSTR_MAX = ss
 };
 
-int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose);
-void	sort_recursive(t_data *data, int (*can_do)(t_data *), int verbose);
+int	optimized_push_to_b(t_data *data, int (*can_do)(t_data *data), int verbose);
 int	main_algo(t_data *data, int verbose);
 int	is_on_min_or_max(t_data *data, t_lnk *lst);
-int can_butterfly_dec(t_data *data);
-int can_butterfly_inc(t_data *data);
+int can_push_b_dec(t_data *data);
+int can_push_b_optimized(t_data *data);
 int should_swap_b(t_lnk *lst, int mediane);
 int should_swap_b_(t_data *data, int instr);
 int    get_kinda_mediane(t_data *data, t_lnk *lst);

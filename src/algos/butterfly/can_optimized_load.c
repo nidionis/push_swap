@@ -101,19 +101,16 @@ int inc_is_set_for(int (*is_low_or_high)(const t_data *data, const int nb), t_da
     return (is_low_or_high(data, lst->rank));
 }
 
-/*
-./complexity 500 50
-Démarrage du test : 500 éléments, 50 itérations (seed 4194043554)
-Pire = 1928 instructions
-Moyenne = 1528 instructions
-Meilleur = 1264 instructions
-Écart-type = 168.1 instructions
-Objectif = entrez un nombre en troisième argument
-Précision = entrez un testeur en quatrième argument
-100 % effectué
-Complexity 1.7.1 (2024-11-12)
-*/
-int can_butterfly_inc(t_data *data)
+/**
+ * @brief Détermine si un élément peut être poussé dans la pile B selon la stratégie d'insertion optimisée
+ * 
+ * Cette fonction vérifie si l'élément au sommet de la pile A peut être inséré dans la pile B
+ * en respectant un certain ordre optimisé.
+ * 
+ * @param data Structure de données contenant les piles
+ * @return int TRUE si l'élément peut être poussé, FALSE sinon
+ */
+int can_push_b_optimized(t_data *data)
 {
     t_lnk   *lst_b;
     t_lnk   *lst_a;
@@ -121,34 +118,33 @@ int can_butterfly_inc(t_data *data)
 
     lst_b = data->lst_b;
     lst_a = data->lst_a;
-    //if (!lst_b) || ft_dlstsize(lst_b) < 5)
-    //    return (TRUE);
+    
     if (!lst_b || ft_dlstsize(lst_b) < 2)
-        return (cool_push_b(data));
+        return (can_push_b(data));
     if (!lst_a)
         return (FALSE);
+        
     nb = lst_a->rank;
-    //data->max_to_load = data->softmax_a;
-    //data->min_to_load = data->softmin_a;
-    //printf("[can_butterfly_inc] inc_is_set_for(is_low...) = %i\n", inc_is_set_for(is_low, data, lst_b));
-	//print_lst(data);
+    
+    /* Gérer les cas spéciaux: quand l'élément est supérieur au maximum dans B */
     if (lst_a->rank > data->max_b)
     {
-        if (lst_b->rank == data->min_b)
-            return (TRUE);
-        else
-            return (FALSE);
+        /* Accepter seulement si B est positionné sur son minimum */
+        return (lst_b->rank == data->min_b);
     }
+    
+    /* Gérer les cas spéciaux: quand l'élément est inférieur au minimum dans B */
     if (lst_a->rank < data->min_b)
     {
-        if (lst_b->rank == data->min_b)
-            return (TRUE);
-        else
-            return (FALSE);
+        /* Accepter seulement si B est positionné sur son minimum */
+        return (lst_b->rank == data->min_b);
     }
+    
+    /* Utiliser la stratégie de partitionnement pour décider */
     if (inc_is_set_for(is_low, data, lst_b))
         return (is_low(data, nb));
     else if (inc_is_set_for(is_high, data, lst_b))
         return (is_high(data, nb));
+        
     return (ERR_CAN_ACCEPT);
 }

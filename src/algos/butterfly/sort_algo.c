@@ -51,47 +51,41 @@ static int	apply_swap_if_needed(t_data *data, int nb_instr, int mediane, int ver
 }
 
 /**
- * @brief Charge les éléments dans la pile B selon la stratégie papillon
+ * @brief Charge un élément dans la pile B en utilisant la meilleure séquence d'instructions
  * 
- * Cette fonction utilise une approche récursive pour trouver la meilleure séquence
- * d'instructions à appliquer pour organiser correctement les piles.
+ * Cette fonction trouve et applique la meilleure séquence d'instructions pour
+ * positionner et pousser un élément de A vers B de manière optimale.
  * 
  * @param data Structure de données contenant les piles
  * @param can_do Pointeur vers la fonction qui vérifie si un élément peut être déplacé
  * @param verbose Mode verbeux (1) ou silencieux (0)
  * @return int Nombre d'instructions effectuées ou code d'erreur
  */
-int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
+int	optimized_push_to_b(t_data *data, int (*can_do)(t_data *data), int verbose)
 {
 	t_list	*insertion_step;
 	int		nb_instr;
 	int		mediane;
 
-	/* Initialisation des variables */
 	nb_instr = -1;
 	mediane = get_kinda_mediane(data, data->lst_a);
 	data->max_to_load = data->rank_max;
 	data->min_to_load = 0;
 
-	/* Cas simple : on peut directement pousser vers B */
 	if (can_do(data))
 	{
 		nb_instr = apply_instr(data, pb, verbose);
 		nb_instr = apply_swap_if_needed(data, nb_instr, mediane, verbose);
 	}
-	/* Cas complexe : recherche d'une séquence d'instructions optimale */
 	else
 	{
-		/* Réinitialisation des bornes pour la recherche */
 		data->min_to_load = 0;
 		data->max_to_load = data->rank_max;
 		
-		/* Recherche récursive de la meilleure combinaison */
 		insertion_step = ft_best_comb(data, data->r_instr, can_do, SIZE_MAX);
 		if (!insertion_step)
 			return (-1);
 		
-		/* Application de la combinaison trouvée */
 		nb_instr = ft_nb_instr(insertion_step);
 		if (apply_best_comb_and(NULL, data, insertion_step, verbose) == BREAK_BEST_COMB)
 		{
@@ -105,34 +99,7 @@ int	load_butterfly(t_data *data, int (*can_do)(t_data *data), int verbose)
 	return (nb_instr);
 }
 
-/**
- * @brief Algorithme de tri récursif principal
- * 
- * @param data Structure de données contenant les piles
- * @param can_do Fonction qui détermine si un élément peut être déplacé
- * @param verbose Mode verbeux
- */
-void	sort_recursive(t_data *data, int (*can_do)(t_data *), int verbose)
-{
-	int	r_instr[] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
-	
-	/* Condition d'arrêt de la récursion */
-	if (!data->lst_a)
-		return;
-	
-	/* Initialisation des paramètres pour cette itération */
-	data->r_instr = r_instr;
-	data->softmax_a = data->rank_max;
-	data->softmin_a = 0;
-	data->max_to_load = data->rank_max;
-	data->min_to_load = 0;
-	
-	/* Appliquer une étape de tri */
-	load_butterfly(data, can_do, verbose);
-	
-	/* Appel récursif pour continuer le tri */
-	sort_recursive(data, can_do, verbose);
-}
+/* Cette fonction sort_recursive a été supprimée car remplacée par l'algorithme itératif main_algo */
 
 /**
  * @brief Pousse tous les éléments de B vers A
