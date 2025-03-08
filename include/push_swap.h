@@ -117,6 +117,8 @@ enum	e_instr {
 
 int	optimized_push_to_b(t_data *data, int (*can_do)(t_data *data), int verbose);
 int	main_algo(t_data *data, int verbose);
+int	process_stack(t_data *data, int (*can_func)(t_data *), int *instrs, int verbose,
+			int push_instr, int max_cost, int push_after_comb);
 int	optimized_algo(t_data *data, int (*f_can)(t_data *), int *instrs, int verbose);
 int	is_on_min_or_max(t_data *data, t_lnk *lst);
 int can_push_b_dec(t_data *data);
@@ -249,5 +251,6 @@ int get_ntil(t_lnk *lst, int min, int max);
 void	ft_dlstclear(t_lnk **lst);
 t_lnk	*ft_dlstnewdup(t_lnk *node);
 t_lnk	*ft_dlstdup(t_lnk *lst);
+int	can_dump_b(t_data *data);
 
 #endif

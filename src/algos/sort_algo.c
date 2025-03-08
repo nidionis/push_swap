@@ -119,109 +119,60 @@ int	dump_all_b_to_a(t_data *data, int verbose)
 	}
 	return (nb_instr);
 }
-/**
- * @brief Algorithme de tri optimisé générique
- *
- * Cette fonction implémente une version optimisée de l'algorithme de tri
- * qui prend en paramètre une fonction de décision et un ensemble d'instructions.
- * 
- * @param data Structure de données contenant les piles
- * @param f_can Fonction qui détermine si un élément peut être déplacé
- * @param instrs Tableau d'instructions de rotation possibles (terminé par LOOP_END)
- * @param verbose Mode verbeux (1) ou silencieux (0)
- * @return int Nombre d'instructions exécutées
- */
-int	optimized_algo(t_data *data, int (*f_can)(t_data *), int *instrs, int verbose)
+int process_stack(t_data *data, int (*can_func)(t_data *), int *instrs, int verbose,
+			int push_instr, int max_cost, int push_after_comb)
 {
-	int	nb_instr;
+	int nb_instr;
 	t_list *best_steps;
+
+	nb_instr = 0;
+	while ((push_instr == pb && data->lst_a) || (push_instr == pa && data->lst_b))
+	{
+		if (can_func(data))
+		{
+			nb_instr += apply_instr(data, push_instr, verbose);
+			continue;
+		}
+		if (max_cost == 0)
+			return (nb_instr);
+
+		best_steps = ft_best_comb(data, instrs, can_func, max_cost);
+		if (!best_steps)
+			return (nb_instr);
+
+		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
+		ft_lstclear(&best_steps, free);
+
+		if (push_after_comb)
+			nb_instr += apply_instr(data, push_instr, verbose);
+	}
+	return (nb_instr);
+}
+
+int optimized_algo(t_data *data, int (*f_can)(t_data *), int *instrs, int verbose)
+{
+	int nb_instr;
 
 	nb_instr = 0;
 	data->r_instr = instrs;
 
-	/* Étape 1: Pousser tous les éléments de A vers B */
-	while (data->lst_a)
-	{
-		/* Si l'élément actuel peut être poussé directement */
-		if (f_can(data))
-		{
-			nb_instr += apply_instr(data, pb, verbose);
-		}
-		else
-		{
-			/* Sinon, trouver la meilleure combinaison pour positionner l'élément */
-			best_steps = ft_best_comb(data, instrs, f_can, SIZE_MAX);
-			
-			if (!best_steps)
-				return (0); /* Échec, impossible de trouver une solution */
-			
-			/* Appliquer la séquence d'instructions */
-			nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
-			
-			/* Libérer la mémoire utilisée */
-			ft_lstclear(&best_steps, free);
-			
-			/* Push l'élément vers B puisqu'il est maintenant au bon endroit */
-			nb_instr += apply_instr(data, pb, verbose);
-		}
-	}
-
-	/* Étape 2: Pousser tous les éléments de B vers A */
-	nb_instr += dump_all_b_to_a(data, verbose);
+	nb_instr += process_stack(data, f_can, instrs, verbose, pb, SIZE_MAX, 1);
+	nb_instr += process_stack(data, can_dump_b, instrs, verbose, pa, SIZE_MAX, 1);
 
 	return (nb_instr);
 }
 
-
-/**
- * @brief Algorithme principal de tri optimisé
- *
- * Cette fonction implémente l'algorithme principal non récursif qui:
- * 1. Pousse les éléments de A vers B en utilisant la meilleure combinaison d'instructions
- * 2. Pousse tous les éléments de B vers A de manière optimale
- *
- * @param data Structure de données
- * @param verbose Mode verbeux (1) ou silencieux (0)
- * @return int Nombre d'instructions exécutées
- */
-int	main_algo(t_data *data, int verbose)
+int main_algo(t_data *data, int verbose)
 {
-	int	nb_instr;
-	t_list *best_steps;
-	int	rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
-	int	max_cost;
+	int nb_instr;
+	int rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
+	int max_cost;
 
 	nb_instr = 0;
-	max_cost = 500; // Coût maximum acceptable pour une séquence d'instructions
+	max_cost = 500;
 
-	/* Étape 1: Pousser tous les éléments de A vers B de manière optimale */
-	while (data->lst_a)
-	{
-		/* Si l'élément actuel peut être poussé directement */
-		if (can_push_b(data))
-		{
-			nb_instr += apply_instr(data, pb, verbose);
-			continue;
-		}
-		
-		/* Sinon, trouver la meilleure combinaison d'instructions pour amener le bon élément au sommet */
-		best_steps = ft_best_comb(data, rotation_instrs, can_push_b, max_cost);
-		
-		if (best_steps)
-		{
-			/* Appliquer la séquence d'instructions */
-			nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
-			
-			/* Libérer la mémoire utilisée */
-			ft_lstclear(&best_steps, free);
-			
-			/* Push l'élément vers B puisqu'il est maintenant au bon endroit */
-			nb_instr += apply_instr(data, pb, verbose);
-		}
-	}
-	
-	/* Étape 2: Pousser tous les éléments de B vers A */
-	nb_instr += dump_all_b_to_a(data, verbose);
+	nb_instr += process_stack(data, can_push_b, rotation_instrs, verbose, pb, max_cost, 0);
+	nb_instr += process_stack(data, can_dump_b, rotation_instrs, verbose, pa, max_cost, 1);
 
 	return (nb_instr);
 }

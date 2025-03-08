@@ -1,0 +1,231 @@
+* [33mea22360[m[33m ([m[1;36mHEAD -> [m[1;32mcodeium[m[33m)[m [can_insert_strategic] load b in around 4000 instructions keeping min and max joined and sorted && git push
+* [33mec68320[m[33m ([m[1;31morigin/codeium[m[33m)[m Rework optimized_algo with generic function capability and add can_load_legacy integration
+* [33mea860df[m functions using load butterfly cleaned
+* [33m008c0d2[m [compile]
+* [33m1ae4cd8[m[33m ([m[1;31morigin/temp_check[m[33m, [m[1;32mtemp_check[m[33m)[m Optimisation des performances : implémentation itérative de ft_best_comb et simplification de main_algo
+[31m|[m * [33md6e40f1[m[33m ([m[1;35mrefs/stash[m[33m)[m WIP on codeium: d107100 Renamed push_b to can_push_b to avoid name collision with existing stack operation
+[31m|[m[31m/[m[33m|[m 
+[31m|[m * [33m1f6a3a9[m index on codeium: d107100 Renamed push_b to can_push_b to avoid name collision with existing stack operation
+[31m|[m[31m/[m  
+* [33md107100[m Renamed push_b to can_push_b to avoid name collision with existing stack operation
+* [33mcfe824f[m Rename can_load_b to cool_push_b
+* [33m8de29e7[m load_b non fonctionnel mais excellent pre-tri: renamed cool_push_b
+* [33md114de1[m Refactoring: structured algorithm in sort_algo.c with clean main function
+* [33m5f534ff[m Refactor: move and rename can_first_load to can_load_by_partition for better separation of elements by partition type
+* [33mdb4fe75[m Refactor can_load_b: introduce is_extreme_b for better readability when checking extreme values in stack B
+* [33ma68c562[m Reorganize checker: move to src/checker directory and update Makefile
+* [33mb536220[m Reorganize tool files into proper directories based on functionality
+* [33mc19a937[m Simplify project: remove duplicate Makefile
+* [33m05d5568[m Finalize code restructuring: create lists directory, fix compilation errors, implement utility functions
+* [33m481c6fe[m [dirty: doesn't compile] Restructuration des fichiers: séparation des fonctions de base et fonctions de pile
+* [33m0076f17[m Add fully functioning checker with state display for debugging
+* [33mcdb55d1[m Refactor: Implement recursive approach for push_swap algorithm [not tested]
+* [33m084c41a[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m [Makefile] cd is well used, bug of the last commit solved
+* [33m7c0229a[m [Makefile] make visual rule done
+* [33m6cf0450[m[33m ([m[1;31morigin/best_comb[m[33m)[m [dirty]
+* [33m0d97bb7[m Not exaclty what I expected but fair enough
+* [33mff16930[m [dirty] lst_a where set on lst_b in can_butterfly, super buggy since some days
+* [33m5748d60[m ?
+* [33mdf57df6[m [load_butterfly] basic, but presort lstb pushing lows on one side and high on the other side
+* [33m1ec7a10[m [reach_rank] works wherever the rank is (the list is selected automatically
+* [33m5576fb5[m get_shortestway
+* [33mfe1bb1d[m [dirty] not tested but compile. can_butterfly cannot work but shoul load_b separating lowest and highests
+* [33m1e2d7b2[m [dirty] DOESN'T COMPILE print instr lighter
+* [33md862cd0[m [dirty] gotta sleep
+* [33m81a23c8[m 50209-22:28:23-nidionis@k1r2p7.42mulhouse.fr-~/push_swap-(cleaning) => ./complexity 500 50 Démarrage du test : 500 éléments, 50 itérations (seed 3353833442) Pire = 3090 instructions Moyenne = 1440 instructions Meilleur = 203 instructionss Écart-type = 783.0 instructions Objectif = entrez un nombre en troisième argument Précision = entrez un testeur en quatrième argument 100 % effectué Complexity 1.7.1 (2024-11-12)
+* [33m26efc66[m t_data lighter
+* [33mc6b86ee[m can_load_b safer and best_insert_dir closer to norm
+[33m|[m * [33m733190d[m[33m ([m[1;31morigin/cleaning[m[33m)[m [best_insert_dir] factorized by chat gpt (waste a bit of cpu because of an annoying norm of 4 args)
+[33m|[m[33m/[m  
+* [33mdd121c3[m [best_insert_dir] doesn't leak anymore (returns a malloc items)
+* [33m140680c[m [best_insert_dir] works
+* [33m358984f[m can_load_b have one more condition avoiding bugs when lst_size=3
+* [33m0ad9c05[m still buggy when lst_b = d->max_lst_b but functions are now using a list
+* [33m3918b4b[m [dirty] best_insert_dir bugs
+* [33mfabca78[m [best_insert] return a node containing the minimum instr step for an insertion
+* [33m8895aae[m [dirty] (compile) best_comb returns a simple link_list comtaining instr_step struct. apply_best_comb(_and) apply the instructions of a list (instead of a int[4])
+* [33m64c3461[m [dirty] (compile) best_comb returns a simple link_list comtaining instr_step struct. apply_best_comb(_and) apply the instructions of a list (instead of a int[4])
+* [33m33f73cd[m can_load_b should be good, but doesn't print instr
+* [33m3adbd6e[m ft_dlstsize
+* [33mb6d0cc3[m [is_sorted] ok
+* [33mcd517c4[m reach_rank ok
+* [33m7d45924[m [reach_rank] don't segfault thanks to bzero
+* [33m4739197[m [NEW_ARCH] compile, non teste, moins de fonctions plus lisibles
+* [33m0589f90[m [dirty] going to help Ahmed
+* [33m3788edb[m [dirty] ne compile pas, fonctions refactorisees et dans des fichiers separes
+* [33mc5fc504[m [dirty] still not tested, can_push file
+* [33m6f7ba0c[m [dirty] not tested fonctions refactorisees + separees en plusieurs fichiers
+* [33m2bfb194[m apply_instr prints the right name
+* [33mdf14c22[m push_a push_b better
+* [33ma3a1ad2[m push_a push_b protected on better way
+* [33m4370521[m mapped instructions functions are a bit better about the norm
+* [33m1274d0d[m better implemetaion of execute_command
+* [33m9996122[m [Makefile] + dossier src
+* [33md09f3ae[m[33m ([m[1;32mmain[m[33m)[m compile avec me libft
+* [33mace1c4d[m [get_next_wd]
+* [33m4169729[m infinite loop. ToO DOUX: find a way to dump when softmax - softmin > size_lstb
+* [33mf343c4b[m apply_best_comb protected from CANT_INSERT
+* [33me0fb4d6[m [is_sorted]
+* [33mc7234d4[m swap_if_low
+[34m|[m * [33mc0d2325[m[33m ([m[1;31morigin/so_buggy[m[33m)[m [dirty] before checkout
+[34m|[m * [33meb49418[m [dirty] before checkout
+[34m|[m[34m/[m  
+* [33m5581318[m first_dump dumps lst_b to lst_a keeping rank_max above 0 (and unstack below 0) Pire = 5049 instructions Moyenne = 1659 instructions Meilleur = 211 instructionss Écart-type = 1063.8 instructions Objectif = 30 % sous 1000 (70 au dessus) Précision = entrez un testeur en quatrième argument 100 % effectué
+* [33med9a750[m loading break when 0 or rank_max is met, and meeting the second item Démarrage du test : 500 éléments, 100 itérations (seed 1596790596) Pire = 3923 instructions Moyenne = 1355 instructions Meilleur = 48 instructionsss Écart-type = 893.0 instructionss Objectif = 47 % sous 1000 (53 au dessus) Précision = 0 % OK (100 KO) 100 % effectué Complexity 1.7.1 (2024-11-12)
+* [33mab4fed5[m f_do (function used in apply_best_comb_and) returns an int tha can break the function
+* [33mc474c7a[m load lowest and rank_max (and swap if rrotate) ./complexity -f push_swap 500 100 100000 ./checker Démarrage du test : 500 éléments, 100 itérations (seed 1957053909) Pire = 5548 instructions Moyenne = 2183 instructions Meilleur = 157 instructionss Écart-type = 1257.1 instructions Objectif = 100 % sous 100000 (0 au dessus) Précision = 0 % OK (100 KO) 100 % effectué Complexity 1.7.1 (2024-11-12)
+* [33md778f13[m load b uniquement si sous la mediane jusqu'a load 0 et rank max
+* [33med2af8d[m [dirty] gotta sleep
+* [33m3dbe2f1[m first dump_b only highest items
+* [33m354dc95[m load_minmax ok
+* [33mf059348[m [dirty] load_minmax bugs but we guess something
+* [33me45ec42[m[33m ([m[1;31morigin/best_insert[m[33m)[m [optimisation] : Ne cherche pas plus loin que le precedant record
+* [33m55991bd[m tentative d'optimisation (ne calcul pas plus loin que le precedent)
+* [33m681cc2a[m leaks solved
+* [33m67637b0[m best_insert && apply_best_comb works (very slow and I didn't check leaks)
+* [33md6b817a[m [dirty] grosse galere mais compile
+* [33mabc7ca5[m[33m ([m[1;31morigin/soft_minmax[m[33m)[m set_instr_step_itm set nb_instr to int max
+* [33m93c15a7[m can push_b stronger
+* [33mb83164a[m insert_target_to_list_steps <3
+* [33m90ed475[m can push b
+* [33mf04abaf[m basique algo d'insertion minimale dans b
+* [33m038fd45[m [dirty] compile mais segfault, apply_instr actualise un objet data passe en parametre
+* [33mb272dcc[m print_instr_steps + insert_target_to_list_steps returns a malloced_tab:w
+* [33m03db46e[m insert_target_to_list_steps good enough, bust be secure
+* [33mda5dc57[m apply_instr takes list as parameters, for an easier implementation of insert_target_to_list_steps
+* [33m7ebebb1[m [dirty] insert_target_to_list_steps started but don't compile
+* [33m6a996e6[m [ne compile pas] reecrit avec une variable globale
+* [33mbca84d5[m [set_data] softminmax
+* [33m1ad4582[m data struct
+[35m|[m * [33mc0ac45b[m[33m ([m[1;31morigin/v2[m[33m, [m[1;32mv2[m[33m)[m [sauvegarde] du x395, avant de pull depuis l'ecole
+[35m|[m [36m|[m * [33md45dc88[m[33m ([m[1;31morigin/reach_load[m[33m)[m initialisation correcte !
+[35m|[m [36m|[m * [33m4cae056[m [GIVE UP]
+[35m|[m [36m|[m * [33mbb72a05[m [dirty_dump] non teste: pose le nombre entre un inferieur et un superieur, puis revient vers softmax
+[35m|[m [36m|[m * [33mddb7e0b[m [sort_from_max_to_min] dump plus souvent et ratisse en retour
+[35m|[m [36m|[m * [33m692863e[m [de moins en moin de boucles vides] COMMENCE A PETER LES PLOMB gitadd!
+[35m|[m [36m|[m * [33mdee8c75[m [dump_max_next_to_zero]
+[35m|[m [36m|[m * [33m860855c[m b_dump semble correct
+[35m|[m [36m|[m * [33mae0793b[m [b_dump] semble bieux debugue, malgre la sortie erreure : instr not found
+[35m|[m [36m|[m * [33mbdbf0f7[m [presque ] on en voit le bout
+[35m|[m [36m|[m * [33me2d055e[m [dirty] compile mais a debuguer
+[35m|[m [36m|[m * [33m5dc4bd1[m [sort_from_min_to_max] est de toute beaute
+[35m|[m [36m|[m * [33m938f66d[m [algo] plus solide, insert dans b mais ne garde rien dans a
+[35m|[m [36m|[m * [33mf6e6c58[m [buggy] un potentiel mais tourne en boucle
+[35m|[m [36m|[m * [33md833047[m [get_softmins] functions tested
+[35m|[m [36m|[m * [33ma1be2de[m [get_softmax_in_b] tested
+[35m|[m [36m|[m * [33m1ab338b[m [get_softmax_in_a] tested
+[35m|[m [36m|[m * [33mf531fd9[m [reach_rank_lst_X] good enough + get_shortest_way modified
+[35m|[m [36m|[m * [33m4470466[m [get_shortest_way] fair enough + [get_size] too
+[35m|[m [36m|[m * [33m591f641[m [reach_rank_lst_X_in_dir] tested and fair enough
+[35m|[m [36m|[m * [33m9848648[m [reach_rank_lst_a_in_dir] testee
+[35m|[m [36m|[m * [33m81de561[m [dirty] makefile better and still dont compile
+[35m|[m [36m|[m * [33mf8eb314[m [shitty] NE COMPILE PAS
+[35m|[m [36m|[m[36m/[m  
+[35m|[m * [33mcf0d403[m [reach_to_by] reach in (a_list, a_target, target_through
+[35m|[m * [33m4ff84a2[m ft_is_duplicate
+[35m|[m * [33mc394f7d[m [is_in_lst] testing main (but a fair one)
+[35m|[m * [33ma800b4b[m [is_in_lst] testing main
+[35m|[m * [33me65af9c[m [dirty] ne compile pas et beaucoup de modifs !
+[35m|[m * [33m56a6b7f[m [parsing] tout n'est pas teste mais on peut attaquer l'algo
+[35m|[m * [33m7e2ee69[m[33m ([m[1;31morigin/AAA[m[33m, [m[1;32mAAA[m[33m)[m first_parsing commente + Makefile + ne prend pas l'argument unique
+[35m|[m * [33m62840ab[m [PARSING NOT VERIFIED] get_args_allinone commente
+[35m|[m * [33m1f4bc37[m some more buggy files added just un case...
+[35m|[m * [33md3976df[m [SOLVED] no link due to ft_ft_errmsg
+[35m|[m * [33m6c2871f[m [dirty] compile mais pas de leak
+[35m|[m * [33m7455941[m [DIRTY] Ne comiple pas suscpition d'un gros delete pas codeium
+[35m|[m * [33ma5543bb[m compile (non test) modifie pour la lisibilite
+[35m|[m * [33mde57b70[m sorting 4 numbers is solved
+[35m|[m * [33mc228d20[m makefile libftprintf don't try to remove libft.a -> there was a bug
+[35m|[m * [33mb0f99d2[m no leeks anymore
+[35m|[m * [33m32a408e[m passe la nouvelle version de la norminette
+[35m|[m * [33m0f2c124[m passe le testeur https://github.com/LeoFu9487/push_swap_tester.git + norminette
+[35m|[m * [33m1fd75e2[m instr_to_i consider \n avoiding bugs with rrrrra
+[35m|[m * [33m6fa4f19[m debuggue et passe les testeurs trouves sur internet
+[35m|[m[35m/[m  
+* [33m251bdd0[m libft and libftprintf removed from cache, they can be pushed with push_swap
+* [33mec5c958[m all done
+* [33m9284870[m algo fair enough, TO_DO : norminette and checker
+* [33m2b0bd0c[m sort_3_nb implemente
+* [33mc2a0435[m algo b_load presort around the median valuew
+* [33mdf88cfb[m algo b_dump fonctionnel
+* [33m5ab4a8c[m fonction buggee min_in_dir buguee, itm_insert exploitable
+* [33ma532134[m works but low quality
+*   [33md91fcad[m first load fonctionnelle et testee, a ameliorer ?
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33mb4f51aa[m more efficient when calculating
+[1;32m|[m * [33m524b11c[m lost file deleted
+[1;32m|[m * [33mb82f177[m algo easy and efficient enough
+* [1;33m|[m [33mccc67d6[m first_load fonction for new algo not finished
+* [1;33m|[m [33mec12dbb[m median_spit push items to b lower than the median
+* [1;33m|[m [33mc2b156b[m median_spit push items to b lower than the median
+* [1;33m|[m [33m607196a[m is_sorted debuggee
+* [1;33m|[m [33m348f58b[m smart_load loop load with less movements calculate how many moves needed for loading in b, and check if the n nexts item can load in b with less moves
+[1;33m|[m[1;33m/[m  
+* [33m6d0066c[m next_unsorted go to the next unsorted item before parse down
+* [33m4f19d59[m .
+* [33m6bb5f6d[m swap de parsedown mieux proteges, a tester
+* [33m97cfa84[m parse_down loop doesn't return anything
+* [33mfa0853c[m protection ajoutee a la fonction recentrer () si relMin et relMax se joignent + fct parse down
+* [33m983a579[m Bug in Makefile with linux solved
+* [33m4420848[m ...
+* [33mcd7b424[m fonction first_parse simplifiee: Place le min next to max
+* [33m1771a1a[m shitty algo works ?
+* [33mac216a0[m semble fonctionner malgres un bug pour la liste :  0       77      95      17      85      54      42      71      58      20      88      19      38      61      92      59      8       37      15      49      76      73      11      9       82      66      34      21      14      56    91       43      87      84      26      7       28      86      48      74      10      98      63      32      25      39      40      62      70      69      24      3       2       33      45      94      72      96      12      90    18       64      81      30      68      35      78      53      16      27      22      75      97      47      93      29      52      36      57      65      13      60      6       50      1       5       41      4       23      79    55       31      44      80      67      46      51      83      89      99
+* [33mcd6fc4f[m tjs bugue
+* [33m30db956[m fonctionne pour des grandes liste meme si il reste des bugs
+* [33m72dadf0[m fonctionne pour 1 3 2 5 4 0w
+* [33md8c4a12[m reach_push without bug, (not using swap)
+* [33m5535c43[m using relative Min and relative max as links, easier to refresh t_lnk	*get_RelMax(t_lnk *lst, int rankMax); t_lnk	*get_RelMin(t_lnk *lst); t_lnk	*refresh_RelMax(t_lnk *relMax); t_lnk	*refresh_RelMin(t_lnk *relMin);
+* [33m670f041[m first_dum_relMax debuged using int contains_only_higher(t_lnk *lst, int rank) avoid infinite loop
+* [33mf6edb3c[m dump_relMin dump_relMax
+* [33mfcdb2e6[m reach_push skip nb >= relMax (already sorted)
+* [33m3be47f2[m void	reach_push(t_lnk **lst_a, t_lnk **lst_b, int rank, int relMin) reach a value pushing to lst_b all numbers by ascending order
+* [33m0d7b25f[m reach_rank implemented void reach_rank(t_lnk **lst, int rank, int direction)
+* [33m4384885[m get_RelMin get_RelMax implementationreturn the Min (or Max value) not already sorted ex : 0 1 3 2 Relative min is 1 (0 and 1 are already sorted)
+* [33mb1d9684[m struc siplifie pour la lecture: uppression de t_itm et du (void *itm) dans la structure t_lnk rendant la lecture lourde
+* [33m9ab40bb[m get_bestway separe en 2 fonctions de moins de 25 lignes
+* [33mdc437f1[m get_bestway returns the number of steps but in too many lines
+* [33m7ea0871[m get_bestway returns 0 if path doesn't matter
+* [33m3dbbf46[m get_bestway(int rank, int rank_max, t_lnk *lst)return negative if the shortest way to a number (his rank) is by previous nodes
+* [33mac6aded[m sort_push :\// lst_a median to MAX, ordre croissant // lst_b median to min, ordre decroissant
+* [33ma39a47e[m apres un echec de resolution avec des arbre (a refaire avec une solution trouvee)debut d\'home made algo : partie 1 couper la liste a la mediane et pre-trier
+* [33m8fca193[m trying tree parsing but gotta sleep
+* [33m8891720[m adding init_next and init_prev pointers, simplify list reset
+* [33mbb6eee0[m verify duplicated items
+* [33me66cf18[m checker is working, TO_DO: remove some error msg to allow useless instuctions on empty lists
+* [33ma8c00b0[m apply instr implemente en une foret de ifs
+* [33m8647f7d[m swap_lst implemented
+* [33m8a1316f[m is sorted implemented
+* [33me35dfc6[m get_args_allinone carry on multiple args in the first arg if separateed by a space
+* [33mf09a9a9[m lst_init_rank associe le rank du nombre dans la liste (classement par valeur croissante)
+* [33mce96733[m rotate functions implemented
+* [33ma48aee1[m pop item implemented
+* [33m5359fc4[m del_lst implemente
+* [33mf5bd703[m print_lst with an header + del lst
+* [33m7a9400f[m get_args + print_lst implemented
+* [33m3438775[m implement errmsg if value > int
+* [33m766aca5[m Structures epurees :t_lst remplacee par (t_lnk **)ggc n'affiche plus de bugs, reste a tester la fonction
+* [33m41b786a[m shittypush before dodo : rebuild everything with the new struct
+* [33me0941c3[m list struct changed (using void * for them items)
+* [33meb0ed4a[m Make file works well enough
+* [33m260e93d[m Makefiles modified
+* [33m4a71c3b[m suppression de doublstlib et modification de l'architecture
+* [33m09262f3[m embourbe
+* [33m19aac9d[m bug with swap_list fixed
+* [33m56ba3b8[m bug avec .a.out 5 3 1 : pb lors du push, et avec l\'actualisation des parametres des listes
+* [33m77a8b18[m a bit of file cleaning
+* [33m0ccdd10[m sort_inplace + reach and sort fonctions
+* [33md3ed533[m buble sort fonctionnel + get_arg implementant l'index et le rang de chaque nb
+* [33maca53c3[m le bonus donne envie de crever + implementation de min_val et max_val pour t_list implementation dans pop à verifier
+* [33mf89903c[m rules implemented
+* [33m584ab08[m print list affiche les 2 listes simultanemt
+* [33mf003e54[m swap lst_done
+* [33m80d73c1[m get_args returns a list
+* [33mc72bf30[m ajout de get next line
+* [33mcdec9c9[m fct reverse + error_msg avec msg variable
+* [33m8e7ded0[m ajout de la fonction push (à tester)
+* [33m4363ff6[m fonction push, new_lnk, print_lst semblent fonctionnelle + t_lst)
+* [33m1edd7b8[m lst_fts.c a debugger
+* [33m1304673[m first commit
+* [33m10a6aaf[m Initial commit
+* [33m8278970[m[33m ([m[1;31morigin/master[m[33m)[m  first push
