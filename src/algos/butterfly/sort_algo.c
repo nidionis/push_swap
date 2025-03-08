@@ -153,39 +153,14 @@ static int	dump_all_b_to_a(t_data *data, int verbose)
 	return (nb_instr);
 }
 
-/**
- * @brief Positionne B sur son maximum
- * 
- * @param data Structure de données
- * @param verbose Mode verbeux
- * @return int Nombre d'instructions exécutées
- */
-static int	position_b_on_max(t_data *data, int verbose)
-{
-	int	nb_instr;
-	int	instr;
 
-	if (!data->lst_b || ft_dlstsize(data->lst_b) <= 1)
-		return (0);
-
-	nb_instr = 0;
-	instr = rb;
-	if (get_shortestway(data->max_b, data->lst_b) == RROTATE)
-		instr = rrb;
-
-	while (data->lst_b->rank != data->max_b)
-		nb_instr += apply_instr(data, instr, verbose);
-
-	return (nb_instr);
-}
 
 /**
- * @brief Algorithme principal de tri
+ * @brief Algorithme principal de tri optimisé
  *
- * Cette fonction implémente l'algorithme principal qui:
- * 1. Pousse les éléments de A vers B en les triant
- * 2. Positionne B sur son maximum 
- * 3. Pousse tous les éléments de B vers A
+ * Cette fonction implémente l'algorithme principal non récursif qui:
+ * 1. Pousse les éléments de A vers B en utilisant la meilleure combinaison d'instructions
+ * 2. Pousse tous les éléments de B vers A de manière optimale
  *
  * @param data Structure de données
  * @param verbose Mode verbeux (1) ou silencieux (0)
@@ -194,16 +169,40 @@ static int	position_b_on_max(t_data *data, int verbose)
 int	main_algo(t_data *data, int verbose)
 {
 	int	nb_instr;
+	t_list *best_steps;
+	int	rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
+	int	max_cost;
 
 	nb_instr = 0;
+	max_cost = 500; // Coût maximum acceptable pour une séquence d'instructions
 
-	/* Étape 1: Pousser les éléments de A vers B en les triant */
-	sort_recursive(data, can_push_b, verbose);
-
-	/* Étape 2: Positionner B sur son maximum */
-	nb_instr += position_b_on_max(data, verbose);
-
-	/* Étape 3: Pousser tous les éléments de B vers A */
+	/* Étape 1: Pousser tous les éléments de A vers B de manière optimale */
+	while (data->lst_a)
+	{
+		/* Si l'élément actuel peut être poussé directement */
+		if (can_push_b(data))
+		{
+			nb_instr += apply_instr(data, pb, verbose);
+			continue;
+		}
+		
+		/* Sinon, trouver la meilleure combinaison d'instructions pour amener le bon élément au sommet */
+		best_steps = ft_best_comb(data, rotation_instrs, can_push_b, max_cost);
+		
+		if (best_steps)
+		{
+			/* Appliquer la séquence d'instructions */
+			nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
+			
+			/* Libérer la mémoire utilisée */
+			ft_lstclear(&best_steps, free);
+			
+			/* Push l'élément vers B puisqu'il est maintenant au bon endroit */
+			nb_instr += apply_instr(data, pb, verbose);
+		}
+	}
+	
+	/* Étape 2: Pousser tous les éléments de B vers A */
 	nb_instr += dump_all_b_to_a(data, verbose);
 
 	return (nb_instr);

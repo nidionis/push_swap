@@ -13,52 +13,66 @@
 #include <push_swap.h>
 
 /**
- * @brief Trouve récursivement la meilleure combinaison d'instructions
+ * @brief Trouve itérativement la meilleure combinaison d'instructions efficace
  * 
- * Cette fonction utilise la récursion pour trouver la meilleure combinaison
- * d'instructions pour atteindre l'état souhaité
+ * Cette fonction utilise une approche itérative pour trouver la meilleure combinaison
+ * d'instructions pour atteindre l'état souhaité, ce qui évite la récursion et
+ * améliore considérablement les performances
  * 
  * @param d Structure de données contenant les listes et paramètres
  * @param instr_ls Tableau d'instructions possibles
  * @param can_push Fonction qui vérifie si l'état est atteint
  * @param max_cost Coût maximum acceptable
- * @param idx Index de l'instruction dans instr_ls (pour la récursion)
  * @return t_list* Liste chaînée des instructions à appliquer
  */
-static t_list *ft_best_comb_recursive(t_data *d, int *instr_ls, 
-                                    int (*can_push)(t_data *), 
-                                    int max_cost, int idx)
+static t_list *ft_best_comb_optimized(t_data *d, int *instr_ls, 
+                                 int (*can_push)(t_data *), 
+                                 int max_cost)
 {
-    t_list *best_comb_in_dir;
-    t_list *best_from_next;
-    t_list *result;
+    t_list *best_overall = NULL;
+    t_list *current_comb;
+    int idx;
+    int best_cost = SIZE_MAX;
+    int current_cost;
 
-    if (instr_ls[idx] == LOOP_END)
-        return (NULL);
-
-    best_comb_in_dir = best_insert_dir(d, instr_ls[idx], can_push, max_cost);
-    best_from_next = ft_best_comb_recursive(d, instr_ls, can_push, max_cost, idx + 1);
-
-    if (ft_cost(best_comb_in_dir) < ft_cost(best_from_next))
+    /* Parcourir toutes les instructions possibles */
+    idx = 0;
+    while (instr_ls[idx] != LOOP_END)
     {
-        if (best_from_next)
-            ft_lstclear(&best_from_next, free);
-        result = best_comb_in_dir;
-    }
-    else
-    {
-        if (best_comb_in_dir)
-            ft_lstclear(&best_comb_in_dir, free);
-        result = best_from_next;
+        /* Trouver la meilleure combinaison pour cette direction */
+        current_comb = best_insert_dir(d, instr_ls[idx], can_push, max_cost);
+        current_cost = ft_cost(current_comb);
+        
+        /* Si nous avons trouvé une meilleure combinaison */
+        if (current_comb && current_cost < best_cost)
+        {
+            /* Libérer l'ancienne meilleure combinaison */
+            if (best_overall)
+                ft_lstclear(&best_overall, free);
+            
+            /* Mettre à jour la meilleure combinaison */
+            best_overall = current_comb;
+            best_cost = current_cost;
+            
+            /* Mise à jour du coût maximum pour optimiser les recherches futures */
+            max_cost = best_cost;
+        }
+        else if (current_comb)
+        {
+            /* Libérer une combinaison qui n'est pas la meilleure */
+            ft_lstclear(&current_comb, free);
+        }
+        
+        idx++;
     }
     
-    return (result);
+    return (best_overall);
 }
 
 /**
  * @brief Trouve la meilleure combinaison d'instructions
  * 
- * Point d'entrée principal qui appelle la fonction récursive
+ * Point d'entrée principal qui appelle la fonction optimisée non récursive
  * 
  * @param d Structure de données contenant les listes et paramètres
  * @param instr_ls Tableau d'instructions possibles
@@ -69,5 +83,5 @@ static t_list *ft_best_comb_recursive(t_data *d, int *instr_ls,
 t_list *ft_best_comb(t_data *d, int *instr_ls, int (*can_push)(t_data *), int max_cost)
 {
     d->r_instr = instr_ls;
-    return (ft_best_comb_recursive(d, instr_ls, can_push, max_cost, 0));
+    return (ft_best_comb_optimized(d, instr_ls, can_push, max_cost));
 }
