@@ -46,8 +46,11 @@ int	main(int argc, char **argv)
 	init_data(&d, &d.lst_a, &d.lst_b);
 	d.instr_map = init_instr_map();
 	
-	/* Lancement de l'algorithme principal */
-	main_algo(&d, PRINT);
+	/* Définition des instructions de rotation */
+	int rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
+
+	/* Lancement de l'algorithme ultra-optimisé */
+	optimized_algo(&d, can_load_legacy, rotation_instrs, PRINT);
 	
 	/* Libération de la mémoire */
 	del_lst(&d.lst_a);

@@ -78,3 +78,17 @@ int	can_load_by_partition(t_data *data, int partition_type)
 	// Vérification finale: l'élément peut-il être inséré dans B ?
 	return (cool_push_b(data));
 }
+
+/**
+ * @brief Fonction wrapper pour utiliser can_load_by_partition avec la partition LOW
+ * Cette fonction permet d'utiliser can_load_by_partition avec optimized_algo
+ * 
+ * @param data Structure contenant les données
+ * @return int TRUE si l'élément peut être chargé, FALSE sinon
+ */
+int	can_load_low(t_data *data)
+{
+	return (can_load_by_partition(data, LOW));
+}
+
+

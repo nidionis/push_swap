@@ -108,7 +108,7 @@ int	optimized_push_to_b(t_data *data, int (*can_do)(t_data *data), int verbose)
  * @param verbose Mode verbeux ou silencieux
  * @return int Nombre d'instructions exécutées
  */
-static int	dump_all_b_to_a(t_data *data, int verbose)
+int	dump_all_b_to_a(t_data *data, int verbose)
 {
 	int	nb_instr;
 
@@ -119,7 +119,58 @@ static int	dump_all_b_to_a(t_data *data, int verbose)
 	}
 	return (nb_instr);
 }
+/**
+ * @brief Algorithme de tri optimisé générique
+ *
+ * Cette fonction implémente une version optimisée de l'algorithme de tri
+ * qui prend en paramètre une fonction de décision et un ensemble d'instructions.
+ * 
+ * @param data Structure de données contenant les piles
+ * @param f_can Fonction qui détermine si un élément peut être déplacé
+ * @param instrs Tableau d'instructions de rotation possibles (terminé par LOOP_END)
+ * @param verbose Mode verbeux (1) ou silencieux (0)
+ * @return int Nombre d'instructions exécutées
+ */
+int	optimized_algo(t_data *data, int (*f_can)(t_data *), int *instrs, int verbose)
+{
+	int	nb_instr;
+	t_list *best_steps;
 
+	nb_instr = 0;
+	data->r_instr = instrs;
+
+	/* Étape 1: Pousser tous les éléments de A vers B */
+	while (data->lst_a)
+	{
+		/* Si l'élément actuel peut être poussé directement */
+		if (f_can(data))
+		{
+			nb_instr += apply_instr(data, pb, verbose);
+		}
+		else
+		{
+			/* Sinon, trouver la meilleure combinaison pour positionner l'élément */
+			best_steps = ft_best_comb(data, instrs, f_can, SIZE_MAX);
+			
+			if (!best_steps)
+				return (0); /* Échec, impossible de trouver une solution */
+			
+			/* Appliquer la séquence d'instructions */
+			nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
+			
+			/* Libérer la mémoire utilisée */
+			ft_lstclear(&best_steps, free);
+			
+			/* Push l'élément vers B puisqu'il est maintenant au bon endroit */
+			nb_instr += apply_instr(data, pb, verbose);
+		}
+	}
+
+	/* Étape 2: Pousser tous les éléments de B vers A */
+	nb_instr += dump_all_b_to_a(data, verbose);
+
+	return (nb_instr);
+}
 
 
 /**
