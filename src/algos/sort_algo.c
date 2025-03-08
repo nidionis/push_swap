@@ -119,32 +119,48 @@ int	dump_all_b_to_a(t_data *data, int verbose)
 	}
 	return (nb_instr);
 }
-int process_stack(t_data *data, int (*can_func)(t_data *), int *instrs, int verbose,
-			int push_instr, int max_cost, int push_after_comb)
+int process_stack(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 {
 	int nb_instr;
 	t_list *best_steps;
+	int max_cost;
 
+	max_cost = SIZE_MAX;
 	nb_instr = 0;
-	while ((push_instr == pb && data->lst_a) || (push_instr == pa && data->lst_b))
+	
+	/* Étape 1: push tous les éléments de A à B */
+	while (data->lst_a)
 	{
-		if (can_func(data))
+		if (f_do(data))
 		{
-			nb_instr += apply_instr(data, push_instr, verbose);
+			nb_instr += apply_instr(data, pb, verbose);
 			continue;
 		}
-		if (max_cost == 0)
-			return (nb_instr);
 
-		best_steps = ft_best_comb(data, instrs, can_func, max_cost);
+		best_steps = ft_best_comb(data, instrs, f_do, max_cost);
 		if (!best_steps)
 			return (nb_instr);
 
 		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
 		ft_lstclear(&best_steps, free);
+	}
+	
+	/* Étape 2: push tous les éléments de B à A */
+	while (data->lst_b)
+	{
+		if (can_dump_b(data))
+		{
+			nb_instr += apply_instr(data, pa, verbose);
+			continue;
+		}
 
-		if (push_after_comb)
-			nb_instr += apply_instr(data, push_instr, verbose);
+		best_steps = ft_best_comb(data, instrs, can_dump_b, max_cost);
+		if (!best_steps)
+			return (nb_instr);
+
+		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
+		ft_lstclear(&best_steps, free);
+		nb_instr += apply_instr(data, pa, verbose);
 	}
 	return (nb_instr);
 }
@@ -156,8 +172,7 @@ int optimized_algo(t_data *data, int (*f_can)(t_data *), int *instrs, int verbos
 	nb_instr = 0;
 	data->r_instr = instrs;
 
-	nb_instr += process_stack(data, f_can, instrs, verbose, pb, SIZE_MAX, 1);
-	nb_instr += process_stack(data, can_dump_b, instrs, verbose, pa, SIZE_MAX, 1);
+	nb_instr = process_stack(data, f_can, instrs, verbose);
 
 	return (nb_instr);
 }
@@ -166,13 +181,10 @@ int main_algo(t_data *data, int verbose)
 {
 	int nb_instr;
 	int rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
-	int max_cost;
 
 	nb_instr = 0;
-	max_cost = 500;
 
-	nb_instr += process_stack(data, can_push_b, rotation_instrs, verbose, pb, max_cost, 0);
-	nb_instr += process_stack(data, can_dump_b, rotation_instrs, verbose, pa, max_cost, 1);
+	nb_instr = process_stack(data, can_push_b, rotation_instrs, verbose);
 
 	return (nb_instr);
 }
