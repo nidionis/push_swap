@@ -241,4 +241,9 @@ int reach_rank(t_data *data, int rank, int verbose);
 void print_instr_from_int_heavy(int i);
 int get_ntil(t_lnk *lst, int min, int max);
 
+/* Liste chainée double fonctions */
+void	ft_dlstclear(t_lnk **lst);
+t_lnk	*ft_dlstnewdup(t_lnk *node);
+t_lnk	*ft_dlstdup(t_lnk *lst);
+
 #endif
