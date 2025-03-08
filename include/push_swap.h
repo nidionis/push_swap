@@ -85,6 +85,7 @@ typedef struct s_data
 	int max_to_load;
 	int *r_instr;
 	t_instr_map *instr_map;
+	int pivot;
 }	t_data;
 
 typedef struct s_lnk
@@ -122,6 +123,7 @@ int can_push_b_dec(t_data *data);
 int can_push_b_optimized(t_data *data);
 int can_load_low(t_data *data);
 int dump_all_b_to_a(t_data *data, int verbose);
+int can_push_strategic(t_data *data);
 int should_swap_b(t_lnk *lst, int mediane);
 int should_swap_b_(t_data *data, int instr);
 int    get_kinda_mediane(t_data *data, t_lnk *lst);

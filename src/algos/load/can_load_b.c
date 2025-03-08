@@ -140,3 +140,41 @@ int	can_dump_b(t_data *data)
 		return (TRUE);
 	return (FALSE);
 }
+
+/**
+ * @brief Vérifie si un élément peut être poussé vers B selon une stratégie avancée:
+ * - Si c'est une valeur extrême, utilise can_push_extreme
+ * - Si la valeur est inférieure au pivot, vérifie si elle est:
+ *   - Au minimum de B (TRUE)
+ *   - À côté du maximum (TRUE)
+ *   - Sinon (FALSE)
+ * 
+ * @param data Structure contenant les données
+ * @return int TRUE si l'élément peut être poussé, FALSE sinon
+ */
+int	can_push_strategic(t_data *data)
+{
+	t_lnk *a;
+	t_lnk *b;
+
+	a = data->lst_a;
+	b = data->lst_b;
+
+	if (!a)
+		return (FALSE);
+	if (!b)
+		return (TRUE);
+	if (a->rank > data->max_b || a->rank < data->min_b)
+		return (b->rank == data->max_b);
+	if (a->rank < data->pivot)
+	{
+		if (a->rank == data->min_b)
+			return (TRUE);
+	}
+	else
+	{
+		if (b == get_max(b)->next)
+			return (TRUE);
+	}
+	return (can_push_b(data));
+}

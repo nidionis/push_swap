@@ -49,8 +49,11 @@ int	main(int argc, char **argv)
 	/* Définition des instructions de rotation */
 	int rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
 
-	/* Lancement de l'algorithme ultra-optimisé */
-	optimized_algo(&d, can_load_legacy, rotation_instrs, PRINT);
+	/* Initialisation du pivot (exemple: moitié du rang max) */
+	d.pivot = d.rank_max / 2;
+
+	/* Lancement de l'algorithme ultra-optimisé avec cool_push_b */
+	optimized_algo(&d, can_push_strategic, rotation_instrs, PRINT);
 	
 	/* Libération de la mémoire */
 	del_lst(&d.lst_a);
