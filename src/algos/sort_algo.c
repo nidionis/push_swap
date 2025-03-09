@@ -141,12 +141,13 @@ int process_stack(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 		ft_lstclear(&best_steps, free);
 	}
 	
+	int rotation_instrs[7] = {rb, ra, rrb, rra, rr, rrr, LOOP_END};
 	/* Étape 2: push tous les éléments de B à A */
 	while (data->lst_b)
 	{
 		while (can_dump_b(data))
 			nb_instr += apply_instr(data, pa, verbose);
-		best_steps = ft_best_comb(data, instrs, can_dump_b, max_cost);
+		best_steps = ft_best_comb(data, rotation_instrs, can_dump_b, max_cost);
 		if (!best_steps)
 			break ;
 		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);

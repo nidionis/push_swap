@@ -165,7 +165,7 @@ int	can_dump_b(t_data *data)
  * @param data Structure contenant les données
  * @return int TRUE si l'élément peut être poussé, FALSE sinon
  */
-int	can_push_strategic(t_data *data)
+int	can_push_b_strategic(t_data *data)
 {
 	t_lnk *a;
 	t_lnk *b;
@@ -179,15 +179,12 @@ int	can_push_strategic(t_data *data)
 		return (TRUE);
 	if (a->rank > data->max_b || a->rank < data->min_b)
 		return (b->rank == data->max_b);
-	if (a->rank < data->pivot)
+	else if (a->rank < data->pivot)
 	{
 		if (a->rank == data->min_b)
 			return (TRUE);
 	}
-	else
-	{
-		if (b == get_max(b)->next)
-			return (TRUE);
-	}
-	return (can_push_b(data));
+	else if (b == get_max(b)->next)
+		return (TRUE);
+	return (FALSE);
 }

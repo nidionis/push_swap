@@ -42,18 +42,12 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.lst_a))
 		ft_errmsg("Error: duplicated items");
 	
-	/* Initialisation des structures de données */
 	init_data(&d, &d.lst_a, &d.lst_b);
 	d.instr_map = init_instr_map();
 	
-	/* Définition des instructions de rotation */
 	int rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
-
-	/* Initialisation du pivot (exemple: moitié du rang max) */
 	d.pivot = d.rank_max / 2;
-
-	/* Lancement de l'algorithme ultra-optimisé avec cool_push_b */
-	optimized_algo(&d, can_push_strategic, rotation_instrs, PRINT);
+	optimized_algo(&d, can_push_b_strategic, rotation_instrs, PRINT);
 	
 	/* Libération de la mémoire */
 	del_lst(&d.lst_a);
