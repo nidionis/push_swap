@@ -41,15 +41,39 @@ t_lnk	*get_softmin(t_lnk *lst)
  * @param lst_a Liste A
  * @param lst_b Liste B
  */
+/**
+ * @brief Sets the soft max values for both stacks
+ * The softmax is the maximum rank element that's considered "sorted"
+ * 
+ * @param data Data structure to update
+ * @param lst_a Stack A
+ * @param lst_b Stack B
+ */
 void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 {
-	(void)lst_a;
-	if (!lst_b)
-		return ;
-	t_lnk *softmax = get_softmax(lst_b);
-	if (softmax)
+	if (!data)
+		return;
+	
+	/* Update softmax_a if stack A exists */
+	if (lst_a)
 	{
-		data->softmax_b = softmax->rank;
+		t_lnk *softmax_a = get_softmax(lst_a);
+		if (softmax_a)
+			data->softmax_a = softmax_a->rank;
+		else
+			data->softmax_a = -1;
+	}
+	else
+		data->softmax_a = -1;
+	
+	/* Update softmax_b if stack B exists */
+	if (lst_b)
+	{
+		t_lnk *softmax_b = get_softmax(lst_b);
+		if (softmax_b)
+			data->softmax_b = softmax_b->rank;
+		else
+			data->softmax_b = -1;
 	}
 	else
 		data->softmax_b = -1;
@@ -62,15 +86,39 @@ void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
  * @param lst_a Liste A
  * @param lst_b Liste B
  */
+/**
+ * @brief Sets the soft min values for both stacks
+ * The softmin is the minimum rank element that's considered "sorted"
+ * 
+ * @param data Data structure to update
+ * @param lst_a Stack A
+ * @param lst_b Stack B
+ */
 void	set_softmin(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 {
-	(void)lst_a;
-	if (!lst_b)
-		return ;
-	t_lnk *softmin = get_softmin(lst_b);
-	if (softmin)
+	if (!data)
+		return;
+	
+	/* Update softmin_a if stack A exists */
+	if (lst_a)
 	{
-		data->softmin_b = softmin->rank;
+		t_lnk *softmin_a = get_softmin(lst_a);
+		if (softmin_a)
+			data->softmin_a = softmin_a->rank;
+		else
+			data->softmin_a = -1;
+	}
+	else
+		data->softmin_a = -1;
+	
+	/* Update softmin_b if stack B exists */
+	if (lst_b)
+	{
+		t_lnk *softmin_b = get_softmin(lst_b);
+		if (softmin_b)
+			data->softmin_b = softmin_b->rank;
+		else
+			data->softmin_b = -1;
 	}
 	else
 		data->softmin_b = -1;

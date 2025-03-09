@@ -19,31 +19,58 @@
  * @param lst_a Pile A
  * @param lst_b Pile B
  */
+/**
+ * @brief Updates all data fields after each operation
+ * Updates min/max values, softmin/softmax, and medians for both stacks
+ * 
+ * @param data Main data structure
+ * @param lst_a Pointer to stack A
+ * @param lst_b Pointer to stack B
+ */
 void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
-	if (lst_a && *lst_a && lst_b)
+	if (!data || !lst_a || !lst_b)
+		return;
+	
+	/* Update pointers to the current stacks */
+	data->lst_a = *lst_a;
+	data->lst_b = *lst_b;
+	
+	/* Update median values */
+	data->mediane_a = *lst_a ? set_mediane(lst_a) : 0;
+	data->mediane_b = *lst_b ? set_mediane(lst_b) : 0;
+	
+	/* Update min/max values for stack A */
+	if (*lst_a)
 	{
-		data->mediane_a = set_mediane(lst_a);
-		data->mediane_b = set_mediane(lst_b);
-		set_softmax(data, *lst_a, *lst_b);
-		set_softmin(data, *lst_a, *lst_b);
-		data->lst_a = *lst_a;
-		data->lst_b = *lst_b;
-		
-		/* Mettre à jour min_b et max_b si B n'est pas vide */
-		if (*lst_b)
-		{
-			t_lnk *max_b_elem = get_max(*lst_b);
-			t_lnk *min_b_elem = get_min(*lst_b);
-			data->max_b = max_b_elem ? max_b_elem->rank : 0;
-			data->min_b = min_b_elem ? min_b_elem->rank : 0;
-		}
-		else
-		{
-			data->max_b = 0;
-			data->min_b = 0;
-		}
+		t_lnk *max_a_elem = get_max(*lst_a);
+		t_lnk *min_a_elem = get_min(*lst_a);
+		data->max_a = max_a_elem ? max_a_elem->rank : 0;
+		data->min_a = min_a_elem ? min_a_elem->rank : 0;
 	}
+	else
+	{
+		data->max_a = 0;
+		data->min_a = 0;
+	}
+	
+	/* Update min/max values for stack B */
+	if (*lst_b)
+	{
+		t_lnk *max_b_elem = get_max(*lst_b);
+		t_lnk *min_b_elem = get_min(*lst_b);
+		data->max_b = max_b_elem ? max_b_elem->rank : 0;
+		data->min_b = min_b_elem ? min_b_elem->rank : 0;
+	}
+	else
+	{
+		data->max_b = 0;
+		data->min_b = 0;
+	}
+	
+	/* Update softmin/softmax values */
+	set_softmax(data, *lst_a, *lst_b);
+	set_softmin(data, *lst_a, *lst_b);
 }
 
 /**
