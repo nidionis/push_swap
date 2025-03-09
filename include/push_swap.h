@@ -54,6 +54,15 @@ typedef struct s_best_comb
 	int max_cost;
 } t_best_comb;
 
+typedef struct s_comb_operation
+{
+	int *instr_list;
+	int (*can_fn)(t_data *);
+	int (*f_do)(t_data *, int);
+	size_t max_cost;
+	int verbose;
+} t_comb_operation;
+
 typedef struct s_instr_map
 {
     char    *name;
@@ -66,15 +75,6 @@ typedef struct s_instr_step
 	int		instr;
 	int		nb_instr;
 }	t_instr_step;
-
-typedef struct s_comb_operation
-{
-	int *instr_list;
-	int (*can_fn)(t_data *);
-	int (*f_do)(t_data *, int);
-	size_t max_cost;
-	int verbose;
-} t_comb_operation;
 
 typedef struct s_data
 {
@@ -133,6 +133,8 @@ int	is_on_min_or_max(t_data *data, t_lnk *lst);
 int can_push_b_dec(t_data *data);
 int can_push_b_optimized(t_data *data);
 int can_load_low(t_data *data);
+int can_load_b_but_softminmax(t_data *data);
+int load_or_dump_b(t_data *data, int verbose);
 int dump_all_b_to_a(t_data *data, int verbose);
 int can_push_b_strategic(t_data *data);
 int should_swap_b(t_lnk *lst, int mediane);
@@ -237,6 +239,7 @@ void    swap_b(t_lnk **lst_a, t_lnk **lst_b);
 void    swap_both(t_lnk **lst_a, t_lnk **lst_b);
 int             ft_rev_instr(int instr);
 int             is_sorted(t_lnk *lst);
+int             has_rank_zero_and_sorted(t_lnk *lst);
 int             ft_no_duplicate(t_lnk *lst);
 int *insert_target_to_list_steps(t_data *data, int lst_instr[],
     int (*can_push)(t_data *data), int cost);
@@ -267,5 +270,7 @@ t_lnk *find_highest_below_pivot(t_data *data);
 int is_on_b_only_minmax(t_data *data);
 int apply_best_comb_operation(t_data *data, t_comb_operation *comb_op);
 t_comb_operation init_comb_operation(int *instr_list, int (*can_fn)(t_data *), int (*f_do)(t_data *, int), int verbose);
+
+#define COST_NOT_SET 0
 
 #endif

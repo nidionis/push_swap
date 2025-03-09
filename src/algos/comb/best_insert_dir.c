@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <push_swap.h>
+#include <limits.h>
 
 /**
  * @brief Met à jour la meilleure combinaison trouvée
@@ -91,8 +92,12 @@ static t_list *best_insert_dir_recursive(t_data *d_copy, int instr,
 	t_list *instr_step_node;
 	
 	/* Cas de base: le nombre d'instructions dépasse déjà le coût maximum */
-	if (nb_instr >= best->max_cost || !best->max_cost)
+	if (nb_instr > best->max_cost)
 		return (best->best_comb);
+	
+	/* If max_cost is COST_NOT_SET (0), return nb_instr to avoid infinite loop */
+	if (best->max_cost == COST_NOT_SET)
+		return ((t_list *)(size_t)nb_instr); /* Cast nb_instr to t_list pointer to return it */
 		
 	/* Rechercher la meilleure instruction suivante */
 	instr_step_node = best_insert(d_copy, d_copy->r_instr, can_push, best->max_cost - nb_instr);
@@ -136,7 +141,16 @@ t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max
 	ft_memcpy(&d_copy, d, sizeof(t_data));
 	
 	/* Appeler la fonction récursive */
-	return best_insert_dir_recursive(&d_copy, instr, can_push, &best, 0);
+	t_list *result = best_insert_dir_recursive(&d_copy, instr, can_push, &best, 0);
+	
+	/* Check if result is actually an int value (indicating nb_instr when max_cost is COST_NOT_SET) */
+	if (best.max_cost == COST_NOT_SET && (size_t)result <= INT_MAX) {
+		/* This is a special case return - the result is actually an integer */
+		fprintf(stderr, "Warning: COST_NOT_SET used, got nb_instr = %zu instead of a t_list\n", (size_t)result);
+		return NULL; /* Return NULL to indicate no valid path found */
+	}
+	
+	return result;
 }
 
 

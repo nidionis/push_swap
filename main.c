@@ -53,7 +53,19 @@ int	main(int argc, char **argv)
 		first_load_and_break_loop(&d, PRINT);
 	}
 	//print_lst(&d);
-	//dump_setting_min_or_max(&d, PRINT);
+	dump_setting_min_or_max(&d, PRINT);
+		print_lst(&d);
+	/* Process elements - we need both conditions to be satisfied */
+	while (!has_rank_zero_and_sorted(d.lst_a))
+	{
+		print_lst(&d);
+		
+		/* Try load_or_dump and break if not possible */
+		if (load_or_dump_b(&d, PRINT) == CANT_INSERT) {
+			fprintf(stderr, "No more operations possible\n");
+			break;
+		}
+	}
 
 	//optimized_algo(&d, can_push_b_strategic, rotation_instrs, PRINT);
 	
