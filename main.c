@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	init_data(&d, &d.lst_a, &d.lst_b);
 	d.instr_map = init_instr_map();
 	
-	int rotation_instrs[7] = {ra, rb, rra, rrb, rr, rrr, LOOP_END};
+	int rotation_instrs[7] = {rb, rr, ra, rra, rrb, rrr, LOOP_END};
 	d.r_instr = rotation_instrs;
 	d.pivot = d.rank_max / 2;
 	while (!d.lst_b ||(get_min(d.lst_b)->rank != 0 || get_max(d.lst_b)->rank != d.rank_max))

@@ -47,9 +47,11 @@ int dump_setting_min_or_max(t_data *data, int verbose)
 {
 	int nb_instr;
 	int instr;
-	//t_list *best_steps;
+	t_list *best_steps;
 	t_lnk *highest_below_pivot;
 
+	int rotation_instrs[7] = {rb, rrb, rrr, rra, ra, rr, LOOP_END};
+	data->r_instr = rotation_instrs;
 	nb_instr = 0;
 	/* Trouver et positionner la valeur la plus haute sous le pivot */
 	highest_below_pivot = find_highest_below_pivot(data);
@@ -63,17 +65,17 @@ int dump_setting_min_or_max(t_data *data, int verbose)
 	//print_lst(data);
 	while (data->max_b == data->rank_max || data->min_b == 0)
 		nb_instr += apply_instr(data, pa, verbose);
-	//while (data->lst_b)
-	//{
-	//	best_steps = ft_best_comb(data, data->r_instr, 
-	//		(int (*)(t_data *))can_dump_b, SIZE_MAX);
-	//	if (!best_steps)
-	//		break;
-	//	
-	//	nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
-	//	ft_lstclear(&best_steps, free);
-	//	nb_instr += apply_instr(data, pa, verbose);
-	//}
+	while (data->lst_b)
+	{
+		best_steps = ft_best_comb(data, data->r_instr, 
+			(int (*)(t_data *))can_dump_b, SIZE_MAX);
+		if (!best_steps)
+			break;
+		
+		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
+		ft_lstclear(&best_steps, free);
+		nb_instr += apply_instr(data, pa, verbose);
+	}
 
 	return (nb_instr);
 }
