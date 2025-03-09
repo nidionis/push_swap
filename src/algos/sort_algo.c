@@ -125,6 +125,7 @@ int process_stack(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 	int nb_instr;
 	t_list *best_steps;
 	int max_cost;
+	int ret_apply_best_comb_and;
 
 	max_cost = SIZE_MAX;
 	nb_instr = 0;
@@ -137,7 +138,13 @@ int process_stack(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 		best_steps = ft_best_comb(data, instrs, f_do, max_cost);
 		if (!best_steps)
 			break ;
-		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
+		ret_apply_best_comb_and = apply_best_comb_and(break_when_minmax_loaded, data, best_steps, verbose);
+		if (ret_apply_best_comb_and == BREAK_BEST_COMB)
+		{
+			ft_lstclear(&best_steps, free);
+			break ;
+		}
+		nb_instr += ret_apply_best_comb_and;
 		ft_lstclear(&best_steps, free);
 	}
 	

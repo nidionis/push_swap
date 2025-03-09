@@ -250,5 +250,10 @@ void	ft_dlstclear(t_lnk **lst);
 t_lnk	*ft_dlstnewdup(t_lnk *node);
 t_lnk	*ft_dlstdup(t_lnk *lst);
 int	can_dump_b(t_data *data);
+int break_when_minmax_loaded(t_data *d, int instr);
+int first_load_and_break_loop(t_data *data, int verbose);
+int dump_setting_min_or_max(t_data *data, int verbose);
+t_lnk *find_highest_below_pivot(t_data *data);
+int is_on_b_only_minmax(t_data *data);
 
 #endif
