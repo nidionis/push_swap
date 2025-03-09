@@ -120,46 +120,102 @@ int	dump_all_b_to_a(t_data *data, int verbose)
 	return (nb_instr);
 }
 
+int load_lows(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
+{
+	int nb_instr;
+	int op_result;
+	t_comb_operation comb_op;
+
+	nb_instr = 0;
+
+	/* Setup operation for stack A to B */
+	comb_op.instr_list = instrs;
+	comb_op.can_fn = f_do;
+	comb_op.f_do = break_when_minmax_loaded;
+	comb_op.max_cost = SIZE_MAX;
+	comb_op.verbose = verbose;
+
+	/* Process stack A to B */
+	while (data->lst_a)
+	{
+		/* Direct operations when possible */
+		while (f_do(data))
+			nb_instr += apply_instr(data, pb, verbose);
+		
+		/* Apply calculated best combination */
+		op_result = apply_best_comb_operation(data, &comb_op);
+		if (op_result == CANT_INSERT)
+			break;
+		nb_instr += op_result;
+	}
+
+	/* Setup operation for stack B to A */
+	int rotation_instrs[7] = {rb, ra, rrb, rra, rr, rrr, LOOP_END};
+	comb_op.instr_list = rotation_instrs;
+	comb_op.can_fn = can_dump_b;
+	comb_op.f_do = NULL;
+	
+	/* Process stack B to A */
+	while (data->lst_b)
+	{
+		/* Direct operations when possible */
+		while (can_dump_b(data))
+			nb_instr += apply_instr(data, pa, verbose);
+		
+		/* Apply calculated best combination */
+		op_result = apply_best_comb_operation(data, &comb_op);
+		if (op_result == CANT_INSERT)
+			break;
+		nb_instr += op_result;
+	}
+
+	return (nb_instr);
+}
+
+
 int process_stack(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 {
 	int nb_instr;
-	t_list *best_steps;
-	int max_cost;
-	int ret_apply_best_comb_and;
+	int op_result;
+	t_comb_operation comb_op;
 
-	max_cost = SIZE_MAX;
 	nb_instr = 0;
-	
-	/* Étape 1: push tous les éléments de A à B */
+
+	/* Initialize operation for stack A to B */
+	comb_op = init_comb_operation(instrs, f_do, break_when_minmax_loaded, verbose);
+
+	/* Process stack A to B */
 	while (data->lst_a)
 	{
+		/* Direct operations when possible */
 		while (f_do(data))
 			nb_instr += apply_instr(data, pb, verbose);
-		best_steps = ft_best_comb(data, instrs, f_do, max_cost);
-		if (!best_steps)
-			break ;
-		ret_apply_best_comb_and = apply_best_comb_and(break_when_minmax_loaded, data, best_steps, verbose);
-		if (ret_apply_best_comb_and == BREAK_BEST_COMB)
-		{
-			ft_lstclear(&best_steps, free);
-			break ;
-		}
-		nb_instr += ret_apply_best_comb_and;
-		ft_lstclear(&best_steps, free);
+		
+		/* Apply calculated best combination */
+		op_result = apply_best_comb_operation(data, &comb_op);
+		if (op_result == CANT_INSERT)
+			break;
+		nb_instr += op_result;
 	}
-	
+
+	/* Initialize operation for stack B to A */
 	int rotation_instrs[7] = {rb, ra, rrb, rra, rr, rrr, LOOP_END};
-	/* Étape 2: push tous les éléments de B à A */
+	comb_op = init_comb_operation(rotation_instrs, can_dump_b, NULL, verbose);
+	
+	/* Process stack B to A */
 	while (data->lst_b)
 	{
+		/* Direct operations when possible */
 		while (can_dump_b(data))
 			nb_instr += apply_instr(data, pa, verbose);
-		best_steps = ft_best_comb(data, rotation_instrs, can_dump_b, max_cost);
-		if (!best_steps)
-			break ;
-		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
-		ft_lstclear(&best_steps, free);
+		
+		/* Apply calculated best combination */
+		op_result = apply_best_comb_operation(data, &comb_op);
+		if (op_result == CANT_INSERT)
+			break;
+		nb_instr += op_result;
 	}
+
 	return (nb_instr);
 }
 

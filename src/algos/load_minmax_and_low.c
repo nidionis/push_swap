@@ -14,23 +14,25 @@
 
 int first_load_low_and_minmax(t_data *data, int verbose)
 {
-	t_list *insertion_step;
 	int nb_instr;
+	int op_result;
+	t_comb_operation comb_op;
 
-	nb_instr = -1;
+	nb_instr = 0;
 	if (can_push_b_strategic(data))
-		apply_instr(data, pb, verbose);
+		nb_instr += apply_instr(data, pb, verbose);
 	else
 	{
-		/* Utilisation de la partition LOW pour séparer les plus petits éléments */
-		insertion_step = ft_best_comb(data, data->r_instr, 
-			(int (*)(t_data *))can_push_b_strategic, SIZE_MAX);
-		if (!insertion_step)
-			return (-1);
-		nb_instr = ft_nb_instr(insertion_step);
-		if (apply_best_comb_and(NULL, data, insertion_step, verbose) == BREAK_BEST_COMB)
-			return (BREAK_BEST_COMB);
-		ft_lstclear(&insertion_step, free);
+		/* Initialize operation */
+		comb_op = init_comb_operation(data->r_instr, 
+			(int (*)(t_data *))can_push_b_strategic, NULL, verbose);
+		
+		/* Apply calculated best combination */
+		op_result = apply_best_comb_operation(data, &comb_op);
+		if (op_result == CANT_INSERT)
+			return (nb_instr);
+		
+		nb_instr += op_result;
 	}
 	return (nb_instr);
 }

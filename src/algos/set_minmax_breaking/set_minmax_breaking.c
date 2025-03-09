@@ -25,21 +25,28 @@ int break_when_minmax_loaded(t_data *d, int instr)
 
 int first_load_and_break_loop(t_data *data, int verbose)
 {
-	t_list *insertion_step;
 	int nb_instr;
+	int op_result;
+	t_comb_operation comb_op;
 
-	nb_instr = -1;
+	nb_instr = 0;
 	while (can_push_b_strategic(data))
-		nb_instr = apply_instr(data, pb, verbose);
-	insertion_step = ft_best_comb(data, data->r_instr, 
-		(int (*)(t_data *))can_push_b_strategic, SIZE_MAX);
-	nb_instr = ft_nb_instr(insertion_step);
-	if (apply_best_comb_and(break_when_minmax_loaded, data, insertion_step, verbose) == BREAK_BEST_COMB)
-	{
-		ft_lstclear(&insertion_step, free);
+		nb_instr += apply_instr(data, pb, verbose);
+	
+	/* Initialize operation */
+	comb_op = init_comb_operation(data->r_instr, 
+		(int (*)(t_data *))can_push_b_strategic, break_when_minmax_loaded, verbose);
+	
+	/* Apply calculated best combination */
+	op_result = apply_best_comb_operation(data, &comb_op);
+	
+	/* Check for BREAK_BEST_COMB or error */
+	if (op_result == BREAK_BEST_COMB)
 		return (BREAK_BEST_COMB);
-	}
-	ft_lstclear(&insertion_step, free);
+	if (op_result == CANT_INSERT)
+		return (nb_instr);
+	
+	nb_instr += op_result;
 	return (nb_instr);
 }
 
@@ -47,33 +54,39 @@ int dump_setting_min_or_max(t_data *data, int verbose)
 {
 	int nb_instr;
 	int instr;
-	t_list *best_steps;
+	int op_result;
+	t_comb_operation comb_op;
 	t_lnk *highest_below_pivot;
 
 	int rotation_instrs[7] = {rb, rrb, rrr, rra, ra, rr, LOOP_END};
 	data->r_instr = rotation_instrs;
 	nb_instr = 0;
+	
 	/* Trouver et positionner la valeur la plus haute sous le pivot */
 	highest_below_pivot = find_highest_below_pivot(data);
-	instr = (get_shortestway(highest_below_pivot->rank, data->lst_b) == ROTATE) ? rb : rrb;
-	while (data->lst_b !=highest_below_pivot)
+	if (highest_below_pivot)
 	{
+		instr = (get_shortestway(highest_below_pivot->rank, data->lst_b) == ROTATE) ? rb : rrb;
 		while (data->lst_b->rank != highest_below_pivot->rank)
 			nb_instr += apply_instr(data, instr, verbose);
 	}
-	//printf("on pivot\n");
-	//print_lst(data);
+	
+	/* Push jusqu'à ce que 0 et rank_max ne soient plus sur stack B */
 	while (data->max_b == data->rank_max || data->min_b == 0)
 		nb_instr += apply_instr(data, pa, verbose);
+	
+	/* Initialize comb operation for dumping B */
+	comb_op = init_comb_operation(data->r_instr, 
+		(int (*)(t_data *))can_dump_b, NULL, verbose);
+	
+	/* Process remaining elements in stack B */
 	while (data->lst_b)
 	{
-		best_steps = ft_best_comb(data, data->r_instr, 
-			(int (*)(t_data *))can_dump_b, SIZE_MAX);
-		if (!best_steps)
+		/* Apply calculated best combination */
+		op_result = apply_best_comb_operation(data, &comb_op);
+		if (op_result == CANT_INSERT)
 			break;
 		
-		nb_instr += apply_best_comb_and(NULL, data, best_steps, verbose);
-		ft_lstclear(&best_steps, free);
 		nb_instr += apply_instr(data, pa, verbose);
 	}
 

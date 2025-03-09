@@ -46,6 +46,7 @@
 # define ERR_BUTT -46
 
 typedef struct s_lnk t_lnk;
+typedef struct s_data t_data;
 
 typedef struct s_best_comb
 {
@@ -65,6 +66,15 @@ typedef struct s_instr_step
 	int		instr;
 	int		nb_instr;
 }	t_instr_step;
+
+typedef struct s_comb_operation
+{
+	int *instr_list;
+	int (*can_fn)(t_data *);
+	int (*f_do)(t_data *, int);
+	size_t max_cost;
+	int verbose;
+} t_comb_operation;
 
 typedef struct s_data
 {
@@ -255,5 +265,7 @@ int first_load_and_break_loop(t_data *data, int verbose);
 int dump_setting_min_or_max(t_data *data, int verbose);
 t_lnk *find_highest_below_pivot(t_data *data);
 int is_on_b_only_minmax(t_data *data);
+int apply_best_comb_operation(t_data *data, t_comb_operation *comb_op);
+t_comb_operation init_comb_operation(int *instr_list, int (*can_fn)(t_data *), int (*f_do)(t_data *, int), int verbose);
 
 #endif
