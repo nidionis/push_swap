@@ -77,7 +77,7 @@ int can_insert_to_a_between(t_data *data)
 
 	a = data->lst_a;
 	b = data->lst_b;
-	return (b->rank > a->rank && b->rank < a->prev->rank);
+	return (b->rank < a->rank && b->rank > a->prev->rank);
 }
 
 /**
@@ -144,14 +144,14 @@ int	can_dump_b(t_data *data)
 		return (TRUE);
 	if (!b)
 		return (FALSE);
-	if (a->rank == data->min_a)
+	if (a == get_min(a))
 	{
-		if (b->rank < data->min_a || b->rank > data->max_a)
+		if (b->rank < get_min(a)->rank || b->rank > get_max(a)->rank)
 			return (TRUE);
 		else
 			return (FALSE);
 	}
-	return (can_insert_to_b_between(data));
+	return (can_insert_to_a_between(data));
 }
 
 /**
