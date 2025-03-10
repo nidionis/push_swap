@@ -26,14 +26,15 @@
 # define SECOND_INSTR 2
 # define NB_SECOND_INSTR 3
 # define INT_MAX 2147483647
-# define LOOP_END 123456789
-# define CANT_INSERT 2147483646
 # define SIZE_MAX 500
+# define LOOP_END 11
+# define CANT_INSERT_ERROR 2147483646
+# define MAX_INSTRUCTION 251
 # define BREAK_BEST_COMB -1
 # define BREAK 1
 # define IGNORE 0
 # define EXE_CMD_ERROR 666
-# define NO_MOVE 13531
+# define NO_MOVE 0
 
 # define LOW 432
 # define HIGH 433
@@ -106,6 +107,8 @@ typedef struct s_lnk
 	struct s_lnk	*next;
 	struct s_lnk	*prev;
 }	t_lnk;
+
+/* LOOP_END already defined above */
 
 enum	e_instr {
 	INSTR_MIN = 1,

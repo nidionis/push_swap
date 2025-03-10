@@ -22,7 +22,7 @@
  * 
  * @param data Structure containing stacks and state
  * @param verbose Flag to control output verbosity
- * @return int Number of operations performed or CANT_INSERT if neither is possible
+ * @return int Number of operations performed or CANT_INSERT_ERROR if neither is possible
  */
 /**
  * @brief Safely try either load or dump operation, choosing the better one
@@ -37,19 +37,24 @@ int	load_or_dump_b(t_data *data, int verbose)
 	t_comb_operation	dump_op;
 	int				result;
 	t_data			data_copy;
+	t_data			data_copy2;
 	
 	ft_memcpy(&data_copy, data, sizeof(t_data));
+	ft_memcpy(&data_copy2, data, sizeof(t_data));
 	load_op = init_comb_operation(data->r_instr, &can_load_b_but_softminmax, NULL, QUIET);
 	dump_op = init_comb_operation(data->r_instr, &can_dump_b, NULL, QUIET);
-	if (apply_best_comb_operation(&data_copy, &load_op) < apply_best_comb_operation(&data_copy, &dump_op))
+	result = CANT_INSERT_ERROR;
+	if (!data->lst_b ||apply_best_comb_operation(&data_copy, &load_op) < apply_best_comb_operation(&data_copy2, &dump_op))
 	{
 		load_op.verbose = verbose;
 		result = apply_best_comb_operation(data, &load_op);
+		result += apply_instr(data, pb, verbose);
 	}
-	else
+	else if (data->lst_b)
 	{
 		dump_op.verbose = verbose;
 		result = apply_best_comb_operation(data, &dump_op);
+		result += apply_instr(data, pa, verbose);
 	}
 	return (result);
 }

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   best_insert_dir.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/09 16:30:59 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/09 22:08:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <limits.h>
 
+/* Forward declarations for helper functions */
+static t_list *handle_best_comb_iterative(t_list **best_comb, t_list *instr_step_node, 
+                                     int instr, int nb_instr);
+static void handle_no_best_comb(t_list *first_intr_step_node, t_data *d_copy, int instr);
+static void best_insert_loop(t_data *d_copy, int instr, int (*can_push)(t_data *), 
+                        int *max_cost, t_list **best_comb);
+
 /**
- * @brief Met à jour la meilleure combinaison trouvée
+ * @brief Met à jour la meilleure combinaison trouvée (original version)
  *
  * @param best Structure contenant la meilleure combinaison et son coût
  * @param instr_step_node Nœud contenant l'instruction et son coût
@@ -74,54 +81,7 @@ int should_update(t_best_comb *best, t_list *instr_step_node, int nb_first_instr
 {
 	return (nb_first_instr + get_steps(instr_step_node) < best->max_cost);
 }
-/**
- * @brief Recherche récursivement la meilleure combinaison d'instructions
- *
- * @param d_copy Copie des données pour éviter de modifier l'originale
- * @param instr Code de l'instruction
- * @param can_push Fonction vérifiant si l'état est atteint
- * @param best Structure contenant la meilleure combinaison et son coût
- * @param nb_instr Nombre d'instructions appliquées (pour la récursion)
- * @return t_list* La meilleure combinaison trouvée
- */
-static t_list *best_insert_dir_recursive(t_data *d_copy, int instr, 
-                                        int (*can_push)(t_data *), 
-                                        t_best_comb *best, 
-                                        int nb_instr)
-{
-	t_list *instr_step_node;
-	
-	/* Cas de base: le nombre d'instructions dépasse déjà le coût maximum */
-	if (nb_instr > best->max_cost)
-		return (best->best_comb);
-	
-	/* If max_cost is COST_NOT_SET (0), return nb_instr to avoid infinite loop */
-	if (best->max_cost == COST_NOT_SET)
-		return ((t_list *)(size_t)nb_instr); /* Cast nb_instr to t_list pointer to return it */
-		
-	/* Rechercher la meilleure instruction suivante */
-	instr_step_node = best_insert(d_copy, d_copy->r_instr, can_push, best->max_cost - nb_instr);
-	
-	/* Cas d'erreur */
-	if (!instr_step_node)
-	{
-		ft_errmsg("[best_insert_dir_recursive] best_insert returned NULL");
-		return (best->best_comb);
-	}
-	
-	/* Si la combinaison actuelle est meilleure, mettre à jour */
-	if (should_update(best, instr_step_node, nb_instr))
-		best->best_comb = handle_best_comb(best, instr_step_node, instr, nb_instr);
-	else
-	{
-		/* Sinon, appliquer l'instruction et continuer récursivement */
-		apply_instr(d_copy, instr, QUIET);
-		ft_lstclear(&instr_step_node, free);
-		return best_insert_dir_recursive(d_copy, instr, can_push, best, nb_instr + 1);
-	}
-	
-	return (best->best_comb);
-}
+/* The recursive implementation has been completely removed in favor of the iterative approach */
 
 /**
  * @brief Trouve la meilleure direction d'insertion
@@ -135,27 +95,43 @@ static t_list *best_insert_dir_recursive(t_data *d_copy, int instr,
 t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost)
 {
 	t_data d_copy;
-	t_best_comb best = {NULL, max_cost};
+	t_list *best_comb = NULL;
 
-	/* Créer une copie des données pour éviter de modifier l'originale */
+	/* Validate pointers first */
+	if (!d || !can_push)
+	{
+		fprintf(stderr, "[best_insert_dir] Error: NULL pointer received\n");
+		return NULL;
+	}
+
+	/* If cost is 0, break any further checks */
+	if (max_cost == 0)
+		return NULL;
+
+	/* Always ensure max_cost is reasonable (at least MAX_INSTRUCTION) to avoid excessive warnings */
+	if (max_cost < MAX_INSTRUCTION)
+	{
+		/* Only log a warning if max_cost is really small */
+		if (max_cost <= 1) 
+			fprintf(stderr, "[best_insert_dir] Warning: max_cost too small (%d), using default\n", max_cost);
+		max_cost = MAX_INSTRUCTION; /* Set to the maximum instruction count */
+	}
+
+	/* Safely copy the data structure */
+	ft_memset(&d_copy, 0, sizeof(t_data)); /* Initialize to zeros first */
 	ft_memcpy(&d_copy, d, sizeof(t_data));
 	
-	/* Appeler la fonction récursive */
-	t_list *result = best_insert_dir_recursive(&d_copy, instr, can_push, &best, 0);
+	/* Use the iterative approach instead of recursive */
+	best_insert_loop(&d_copy, instr, can_push, &max_cost, &best_comb);
 	
-	/* Check if result is actually an int value (indicating nb_instr when max_cost is COST_NOT_SET) */
-	if (best.max_cost == COST_NOT_SET && (size_t)result <= INT_MAX) {
-		/* This is a special case return - the result is actually an integer */
-		fprintf(stderr, "Warning: COST_NOT_SET used, got nb_instr = %zu instead of a t_list\n", (size_t)result);
-		return NULL; /* Return NULL to indicate no valid path found */
-	}
-	
-	return result;
+	return best_comb;
 }
 
 
-/*
-t_list *handle_best_comb(t_list **best_comb, t_list *instr_step_node, int instr, int nb_instr)
+/**
+ * Updates the best combination by clearing the old one and setting up the new one
+ */
+static t_list *handle_best_comb_iterative(t_list **best_comb, t_list *instr_step_node, int instr, int nb_instr)
 {
 	t_list *saved_first_instr;
 	if (*best_comb)
@@ -166,42 +142,111 @@ t_list *handle_best_comb(t_list **best_comb, t_list *instr_step_node, int instr,
 	return (*best_comb);
 }
 
-void handle_no_best_comb(t_list *first_intr_step_node, t_data *d_copy, int instr)
+/**
+ * Handles the case when no better combination is found
+ */
+static void handle_no_best_comb(t_list *first_intr_step_node, t_data *d_copy, int instr)
 {
 	t_instr_step *first_intr_step;
+	
+	/* Check for null pointers */
+	if (!first_intr_step_node || !d_copy)
+	{
+		fprintf(stderr, "[handle_no_best_comb] Error: NULL pointer received\n");
+		return;
+	}
+	
 	first_intr_step = first_intr_step_node->content;
+	if (!first_intr_step)
+	{
+		fprintf(stderr, "[handle_no_best_comb] Error: NULL first_intr_step content\n");
+		return;
+	}
+	
 	first_intr_step->nb_instr++;
 	apply_instr(d_copy, instr, QUIET);
 }
 
-void best_insert_loop(t_data *d_copy, int instr, int (*can_push)(t_data *), int *max_cost, t_list **best_comb)
+/**
+ * Iterative implementation for finding the best insertion direction
+ */
+static void best_insert_loop(t_data *d_copy, int instr, int (*can_push)(t_data *), 
+                         int *max_cost, t_list **best_comb)
 {
-	t_list *first_intr_step_node = init_instr_step_node(instr, 0);
-	t_instr_step *first_intr_step = first_intr_step_node->content;
-	while (first_intr_step->nb_instr < *max_cost)
+	t_list *first_intr_step_node;
+	t_instr_step *first_intr_step;
+	int iterations = 0;
+	const int MAX_ITERATIONS = 100; /* Set a maximum to prevent infinite loops */
+	
+	/* Check for NULL pointers */
+	if (!d_copy || !can_push || !max_cost || !best_comb)
 	{
-		t_list *instr_step_node = best_insert(d_copy, d_copy->r_instr, can_push, *max_cost);
+		fprintf(stderr, "[best_insert_loop] Error: NULL pointer received\n");
+		return;
+	}
+	
+	/* Initialize the first instruction step */
+	first_intr_step_node = init_instr_step_node(instr, 0);
+	if (!first_intr_step_node)
+	{
+		fprintf(stderr, "[best_insert_loop] Error: Failed to initialize first instruction node\n");
+		return;
+	}
+	
+	first_intr_step = first_intr_step_node->content;
+	if (!first_intr_step)
+	{
+		fprintf(stderr, "[best_insert_loop] Error: First instruction node has NULL content\n");
+		ft_lstdelone(first_intr_step_node, free);
+		return;
+	}
+	
+	/* If cost is 0, break any further checks */
+	if (*max_cost == 0)
+	{
+		ft_lstdelone(first_intr_step_node, free);
+		return;
+	}
+
+	/* Ensure max_cost is at least a reasonable minimum value */
+	if (*max_cost < MAX_INSTRUCTION)
+	{
+		*max_cost = MAX_INSTRUCTION; /* Set to maximum instruction count */
+		/* Only log if the value was very small */
+		if (*max_cost <= 1)
+			fprintf(stderr, "[best_insert_loop] Setting minimum max_cost to %d\n", *max_cost);
+	}
+	
+	while (first_intr_step->nb_instr < *max_cost && iterations < MAX_ITERATIONS)
+	{
+		iterations++;
+		t_list *instr_step_node = best_insert(d_copy, d_copy->r_instr, can_push, *max_cost - first_intr_step->nb_instr);
+		
+		/* If we have a valid step node and it's better than current max cost */
 		if (instr_step_node && first_intr_step->nb_instr + get_steps(instr_step_node) < *max_cost - 1)
 		{
-			*best_comb = handle_best_comb(best_comb, instr_step_node, instr, first_intr_step->nb_instr);
+			*best_comb = handle_best_comb_iterative(best_comb, instr_step_node, instr, first_intr_step->nb_instr);
 			*max_cost = ft_cost(*best_comb);
+			break; /* Exit loop once we've found a good combination */
 		}
 		else
 		{
+			/* Apply the instruction and continue searching */
 			handle_no_best_comb(first_intr_step_node, d_copy, instr);
-			ft_lstclear(&instr_step_node, free);
+			
+			/* Clean up if step node exists but wasn't used */
+			if (instr_step_node)
+				ft_lstclear(&instr_step_node, free);
+			
+			/* Exit if we've reached max_cost operations or can't push anymore */
+			if (first_intr_step->nb_instr >= *max_cost || !can_push(d_copy))
+				break;
 		}
 	}
-	ft_lstclear(&first_intr_step_node, free);
+	
+	/* If we hit max iterations without finding a solution, log a warning */
+	if (iterations >= MAX_ITERATIONS)
+		fprintf(stderr, "[best_insert_loop] Warning: Reached max iterations (%d)\n", MAX_ITERATIONS);
+	
+	ft_lstdelone(first_intr_step_node, free); /* Use lstdelone instead of lstclear */
 }
-
-t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost)
-{
-	t_data d_copy;
-	t_list *best_comb = NULL;
-
-	ft_memcpy(&d_copy, d, sizeof(t_data));
-	best_insert_loop(&d_copy, instr, can_push, &max_cost, &best_comb);
-	return (best_comb);
-}
-*/

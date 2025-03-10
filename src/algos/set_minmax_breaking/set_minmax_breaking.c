@@ -32,18 +32,21 @@ int first_load_and_break_loop(t_data *data, int verbose)
 	nb_instr = 0;
 	while (can_push_b_strategic(data))
 		nb_instr += apply_instr(data, pb, verbose);
-	
-	/* Initialize operation */
-	comb_op = init_comb_operation(data->r_instr, 
-		(int (*)(t_data *))can_push_b_strategic, break_when_minmax_loaded, verbose);
-	
+
+	/* Setup operation */
+	comb_op.instr_list = data->r_instr;
+	comb_op.can_fn = (int (*)(t_data *))can_push_b_strategic;
+	comb_op.f_do = break_when_minmax_loaded;
+	comb_op.max_cost = SIZE_MAX;
+	comb_op.verbose = verbose;
+
 	/* Apply calculated best combination */
 	op_result = apply_best_comb_operation(data, &comb_op);
 	
 	/* Check for BREAK_BEST_COMB or error */
 	if (op_result == BREAK_BEST_COMB)
 		return (BREAK_BEST_COMB);
-	if (op_result == CANT_INSERT)
+	if (op_result == CANT_INSERT_ERROR)
 		return (nb_instr);
 	
 	nb_instr += op_result;
@@ -72,19 +75,22 @@ int dump_setting_min_or_max(t_data *data, int verbose)
 	}
 	
 	/* Push jusqu'à ce que 0 et rank_max ne soient plus sur stack B */
-	while (data->max_b == data->rank_max || data->min_b == 0)
+	while (data->max_b == data->rank_max || (data->min_b == 0 && data->lst_b))
 		nb_instr += apply_instr(data, pa, verbose);
 	
-	/* Initialize comb operation for dumping B */
-	comb_op = init_comb_operation(data->r_instr, 
-		(int (*)(t_data *))can_dump_b, NULL, verbose);
+	/* Setup comb operation for dumping B */
+	comb_op.instr_list = data->r_instr;
+	comb_op.can_fn = (int (*)(t_data *))can_dump_b;
+	comb_op.f_do = NULL; /* No break function needed */
+	comb_op.max_cost = SIZE_MAX;
+	comb_op.verbose = verbose;
 	
 	/* Process remaining elements in stack B */
 	while (data->lst_b)
 	{
 		/* Apply calculated best combination */
 		op_result = apply_best_comb_operation(data, &comb_op);
-		if (op_result == CANT_INSERT)
+		if (op_result == CANT_INSERT_ERROR)
 			break;
 		
 		nb_instr += apply_instr(data, pa, verbose);
@@ -155,3 +161,4 @@ int set_minmax_breaking(t_data *data, int verbose)
 	nb_instr += dump_setting_min_or_max(data, verbose);
 	return (nb_instr);
 }
+

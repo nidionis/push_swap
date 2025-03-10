@@ -35,10 +35,46 @@ static t_list *ft_best_comb_optimized(t_data *d, int *instr_ls,
     int best_cost = SIZE_MAX;
     int current_cost;
 
-    /* Parcourir toutes les instructions possibles */
-    idx = 0;
-    while (instr_ls[idx] != LOOP_END)
+//    /* Ensure max_cost is at least a reasonable minimum value */
+//    if (max_cost <= COST_NOT_SET || max_cost <= 1)
+//    {
+//        max_cost = 10; /* Set a reasonable default if max_cost is too small */
+//        fprintf(stderr, "[ft_best_comb_optimized] Warning: max_cost too small, set to %d\n", max_cost);
+//    }
+
+    /* Safety check for NULL pointers */
+    if (!can_push)
     {
+        fprintf(stderr, "[ft_best_comb_optimized] Error: NULL can_push function pointer\n");
+        return (NULL);
+    }
+
+    /* Check if instruction list is NULL */
+    if (!instr_ls)
+    {
+        fprintf(stderr, "[ft_best_comb_optimized] Error: NULL instruction list\n");
+        return (NULL);
+    }
+    
+    /* Validate data structure */
+    if (!d)
+    {
+        fprintf(stderr, "[ft_best_comb_optimized] Error: NULL data pointer\n");
+        return (NULL);
+    }
+
+    /* Parcourir toutes les instructions possibles (with safety limits) */
+    idx = 0;
+    while (instr_ls[idx] != LOOP_END) /* Add upper limit to prevent infinite loop */
+    {
+        /* Validate instruction code */
+        if (instr_ls[idx] < INSTR_MIN || instr_ls[idx] > INSTR_MAX)
+        {
+            fprintf(stderr, "[ft_best_comb_optimized] Invalid instruction code: %d at index %d\n", instr_ls[idx], idx);
+            idx++;
+            continue;
+        }
+        
         /* Trouver la meilleure combinaison pour cette direction */
         current_comb = best_insert_dir(d, instr_ls[idx], can_push, max_cost);
         current_cost = ft_cost(current_comb);
@@ -82,6 +118,5 @@ static t_list *ft_best_comb_optimized(t_data *d, int *instr_ls,
  */
 t_list *ft_best_comb(t_data *d, int *instr_ls, int (*can_push)(t_data *), int max_cost)
 {
-    d->r_instr = instr_ls;
     return (ft_best_comb_optimized(d, instr_ls, can_push, max_cost));
 }

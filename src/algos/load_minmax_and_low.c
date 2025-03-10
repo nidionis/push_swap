@@ -29,7 +29,7 @@ int first_load_low_and_minmax(t_data *data, int verbose)
 		
 		/* Apply calculated best combination */
 		op_result = apply_best_comb_operation(data, &comb_op);
-		if (op_result == CANT_INSERT)
+		if (op_result == CANT_INSERT_ERROR)
 			return (nb_instr);
 		
 		nb_instr += op_result;

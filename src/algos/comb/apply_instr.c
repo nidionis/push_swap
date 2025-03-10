@@ -75,6 +75,26 @@ void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_
 {
 	int					i;
 
+	/* Validate input parameters */
+	if (!lst_a || !lst_b || !instr_map)
+	{
+		fprintf(stderr, "[execute_command] Error: NULL parameters\n");
+		return;
+	}
+
+	/* Allow LOOP_END as a special case */
+	if (instr == LOOP_END)
+	{
+		return;
+	}
+
+	/* Enhanced validation of instruction code */
+	if (instr < INSTR_MIN || instr > INSTR_MAX)
+	{
+		fprintf(stderr, "[execute_command] Out of range instruction: %i\n", instr);
+		return;
+	}
+
 	i = 0;
 	while (instr_map[i].code != -1)
 	{
@@ -85,7 +105,7 @@ void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_
 		}
 		i++;
 	}
-	fprintf(stderr, "[execute_command] Invalid instruction %i\n", instr);
+	fprintf(stderr, "[execute_command] Invalid instruction %i (not in map)\n", instr);
 	//ft_errmsg("[execute_command] Invalid instruction");
 }
 
@@ -106,6 +126,25 @@ int	is_rotating(int instr)
  */
 int	apply_instr(t_data *data, int instr, int to_print)
 {
+	/* Validate data structure */
+	if (!data || !data->instr_map)
+	{
+		fprintf(stderr, "[apply_instr] Error: NULL data or instruction map\n");
+		return (0);
+	}
+
+	/* Allow LOOP_END as a special case */
+	if (instr == LOOP_END)
+	{
+		return (0);
+	}
+	/* Validate instruction range */
+	if (instr < INSTR_MIN || instr > INSTR_MAX)
+	{
+		fprintf(stderr, "[apply_instr] Invalid instruction code: %d\n", instr);
+		return (0);
+	}
+
 	/* Exécuter la commande sur les piles */
 	execute_command(&(data->lst_a), &(data->lst_b), instr, data->instr_map);
 	

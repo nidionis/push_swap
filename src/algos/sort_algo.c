@@ -144,7 +144,7 @@ int load_lows(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 		
 		/* Apply calculated best combination */
 		op_result = apply_best_comb_operation(data, &comb_op);
-		if (op_result == CANT_INSERT)
+		if (op_result == CANT_INSERT_ERROR)
 			break;
 		nb_instr += op_result;
 	}
@@ -164,7 +164,7 @@ int load_lows(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 		
 		/* Apply calculated best combination */
 		op_result = apply_best_comb_operation(data, &comb_op);
-		if (op_result == CANT_INSERT)
+		if (op_result == CANT_INSERT_ERROR)
 			break;
 		nb_instr += op_result;
 	}
@@ -193,7 +193,7 @@ int process_stack(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 		
 		/* Apply calculated best combination */
 		op_result = apply_best_comb_operation(data, &comb_op);
-		if (op_result == CANT_INSERT)
+		if (op_result == CANT_INSERT_ERROR)
 			break;
 		nb_instr += op_result;
 	}
@@ -211,7 +211,7 @@ int process_stack(t_data *data, int (*f_do)(t_data *), int *instrs, int verbose)
 		
 		/* Apply calculated best combination */
 		op_result = apply_best_comb_operation(data, &comb_op);
-		if (op_result == CANT_INSERT)
+		if (op_result == CANT_INSERT_ERROR)
 			break;
 		nb_instr += op_result;
 	}

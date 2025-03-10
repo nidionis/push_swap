@@ -17,6 +17,18 @@ int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data), int max)
 	int		count;
 	t_data	data_copy;
 
+	/* Allow LOOP_END as a special case */
+	if (instr == LOOP_END)
+	{
+		return (CANT_INSERT_ERROR);
+	}
+	/* Validate instruction range */
+	if (instr < INSTR_MIN || instr > INSTR_MAX)
+	{
+		fprintf(stderr, "[count_instr] Invalid instruction code: %d\n", instr);
+		return (CANT_INSERT_ERROR);
+	}
+
 	ft_memcpy(&data_copy, data, sizeof(t_data));
 
 	count = 0;
@@ -26,6 +38,6 @@ int	count_instr(t_data *data, int instr, int (*can_push)(t_data *data), int max)
 		count++;
 	}
 	if (count >= max)
-		return (CANT_INSERT);
+		return (CANT_INSERT_ERROR);
 	return (count);
 }

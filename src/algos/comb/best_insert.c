@@ -13,96 +13,133 @@
 #include <push_swap.h>
 
 /**
- * @brief Trouve récursivement la meilleure instruction dans un ensemble d'instructions
- * 
- * @param d_copy Copie de la structure de données pour éviter de modifier l'originale
- * @param lst_instr Tableau d'instructions possibles
- * @param can_push Fonction vérifiant si l'état est atteint
- * @param max_cost Coût maximum acceptable
- * @param idx Index courant dans le tableau d'instructions (pour la récursion)
- * @param best_instr Meilleure instruction trouvée jusque-là
- * @param best_cost Coût de la meilleure instruction trouvée jusque-là
- * @return t_instr_step* Structure contenant la meilleure instruction et son coût
+ * @brief Forward declaration of best_insert_dir to use it in best_insert
  */
-static t_instr_step *find_best_instr_recursive(t_data *d_copy, int lst_instr[], 
-                                             int (*can_push)(t_data *), 
-                                             int max_cost, int idx,
-                                             int best_instr, int best_cost)
-{
-    int current_cost;
-    t_instr_step *result;
-    
-    /* Cas de base : fin du tableau d'instructions */
-    if (lst_instr[idx] == LOOP_END)
-    {
-        result = malloc(sizeof(t_instr_step));
-        if (!result)
-            return (NULL);
-        result->instr = best_instr;
-        result->nb_instr = best_cost;
-        return (result);
-    }
-    
-    /* Évaluer le coût de l'instruction courante */
-    current_cost = count_instr(d_copy, lst_instr[idx], can_push, max_cost);
-    
-    /* Si l'instruction courante est meilleure, mettre à jour les paramètres */
-    if (current_cost < best_cost)
-    {
-        best_instr = lst_instr[idx];
-        best_cost = current_cost;
-        max_cost = current_cost; /* Mise à jour du coût max pour les prochaines itérations */
-    }
-    
-    /* Appel récursif pour l'instruction suivante */
-    return find_best_instr_recursive(d_copy, lst_instr, can_push, max_cost, idx + 1, best_instr, best_cost);
-}
+t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost);
 
 /**
- * @brief Trouve la meilleure instruction pour atteindre un état donné
+ * @brief Finds the best instruction to reach a given state
  * 
- * @param d Structure de données contenant les listes
- * @param lst_instr Tableau d'instructions possibles
- * @param can_push Fonction vérifiant si l'état est atteint
- * @param max_cost Coût maximum acceptable
- * @return t_list* Nœud contenant l'instruction et son coût
+ * @param d Data structure containing the lists
+ * @param lst_instr Array of possible instructions
+ * @param can_push Function verifying if the state is reached
+ * @param max_cost Maximum acceptable cost
+ * @return t_list* Node containing the instruction and its cost
  */
 t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost)
 {
-	t_data d_copy;
+	t_data *d_copy;
 	t_instr_step *instr_step;
 	t_list *instr_step_node;
+	t_list *best_dir_result;
 	
-	/* Créer une copie des données pour éviter de modifier l'originale */
-	ft_memcpy(&d_copy, d, sizeof(t_data));
+	/* Validate pointers first */
+	if (!d || !lst_instr || !can_push)
+	{
+		fprintf(stderr, "[best_insert] Error: NULL pointer received\n");
+		return NULL;
+	}
 	
-	/* Si l'état est déjà atteint, retourner une instruction vide */
-	if (can_push(&d_copy))
+	/* If cost is 0, break any further checks */
+	if (max_cost == 0)
+		return NULL;
+
+	/* Ensure max_cost is at least a reasonable minimum value */
+	if (max_cost < MAX_INSTRUCTION && max_cost != 0)
+	{
+		max_cost = MAX_INSTRUCTION; /* Use constant for max instruction count */
+	}
+	
+	/* Allocate memory for the data copy */
+	d_copy = (t_data *)malloc(sizeof(t_data));
+	if (!d_copy)
+	{
+		fprintf(stderr, "[best_insert] Error: Failed to allocate memory for data copy\n");
+		return NULL;
+	}
+	
+	/* Create a copy of the data to avoid modifying the original */
+	ft_memset(d_copy, 0, sizeof(t_data)); /* Initialize to zeros first */
+	ft_memcpy(d_copy, d, sizeof(t_data));
+	
+	/* If the condition is already met, return an empty instruction */
+	if (can_push(d_copy))
 	{
 		instr_step = malloc(sizeof(t_instr_step));
 		if (!instr_step)
+		{
+			free(d_copy);
 			return (NULL);
+		}
 		instr_step->instr = lst_instr[0];
 		instr_step->nb_instr = 0;
-	}
-	else
-	{
-		/* Rechercher récursivement la meilleure instruction */
-		instr_step = find_best_instr_recursive(&d_copy, lst_instr, can_push, max_cost, 0, lst_instr[0], SIZE_MAX);
-		if (!instr_step)
-			return (NULL);
+		instr_step_node = ft_lstnew(instr_step);
+		free(d_copy); /* Free memory before returning */
+		return instr_step_node;
 	}
 	
-	/* Créer le nœud de liste pour l'instruction */
+	/* Use best_insert_dir instead of recursive approach */
+	best_dir_result = NULL;
+	
+	/* Try each instruction in the list */
+	int i = 0;
+	while (lst_instr[i] != LOOP_END && lst_instr[i] != 0)
+	{
+		/* Use best_insert_dir for this instruction */
+		best_dir_result = best_insert_dir(d_copy, lst_instr[i], can_push, max_cost);
+		
+		/* If we found a valid result, convert it to instr_step format */
+		if (best_dir_result)
+		{
+			/* Extract info from best_dir_result */
+			t_instr_step *dir_instr_step = (t_instr_step *)best_dir_result->content;
+			
+			/* Create new instr_step with the found instruction */
+			instr_step = malloc(sizeof(t_instr_step));
+			if (!instr_step)
+			{
+				ft_lstclear(&best_dir_result, free);
+				free(d_copy);
+				return NULL;
+			}
+			
+			/* Copy the instruction and steps */
+			instr_step->instr = lst_instr[i];
+			instr_step->nb_instr = dir_instr_step->nb_instr;
+			
+			/* Clean up the best_dir_result */
+			ft_lstclear(&best_dir_result, free);
+			
+			/* Create a new node for the result */
+			instr_step_node = ft_lstnew(instr_step);
+			free(d_copy); /* Free memory before returning */
+			return instr_step_node;
+		}
+		
+		i++;
+	}
+	
+	/* If we couldn't find a valid instruction, use NO_MOVE */
+	instr_step = malloc(sizeof(t_instr_step));
+	if (!instr_step)
+	{
+		free(d_copy);
+		return NULL;
+	}
+	
+	instr_step->instr = NO_MOVE;
+	instr_step->nb_instr = SIZE_MAX; /* Use max value to indicate no valid instruction found */
+	
 	instr_step_node = ft_lstnew(instr_step);
-	return (instr_step_node);
+	free(d_copy); /* Free memory before returning */
+	return instr_step_node;
 }
 
 /**
- * @brief Obtient le nombre d'étapes d'un nœud d'instruction
+ * @brief Gets the number of steps in an instruction node
  * 
- * @param instr_step_node Nœud d'instruction
- * @return int Nombre d'étapes
+ * @param instr_step_node Instruction node
+ * @return int Number of steps
  */
 int get_steps(t_list *instr_step_node)
 {
@@ -110,65 +147,34 @@ int get_steps(t_list *instr_step_node)
 
 	if (!instr_step_node)
 		return (SIZE_MAX);
-		
-	instr_step = instr_step_node->content;
+	instr_step = (t_instr_step *)instr_step_node->content;
+	if (!instr_step)
+		return (SIZE_MAX);
 	return (instr_step->nb_instr);
 }
 
 /**
- * @brief Initialise un nouveau nœud d'instruction
+ * @brief Initializes a new instruction node
  * 
- * @param instr Code de l'instruction
- * @param nb_instr_init Nombre d'instructions initial
- * @return t_list* Nœud créé
+ * @param instr Instruction code
+ * @param nb_instr_init Initial number of instructions
+ * @return t_list* Created node
  */
-t_list *init_instr_step_node(int instr, int nb_instr_init)
+t_list	*init_instr_step_node(int instr, int nb_instr_init)
 {
-	t_instr_step *instr_step;
-	t_list *instr_step_node;
+	t_instr_step	*instr_step;
+	t_list			*instr_step_node;
 
-	/* Allouer la mémoire pour la structure */
 	instr_step = malloc(sizeof(t_instr_step));
 	if (!instr_step)
 		return (NULL);
-		
-	/* Initialiser les valeurs */
 	instr_step->instr = instr;
 	instr_step->nb_instr = nb_instr_init;
-	
-	/* Créer le nœud de liste */
 	instr_step_node = ft_lstnew(instr_step);
+	if (!instr_step_node)
+	{
+		free(instr_step);
+		return (NULL);
+	}
 	return (instr_step_node);
 }
-
-
-
-
-//void	explore_insert_paths(t_data *d, int lst_instr[], int first_instr_steps[], int (*can_push)(t_data *))
-//{
-//	int	*second_instr_steps;
-//	int	j_instr = 0;
-//
-//	while (first_instr_steps[NB_INSTR]++ < ft_cost(d->best_comb))
-//	{
-//		apply_instr(d, lst_instr[j_instr], QUIET);
-//		second_instr_steps = insert_target_to_list_steps(d, lst_instr, can_push, ft_cost(d->best_comb));
-//		j_instr++;
-//	}
-//	//while (lst_instr[j_instr] != LOOP_END && first_instr_steps[NB_INSTR]++ < ft_cost(d->best_comb))
-//	//{
-//	//	apply_instr(d, lst_instr[j_instr], QUIET);
-//	//	second_instr_steps = insert_target_to_list_steps(d, lst_instr, can_push, ft_cost(d->best_comb));
-//	//	if (can_push(d))
-//	//	{
-//	//		update_best_comb(&d->best_comb, first_instr_steps, second_instr_steps);
-//	//		d->best_cost_comb = ft_cost(d->best_comb);
-//	//		free(second_instr_steps);
-//	//		break;
-//	//	}
-//	//	else
-//	//		free(second_instr_steps);
-//	//	j_instr++;
-//	//}
-//}
-//

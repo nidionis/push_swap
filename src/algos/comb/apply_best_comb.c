@@ -28,7 +28,7 @@ int apply_set_and(int (*f_do)(t_data *d, int instr), t_data *data, t_instr_step 
     
     if (instr_step->instr == NO_INSTR)
         return (NO_INSTR);
-    if (instr_step->nb_instr == CANT_INSERT || instr_step->nb_instr == SIZE_MAX || instr_step->nb_instr == 0)
+    if (instr_step->nb_instr == CANT_INSERT_ERROR || instr_step->nb_instr == SIZE_MAX || instr_step->nb_instr == 0)
         return (instr_step->nb_instr);
         
     count = instr_step->nb_instr;

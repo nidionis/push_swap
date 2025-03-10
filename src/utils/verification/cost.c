@@ -25,7 +25,7 @@ int	ft_cost(t_list *best_comb)
 			instr_step = best_comb->content;
 			if (instr_step->instr == NO_INSTR)
 				break ;
-			if (instr_step->nb_instr == CANT_INSERT)
+			if (instr_step->nb_instr == CANT_INSERT_ERROR)
 				return (SIZE_MAX);
 			cost += instr_step->nb_instr;
 			best_comb = best_comb->next;
