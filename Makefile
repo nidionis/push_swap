@@ -79,4 +79,7 @@ re: fclean all
 checker: make_libs $(OBJS) $(CHECKER_OBJ)
 	$(CC) $(CFLAGS) $(INCLUDES) $(LDFLAGS) $(filter-out $(OBJ_DIR)/main.o, $(OBJS)) $(CHECKER_OBJ) -o $(CHECKER) $(LDLIBS)
 
+visual: $(NAME)
+	cd push_swap_visualizer/build && ./bin/visualizer
+
 .PHONY: all clean fclean re make_libs checker
