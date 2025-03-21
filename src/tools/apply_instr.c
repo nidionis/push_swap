@@ -14,11 +14,8 @@
 
 t_instr_map	*init_instr_map(void)
 {
-	t_instr_map *instr_map;
+	t_instr_map instr_map[12];
 	
-	instr_map = malloc(sizeof(t_instr_map) * 12);
-	if (!instr_map)
-		return (NULL);
 	instr_map[0] = (t_instr_map){"sa", sa, swap_a};
 	instr_map[1] = (t_instr_map){"sb", sb, swap_b};
 	instr_map[2] = (t_instr_map){"ss", ss, swap_both};
@@ -101,12 +98,12 @@ int	apply_instr(t_data *data, int instr, int to_print)
 	t_lnk	*lst_a;
 	t_lnk	*lst_b;
 
-	lst_a = data->lst_a;
-	lst_b = data->lst_b;
-	execute_command(&(data->lst_a), &(data->lst_b), instr, data->instr_map);
+	lst_a = data->a.lst;
+	lst_b = data->b.lst;
+	execute_command(&lst_a, &lst_b, instr, data->instr_map);
 	if (to_print == PRINT)
 		print_instr(data, instr);
 	if (!is_rotating(instr))
-		data_update(data, &data->lst_a, &data->lst_b);
+		data_update(data, &lst_a, &lst_b);
 	return (1);
 }

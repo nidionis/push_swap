@@ -40,8 +40,8 @@ void	print_lst(t_data *d)
 	t_lnk	*a;
 	t_lnk	*b;
 
-	a = d->lst_a;
-	b = d->lst_b;
+	a = d->a.lst;
+	b = d->b.lst;
 	print_lst_byrank(b, "B");
 	print_lst_byrank(a, "A");
 	printf("\n###################################################################");

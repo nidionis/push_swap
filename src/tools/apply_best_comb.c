@@ -39,7 +39,5 @@ int apply_best_comb_and(int (*f_do)(t_data *d, int instr), t_data *data, t_list 
             status = apply_set_and(f_do, data, best_comb->content, verbose);
             best_comb = best_comb->next;
         }
-    if (status != TRUE)
-        return status;
-    return (TRUE);
+    return (status);
 }

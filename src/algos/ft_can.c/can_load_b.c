@@ -20,7 +20,7 @@ int	can_first_load(t_data *data)
     a = data->lst_a;
     b = data->lst_b;
 	if (ft_dlstsize(b) > 2)
-		if (a->rank == data->rank_max && b->prev->rank == data->min_b)
+		if (a->rank == data->rank_max && b->prev->rank == b.min)
 			return (TRUE);
 	if (a->rank > data->rank_max / 2)
 		return (FALSE);
@@ -34,9 +34,9 @@ int	can_load_high(t_data *data)
 
     a = data->lst_a;
     b = data->lst_b;
-	if (a->rank < data->mediane_a)
+	if (a->rank < a.mediane)
 		return (FALSE);
-	if (a->rank >= data->softmax_a)
+	if (a->rank >= a.softmax)
 		return (FALSE);
 	return (can_load_b(data));
 }
@@ -46,7 +46,7 @@ int	can_insert_at_max_b(t_data *data)
 	t_lnk *a;
 
 	a = data->lst_a;
-	if (a->rank > data->max_b || a->rank < data->min_b)
+	if (a->rank > b.max || a->rank < b.min)
 		return (TRUE);
 	return (FALSE);
 }
@@ -66,7 +66,7 @@ int	can_insert_at_min_b(t_data *data)
 	t_lnk *a;
 
 	a = data->lst_a;
-	return (a->rank < data->min_b || a->rank > data->max_b);
+	return (a->rank < b.min || a->rank > b.max);
 }
 
 int	can_load_b(t_data *data)
@@ -84,9 +84,9 @@ int	can_load_b(t_data *data)
 		return (TRUE);
 	if (size_b == 2)
 	{
-		if (lst_b->rank == data->max_b)
+		if (lst_b->rank == b.max)
 		{
-			if (lst_a->rank > data->max_b || lst_a->rank < data->min_b)
+			if (lst_a->rank > b.max || lst_a->rank < b.min)
 				return (TRUE);
 		}
 		else
@@ -94,15 +94,15 @@ int	can_load_b(t_data *data)
 	}
 	else
 	{
-		if (lst_b->rank == data->max_b)
+		if (lst_b->rank == data->b.max)
 		{
 		 	if (can_insert_at_max_b(data))
 				return (TRUE);
 		}
-		else if (lst_b->rank == data->min_b)
+		else if (lst_b->rank == b.min)
 		{
-			if (lst_b->next->rank != data->max_b)
-				return (lst_a->rank < data->min_b);
+			if (lst_b->next->rank != b.max)
+				return (lst_a->rank < b.min);
 			else
 				return (can_insert_to_b_between(data));
 		}
@@ -123,9 +123,9 @@ int	can_dump_b(t_data *data)
 		return (TRUE);
 	if (!b)
 		return (FALSE);
-	if (a->rank == data->softmax_a && b->rank == data->softmax_a - 1)
+	if (a->rank == a.softmax && b->rank == a.softmax - 1)
 		return (TRUE);
-	if (a->prev->rank == data->softmin_a && b->rank == data->softmin_a + 1)
+	if (a->prev->rank == a.softmin && b->rank == a.softmin + 1)
 		return (TRUE);
 	return (FALSE);
 }

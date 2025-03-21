@@ -66,11 +66,11 @@ int reach_rank(t_data *data, int rank, int verbose)
 	t_lnk *lst;
 
 	nb_instr = 0;
-	lst = data->lst_a;
+	lst = data->a.lst;
 	instr = ra;
 	if (is_rank_in_lst_forward(rank, lst) == NOT_FOUND)
 	{
-		lst = data->lst_b;
+		lst = data->b.lst;
 		instr = rb;
 		if (is_rank_in_lst_forward(rank, lst) == NOT_FOUND)
 			return (NOT_FOUND);

@@ -42,13 +42,13 @@ t_lnk	*get_args(t_data *d, int argc, char *argv[])
 	argc -= 2;
 	argv = &argv[1];
 	lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-	d->lst_a = lnk;
+	d->a.lst = lnk;
 	while (argc--)
 	{
 		lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
-		push_item(lnk, &d->lst_a);
+		push_item(lnk, &d->a.lst);
 	}
-	return (d->lst_a);
+	return (d->a.lst);
 }
 
 t_lnk	*lst_cpy(t_lnk *lst)
