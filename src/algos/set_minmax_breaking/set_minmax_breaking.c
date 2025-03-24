@@ -15,9 +15,9 @@
 //int break_when_minmax_loaded(t_data *d, int instr)
 //{
 //	(void)instr;
-//	if (d->max_b == d->rank_max || d->min_b == 0)
+//	if (d->b.max == d->rank_max || d->b.min == 0)
 //	{
-//		if (d->lst_a->rank == d->rank_max || d->lst_a->rank == 0)
+//		if (d->a.lst->rank == d->rank_max || d->a.lst->rank == 0)
 //			return (BREAK_BEST_COMB);
 //	}
 //	return (TRUE);
@@ -30,26 +30,26 @@
 //
 //	nb_instr = 0;
 //	instr = rb;
-//	if (data->min_b == 0)
+//	if (data->b.min == 0)
 //	{
-//		if (get_shortestway(0, data->lst_b) == RROTATE)
+//		if (get_shortestway(0, data->b.lst) == RROTATE)
 //			instr = rrb;
 //	}
 //	else
 //	{
-//		if (get_shortestway(data->rank_max, data->lst_b) == ROTATE)
+//		if (get_shortestway(data->rank_max, data->b.lst) == ROTATE)
 //			instr = rr;
 //	}
-//	while (!(data->lst_b->rank == 0 || data->lst_b->rank == data->rank_max))
+//	while (!(data->b.lst->rank == 0 || data->b.lst->rank == data->rank_max))
 //		nb_instr += apply_instr(data, instr, verbose);
-//	if (data->lst_a->rank == data->rank_max)
+//	if (data->a.lst->rank == data->rank_max)
 //		nb_instr += apply_instr(data, ra, verbose);
 //	nb_instr += apply_instr(data, pa, verbose);
-//	while (data->lst_a->prev->rank != 0)
+//	while (data->a.lst->prev->rank != 0)
 //		nb_instr += apply_instr(data, ra, verbose);
-//	while (data->lst_b->rank != data->max_b)
+//	while (data->b.lst->rank != data->b.max)
 //		nb_instr += apply_instr(data, rb, verbose);
-//	while (data->lst_b)
+//	while (data->b.lst)
 //		nb_instr += apply_instr(data, pa, verbose);
 //	return (nb_instr);
 //}

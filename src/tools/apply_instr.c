@@ -12,10 +12,11 @@
 
 #include <push_swap.h>
 
-t_instr_map	*init_instr_map(void)
+void init_instr_map(t_instr_map **instr_map_addr)
 {
-	t_instr_map instr_map[12];
-	
+    t_instr_map	*instr_map;
+
+    instr_map = *instr_map_addr;
 	instr_map[0] = (t_instr_map){"sa", sa, swap_a};
 	instr_map[1] = (t_instr_map){"sb", sb, swap_b};
 	instr_map[2] = (t_instr_map){"ss", ss, swap_both};
@@ -28,7 +29,6 @@ t_instr_map	*init_instr_map(void)
 	instr_map[9] = (t_instr_map){"pa", pa, push_a};
 	instr_map[10] = (t_instr_map){"pb", pb, push_b};
 	instr_map[11] = (t_instr_map){NULL, -1, NULL};
-	return (instr_map);
 }
 
 void	print_instr(t_data *data, int instr)
@@ -55,7 +55,7 @@ void	print_instr_from_int_heavy(int instr)
 	int			i;
 
 	i = 0;
-	instr_map = init_instr_map();
+	init_instr_map(&instr_map);
 	while (instr_map[i].name)
 	{
 		if (instr_map[i].code == instr)
@@ -101,7 +101,7 @@ int	apply_instr(t_data *data, int instr, int to_print)
 	lst_a = data->a.lst;
 	lst_b = data->b.lst;
 	execute_command(&lst_a, &lst_b, instr, data->instr_map);
-	if (to_print == PRINT)
+	if (to_print == PRINT_DISPLAY)
 		print_instr(data, instr);
 	if (!is_rotating(instr))
 		data_update(data, &lst_a, &lst_b);

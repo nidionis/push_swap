@@ -17,7 +17,7 @@
 # define TRUE 1
 # define FALSE 0
 # define UNSET -1
-# define PRINT 1
+# define PRINT_DISPLAY 1
 # define QUIET 0
 # define INSTR 0
 # define NB_INSTR 1
@@ -29,6 +29,7 @@
 # define LOOP_END 123456789
 # define CANT_INSERT 2147483646
 # define SIZE_MAX 500
+# define BREAK_BEST_COMB -1
 # define BREAK 1
 # define IGNORE 0
 # define EXE_CMD_ERROR 666
@@ -43,13 +44,10 @@
 # define ERR_IS_LOW_OR_HIGH -44
 # define ERR_CAN_ACCEPT -45
 # define ERR_BUTT -46
-
-# define BREAK_BEST_COMB -1
-# define ERR_NO_BEST_COMB -2
-
-# define EMPTY_LST 0
+# define ERR_NO_BEST_COMB -46
 
 typedef struct s_lnk t_lnk;
+
 typedef struct s_best_comb
 {
 	t_list *best_comb;
@@ -77,6 +75,7 @@ typedef struct s_lst
 	int min;
 	int softmax;
 	int softmin;
+	int pivot;
 }	t_lst;
 
 typedef struct s_data
@@ -86,8 +85,8 @@ typedef struct s_data
 	t_lst b;
 	int min_to_load;
 	int max_to_load;
-	int r_instr[12];
-	t_instr_map instr_map[12];
+	int *r_instr;
+	t_instr_map *instr_map;
 }	t_data;
 
 typedef struct s_lnk
@@ -101,9 +100,9 @@ typedef struct s_lnk
 
 typedef struct s_searching_op
 {
-	int (*f_do)(t_data *d, int instr);
 	int (*f_can)(t_data *d);
-	int *instr_lst;
+	int (*f_do)(t_data *d, int instr);
+	int	*instr_ls;
 	int px;
 	int verbose;
 } t_searching_op;
@@ -126,18 +125,13 @@ enum	e_instr {
 	INSTR_MAX = ss
 };
 
+int dump_b(t_data *data, int verbose);
 void	sort_2_nb();
 void	sort_3_nb(int max);
 void	sort_4_nb();
 void	sort_5_nb();
-
 int should_swap_b_unsafe(t_lnk *lst);
 int should_swap_b(t_lnk *lst, int mediane);
-int break_when_minmax_loaded(t_data *d, int instr);
-int dump_setting_min_or_max(t_data *data, int verbose);
-int load_breaking_min_or_max(t_data *data, int verbose);
-int set_minmax_breaking(t_data *data, int verbose);
-
 int	can_first_load(t_data *data);
 int	can_load_high(t_data *data);
 int	can_insert_at_max_b(t_data *data);
@@ -149,7 +143,6 @@ int	can_insert_at_max_a(t_data *data);
 int	can_insert_to_b_between(t_data *data);
 int	can_insert_at_min_b(t_data *data);
 int	can_load_b(t_data *data);
-
 int first_load_low_and_minmax(t_data *data, int verbose);
 int reach_max_lst_b(t_data *data, int verbose);
 int set_minmax_load_low(t_data *data, int verbose);
@@ -167,16 +160,14 @@ int	ft_no_duplicate(t_lnk *lst);
 int    get_kinda_mediane(t_data *data, t_lnk *lst);
 int get_ntil(t_lnk *lst, int min, int max);
 void	print_instr_steps(int instr_steps_itm[2]);
-//t_list *handle_best_comb(t_best_comb *best, t_list *instr_step_node, int instr, int nb_instr);
+t_list *handle_best_comb(t_best_comb *best, t_list *instr_step_node, int instr, int nb_instr);
 void handle_else_case(t_data *d_copy, t_instr_step *first_intr_step, int instr, t_list *instr_step_node);
 int should_update(t_best_comb *best, t_list *instr_step_node, int nb_first_instr);
 t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost);
-t_list *handle_best_comb(t_list **best_comb, t_list *instr_step_node, int instr, int nb_instr);
 void handle_no_best_comb(t_list *first_intr_step_node, t_data *d_copy, int instr);
 void best_insert_loop(t_data *d_copy, int instr, int (*can_push)(t_data *), int *max_cost, t_list **best_comb);
 t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost);
 int	ft_cost(t_list *best_comb);
-
 void	push(t_lnk **from_lst, t_lnk **to_lst);
 void	push_item(t_lnk *lnk, t_lnk **lst);
 t_lnk	*pop_item(t_lnk **lst);
@@ -186,7 +177,6 @@ void	swap_lst(t_lnk **lst);
 void	swap_a(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_b(t_lnk **lst_a, t_lnk **lst_b);
 void	swap_both(t_lnk **lst_a, t_lnk **lst_b);
-
 t_lnk	*lnk_init(t_lnk *lnk);
 t_lnk	*ft_new_lnk(int nb, int ind, int rank);
 void	del_lst(t_lnk **lst);
@@ -214,13 +204,12 @@ void	reach_rank_dir(t_lnk **lst, int rank, int instr, int verbose);
 void	reach_rank_ls_quiet(t_lnk **lst, int rank);
 int	reached_rank(int rank, t_data *data);
 int reach_rank(t_data *data, int rank, int verbose);
-t_instr_map	*init_instr_map(void);
+void init_instr_map(t_instr_map **instr_map);
 void	print_instr(t_data *data, int instr);
 void	print_instr_from_int_heavy(int instr);
 void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_map[]);
 int	is_rotating(int instr);
 int	apply_instr(t_data *data, int instr, int to_print);
-
 void	rotate_lst(t_lnk **lst);
 void	rrotate_lst(t_lnk **lst);
 void	rotate_both(t_lnk **lst_a, t_lnk **lst_b);
@@ -229,7 +218,6 @@ void	rotate_a(t_lnk **lst_a, t_lnk **lst_b);
 void	rotate_b(t_lnk **lst_a, t_lnk **lst_b);
 void	rrotate_a(t_lnk **lst_a, t_lnk **lst_b);
 void	rrotate_b(t_lnk **lst_a, t_lnk **lst_b);
-
 void	print_lst_byrank(t_lnk *lst, char *header);
 void	print_lst(t_data *d);
 void print_instr_step(t_instr_step *instr_step);
@@ -237,6 +225,6 @@ void print_instr_ls(t_list *ls);
 t_lnk	*get_args_allinone(char *str);
 t_lnk	*get_args(t_data *d, int argc, char *argv[]);
 t_lnk	*lst_cpy(t_lnk *lst);
-int dump_b(t_data *data, int verbose);
+
 
 #endif

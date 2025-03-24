@@ -29,23 +29,23 @@ void	reach_rank_dir(t_lnk **lst, int rank, int instr, int verbose)
 	t_data	data;
 
 	ft_bzero(&data, sizeof(t_data));
-	data.lst_a = *lst;
-	data.lst_b = *lst;
+	data.a.lst = *lst;
+	data.b.lst = *lst;
 	first_lnk = *lst;
 	if (first_lnk->rank != rank)
 	{
 		apply_instr(&data, instr, verbose);
-		while (data.lst_a != first_lnk)
+		while (data.a.lst != first_lnk)
 		{
-			if (data.lst_a->rank == rank)
+			if (data.a.lst->rank == rank)
 				break ;
 			apply_instr(&data, instr, verbose);
 		}
 	}
-	if (*lst != data.lst_a)
-		*lst = data.lst_a;
+	if (*lst != data.a.lst)
+		*lst = data.a.lst;
 	else
-		*lst = data.lst_b;
+		*lst = data.b.lst;
 }
 
 void	reach_rank_ls_quiet(t_lnk **lst, int rank)
@@ -55,7 +55,7 @@ void	reach_rank_ls_quiet(t_lnk **lst, int rank)
 
 int	reached_rank(int rank, t_data *data)
 {
-	return (get_shortestway(rank, data->lst_a) == 0 ||  get_shortestway(rank, data->lst_b) == 0);
+	return (get_shortestway(rank, data->a.lst) == 0 || get_shortestway(rank, data->b.lst) == 0);
 }
 
 int reach_rank(t_data *data, int rank, int verbose)

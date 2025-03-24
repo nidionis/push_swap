@@ -17,8 +17,8 @@ int	can_insert_at_max_a(t_data *data)
 {
 	t_lnk *b;
 
-	b = data->lst_b;
-	if (b->rank < data->max_a || b->rank > data->min_a)
+	b = data->b.lst;
+	if (b->rank < data->a.max || b->rank > data->a.min)
 		return (TRUE);
 	return (FALSE);
 }
@@ -28,8 +28,8 @@ int	can_insert_to_b_between(t_data *data)
 	t_lnk *a;
 	t_lnk *b;
 
-	a = data->lst_a;
-	b = data->lst_b;
+	a = data->a.lst;
+	b = data->b.lst;
 	return (b->rank > a->rank && a->rank < b->prev->rank);
 }
 
@@ -37,28 +37,26 @@ int	can_insert_at_min_b(t_data *data)
 {
 	t_lnk *a;
 
-	a = data->lst_a;
-	return (a->rank < data->min_b || a->rank > data->max_b);
+	a = data->a.lst;
+	return (a->rank < data->b.min || a->rank > data->b.max);
 }
 
 int	can_load_b(t_data *data)
 {
-	t_lnk *lst_a = data->lst_a;
-	t_lnk *lst_b = data->lst_b;
-	int size_b;
+	t_lnk *lst_a = data->a.lst;
+	t_lnk *lst_b = data->b.lst;
 
 	if (!lst_a)
 		return (FALSE);
 	if (!lst_b)
 		return (TRUE);
-	size_b = ft_dlstsize(lst_b);
-	if (size_b == 1)
+	if (data->b.size == 1)
 		return (TRUE);
-	if (size_b == 2)
+	if (data->b.size == 2)
 	{
-		if (lst_b->rank == data->max_b)
+		if (lst_b->rank == data->b.max)
 		{
-			if (lst_a->rank > data->max_b || lst_a->rank < data->min_b)
+			if (lst_a->rank > data->b.max || lst_a->rank < data->b.min)
 				return (TRUE);
 		}
 		else
@@ -66,15 +64,15 @@ int	can_load_b(t_data *data)
 	}
 	else
 	{
-		if (lst_b->rank == data->max_b)
+		if (lst_b->rank == data->b.max)
 		{
 		 	if (can_insert_at_max_b(data))
 				return (TRUE);
 		}
-		else if (lst_b->rank == data->min_b)
+		else if (lst_b->rank == data->b.min)
 		{
-			if (lst_b->next->rank != data->max_b)
-				return (lst_a->rank < data->min_b);
+			if (lst_b->next->rank != data->b.max)
+				return (lst_a->rank < data->b.min);
 			else
 				return (can_insert_to_b_between(data));
 		}

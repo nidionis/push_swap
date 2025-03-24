@@ -79,33 +79,33 @@ t_lnk *get_softmin(t_lnk *lst)
 void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 {
     if (!lst_a)
-        data->softmax_a = UNSET;
+        data->a.softmax = UNSET;
     else if (lst_a->next == lst_a)
-        data->softmax_a = lst_a->rank;
+        data->a.softmax = lst_a->rank;
     else 
-        data->softmax_a = get_softmax(lst_a)->rank;
+        data->a.softmax = get_softmax(lst_a)->rank;
     if (!lst_b)
-        data->softmax_b = UNSET;
+        data->b.softmax = UNSET;
     else if (lst_b->next == lst_b)
-        data->softmax_b = lst_b->rank;
+        data->b.softmax = lst_b->rank;
     else 
-        data->softmax_b = get_softmax(lst_b)->rank;
+        data->b.softmax = get_softmax(lst_b)->rank;
 }
 
 void	set_softmin(t_data *data, t_lnk*lst_a, t_lnk *lst_b)
 {
     if (!lst_a)
-        data->softmin_a = UNSET;
+        data->a.softmin = UNSET;
     else if (lst_a->next == lst_a)
-        data->softmin_a = lst_a->rank;
+        data->a.softmin = lst_a->rank;
     else 
-        data->softmin_a = get_softmin(lst_a)->rank;
+        data->a.softmin = get_softmin(lst_a)->rank;
     if (!lst_b)
-        data->softmax_b = UNSET;
+        data->b.softmax = UNSET;
     else if (lst_b->next == lst_b)
-        data->softmax_b = lst_b->rank;
+        data->b.softmax = lst_b->rank;
     else 
-        data->softmin_b = get_softmin(lst_b)->rank;
+        data->b.softmin = get_softmin(lst_b)->rank;
 }
 
 void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
@@ -114,32 +114,32 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 
     if (!data)
         return ;
-    data->lst_a = *lst_a;
-    data->lst_b = *lst_b;
+    data->a.lst = *lst_a;
+    data->b.lst = *lst_b;
     tmp = get_max(*lst_a);
     if (tmp)
-        data->max_a = tmp->rank;
+        data->a.max = tmp->rank;
     else
-        data->max_a = UNSET;
+        data->a.max = UNSET;
     tmp = get_max(*lst_b);
     if (tmp)
-        data->max_b = tmp->rank;
+        data->b.max = tmp->rank;
     else
-        data->max_b = UNSET;
+        data->b.max = UNSET;
     tmp = get_min(*lst_a);
     if (tmp)
-        data->min_a = tmp->rank;
+        data->a.min = tmp->rank;
     else
-        data->min_a = UNSET;
+        data->a.min = UNSET;
     tmp = get_min(*lst_b);
     if (tmp)
-        data->min_b = tmp->rank;
+        data->b.min = tmp->rank;
     else
-        data->min_b = UNSET;
+        data->b.min = UNSET;
     set_softmax(data, *lst_a, *lst_b);
     set_softmin(data, *lst_a, *lst_b);
-    data->mediane_a = (data->softmax_a - data->softmin_a) / 2 + data->softmin_a;
-    data->mediane_b = (data->softmax_b - data->softmin_b) / 2 + data->softmin_b;
+    data->a.pivot = (data->a.softmax - data->a.softmin) / 2 + data->a.softmin;
+    data->b.pivot = (data->b.softmax - data->b.softmin) / 2 + data->b.softmin;
 }
 
 void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
@@ -152,6 +152,8 @@ void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
             if (data->rank_max < get_max(*lst_b)->rank)
                 data->rank_max = get_max(*lst_b)->rank;
     }
+    data->a.size = ft_dlstsize(*lst_a);
+    data->b.size = ft_dlstsize(*lst_b);
     //data->best_instr_step = NULL;
     //data->best_inst_step[NB_FIRST_INSTR] = INT_MAX;
     //data->best_cost_instr = SIZE_MAX;
@@ -169,14 +171,14 @@ void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 #include <stdio.h>
 void print_data(t_data *d)
 {
-    printf("max_a: %d\n", d->max_a);
-    printf("max_b: %d\n", d->max_b);
-    printf("min_a: %d\n", d->min_a);
-    printf("min_b: %d\n", d->min_b);
-    printf("softmax_a: %d\n", d->softmax_a);
-    printf("softmax_b: %d\n", d->softmax_b);
-    printf("softmin_a: %d\n", d->softmin_a);
-    printf("softmin_b: %d\n", d->softmin_b);
+    printf("max_a: %d\n", d->a.max);
+    printf("max_b: %d\n", d->b.max);
+    printf("min_a: %d\n", d->a.min);
+    printf("min_b: %d\n", d->b.min);
+    printf("softmax_a: %d\n", d->a.softmax);
+    printf("softmax_b: %d\n", d->b.softmax);
+    printf("softmin_a: %d\n", d->a.softmin);
+    printf("softmin_b: %d\n", d->b.softmin);
     printf("rank_max: %d\n", d->rank_max);
     //printf("best_cost_comb: %d\n", d->best_cost_comb);
 }

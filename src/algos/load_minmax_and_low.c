@@ -37,13 +37,15 @@ int reach_max_lst_b(t_data *data, int verbose)
 {
 	int nb_instr;
 	int instr;
+	t_lst	*b;
 
 	nb_instr = 0;
+	b = &data->b;
 	instr = rb;
-	if (data->min_b != 0)
-		if (get_shortestway(0, data->lst_b) == RROTATE)
+	if (b->min != 0)
+		if (get_shortestway(0, b->lst) == RROTATE)
 			instr = rrb;
-	while (data->lst_b->rank != 0)
+	while (b->lst->rank != 0)
 		nb_instr += apply_instr(data, instr, verbose);
 	return (nb_instr);
 }
@@ -77,7 +79,7 @@ int set_minmax_load_low(t_data *data, int verbose)
             nb_instr += ret;
     }
     nb_instr += reach_max_lst_b(data, verbose);
-    while (data->lst_b)
+    while (data->b.lst)
     {
         nb_instr = apply_instr(data, pa, verbose);
     }

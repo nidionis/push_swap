@@ -15,6 +15,7 @@
 t_list *handle_best_comb(t_best_comb *best, t_list *instr_step_node, int instr, int nb_instr)
 {
 	t_list *saved_first_instr;
+
 	if (best->best_comb)
 		ft_lstclear(&best->best_comb, free);
 	best->best_comb = instr_step_node;
@@ -34,8 +35,8 @@ void handle_else_case(t_data *d_copy, t_instr_step *first_intr_step, int instr, 
 int should_update(t_best_comb *best, t_list *instr_step_node, int nb_first_instr)
 {
 	return (nb_first_instr + get_steps(instr_step_node) < best->max_cost);
-
 }
+
 t_list *best_insert_dir(t_data *d, int instr, int (*can_push)(t_data *), int max_cost)
 {
 	t_data d_copy;
