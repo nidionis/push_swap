@@ -77,5 +77,5 @@ int	main(int argc, char **argv)
 	//print_lst(&d);
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
-	free(d.instr_map);
+	//free(d.instr_map);
 }

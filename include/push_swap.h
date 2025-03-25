@@ -86,7 +86,7 @@ typedef struct s_data
 	int min_to_load;
 	int max_to_load;
 	int *r_instr;
-	t_instr_map *instr_map;
+	t_instr_map instr_map[12];
 }	t_data;
 
 typedef struct s_lnk
@@ -192,7 +192,7 @@ t_lnk *get_softmax(t_lnk *lst);
 t_lnk *get_softmin(t_lnk *lst);
 void	set_softmax(t_data *data, t_lnk *lst_a, t_lnk *lst_b);
 void	set_softmin(t_data *data, t_lnk*lst_a, t_lnk *lst_b);
-void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
+void	data_update_r(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 void print_data(t_data *d);
 char	*ft_realloc_cat(char *line, char c, int *len);
@@ -204,7 +204,7 @@ void	reach_rank_dir(t_lnk **lst, int rank, int instr, int verbose);
 void	reach_rank_ls_quiet(t_lnk **lst, int rank);
 int	reached_rank(int rank, t_data *data);
 int reach_rank(t_data *data, int rank, int verbose);
-void init_instr_map(t_instr_map **instr_map);
+void init_instr_map(t_instr_map (*instr_map)[12]);
 void	print_instr(t_data *data, int instr);
 void	print_instr_from_int_heavy(int instr);
 void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_map[]);

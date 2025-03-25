@@ -77,9 +77,9 @@ int	can_load_b(t_data *data)
 	t_lst *b = &data->b;
 	int size_b;
 
-	if (!a)
+	if (!a->lst)
 		return (FALSE);
-	if (!b)
+	if (!b->lst)
 		return (TRUE);
 	size_b = b->size;
 	if (size_b == 1)
@@ -89,6 +89,11 @@ int	can_load_b(t_data *data)
 		if (b->lst->rank == b->max)
 		{
 			if (a->lst->rank > b->max || a->lst->rank < b->min)
+				return (TRUE);
+		}
+		else if (b->lst->rank == b->min)
+		{
+			if (a->lst->rank < b->min || a->lst->rank > b->max)
 				return (TRUE);
 		}
 		else

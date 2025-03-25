@@ -108,7 +108,7 @@ void	set_softmin(t_data *data, t_lnk*lst_a, t_lnk *lst_b)
         data->b.softmin = get_softmin(lst_b)->rank;
 }
 
-void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
+void	data_update_r(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
     t_lnk   *tmp;
 
@@ -136,6 +136,8 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
         data->b.min = tmp->rank;
     else
         data->b.min = UNSET;
+    data->a.size = ft_dlstsize(*lst_a);
+    data->b.size = ft_dlstsize(*lst_b);
     set_softmax(data, *lst_a, *lst_b);
     set_softmin(data, *lst_a, *lst_b);
     data->a.pivot = (data->a.softmax - data->a.softmin) / 2 + data->a.softmin;
@@ -144,7 +146,7 @@ void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 
 void init_data(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
-    data_update(data, lst_a, lst_b);
+    data_update_r(data, lst_a, lst_b);
     if (lst_a && *lst_a)
     {
         data->rank_max = get_max(*lst_a)->rank;

@@ -12,7 +12,7 @@
 
 #include <push_swap.h>
 
-void init_instr_map(t_instr_map **instr_map_addr)
+void init_instr_map(t_instr_map (*instr_map_addr)[12])
 {
     t_instr_map	*instr_map;
 
@@ -51,7 +51,7 @@ void	print_instr(t_data *data, int instr)
 
 void	print_instr_from_int_heavy(int instr)
 {
-	t_instr_map	*instr_map;
+	t_instr_map	instr_map[12];
 	int			i;
 
 	i = 0;
@@ -65,7 +65,6 @@ void	print_instr_from_int_heavy(int instr)
 		}
 		i++;
 	}
-	free(instr_map);
 }
 
 void	execute_command(t_lnk **lst_a, t_lnk **lst_b, int instr, t_instr_map instr_map[])
@@ -93,6 +92,13 @@ int	is_rotating(int instr)
 	return (FALSE);
 }
 
+int	is_pushing(int instr)
+{
+	if (instr == pa || instr == pb)
+		return (TRUE);
+	return (FALSE);
+}
+
 int	apply_instr(t_data *data, int instr, int to_print)
 {
 	t_lnk	*lst_a;
@@ -103,7 +109,7 @@ int	apply_instr(t_data *data, int instr, int to_print)
 	execute_command(&lst_a, &lst_b, instr, data->instr_map);
 	if (to_print == PRINT_DISPLAY)
 		print_instr(data, instr);
-	if (!is_rotating(instr))
-		data_update(data, &lst_a, &lst_b);
+	if (is_pushing(instr))
+		data_update_r(data, &lst_a, &lst_b);
 	return (1);
 }
