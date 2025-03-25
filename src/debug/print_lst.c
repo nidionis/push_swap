@@ -22,11 +22,15 @@ void	print_lst_byrank(t_lnk *lst, char *header)
 	printf("\n");
 	if (lst)
 	{
-		printf("%d\t", lst->rank);
+		t_lst temp;
+		
+		temp.lst = lst;
+		printf("%d\t", head(&temp));
 		lnk_ind = lst->next;
 		while (lnk_ind != lst)
 		{
-			printf("%d\t", lnk_ind->rank);
+			temp.lst = lnk_ind;
+			printf("%d\t", head(&temp));
 			lnk_ind = lnk_ind->next;
 		}
 	}

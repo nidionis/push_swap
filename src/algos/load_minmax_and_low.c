@@ -45,7 +45,7 @@ int reach_max_lst_b(t_data *data, int verbose)
 	if (b->min != 0)
 		if (get_shortestway(0, b->lst) == RROTATE)
 			instr = rrb;
-	while (b->lst->rank != 0)
+	while (head(b) != 0)
 		nb_instr += apply_instr(data, instr, verbose);
 	return (nb_instr);
 }

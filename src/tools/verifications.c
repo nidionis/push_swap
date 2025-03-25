@@ -20,7 +20,10 @@ int	is_sorted(t_lnk *lst)
 	lst_orig = lst;
 	while (lst != lst_orig->prev)
 	{
-		if (lst->rank == lst->next->rank - 1)
+		t_lst temp;
+		
+		temp.lst = lst;
+		if (head(&temp) == next(&temp) - 1)
 			lst = lst->next;
 		else
 			return (FALSE);

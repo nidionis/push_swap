@@ -32,12 +32,16 @@ void	reach_rank_dir(t_lnk **lst, int rank, int instr, int verbose)
 	data.a.lst = *lst;
 	data.b.lst = *lst;
 	first_lnk = *lst;
-	if (first_lnk->rank != rank)
+	t_lst temp;
+
+	temp.lst = first_lnk;
+	if (head(&temp) != rank)
 	{
 		apply_instr(&data, instr, verbose);
 		while (data.a.lst != first_lnk)
 		{
-			if (data.a.lst->rank == rank)
+			temp.lst = data.a.lst;
+			if (head(&temp) == rank)
 				break ;
 			apply_instr(&data, instr, verbose);
 		}

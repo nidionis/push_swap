@@ -14,23 +14,29 @@
 
 int should_swap_b_unsafe(t_lnk *lst)
 {
-    return (lst->rank < lst->next->rank && lst->rank != get_max(lst)->rank);
+    t_lst temp;
+    
+    temp.lst = lst;
+    return (head(&temp) < next(&temp) && head(&temp) != get_max(lst)->rank);
 }
 
 int should_swap_b(t_lnk *lst, int mediane)
 {
     int nb;
-    int next;
+    int n;
     (void)mediane;
 
-    nb = lst->rank;
-    next = lst->next->rank;
+    t_lst temp;
+    
+    temp.lst = lst;
+    nb = head(&temp);
+    n = next(&temp);
     if (!lst || ft_dlstsize(lst) == 1)
         return (FALSE);
-    //if (nb < mediane && next > mediane)
+    //if (nb < mediane && n > mediane)
     //    return (FALSE);
-    if (nb > next)
-        if (nb != get_max(lst)->rank || next != get_min(lst)->rank)
+    if (nb > n)
+        if (nb != get_max(lst)->rank || n != get_min(lst)->rank)
         return (TRUE);
     return (FALSE);
 }

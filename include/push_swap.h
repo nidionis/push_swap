@@ -28,6 +28,7 @@
 # define INT_MAX 2147483647
 # define LOOP_END 123456789
 # define CANT_INSERT 2147483646
+# define EMPTY_LST -1
 # define SIZE_MAX 500
 # define BREAK_BEST_COMB -1
 # define BREAK 1
@@ -225,6 +226,8 @@ void print_instr_ls(t_list *ls);
 t_lnk	*get_args_allinone(char *str);
 t_lnk	*get_args(t_data *d, int argc, char *argv[]);
 t_lnk	*lst_cpy(t_lnk *lst);
-
+int	head(t_lst *x);
+int	next(t_lst *x);
+int	prev(t_lst *x);
 
 #endif
