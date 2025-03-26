@@ -229,5 +229,7 @@ t_lnk	*lst_cpy(t_lnk *lst);
 int	head(t_lst *x);
 int	next(t_lst *x);
 int	prev(t_lst *x);
+void	data_update_r(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
+void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 
 #endif

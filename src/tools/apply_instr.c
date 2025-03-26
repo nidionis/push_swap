@@ -110,6 +110,8 @@ int	apply_instr(t_data *data, int instr, int to_print)
 	if (to_print == PRINT_DISPLAY)
 		print_instr(data, instr);
 	if (is_pushing(instr))
+		data_update(data, &lst_a, &lst_b);
+	else
 		data_update_r(data, &lst_a, &lst_b);
 	return (1);
 }

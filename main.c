@@ -72,7 +72,10 @@ int	main(int argc, char **argv)
 	t_searching_op op_best_insert_b;
 	op_best_insert_b = (t_searching_op) {can_load_b, NULL, r_instr, pb, PRINT_DISPLAY};
 	while (d.a.lst) {
-		do_best_insert(&d, &op_best_insert_b);
+			print_lst(&d);
+		if (do_best_insert(&d, &op_best_insert_b) == ERR_NO_BEST_COMB) {
+			apply_instr(&d, sb, PRINT_DISPLAY);
+		}
 	}
 	//print_lst(&d);
 	del_lst(&d.a.lst);
