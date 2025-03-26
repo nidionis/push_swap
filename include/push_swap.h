@@ -16,7 +16,7 @@
 # include <stdio.h>
 # define TRUE 1
 # define FALSE 0
-# define UNSET -1
+# define UNSET -3
 # define PRINT_DISPLAY 1
 # define QUIET 0
 # define INSTR 0
@@ -28,9 +28,9 @@
 # define INT_MAX 2147483647
 # define LOOP_END 123456789
 # define CANT_INSERT 2147483646
-# define EMPTY_LST -1
+# define EMPTY_LST -2
 # define SIZE_MAX 500
-# define BREAK_BEST_COMB -1
+# define BREAK_BEST_COMB -3
 # define BREAK 1
 # define IGNORE 0
 # define EXE_CMD_ERROR 666
@@ -45,7 +45,8 @@
 # define ERR_IS_LOW_OR_HIGH -44
 # define ERR_CAN_ACCEPT -45
 # define ERR_BUTT -46
-# define ERR_NO_BEST_COMB -46
+# define ERR_NO_BEST_COMB -47
+# define UNSET_NB_INSTR -48
 
 typedef struct s_lnk t_lnk;
 
@@ -77,6 +78,7 @@ typedef struct s_lst
 	int softmax;
 	int softmin;
 	int pivot;
+	int sorting_range;
 }	t_lst;
 
 typedef struct s_data
@@ -133,6 +135,8 @@ void	sort_4_nb();
 void	sort_5_nb();
 int should_swap_b_unsafe(t_lnk *lst);
 int should_swap_b(t_lnk *lst, int mediane);
+int can_range_sort(t_data *data);
+int can_splitload(t_data *data);
 int	can_first_load(t_data *data);
 int	can_load_high(t_data *data);
 int	can_insert_at_max_b(t_data *data);

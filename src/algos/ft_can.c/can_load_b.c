@@ -12,6 +12,40 @@
 
 #include <push_swap.h>
 
+int can_range_sort(t_data *data)
+{
+    t_lst *a;
+    t_lst *b;
+
+    a = &data->a;
+    b = &data->b;
+    if (b->size <= 2)
+        return (TRUE);
+    if (head(b) == b->max)
+        return (can_load_b(data));
+    if (head(a) >= head(b) - b->sorting_range && head(a) <= head(b) + b->sorting_range)
+        return (TRUE);
+    return  (can_load_b(data));
+}
+
+int can_splitload(t_data *data)
+{
+    t_lst *a;
+    t_lst *b;
+
+    a = &data->a;
+    b = &data->b;
+    if (b->size <= 2)
+        return (TRUE);
+    if (head(b) == b->max)
+        return (can_insert_at_max_b(data));
+    if (head(a) >= b->pivot)
+        return (head(b) >= b->pivot);
+    if (head(a) < b->pivot)
+        return (head(b) < b->pivot);
+    return (can_load_b(data));
+}
+
 int can_first_load(t_data *data) {
     t_lst *a;
     t_lst *b;
@@ -43,8 +77,9 @@ int can_insert_at_max_b(t_data *data) {
 
     a = &data->a;
     b = &data->b;
-    if (head(a) > b->max || head(a) < b->min)
-        return (TRUE);
+    if (b->size)
+        if (head(a) > b->max || head(a) < b->min)
+            return (TRUE);
     return (FALSE);
 }
 

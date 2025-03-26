@@ -32,7 +32,7 @@ int	do_best_insert(t_data *data, t_searching_op *op)
 	t_list *insertion_step;
 	int nb_instr;
 
-	nb_instr = -1;
+	nb_instr = UNSET_NB_INSTR;
 	if (op->f_can(data))
 		apply_instr(data, op->px, op->verbose);
 	else
@@ -69,13 +69,17 @@ int	main(int argc, char **argv)
 	init_instr_map(&d.instr_map);
     int r_instr[12] = {ra, rb, rra, rrb, rr, rrr, LOOP_END, LOOP_END, LOOP_END, LOOP_END, LOOP_END, LOOP_END};
 
+	d.b.pivot = d.rank_max / 2;
+	d.a.pivot = d.rank_max / 2;
+	d.b.sorting_range = d.rank_max / 30;
 	t_searching_op op_best_insert_b;
-	op_best_insert_b = (t_searching_op) {can_load_b, NULL, r_instr, pb, PRINT_DISPLAY};
-	while (d.a.lst) {
-			print_lst(&d);
-		if (do_best_insert(&d, &op_best_insert_b) == ERR_NO_BEST_COMB) {
-			apply_instr(&d, sb, PRINT_DISPLAY);
-		}
+	op_best_insert_b = (t_searching_op) {can_range_sort, NULL, r_instr, pb, PRINT_DISPLAY};
+	//op_best_insert_b = (t_searching_op) {can_load_b, NULL, r_instr, pb, PRINT_DISPLAY};
+	int ret = 1;
+	while (d.a.size && ret != ERR_NO_BEST_COMB && ret != EMPTY_LST) {
+		ret = do_best_insert(&d, &op_best_insert_b);
+		//printf("ret: %d\n", ret);
+		//print_lst(&d);
 	}
 	//print_lst(&d);
 	del_lst(&d.a.lst);
