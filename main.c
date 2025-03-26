@@ -71,9 +71,9 @@ int	main(int argc, char **argv)
 
 	d.b.pivot = d.rank_max / 2;
 	d.a.pivot = d.rank_max / 2;
-	d.b.sorting_range = d.rank_max / 30;
+	d.b.sorting_range = d.rank_max / 1;
 	t_searching_op op_best_insert_b;
-	op_best_insert_b = (t_searching_op) {can_range_sort, NULL, r_instr, pb, PRINT_DISPLAY};
+	op_best_insert_b = (t_searching_op) {can_quicklad_b, NULL, r_instr, pb, PRINT_DISPLAY};
 	//op_best_insert_b = (t_searching_op) {can_load_b, NULL, r_instr, pb, PRINT_DISPLAY};
 	int ret = 1;
 	while (d.a.size && ret != ERR_NO_BEST_COMB && ret != EMPTY_LST) {

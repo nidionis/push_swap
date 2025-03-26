@@ -135,6 +135,7 @@ void	sort_4_nb();
 void	sort_5_nb();
 int should_swap_b_unsafe(t_lnk *lst);
 int should_swap_b(t_lnk *lst, int mediane);
+int can_quicklad_b(t_data *data);
 int can_range_sort(t_data *data);
 int can_splitload(t_data *data);
 int	can_first_load(t_data *data);

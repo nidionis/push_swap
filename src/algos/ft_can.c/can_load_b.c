@@ -12,6 +12,22 @@
 
 #include <push_swap.h>
 
+int can_quicklad_b(t_data *data)
+{
+    t_lst *a;
+    t_lst *b;
+
+    a = &data->a;
+    b = &data->b;
+    if (b->size <= 2)
+        return (TRUE);
+    if (head(b) == b->max)
+        return (can_load_b(data));
+    if (prev(b) > head(a) && next(b) < head(a))
+        return (TRUE);
+    return  (can_load_b(data));
+}
+
 int can_range_sort(t_data *data)
 {
     t_lst *a;
@@ -24,7 +40,8 @@ int can_range_sort(t_data *data)
     if (head(b) == b->max)
         return (can_load_b(data));
     if (head(a) >= head(b) - b->sorting_range && head(a) <= head(b) + b->sorting_range)
-        return (TRUE);
+        if (prev(b) > head(a) && next(b) < head(a))
+            return (TRUE);
     return  (can_load_b(data));
 }
 
