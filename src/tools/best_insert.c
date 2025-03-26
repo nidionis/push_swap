@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:49:48 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/09 16:33:19 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/26 22:40:24 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int m
 	if (!instr_step)
 		return (NULL);
 	instr_step->instr = lst_instr[i_instr];
+    d_copy.r_instr = lst_instr;
 	instr_step->nb_instr = SIZE_MAX;
 	instr_step_node= ft_lstnew(instr_step);
 
