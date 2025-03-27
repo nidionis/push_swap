@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/03/27 03:37:22 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/27 04:21:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	do_best_insert(t_data *data, t_searching_op *op)
 
 	nb_instr = UNSET_NB_INSTR;
 	if (op->f_can(data))
-		apply_instr(data, op->px, op->verbose);
+		nb_instr = apply_instr(data, op->px, op->verbose);
 	else
 	{
 		insertion_step = ft_best_comb(data, op->instr_ls, op->f_can, SIZE_MAX);
@@ -85,7 +85,7 @@ int load_b_split_load_but_medium(t_data *d)
     init_r_instr_load_b_basic(r_instr);
     d->r_instr = r_instr;
     d->b.pivot = d->rank_max / 2;
-	while (ret != ERR_NO_BEST_COMB && ret != EMPTY_LST) {
+	while (ret >= 0) {
 		ret = do_best_insert(d, &op_best_insert_b);
 	}
     return (ret);
@@ -124,6 +124,23 @@ int dump_b_basic(t_data *d)
     return (ret);
 }
 
+int splitload_but_softs(t_data *d)
+{
+    int r_instr[12];
+    t_searching_op op_best_insert_b;
+    int ret;
+
+	op_best_insert_b = (t_searching_op) {can_splitload_but_softs, NULL, r_instr, pb, PRINT_DISPLAY};
+    ret = 0;
+    init_r_instr_load_b_basic(r_instr);
+    d->r_instr = r_instr;
+    d->b.pivot = (d->a.softmax - d->a.softmin) / 2 + d->a.softmin;
+	while (ret >= 0) {
+		ret = do_best_insert(d, &op_best_insert_b);
+	}
+    return (ret);
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -145,6 +162,8 @@ int	main(int argc, char **argv)
 		//print_lst(&d);
 	init_instr_map(&d.instr_map);
     load_b_split_load_but_medium(&d);
+	dump_b_basic(&d);
+	splitload_but_softs(&d);
 	dump_b_basic(&d);
 	//	//print_lst(&d);
 	del_lst(&d.a.lst);

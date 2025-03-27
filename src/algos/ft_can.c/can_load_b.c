@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:41:34 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/27 03:34:14 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/27 04:15:58 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int can_splitload(t_data *data)
 
     a = &data->a;
     b = &data->b;
+	if (!a->size)
+		return (FALSE);
     if (b->size <= 2)
         return (TRUE);
     if (head(a) > b->max || head(a) < b->min)
@@ -98,6 +100,18 @@ int can_splitload_but_medium(t_data *data)
 		return (can_splitload(data));
 	return (FALSE);
 
+}
+
+int can_splitload_but_softs(t_data *data)
+{
+    t_lst *a;
+    t_lst *b;
+
+    a = &data->a;
+    b = &data->b;
+	if (head(a) <= a->softmin || head(a) >= a->softmax)
+		return (FALSE);
+	return (can_splitload(data));
 }
 
 int can_first_load(t_data *data) {

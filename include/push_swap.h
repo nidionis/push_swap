@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/03/27 03:13:26 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/27 03:50:53 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	sort_5_nb();
 int should_swap_b_unsafe(t_lnk *lst);
 int should_swap_b(t_lnk *lst, int mediane);
 int can_splitload_but_medium(t_data *data);
+int can_splitload_but_softs(t_data *data);
 int can_quicklad_b(t_data *data);
 int can_dirty_load_b(t_data *data);
 int can_range_sort(t_data *data);

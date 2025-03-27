@@ -22,3 +22,14 @@ Moyenne = 3631 instructions
 Meilleur = 3090 instructions
 Écart-type = 201.6 instructions
 
+
+Tri total:
+    load_b_split_load_but_medium(&d);
+	dump_b_basic(&d);
+	splitload_but_softs(&d);
+	dump_b_basic(&d);
+Démarrage du test : 500 éléments, 200 itérations (seed 3385403487)
+Pire = 5398 instructions
+Moyenne = 4754 instructions
+Meilleur = 4233 instructions
+Écart-type = 188.9 instructions
