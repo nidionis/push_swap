@@ -1,0 +1,113 @@
+Démarrage du test : 500 éléments, 200 itérations (seed 543644442)
+Pire = 4193 instructions
+Moyenne = 3274 instructions
+Meilleur = 2425 instructions
+Écart-type = 376.7 instructions
+
+make && for N in {3..100..8} ; do ./complexity $N 1000
+> done
+
+Démarrage du test : 3 éléments, 1000 itérations (seed 2105772278)
+Pire = 3 instructions
+Moyenne = 3 instructions
+Meilleur = 3 instructions
+Écart-type = 0.0 instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+
+Démarrage du test : 11 éléments, 1000 itérations (seed 1626669451)
+Pire = 27 instructions
+Moyenne = 20 instructions
+Meilleur = 8 instructionss
+Écart-type = 2.1 instructions
+
+
+
+Démarrage du test : 19 éléments, 1000 itérations (seed 2560078741)
+Pire = 53 instructions
+Moyenne = 42 instructions
+Meilleur = 30 instructions
+Écart-type = 3.8 instructions
+
+
+
+Démarrage du test : 27 éléments, 1000 itérations (seed 116189950)
+Pire = 81 instructions
+Moyenne = 66 instructions
+Meilleur = 50 instructions
+Écart-type = 5.4 instructions
+
+
+
+Démarrage du test : 35 éléments, 1000 itérations (seed 2617527115)
+Pire = 121 instructions
+Moyenne = 94 instructions
+Meilleur = 71 instructions
+Écart-type = 7.2 instructions
+
+
+
+Démarrage du test : 43 éléments, 1000 itérations (seed 4088259076)
+Pire = 160 instructions
+Moyenne = 124 instructions
+Meilleur = 95 instructionss
+Écart-type = 9.4 instructions
+
+
+
+Démarrage du test : 51 éléments, 1000 itérations (seed 214639365)
+Pire = 189 instructions
+Moyenne = 155 instructions
+Meilleur = 121 instructions
+Écart-type = 11.2 instructions
+
+
+
+Démarrage du test : 59 éléments, 1000 itérations (seed 4180876631)
+Pire = 233 instructions
+Moyenne = 188 instructions
+Meilleur = 134 instructions
+Écart-type = 14.2 instructions
+
+
+
+Démarrage du test : 67 éléments, 1000 itérations (seed 3800822223)
+Pire = 269 instructions
+Moyenne = 224 instructions
+Meilleur = 163 instructions
+Écart-type = 17.5 instructions
+
+
+
+Démarrage du test : 75 éléments, 1000 itérations (seed 2696443294)
+Pire = 314 instructions
+Moyenne = 259 instructions
+Meilleur = 197 instructions
+Écart-type = 20.6 instructions
+
+
+
+Démarrage du test : 83 éléments, 1000 itérations (seed 2998265942)
+Pire = 358 instructions
+Moyenne = 298 instructions
+Meilleur = 216 instructions
+Écart-type = 22.4 instructions
+
+
+
+Démarrage du test : 91 éléments, 1000 itérations (seed 356470952)
+Pire = 404 instructions
+Moyenne = 337 instructions
+Meilleur = 261 instructions
+Écart-type = 26.6 instructions
+
+
+
+Démarrage du test : 99 éléments, 1000 itérations (seed 2665635192)
+Pire = 463 instructions
+Moyenne = 376 instructions
+Meilleur = 275 instructions
+Écart-type = 30.6 instructions
+
+
+

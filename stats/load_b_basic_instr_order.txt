@@ -1,0 +1,111 @@
+
+ra, rr, rb, rrb, rra, rrr
+Démarrage du test : 500 éléments, 50 itérations (seed 1550797344)
+Pire = 4022 instructions
+Moyenne = 3511 instructions
+Meilleur = 3086 instructions
+Écart-type = 249.9 instructions
+
+
+    r_instr[0] = ra;
+    r_instr[1] = rb;
+    r_instr[2] = rrb;
+    r_instr[3] = rra;
+    r_instr[4] = rrr;
+    r_instr[5] = rr;
+    r_instr[6] = LOOP_END;
+Démarrage du test : 500 éléments, 50 itérations (seed 3566532712)
+Pire = 3978 instructions
+Moyenne = 3515 instructions
+Meilleur = 2626 instructions
+Écart-type = 307.9 instructions
+
+    r_instr[0] = rr;
+    r_instr[1] = rrr;
+    r_instr[2] = rrb;
+    r_instr[3] = rra;
+    r_instr[4] = ra;
+    r_instr[5] = rb;
+    r_instr[6] = LOOP_END;
+Démarrage du test : 500 éléments, 50 itérations (seed 2088485428)
+Pire = 4164 instructions
+Moyenne = 3453 instructions
+Meilleur = 2914 instructions
+Écart-type = 294.9 instructions
+
+
+    r_instr[0] = rr;
+    r_instr[1] = rrr;
+    r_instr[2] = rra;
+    r_instr[3] = ra;
+    r_instr[4] = rb;
+    r_instr[5] = rrb;
+    r_instr[6] = LOOP_END;
+Pire = 4019 instructions
+Moyenne = 3453 instructions
+Meilleur = 2487 instructions
+Écart-type = 308.1 instructions
+
+Démarrage du test : 20 éléments, 1000 itérations (seed 3894515794)
+Pire = 54 instructions
+Moyenne = 43 instructions
+Meilleur = 28 instructions
+Écart-type = 4.1 instructions
+
+
+
+    r_instr[0] = rr;
+    r_instr[1] = rrr;
+    r_instr[2] = rra;
+    r_instr[3] = ra;
+    r_instr[4] = rb;
+    r_instr[5] = rrb;
+    r_instr[6] = LOOP_END;
+Démarrage du test : 500 éléments, 50 itérations (seed 4067006555)
+Pire = 3982 instructions
+Moyenne = 3405 instructions
+Meilleur = 2756 instructions
+Écart-type = 310.9 instructions
+
+
+    r_instr[0] = ra;
+    r_instr[1] = rra;
+    r_instr[2] = rrr;
+    r_instr[3] = rr;
+    r_instr[4] = rb;
+    r_instr[5] = rrb;
+    r_instr[6] = LOOP_END;
+Démarrage du test : 500 éléments, 200 itérations (seed 3465004982)
+Pire = 4184 instructions
+Moyenne = 3487 instructions
+Meilleur = 2555 instructions
+Écart-type = 317.7 instructions
+
+Démarrage du test : 20 éléments, 1000 itérations (seed 2969884524)
+Pire = 55 instructions
+Moyenne = 43 instructions
+Meilleur = 29 instructions
+Écart-type = 4.0 instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+
+
+
+    r_instr[0] = rb;
+    r_instr[1] = rrb;
+    r_instr[2] = rrr;
+    r_instr[3] = rr;
+    r_instr[4] = ra;
+    r_instr[5] = rra;
+    r_instr[6] = LOOP_END;
+Démarrage du test : 500 éléments, 200 itérations (seed 3488215338)
+Pire = 4225 instructions
+Moyenne = 3429 instructions
+Meilleur = 2625 instructions
+Écart-type = 299.6 instructions
+
+Démarrage du test : 20 éléments, 1000 itérations (seed 538531589)
+Pire = 54 instructions
+Moyenne = 43 instructions
+Meilleur = 27 instructions
+Écart-type = 4.0 instructions

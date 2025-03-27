@@ -1,0 +1,882 @@
+[97mDémarrage du test : [95m3[97m éléments, [95m1[97m itérations[0m (seed 102999079)
+[?25lPire = [31m3[0m instructions
+Moyenne = [33m3[0m instructions
+Meilleur = [36m3[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m4[97m éléments, [95m1[97m itérations[0m (seed 3743842127)
+[?25lPire = [31m5[0m instructions
+Moyenne = [33m5[0m instructions
+Meilleur = [36m5[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m5[97m éléments, [95m1[97m itérations[0m (seed 1810825276)
+[?25lPire = [31m6[0m instructions
+Moyenne = [33m6[0m instructions
+Meilleur = [36m6[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m6[97m éléments, [95m1[97m itérations[0m (seed 268801466)
+[?25lPire = [31m9[0m instructions
+Moyenne = [33m9[0m instructions
+Meilleur = [36m9[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m7[97m éléments, [95m1[97m itérations[0m (seed 4016819246)
+[?25lPire = [31m12[0m instructions
+Moyenne = [33m12[0m instructions
+Meilleur = [36m12[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m8[97m éléments, [95m1[97m itérations[0m (seed 2626168963)
+[?25lPire = [31m10[0m instructions
+Moyenne = [33m10[0m instructions
+Meilleur = [36m10[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m9[97m éléments, [95m1[97m itérations[0m (seed 1720907139)
+[?25lPire = [31m16[0m instructions
+Moyenne = [33m16[0m instructions
+Meilleur = [36m16[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m10[97m éléments, [95m1[97m itérations[0m (seed 2663444623)
+[?25lPire = [31m20[0m instructions
+Moyenne = [33m20[0m instructions
+Meilleur = [36m20[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m11[97m éléments, [95m1[97m itérations[0m (seed 4165094456)
+[?25lPire = [31m21[0m instructions
+Moyenne = [33m21[0m instructions
+Meilleur = [36m21[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m12[97m éléments, [95m1[97m itérations[0m (seed 1362754960)
+[?25lPire = [31m25[0m instructions
+Moyenne = [33m25[0m instructions
+Meilleur = [36m25[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m13[97m éléments, [95m1[97m itérations[0m (seed 3320215885)
+[?25lPire = [31m27[0m instructions
+Moyenne = [33m27[0m instructions
+Meilleur = [36m27[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m14[97m éléments, [95m1[97m itérations[0m (seed 2024715787)
+[?25lPire = [31m28[0m instructions
+Moyenne = [33m28[0m instructions
+Meilleur = [36m28[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m15[97m éléments, [95m1[97m itérations[0m (seed 3058404833)
+[?25lPire = [31m34[0m instructions
+Moyenne = [33m34[0m instructions
+Meilleur = [36m34[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m16[97m éléments, [95m1[97m itérations[0m (seed 1208109700)
+[?25lPire = [31m36[0m instructions
+Moyenne = [33m36[0m instructions
+Meilleur = [36m36[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m17[97m éléments, [95m1[97m itérations[0m (seed 815017014)
+[?25lPire = [31m43[0m instructions
+Moyenne = [33m43[0m instructions
+Meilleur = [36m43[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m18[97m éléments, [95m1[97m itérations[0m (seed 4292736696)
+[?25lPire = [31m45[0m instructions
+Moyenne = [33m45[0m instructions
+Meilleur = [36m45[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m19[97m éléments, [95m1[97m itérations[0m (seed 1523075158)
+[?25lPire = [31m46[0m instructions
+Moyenne = [33m46[0m instructions
+Meilleur = [36m46[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m20[97m éléments, [95m1[97m itérations[0m (seed 2927722471)
+[?25lPire = [31m47[0m instructions
+Moyenne = [33m47[0m instructions
+Meilleur = [36m47[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m21[97m éléments, [95m1[97m itérations[0m (seed 3611124844)
+[?25lPire = [31m54[0m instructions
+Moyenne = [33m54[0m instructions
+Meilleur = [36m54[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m22[97m éléments, [95m1[97m itérations[0m (seed 2982457929)
+[?25lPire = [31m61[0m instructions
+Moyenne = [33m61[0m instructions
+Meilleur = [36m61[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m23[97m éléments, [95m1[97m itérations[0m (seed 2233003436)
+[?25lPire = [31m61[0m instructions
+Moyenne = [33m61[0m instructions
+Meilleur = [36m61[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m24[97m éléments, [95m1[97m itérations[0m (seed 2491270133)
+[?25lPire = [31m63[0m instructions
+Moyenne = [33m63[0m instructions
+Meilleur = [36m63[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m25[97m éléments, [95m1[97m itérations[0m (seed 528189294)
+[?25lPire = [31m70[0m instructions
+Moyenne = [33m70[0m instructions
+Meilleur = [36m70[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m26[97m éléments, [95m1[97m itérations[0m (seed 86710860)
+[?25lPire = [31m64[0m instructions
+Moyenne = [33m64[0m instructions
+Meilleur = [36m64[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m27[97m éléments, [95m1[97m itérations[0m (seed 2626399882)
+[?25lPire = [31m71[0m instructions
+Moyenne = [33m71[0m instructions
+Meilleur = [36m71[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m28[97m éléments, [95m1[97m itérations[0m (seed 2887215208)
+[?25lPire = [31m73[0m instructions
+Moyenne = [33m73[0m instructions
+Meilleur = [36m73[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m29[97m éléments, [95m1[97m itérations[0m (seed 1345316308)
+[?25lPire = [31m74[0m instructions
+Moyenne = [33m74[0m instructions
+Meilleur = [36m74[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m30[97m éléments, [95m1[97m itérations[0m (seed 2478887486)
+[?25lPire = [31m79[0m instructions
+Moyenne = [33m79[0m instructions
+Meilleur = [36m79[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m31[97m éléments, [95m1[97m itérations[0m (seed 1727612297)
+[?25lPire = [31m93[0m instructions
+Moyenne = [33m93[0m instructions
+Meilleur = [36m93[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m32[97m éléments, [95m1[97m itérations[0m (seed 2982533787)
+[?25lPire = [31m94[0m instructions
+Moyenne = [33m94[0m instructions
+Meilleur = [36m94[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m33[97m éléments, [95m1[97m itérations[0m (seed 2792250984)
+[?25lPire = [31m95[0m instructions
+Moyenne = [33m95[0m instructions
+Meilleur = [36m95[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m34[97m éléments, [95m1[97m itérations[0m (seed 3712565426)
+[?25lPire = [31m99[0m instructions
+Moyenne = [33m99[0m instructions
+Meilleur = [36m99[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m35[97m éléments, [95m1[97m itérations[0m (seed 1609927713)
+[?25lPire = [31m96[0m instructions
+Moyenne = [33m96[0m instructions
+Meilleur = [36m96[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m36[97m éléments, [95m1[97m itérations[0m (seed 529632223)
+[?25lPire = [31m117[0m instructions
+Moyenne = [33m117[0m instructions
+Meilleur = [36m117[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m37[97m éléments, [95m1[97m itérations[0m (seed 2106576813)
+[?25lPire = [31m109[0m instructions
+Moyenne = [33m109[0m instructions
+Meilleur = [36m109[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m38[97m éléments, [95m1[97m itérations[0m (seed 3965047316)
+[?25lPire = [31m122[0m instructions
+Moyenne = [33m122[0m instructions
+Meilleur = [36m122[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m39[97m éléments, [95m1[97m itérations[0m (seed 3313624401)
+[?25lPire = [31m122[0m instructions
+Moyenne = [33m122[0m instructions
+Meilleur = [36m122[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m40[97m éléments, [95m1[97m itérations[0m (seed 2816960201)
+[?25lPire = [31m119[0m instructions
+Moyenne = [33m119[0m instructions
+Meilleur = [36m119[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m41[97m éléments, [95m1[97m itérations[0m (seed 1736056961)
+[?25lPire = [31m131[0m instructions
+Moyenne = [33m131[0m instructions
+Meilleur = [36m131[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m42[97m éléments, [95m1[97m itérations[0m (seed 1673135617)
+[?25lPire = [31m132[0m instructions
+Moyenne = [33m132[0m instructions
+Meilleur = [36m132[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m43[97m éléments, [95m1[97m itérations[0m (seed 2474078311)
+[?25lPire = [31m153[0m instructions
+Moyenne = [33m153[0m instructions
+Meilleur = [36m153[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m44[97m éléments, [95m1[97m itérations[0m (seed 2837724851)
+[?25lPire = [31m149[0m instructions
+Moyenne = [33m149[0m instructions
+Meilleur = [36m149[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m45[97m éléments, [95m1[97m itérations[0m (seed 52150337)
+[?25lPire = [31m146[0m instructions
+Moyenne = [33m146[0m instructions
+Meilleur = [36m146[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m46[97m éléments, [95m1[97m itérations[0m (seed 589805428)
+[?25lPire = [31m152[0m instructions
+Moyenne = [33m152[0m instructions
+Meilleur = [36m152[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m47[97m éléments, [95m1[97m itérations[0m (seed 2923214824)
+[?25lPire = [31m152[0m instructions
+Moyenne = [33m152[0m instructions
+Meilleur = [36m152[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m48[97m éléments, [95m1[97m itérations[0m (seed 1078674192)
+[?25lPire = [31m153[0m instructions
+Moyenne = [33m153[0m instructions
+Meilleur = [36m153[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m49[97m éléments, [95m1[97m itérations[0m (seed 1201119925)
+[?25lPire = [31m164[0m instructions
+Moyenne = [33m164[0m instructions
+Meilleur = [36m164[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m50[97m éléments, [95m1[97m itérations[0m (seed 4176963661)
+[?25lPire = [31m183[0m instructions
+Moyenne = [33m183[0m instructions
+Meilleur = [36m183[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m51[97m éléments, [95m1[97m itérations[0m (seed 2692041239)
+[?25lPire = [31m174[0m instructions
+Moyenne = [33m174[0m instructions
+Meilleur = [36m174[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m52[97m éléments, [95m1[97m itérations[0m (seed 2110339496)
+[?25lPire = [31m185[0m instructions
+Moyenne = [33m185[0m instructions
+Meilleur = [36m185[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m53[97m éléments, [95m1[97m itérations[0m (seed 1850789520)
+[?25lPire = [31m181[0m instructions
+Moyenne = [33m181[0m instructions
+Meilleur = [36m181[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m54[97m éléments, [95m1[97m itérations[0m (seed 4123181419)
+[?25lPire = [31m182[0m instructions
+Moyenne = [33m182[0m instructions
+Meilleur = [36m182[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m55[97m éléments, [95m1[97m itérations[0m (seed 144356818)
+[?25lPire = [31m189[0m instructions
+Moyenne = [33m189[0m instructions
+Meilleur = [36m189[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m56[97m éléments, [95m1[97m itérations[0m (seed 2750904006)
+[?25lPire = [31m192[0m instructions
+Moyenne = [33m192[0m instructions
+Meilleur = [36m192[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m57[97m éléments, [95m1[97m itérations[0m (seed 1193771689)
+[?25lPire = [31m215[0m instructions
+Moyenne = [33m215[0m instructions
+Meilleur = [36m215[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m58[97m éléments, [95m1[97m itérations[0m (seed 3390927403)
+[?25lPire = [31m205[0m instructions
+Moyenne = [33m205[0m instructions
+Meilleur = [36m205[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m59[97m éléments, [95m1[97m itérations[0m (seed 898378299)
+[?25lPire = [31m244[0m instructions
+Moyenne = [33m244[0m instructions
+Meilleur = [36m244[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m60[97m éléments, [95m1[97m itérations[0m (seed 2577002116)
+[?25lPire = [31m213[0m instructions
+Moyenne = [33m213[0m instructions
+Meilleur = [36m213[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m61[97m éléments, [95m1[97m itérations[0m (seed 565775472)
+[?25lPire = [31m219[0m instructions
+Moyenne = [33m219[0m instructions
+Meilleur = [36m219[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m62[97m éléments, [95m1[97m itérations[0m (seed 2265771551)
+[?25lPire = [31m239[0m instructions
+Moyenne = [33m239[0m instructions
+Meilleur = [36m239[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m63[97m éléments, [95m1[97m itérations[0m (seed 531548302)
+[?25lPire = [31m240[0m instructions
+Moyenne = [33m240[0m instructions
+Meilleur = [36m240[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m64[97m éléments, [95m1[97m itérations[0m (seed 2082225562)
+[?25lPire = [31m251[0m instructions
+Moyenne = [33m251[0m instructions
+Meilleur = [36m251[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m65[97m éléments, [95m1[97m itérations[0m (seed 3738423050)
+[?25lPire = [31m253[0m instructions
+Moyenne = [33m253[0m instructions
+Meilleur = [36m253[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m66[97m éléments, [95m1[97m itérations[0m (seed 170958301)
+[?25lPire = [31m263[0m instructions
+Moyenne = [33m263[0m instructions
+Meilleur = [36m263[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m67[97m éléments, [95m1[97m itérations[0m (seed 3474185168)
+[?25lPire = [31m273[0m instructions
+Moyenne = [33m273[0m instructions
+Meilleur = [36m273[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m68[97m éléments, [95m1[97m itérations[0m (seed 2066805182)
+[?25lPire = [31m230[0m instructions
+Moyenne = [33m230[0m instructions
+Meilleur = [36m230[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m69[97m éléments, [95m1[97m itérations[0m (seed 1512960530)
+[?25lPire = [31m259[0m instructions
+Moyenne = [33m259[0m instructions
+Meilleur = [36m259[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m70[97m éléments, [95m1[97m itérations[0m (seed 2194813382)
+[?25lPire = [31m277[0m instructions
+Moyenne = [33m277[0m instructions
+Meilleur = [36m277[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m71[97m éléments, [95m1[97m itérations[0m (seed 94268187)
+[?25lPire = [31m287[0m instructions
+Moyenne = [33m287[0m instructions
+Meilleur = [36m287[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m72[97m éléments, [95m1[97m itérations[0m (seed 1407305253)
+[?25lPire = [31m287[0m instructions
+Moyenne = [33m287[0m instructions
+Meilleur = [36m287[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m73[97m éléments, [95m1[97m itérations[0m (seed 158716814)
+[?25lPire = [31m301[0m instructions
+Moyenne = [33m301[0m instructions
+Meilleur = [36m301[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m74[97m éléments, [95m1[97m itérations[0m (seed 3918475117)
+[?25lPire = [31m290[0m instructions
+Moyenne = [33m290[0m instructions
+Meilleur = [36m290[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m75[97m éléments, [95m1[97m itérations[0m (seed 3235495387)
+[?25lPire = [31m286[0m instructions
+Moyenne = [33m286[0m instructions
+Meilleur = [36m286[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m76[97m éléments, [95m1[97m itérations[0m (seed 3889640893)
+[?25lPire = [31m313[0m instructions
+Moyenne = [33m313[0m instructions
+Meilleur = [36m313[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m77[97m éléments, [95m1[97m itérations[0m (seed 1276314061)
+[?25lPire = [31m332[0m instructions
+Moyenne = [33m332[0m instructions
+Meilleur = [36m332[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m78[97m éléments, [95m1[97m itérations[0m (seed 665775365)
+[?25lPire = [31m307[0m instructions
+Moyenne = [33m307[0m instructions
+Meilleur = [36m307[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m79[97m éléments, [95m1[97m itérations[0m (seed 319630951)
+[?25lPire = [31m357[0m instructions
+Moyenne = [33m357[0m instructions
+Meilleur = [36m357[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m80[97m éléments, [95m1[97m itérations[0m (seed 3396907711)
+[?25lPire = [31m324[0m instructions
+Moyenne = [33m324[0m instructions
+Meilleur = [36m324[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m81[97m éléments, [95m1[97m itérations[0m (seed 3315319714)
+[?25lPire = [31m353[0m instructions
+Moyenne = [33m353[0m instructions
+Meilleur = [36m353[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m82[97m éléments, [95m1[97m itérations[0m (seed 1614895319)
+[?25lPire = [31m322[0m instructions
+Moyenne = [33m322[0m instructions
+Meilleur = [36m322[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m83[97m éléments, [95m1[97m itérations[0m (seed 638952640)
+[?25lPire = [31m366[0m instructions
+Moyenne = [33m366[0m instructions
+Meilleur = [36m366[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m84[97m éléments, [95m1[97m itérations[0m (seed 3851290540)
+[?25lPire = [31m337[0m instructions
+Moyenne = [33m337[0m instructions
+Meilleur = [36m337[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m85[97m éléments, [95m1[97m itérations[0m (seed 813510932)
+[?25lPire = [31m359[0m instructions
+Moyenne = [33m359[0m instructions
+Meilleur = [36m359[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m86[97m éléments, [95m1[97m itérations[0m (seed 3565335169)
+[?25lPire = [31m369[0m instructions
+Moyenne = [33m369[0m instructions
+Meilleur = [36m369[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m87[97m éléments, [95m1[97m itérations[0m (seed 2535513012)
+[?25lPire = [31m370[0m instructions
+Moyenne = [33m370[0m instructions
+Meilleur = [36m370[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m88[97m éléments, [95m1[97m itérations[0m (seed 3135147815)
+[?25lPire = [31m398[0m instructions
+Moyenne = [33m398[0m instructions
+Meilleur = [36m398[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m89[97m éléments, [95m1[97m itérations[0m (seed 743955580)
+[?25lPire = [31m375[0m instructions
+Moyenne = [33m375[0m instructions
+Meilleur = [36m375[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m90[97m éléments, [95m1[97m itérations[0m (seed 1457092712)
+[?25lPire = [31m413[0m instructions
+Moyenne = [33m413[0m instructions
+Meilleur = [36m413[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m91[97m éléments, [95m1[97m itérations[0m (seed 4017853893)
+[?25lPire = [31m392[0m instructions
+Moyenne = [33m392[0m instructions
+Meilleur = [36m392[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m92[97m éléments, [95m1[97m itérations[0m (seed 4038026117)
+[?25lPire = [31m403[0m instructions
+Moyenne = [33m403[0m instructions
+Meilleur = [36m403[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m93[97m éléments, [95m1[97m itérations[0m (seed 4177976290)
+[?25lPire = [31m385[0m instructions
+Moyenne = [33m385[0m instructions
+Meilleur = [36m385[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m94[97m éléments, [95m1[97m itérations[0m (seed 1114412841)
+[?25lPire = [31m403[0m instructions
+Moyenne = [33m403[0m instructions
+Meilleur = [36m403[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m95[97m éléments, [95m1[97m itérations[0m (seed 1404906847)
+[?25lPire = [31m408[0m instructions
+Moyenne = [33m408[0m instructions
+Meilleur = [36m408[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m96[97m éléments, [95m1[97m itérations[0m (seed 698113964)
+[?25lPire = [31m446[0m instructions
+Moyenne = [33m446[0m instructions
+Meilleur = [36m446[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m97[97m éléments, [95m1[97m itérations[0m (seed 2050459450)
+[?25lPire = [31m444[0m instructions
+Moyenne = [33m444[0m instructions
+Meilleur = [36m444[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m98[97m éléments, [95m1[97m itérations[0m (seed 545049928)
+[?25lPire = [31m432[0m instructions
+Moyenne = [33m432[0m instructions
+Meilleur = [36m432[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m99[97m éléments, [95m1[97m itérations[0m (seed 4067815183)
+[?25lPire = [31m448[0m instructions
+Moyenne = [33m448[0m instructions
+Meilleur = [36m448[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m
+[97mDémarrage du test : [95m100[97m éléments, [95m1[97m itérations[0m (seed 1585866229)
+[?25lPire = [31m438[0m instructions
+Moyenne = [33m438[0m instructions
+Meilleur = [36m438[0m instructions
+Écart-type = [93m0.0[0m instructions
+Objectif = entrez un nombre en troisième argument
+Précision = entrez un testeur en quatrième argument
+[32m100[0m % effectué
+[7A[7B[0m[?25h[38mComplexity 1.7.1 (2024-11-12)[0m

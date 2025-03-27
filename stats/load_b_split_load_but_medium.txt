@@ -1,0 +1,24 @@
+push to b the third lowests and the third highests (and keep gathered min and max)
+(doesn't push mediums in b)
+Démarrage du test : 500 éléments, 1000 itérations (seed 2812635737)
+Pire = 1800 instructions
+Moyenne = 1234 instructions
+Meilleur = 504 instructionss
+Écart-type = 123.3 instructions
+
+
+couple avec un dump_b
+Démarrage du test : 500 éléments, 200 itérations (seed 2677602399)
+Pire = 3902 instructions
+Moyenne = 3467 instructions
+Meilleur = 3174 instructions
+Écart-type = 140.5 instructions
+
+
+couple avec un dump_b + reach_rank_max
+Démarrage du test : 500 éléments, 500 itérations (seed 1098443697)
+Pire = 4158 instructions
+Moyenne = 3631 instructions
+Meilleur = 3090 instructions
+Écart-type = 201.6 instructions
+

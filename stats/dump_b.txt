@@ -1,0 +1,17 @@
+
+****  tout pushed dans b (soit 500 instructions) puis can_dump_b
+250327-02:42:40-nidionis@k1r1p13.42mulhouse.fr-~/push_swap-(rebuilt)
+=> ./complexity 500 1000;
+Démarrage du test : 500 éléments, 1000 itérations (seed 3523450823)
+Pire = 5372 instructions
+Moyenne = 5057 instructions
+Meilleur = 4749 instructions
+Écart-type = 113.5 instructions
+
+****  avec load_b_quick_load
+Démarrage du test : 500 éléments, 1000 itérations (seed 1633572069)
+Pire = 5834 instructions
+Moyenne = 5524 instructions
+Meilleur = 5187 instructions
+Écart-type = 165.8 instructions
+
