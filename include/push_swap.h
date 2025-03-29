@@ -133,8 +133,11 @@ void	sort_2_nb();
 void	sort_3_nb(int max);
 void	sort_4_nb();
 void	sort_5_nb();
+
 int should_swap_b_unsafe(t_lnk *lst);
 int should_swap_b(t_lnk *lst, int mediane);
+int break_when_minmax_loaded(t_data *d, int instr);
+
 int can_splitload_but_medium(t_data *data);
 int can_splitload_but_softs(t_data *data);
 int can_quicklad_b(t_data *data);
@@ -152,6 +155,7 @@ int	can_insert_at_max_a(t_data *data);
 int	can_insert_to_b_between(t_data *data);
 int	can_insert_at_min_b(t_data *data);
 int	can_load_b(t_data *data);
+
 int first_load_low_and_minmax(t_data *data, int verbose);
 int reach_max_lst_b(t_data *data, int verbose);
 int set_minmax_load_low(t_data *data, int verbose);

@@ -105,10 +105,8 @@ int can_splitload_but_medium(t_data *data)
 int can_splitload_but_softs(t_data *data)
 {
     t_lst *a;
-    t_lst *b;
 
     a = &data->a;
-    b = &data->b;
 	if (head(a) <= a->softmin || head(a) >= a->softmax)
 		return (FALSE);
 	return (can_splitload(data));

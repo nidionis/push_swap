@@ -12,17 +12,14 @@
 
 #include <push_swap.h>
 
-//int break_when_minmax_loaded(t_data *d, int instr)
-//{
-//	(void)instr;
-//	if (d->b.max == d->rank_max || d->b.min == 0)
-//	{
-//		if (d->a.lst->rank == d->rank_max || d->a.lst->rank == 0)
-//			return (BREAK_BEST_COMB);
-//	}
-//	return (TRUE);
-//}
-//
+int break_when_minmax_loaded(t_data *d, int instr)
+{
+	(void)instr;
+	if (d->b.max == d->rank_max && d->b.min == 0)
+			return (BREAK_BEST_COMB);
+	return (TRUE);
+}
+
 //int dump_setting_min_or_max(t_data *data, int verbose)
 //{
 //	int nb_instr;

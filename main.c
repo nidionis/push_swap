@@ -124,6 +124,21 @@ int dump_b_basic(t_data *d)
     return (ret);
 }
 
+int dump_b_softminmax(t_data *d, int verbose)
+{
+	int r_instr[12];
+	int ret;
+
+	ret = 0;
+	init_r_instr_load_b_basic(r_instr);
+	d->r_instr = r_instr;
+	ret += reach_rank(d, d->b.softmin, verbose);
+	int softmax_b = d->b.softmax;
+	while (head(&d->a) != softmax_b)
+		ret += apply_instr(d, pa, verbose);
+	return (ret);
+}
+
 int splitload_but_softs(t_data *d)
 {
     int r_instr[12];
@@ -141,10 +156,29 @@ int splitload_but_softs(t_data *d)
     return (ret);
 }
 
+int load_b_until_min_and_max(t_data *d, int *r_instr, int verbose)
+{
+	int ret;
+	int nb_instr;
+	t_searching_op op_best_insert_b;
+
+	op_best_insert_b = (t_searching_op) {can_splitload_but_medium, break_when_minmax_loaded, r_instr, pb, verbose};
+	nb_instr = 0;
+
+	d->r_instr = r_instr;
+	d->b.pivot = (d->a.softmax - d->a.softmin) / 2 + d->a.softmin;
+	while (break_when_minmax_loaded(d, 0) != BREAK_BEST_COMB) {
+		ret = do_best_insert(d, &op_best_insert_b);
+		if (ret > 0 && ret < SIZE_MAX)
+			nb_instr += ret;
+	}
+	return (ret);
+}
 
 int	main(int argc, char **argv)
 {
 	t_data d;
+	int r_instr[12];
 
 	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)
@@ -159,12 +193,14 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.a.lst))
 		ft_errmsg("Error: duplicated items");
 	init_data(&d, &d.a.lst, &d.b.lst);
+	init_r_instr_load_b_basic(r_instr);
 		//print_lst(&d);
 	init_instr_map(&d.instr_map);
-    load_b_split_load_but_medium(&d);
-	dump_b_basic(&d);
-	splitload_but_softs(&d);
-	dump_b_basic(&d);
+	load_b_until_min_and_max(&d, r_instr, PRINT_DISPLAY);
+	dump_b_softminmax(&d, PRINT_DISPLAY);
+	//dump_b_basic(&d);
+	//splitload_but_softs(&d);
+	//dump_b_basic(&d);
 	//	//print_lst(&d);
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
