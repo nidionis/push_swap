@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 t_list *handle_best_comb(t_best_comb *best, t_list *instr_step_node, int instr, int nb_instr)
 {

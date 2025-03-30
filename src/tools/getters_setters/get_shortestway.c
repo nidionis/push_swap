@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 void	initialize_search(int *steps_forward, int *list_length, int *found, t_lnk *list, int target_rank)
 {

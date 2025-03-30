@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/03/27 03:50:53 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/30 20:52:21 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,9 @@ int	can_insert_at_max_a(t_data *data);
 int	can_insert_to_b_between(t_data *data);
 int	can_insert_at_min_b(t_data *data);
 int	can_load_b(t_data *data);
+int can_splitload(t_data *data);
+int can_splitload_but_medium(t_data *data);
+int can_splitload_but_softs(t_data *data);
 
 int first_load_low_and_minmax(t_data *data, int verbose);
 int reach_max_lst_b(t_data *data, int verbose);
@@ -243,5 +246,7 @@ int	next(t_lst *x);
 int	prev(t_lst *x);
 void	data_update_r(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
+int	is_on_min_or_max(t_data *data, t_lnk *lst);
+int	do_best_insert(t_data *data, t_searching_op *op);
 
 #endif

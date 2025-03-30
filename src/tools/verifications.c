@@ -6,11 +6,26 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/31 18:35:28 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/30 20:44:50 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
+
+int	is_on_min_or_max(t_data *data, t_lnk *lst)
+{
+    if (lst == data->a.lst)
+    {
+        if (data->a.max == lst->rank || data->a.min == lst->rank)
+            return (TRUE);
+    }
+    else if (lst == data->b.lst)
+    {
+        if (data->b.max == lst->rank || data->b.min == lst->rank)
+            return (TRUE);
+    }
+    return (FALSE);
+}
 
 int	is_sorted(t_lnk *lst)
 {

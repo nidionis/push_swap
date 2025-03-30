@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *), int max_cost)
 {

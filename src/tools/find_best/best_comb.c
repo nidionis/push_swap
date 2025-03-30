@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 t_list *ft_best_comb(t_data *d, int *instr_ls, int (*can_push)(t_data *), int max_cost)
 {

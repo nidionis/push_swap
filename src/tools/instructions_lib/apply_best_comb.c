@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <push_swap.h>
+#include "push_swap.h"
 
 int apply_set_and(int (*f_do)(t_data *d, int instr), t_data *data, t_instr_step *instr_step, int verbose)
 {
