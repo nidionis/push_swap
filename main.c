@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/03/30 20:50:38 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/31 21:27:02 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,22 +120,51 @@ int splitload_but_softs(t_data *d)
     return (ret);
 }
 
+int load_b_Turk(t_data *d, int verbose)
+{
+    int ret;
+    int pivot;
+    t_lst *a;
+    t_lst *b;
+
+    a = &d->a;
+    b = &d->b;
+    pivot = d->min_to_load + (d->max_to_load - d->min_to_load) / 3;
+    ret = 0;
+    ret = apply_instr(d, pb, verbose);
+    if (head(b) < pivot)
+        ret = apply_instr(d, rb, verbose);
+    if (head(b) != b->max)
+        if (head(b) < next(b))
+            ret = apply_instr(d, sb, verbose);
+    return (ret);
+}
+
+
 int load_b_until_min_and_max(t_data *d, int *r_instr, int verbose)
 {
 	int ret;
 	int nb_instr;
-	t_searching_op op_best_insert_b;
+    //int instr_ls[7] = {rb, rrb, rr, rrr, LOOP_END};
 
-	//op_best_insert_b = (t_searching_op) {can_splitload_but_medium, break_when_minmax_loaded, r_instr, pb, verbose};
-    op_best_insert_b = (t_searching_op) {can_splitload_but_medium, break_when_minmax_loaded, r_instr, pb, verbose};
+    d->min_to_load = d->rank_max / 2;
+    d->max_to_load = d->rank_max;
+    //d->a.pivot = ((d->max_to_load - d->min_to_load) / 2) + d->min_to_load;
 	nb_instr = 0;
-
 	d->r_instr = r_instr;
-	d->b.pivot = (d->a.softmax - d->a.softmin) / 2 + d->a.softmin;
+	//d->b.pivot = (d->a.softmax - d->a.softmin) / 2 + d->a.softmin;
+    ret = 0;
 	while (break_when_minmax_loaded(d, 0) != BREAK_BEST_COMB) {
-		ret = do_best_insert(d, &op_best_insert_b);
-		if (ret > 0 && ret < SIZE_MAX)
-			nb_instr += ret;
+        if (head(&d->a) == 0 || head(&d->a) == d->rank_max)
+        {
+            ret += apply_instr(d, pb, verbose);
+        }
+        else if (head(&d->a) > d->max_to_load || head(&d->a) < d->min_to_load)
+        {
+            ret = apply_instr(d, ra, verbose);
+        }
+        else
+            ret += load_b_Turk(d, verbose);
 	}
 	return (ret);
 }
@@ -150,12 +179,13 @@ int dump_b_while_contains_next_softmax(t_data *d, int verbose)
     d->r_instr = r_instr;
     op_best_insert_b = (t_searching_op) {can_dump_b, NULL, r_instr, pa, verbose};
     d->b.pivot = (d->a.softmax - d->a.softmin) / 2 + d->a.softmin;
-    while (d->b.max == d->a.softmax - 1)
+    while (d->b.max == d->a.softmax - 1 || d->a.min != 0 || d->a.max != d->rank_max)
     {
         ret = do_best_insert(d, &op_best_insert_b);
     }
     return (ret);
 }
+
 
 int	main(int argc, char **argv)
 {
@@ -179,7 +209,8 @@ int	main(int argc, char **argv)
 		//print_lst(&d);
 	init_instr_map(&d.instr_map);
 	load_b_until_min_and_max(&d, r_instr, PRINT_DISPLAY);
-	dump_b_softminmax(&d, PRINT_DISPLAY);
+	//dump_b_softminmax(&d, PRINT_DISPLAY);
+    apply_instr(&d, pa, PRINT_DISPLAY);
     dump_b_while_contains_next_softmax(&d, PRINT_DISPLAY);
 	//dump_b_basic(&d);
 	//splitload_but_softs(&d);

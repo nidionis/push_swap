@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:41:34 by nidionis          #+#    #+#             */
-/*   Updated: 2025/03/27 00:53:35 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/31 21:36:59 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ int can_dump_b(t_data *data) {
         return (TRUE);
     if (!b->lst)
         return (FALSE);
+    if (head(b) == 0)
+        return (prev(a) == data->rank_max);
+    if (head(b) == data->rank_max)
+        return (head(a) == 0);
     if (head(b) < a->min || head(b) > a->max)
         return (head(a) == a->min);
     if (head(a) == a->min)

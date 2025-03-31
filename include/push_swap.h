@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/03/30 20:52:21 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/03/30 22:23:18 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -248,5 +248,8 @@ void	data_update_r(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 int	is_on_min_or_max(t_data *data, t_lnk *lst);
 int	do_best_insert(t_data *data, t_searching_op *op);
+int can_slpitload_but_range_and_softs(t_data *data);
+int can_first_splitload(t_data *data);
+
 
 #endif
