@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/03/30 22:23:18 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/01 19:11:57 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 
 # define LOW 432
 # define HIGH 433
+# define COEF_TURK 7
 
 # define NOT_FOUND -41
 # define NO_INSTR -42
@@ -77,7 +78,6 @@ typedef struct s_lst
 	int min;
 	int softmax;
 	int softmin;
-	int pivot;
 	int sorting_range;
 }	t_lst;
 

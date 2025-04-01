@@ -73,9 +73,6 @@ t_list *init_instr_step_node(int instr, int nb_instr_init)
 	return (first_intr_step_node);
 }
 
-
-
-
 //void	explore_insert_paths(t_data *d, int lst_instr[], int first_instr_steps[], int (*can_push)(t_data *))
 //{
 //	int	*second_instr_steps;

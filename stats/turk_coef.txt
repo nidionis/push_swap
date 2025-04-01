@@ -1,0 +1,42 @@
+****************** TURK_COEF 4 ******************
+Démarrage du test : 500 éléments, 200 itérations (seed 939978261)
+Pire = 4786 instructions
+Moyenne = 4369 instructions
+Meilleur = 3925 instructions
+Écart-type = 186.4 instructions
+
+****************** TURK_COEF 5 ******************
+Démarrage du test : 500 éléments, 100 itérations (seed 997518985)
+Pire = 4633 instructions
+Moyenne = 4190 instructions
+Meilleur = 3819 instructions
+Écart-type = 184.3 instructions
+
+****************** TURK_COEF 6 ******************
+Démarrage du test : 500 éléments, 100 itérations (seed 2140641606)
+Pire = 4586 instructions
+Moyenne = 4137 instructions
+Meilleur = 3786 instructions
+Écart-type = 165.5 instructions
+
+****************** TURK_COEF 7 ******************
+Démarrage du test : 500 éléments, 100 itérations (seed 3882531046)
+Pire = 4506 instructions
+Moyenne = 4171 instructions
+Meilleur = 3768 instructions
+Écart-type = 170.1 instructions
+
+****************** TURK_COEF 8 ******************
+Démarrage du test : 500 éléments, 100 itérations (seed 2996159262)
+Pire = 4632 instructions
+Moyenne = 4251 instructions
+Meilleur = 3814 instructions
+Écart-type = 185.4 instructions
+
+****************** TURK_COEF 8 ******************
+Démarrage du test : 500 éléments, 100 itérations (seed 3542181063)
+Pire = 4723 instructions
+Moyenne = 4296 instructions
+Meilleur = 3872 instructions
+Écart-type = 176.8 instructions
+
