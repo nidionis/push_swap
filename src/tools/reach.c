@@ -23,66 +23,32 @@ int	instr_direction(int instr)
 	return (ERR_INSTR);
 }
 
-void	reach_rank_dir(t_lnk **lst, int rank, int instr, int verbose)
-{
-	t_lnk	*first_lnk;
-	t_data	data;
-
-	ft_bzero(&data, sizeof(t_data));
-	data.a.lst = *lst;
-	data.b.lst = *lst;
-	first_lnk = *lst;
-	t_lst temp;
-
-	temp.lst = first_lnk;
-	if (head(&temp) != rank)
-	{
-		apply_instr(&data, instr, verbose);
-		while (data.a.lst != first_lnk)
-		{
-			temp.lst = data.a.lst;
-			if (head(&temp) == rank)
-				break ;
-			apply_instr(&data, instr, verbose);
-		}
-	}
-	if (*lst != data.a.lst)
-		*lst = data.a.lst;
-	else
-		*lst = data.b.lst;
-}
-
-void	reach_rank_ls_quiet(t_lnk **lst, int rank)
-{
-	reach_rank_dir(lst, rank, get_shortestway(rank, *lst), QUIET);
-}
-
-int	reached_rank(int rank, t_data *data)
-{
-	return (get_shortestway(rank, data->a.lst) == 0 || get_shortestway(rank, data->b.lst) == 0);
-}
-
-int reach_rank(t_data *data, int rank, int verbose)
+int reach_rank_a(t_data *data, int rank, int verbose)
 {
 	int nb_instr;
-	int instr;
 	int way;
-	t_lnk *lst;
+	int instr;
 
-	nb_instr = 0;
-	lst = data->a.lst;
-	instr = ra;
-	if (is_rank_in_lst_forward(rank, lst) == NOT_FOUND)
-	{
-		lst = data->b.lst;
+	way = get_shortestway(rank, data->a.lst);
+	instr = rra;
+	if (way == ROTATE)
+		instr = ra;
+	while (data->a.lst->rank != rank)
+		nb_instr += apply_instr(data, instr, verbose);
+	return (nb_instr);
+}
+
+int reach_rank_b(t_data *data, int rank, int verbose)
+{
+	int nb_instr;
+	int way;
+	int instr;
+
+	way = get_shortestway(rank, data->b.lst);
+	instr = rrb;
+	if (way == ROTATE)
 		instr = rb;
-		if (is_rank_in_lst_forward(rank, lst) == NOT_FOUND)
-			return (NOT_FOUND);
-	}
-	way = get_shortestway(rank, lst);
-	if (way == RROTATE)
-		instr = ft_rev_instr(instr);
-	while (!reached_rank(rank, data))
+	while (data->b.lst->rank != rank)
 		nb_instr += apply_instr(data, instr, verbose);
 	return (nb_instr);
 }

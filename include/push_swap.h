@@ -251,5 +251,7 @@ int	do_best_insert(t_data *data, t_searching_op *op);
 int can_slpitload_but_range_and_softs(t_data *data);
 int can_first_splitload(t_data *data);
 
+int reach_rank_a(t_data *data, int rank, int verbose);
+int reach_rank_b(t_data *data, int rank, int verbose);
 
 #endif

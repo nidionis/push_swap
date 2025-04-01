@@ -27,11 +27,27 @@ int	is_on_min_or_max(t_data *data, t_lnk *lst)
     return (FALSE);
 }
 
+static t_lnk *reach_rank_lnk(t_lnk *lst, int rank)
+{
+	t_lnk	*last_lnk;
+
+	last_lnk = lst->prev;
+    while (lst->rank != rank && lst != last_lnk)
+    {
+	    lst = lst->next;
+    }
+	if (lst->rank != rank)
+		return (NULL);
+    return (lst);
+}
+
 int	is_sorted(t_lnk *lst)
 {
 	t_lnk	*lst_orig;
 
-	reach_rank_ls_quiet(&lst, 0);
+	if (!lst)
+		return (TRUE);
+	lst = reach_rank_lnk(lst, get_min(lst)->rank);
 	lst_orig = lst;
 	while (lst != lst_orig->prev)
 	{

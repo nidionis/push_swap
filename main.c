@@ -48,29 +48,12 @@ int dump_b_basic(t_data *d)
     return (ret);
 }
 
-int dump_b_softminmax(t_data *d, int verbose)
-{
-	int r_instr[12];
-	int ret;
-
-	ret = 0;
-	init_r_instr_load_b_basic(r_instr);
-	d->r_instr = r_instr;
-	ret += reach_rank(d, d->b.softmin, verbose);
-	int softmax_b = d->b.softmax;
-	while (head(&d->a) != softmax_b)
-		ret += apply_instr(d, pa, verbose);
-	return (ret);
-}
-
 int load_b_Turk(t_data *d, int verbose)
 {
     int ret;
     int pivot;
-    t_lst *a;
     t_lst *b;
 
-    a = &d->a;
     b = &d->b;
     pivot = d->min_to_load + (d->max_to_load - d->min_to_load) / COEF_TURK;
     ret = 0;
@@ -86,25 +69,23 @@ int load_b_Turk(t_data *d, int verbose)
 
 int load_b_opti_turk(t_data *d, int *r_instr, int verbose)
 {
-	int ret;
 	int nb_instr;
     //int instr_ls[7] = {rb, rrb, rr, rrr, LOOP_END};
 
-	nb_instr = 0;
 	d->r_instr = r_instr;
 	//d->b.pivot = (d->a.softmax - d->a.softmin) / 2 + d->a.softmin;
-    ret = 0;
-	while (d->a.size > 2) {
+    nb_instr = 0;
+	while (!is_sorted(d->a.lst)) {
         d->min_to_load = d->a.max / COEF_TURK;
         d->max_to_load = d->a.max - d->min_to_load * 2;
         if (head(&d->a) >= d->max_to_load || head(&d->a) <= d->min_to_load)
         {
-            ret += load_b_Turk(d, verbose);
+            nb_instr += load_b_Turk(d, verbose);
         }
         else
-            ret = apply_instr(d, ra, verbose);
+            nb_instr = apply_instr(d, ra, verbose);
 	}
-	return (ret);
+	return (nb_instr);
 }
 
 int dump_b_while_contains_next_softmax(t_data *d, int verbose)
@@ -152,7 +133,7 @@ int	main(int argc, char **argv)
 	//splitload_but_softs(&d);
 	//dump_b_basic(&d);
 	//	//print_lst(&d);
-    reach_rank(&d, 0, PRINT_DISPLAY);
+    reach_rank_a(&d, 0, PRINT_DISPLAY);
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
 	//free(d.instr_map);
