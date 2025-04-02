@@ -13,31 +13,31 @@
 #include <push_swap.h>
 
 // head(a or b) breplace a(or b)->lst->rank
-int    head(t_lst *x)
+int	head(t_lst *x)
 {
-  if (!x)
-    printf("[head] you are doing shit somehow\n");
-  if (!x->lst)
-    return (EMPTY_LST);
-  return (x->lst->rank);
+	if (!x)
+		printf("[head] you are doing shit somehow\n");
+	if (!x->lst)
+		return (EMPTY_LST);
+	return (x->lst->rank);
 }
 
 // replace a(or b)->lst->prev->rank
-int    prev(t_lst *x)
+int	prev(t_lst *x)
 {
-  if (!x)
-    printf("[prev] you are doing shit somehow\n");
-  if (!x->lst)
-    return (EMPTY_LST);
-  return (x->lst->prev->rank);
+	if (!x)
+		printf("[prev] you are doing shit somehow\n");
+	if (!x->lst)
+		return (EMPTY_LST);
+	return (x->lst->prev->rank);
 }
 
 // replace a(or b)->lst->next->rank
-int    next(t_lst *x)
+int	next(t_lst *x)
 {
-  if (!x)
-    printf("[next] you are doing shit somehow\n");
-  if (!x->lst)
-    return (EMPTY_LST);
-  return (x->lst->next->rank);
+	if (!x)
+		printf("[next] you are doing shit somehow\n");
+	if (!x->lst)
+		return (EMPTY_LST);
+	return (x->lst->next->rank);
 }

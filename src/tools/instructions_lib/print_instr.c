@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_shortestway.c                                  :+:      :+:    :+:   */
+/*   best_insert.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/01 22:13:50 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/02 17:09:44 by nidionis         ###   ########.fr       */
+/*   Created: 2025/02/02 23:49:48 by nidionis          #+#    #+#             */
+/*   Updated: 2025/04/02 17:00:28 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_shortestway(int target_rank, t_lnk *list)
+void	print_instr(t_data *data, int instr)
 {
-	t_lnk	*last;
-	int		step;
+	t_instr_map	*instr_map;
+	int			i;
 
-	last = list;
-	step = 0;
-	while (list != last)
+	i = 0;
+	instr_map = data->instr_map;
+	while (instr_map[i].name)
 	{
-		if (list->rank == target_rank)
-			break ;
-		list = list->next;
-		step++;
+		if (instr_map[i].code == instr)
+		{
+			printf("%s\n", instr_map[i].name);
+			return ;
+		}
+		i++;
 	}
-	if (step > ft_dlstsize(list) / 2)
-		return (RROTATE);
-	return (ROTATE);
 }
