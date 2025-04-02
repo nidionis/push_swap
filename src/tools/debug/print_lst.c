@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:47:42 by supersko          #+#    #+#             */
-/*   Updated: 2025/01/30 20:04:34 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 22:06:07 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 void	print_lst_byrank(t_lnk *lst, char *header)
 {
 	t_lnk	*lnk_ind;
+	t_lst	temp;
 
-	printf("----------------------------------------------------------------\n");
+	printf("------------------------------------\n");
 	if (header)
 		printf("%s\t", header);
 	printf("\n");
 	if (lst)
 	{
-		t_lst temp;
-		
 		temp.lst = lst;
 		printf("%d\t", head(&temp));
 		lnk_ind = lst->next;
@@ -36,7 +35,7 @@ void	print_lst_byrank(t_lnk *lst, char *header)
 	}
 	else
 		printf("	[ empty list ]");
-	printf("\n----------------------------------------------------------------");
+	printf("\n----------------------------------------");
 }
 
 void	print_lst(t_data *d)
@@ -48,20 +47,20 @@ void	print_lst(t_data *d)
 	b = d->b.lst;
 	print_lst_byrank(b, "B");
 	print_lst_byrank(a, "A");
-	printf("\n###################################################################");
+	printf("\n###########################################");
 	printf("\n\n");
 }
 
-void print_instr_step(t_instr_step *instr_step)
+void	print_instr_step(t_instr_step *instr_step)
 {
 	printf("instr: ");
 	print_instr_from_int_heavy(instr_step->instr);
 	printf(" x%i", instr_step->nb_instr);
 }
 
-void print_instr_ls(t_list *ls)
+void	print_instr_ls(t_list *ls)
 {
-	t_instr_step *instr_step;
+	t_instr_step	*instr_step;
 
 	if (ls)
 	{
