@@ -32,15 +32,13 @@ void init_r_instr_load_b_basic(int r_instr[12]) {
     r_instr[6] = LOOP_END;
 }
 
-int dump_b_basic(t_data *d)
+int dump_b_basic(t_data *d, int *r_instr, int verbose)
 {
-    int r_instr[12];
     t_searching_op op_best_insert_b;
     int ret;
 
-	op_best_insert_b = (t_searching_op) {can_dump_b, NULL, r_instr, pa, PRINT_DISPLAY};
+	op_best_insert_b = (t_searching_op) {can_dump_b, NULL, r_instr, pa, verbose};
     ret = 0;
-    init_r_instr_load_b_basic(r_instr);
     d->r_instr = r_instr;
 	while (d->b.size) {
 		ret = do_best_insert(d, &op_best_insert_b);
@@ -48,7 +46,7 @@ int dump_b_basic(t_data *d)
     return (ret);
 }
 
-int load_b_Turk(t_data *d, int verbose)
+int load_b_Turk(t_data *d, int coef_turk, int verbose)
 {
     int ret;
     int pivot;
@@ -61,29 +59,26 @@ int load_b_Turk(t_data *d, int verbose)
     if (head(b) < pivot)
         ret = apply_instr(d, rb, verbose);
     if (head(b) != b->max)
-        if (head(b) < next(b) && head(b) < COEF_TURK)
+        if (head(b) < next(b) && head(b) < coef_turk)
             ret = apply_instr(d, sb, verbose);
     return (ret);
 }
 
 
-int load_b_opti_turk(t_data *d, int *r_instr, int verbose)
+int load_b_opti_turk(t_data *d, int coef_turk, int verbose)
 {
 	int nb_instr;
-    //int instr_ls[7] = {rb, rrb, rr, rrr, LOOP_END};
 
-	d->r_instr = r_instr;
-	//d->b.pivot = (d->a.softmax - d->a.softmin) / 2 + d->a.softmin;
     nb_instr = 0;
 	while (!is_sorted(d->a.lst)) {
-        d->min_to_load = d->a.max / COEF_TURK;
+        d->min_to_load = d->a.max / coef_turk;
         d->max_to_load = d->a.max - d->min_to_load * 2;
         if (head(&d->a) >= d->max_to_load || head(&d->a) <= d->min_to_load)
         {
-            nb_instr += load_b_Turk(d, verbose);
+            nb_instr += load_b_Turk(d, coef_turk, verbose);
         }
         else
-            nb_instr = apply_instr(d, ra, verbose);
+            nb_instr += apply_instr(d, ra, verbose);
 	}
 	return (nb_instr);
 }
@@ -104,11 +99,48 @@ int dump_b_while_contains_next_softmax(t_data *d, int verbose)
     return (ret);
 }
 
+int main_test(t_data d, int coef_turk, int verbose)
+{
+	int r_instr[12];
+	int nb_instr;
+
+    //init_r_instr_load_b_basic(r_instr);
+	init_r_instr_load_b_turk_(r_instr);
+	nb_instr = load_b_opti_turk(&d, coef_turk, verbose);
+	nb_instr += dump_b_basic(&d, r_instr, verbose);
+	nb_instr += reach_rank_a(&d, 0, verbose);
+	return (nb_instr);
+}
+
+t_lnk *list_deep_cpy(t_lnk *lst)
+{
+	t_lnk *tmp;
+	t_lnk *ret;
+	t_lnk *last;
+
+	ret = NULL;
+	if (!lst)
+		return (NULL);
+	lst = lst->prev;
+	last = lst;
+	while (!ret || lst != last)
+	{
+		tmp = malloc(sizeof(t_lnk));
+		if (!tmp)
+		{
+			del_lst(&ret);
+			return (NULL);
+		}
+		ft_memcpy(tmp, lst, sizeof(t_lnk));
+		push_item(tmp, &ret);
+		lst = lst->prev;
+	}
+	return (ret);
+}
 
 int	main(int argc, char **argv)
 {
 	t_data d;
-	int r_instr[12];
 
 	ft_bzero(&d, sizeof(t_data));
     init_instr_map(&d.instr_map);
@@ -124,16 +156,24 @@ int	main(int argc, char **argv)
 	if (!ft_no_duplicate(d.a.lst))
 		ft_errmsg("Error: duplicated items");
 	init_data(&d, &d.a.lst, &d.b.lst);
-		//print_lst(&d);
 
-    init_r_instr_load_b_turk_(r_instr);
-    load_b_opti_turk(&d, r_instr, PRINT_DISPLAY);
-	//dump_b_softminmax(&d, PRINT_DISPLAY);
-	dump_b_basic(&d);
-	//splitload_but_softs(&d);
-	//dump_b_basic(&d);
-	//	//print_lst(&d);
-    reach_rank_a(&d, 0, PRINT_DISPLAY);
+	//int coef_turk = 3;
+	//int best_coef = 3;
+	//int best_turk = SIZE_MAX * 20;
+	//int nb_instr = best_turk;
+	t_lnk *deep_cpy = list_deep_cpy(d.a.lst);
+	print_lst_byrank(deep_cpy, "copy");
+	//while (coef_turk < 15)
+	//{
+	//	nb_instr = main_test(d, coef_turk, QUIET);
+	//	if (nb_instr < best_turk)
+	//	{
+	//		best_turk = nb_instr;
+	//		best_coef = coef_turk;
+	//	}
+	//	coef_turk++;
+	//}
+	//main_test(d, best_coef, PRINT_DISPLAY);
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
 	//free(d.instr_map);
