@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/03/30 20:44:50 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 22:12:46 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,37 @@
 
 int	is_on_min_or_max(t_data *data, t_lnk *lst)
 {
-    if (lst == data->a.lst)
-    {
-        if (data->a.max == lst->rank || data->a.min == lst->rank)
-            return (TRUE);
-    }
-    else if (lst == data->b.lst)
-    {
-        if (data->b.max == lst->rank || data->b.min == lst->rank)
-            return (TRUE);
-    }
-    return (FALSE);
+	if (lst == data->a.lst)
+	{
+		if (data->a.max == lst->rank || data->a.min == lst->rank)
+			return (TRUE);
+	}
+	else if (lst == data->b.lst)
+	{
+		if (data->b.max == lst->rank || data->b.min == lst->rank)
+			return (TRUE);
+	}
+	return (FALSE);
 }
 
-static t_lnk *reach_rank_lnk(t_lnk *lst, int rank)
+static t_lnk	*reach_rank_lnk(t_lnk *lst, int rank)
 {
 	t_lnk	*last_lnk;
 
 	last_lnk = lst->prev;
-    while (lst->rank != rank && lst != last_lnk)
-    {
-	    lst = lst->next;
-    }
+	while (lst->rank != rank && lst != last_lnk)
+	{
+		lst = lst->next;
+	}
 	if (lst->rank != rank)
 		return (NULL);
-    return (lst);
+	return (lst);
 }
 
 int	is_sorted(t_lnk *lst)
 {
 	t_lnk	*lst_orig;
+	t_lst	temp;
 
 	if (!lst)
 		return (TRUE);
@@ -51,8 +52,6 @@ int	is_sorted(t_lnk *lst)
 	lst_orig = lst;
 	while (lst != lst_orig->prev)
 	{
-		t_lst temp;
-		
 		temp.lst = lst;
 		if (head(&temp) == next(&temp) - 1)
 			lst = lst->next;
