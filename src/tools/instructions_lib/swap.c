@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/02 17:47:34 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:48:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	swap_lst(t_lnk **lst)
 	t_lnk	*sec;
 
 	if (*lst && (*lst)->next != *lst)
-	{	
+	{
 		sec = (*lst)->next;
 		if (sec->next != *lst)
 		{

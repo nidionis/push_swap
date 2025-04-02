@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/01 19:11:57 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:54:31 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,7 +196,6 @@ void	swap_both(t_lnk **lst_a, t_lnk **lst_b);
 t_lnk	*lnk_init(t_lnk *lnk);
 t_lnk	*ft_new_lnk(int nb, int ind, int rank);
 void	del_lst(t_lnk **lst);
-void	loop(t_lnk *lnk, t_lnk *l_i, int *max);
 int	lst_init_ranks(t_lnk **lst);
 int ft_dlstsize(t_lnk *lst);
 int	ft_rev_instr(int instr);

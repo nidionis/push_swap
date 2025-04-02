@@ -12,29 +12,6 @@
 
 #include "push_swap.h"
 
-/*
-t_lnk	*get_args_allinone(char *str)
-{
-	t_lnk	*lnk;
-	char	**splited;
-	int		argc;
-
-	argc = ft_wd_count(str, ' ') - 1;
-	if (argc < 0)
-		ft_errmsg(NULL);
-	splited = ft_split(str, ' ');
-	lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
-	d.lst_a = lnk;
-	while (argc--)
-	{
-		lnk = ft_new_lnk(ft_atoi_err(splited[argc]), argc, 0);
-		push_item(lnk, &d.lst_a);
-	}
-	ft_free_split(&splited);
-	return (d.lst_a);
-}
-*/
-
 t_lnk	*get_args(t_data *d, int argc, char *argv[])
 {
 	t_lnk	*lnk;

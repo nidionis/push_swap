@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 17:19:58 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 06:04:04 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:52:30 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	del_lst(t_lnk **lst)
 	}
 }
 
-void	loop(t_lnk *lnk, t_lnk *l_i, int *max)
+static void	loop(t_lnk *lnk, t_lnk *l_i, int *max)
 {
 	if (lnk->nb > l_i->nb)
 	{
@@ -100,21 +100,4 @@ int	lst_init_ranks(t_lnk **lst)
 		lnk = lnk->next;
 	}
 	return (max);
-}
-
-int ft_dlstsize(t_lnk *lst)
-{
-	int		i;
-	t_lnk	*lnk;
-
-	i = 1;
-	lnk = lst;
-	if (!lnk)
-		return (0);
-	while (lnk->next != lst)
-	{
-		i++;
-		lnk = lnk->next;
-	}
-	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 22:15:44 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 16:47:09 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int reach_rank_a(t_data *data, int rank, int verbose)
 	instr = rra;
 	if (way == ROTATE)
 		instr = ra;
+    nb_instr = 0;
 	while (data->a.lst->rank != rank)
 		nb_instr += apply_instr(data, instr, verbose);
 	return (nb_instr);
@@ -48,6 +49,7 @@ int reach_rank_b(t_data *data, int rank, int verbose)
 	instr = rrb;
 	if (way == ROTATE)
 		instr = rb;
+    nb_instr = 0;
 	while (data->b.lst->rank != rank)
 		nb_instr += apply_instr(data, instr, verbose);
 	return (nb_instr);
