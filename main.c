@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/01 19:04:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:03:51 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,11 +164,10 @@ int	main(int argc, char **argv)
 	init_data(&d, &d.a.lst, &d.b.lst);
 
 	int coef_turk = 3;
-	int best_coef = 3;
+	int best_coef = coef_turk;
 	int best_turk = SIZE_MAX * 20;
 	int nb_instr = best_turk;
 	t_lnk *deep_cpy = list_deep_cpy(d.a.lst);
-	//print_lst_byrank(deep_cpy, "copy");
 	int best_way = ra;
 	while (coef_turk < 8)
 	{
@@ -195,5 +194,4 @@ int	main(int argc, char **argv)
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
 	del_lst(&deep_cpy);
-	//free(d.instr_map);
 }
