@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/02 22:54:40 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:15:35 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,5 +264,12 @@ int						can_first_splitload(t_data *data);
 int						reach_rank_a(t_data *data, int rank, int verbose);
 int						reach_rank_b(t_data *data, int rank, int verbose);
 void					set_minmax(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
+t_lnk               	*list_deep_cpy(t_lnk *lst);
+void                reset_lst(t_data *d, t_lnk *back_up);
+void                init_r_instr_load_b_turk_(int r_instr[12]);
+void                init_r_instr_load_b_basic(int r_instr[12]);
+int                load_b_Turk(t_data *d, int coef_turk, int verbose);
+int                load_b_opti_turk(t_data *d, int coef_turk, int r_x, int verbose);
+int                dump_b_basic(t_data *d, int *r_instr, int verbose);
 
 #endif
