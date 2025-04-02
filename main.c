@@ -41,7 +41,7 @@ int dump_b_basic(t_data *d, int *r_instr, int verbose)
     ret = 0;
     d->r_instr = r_instr;
 	while (d->b.size) {
-		ret = do_best_insert(d, &op_best_insert_b);
+		ret += do_best_insert(d, &op_best_insert_b);
 	}
     return (ret);
 }
@@ -65,7 +65,7 @@ int load_b_Turk(t_data *d, int coef_turk, int verbose)
 }
 
 
-int load_b_opti_turk(t_data *d, int coef_turk, int verbose)
+int load_b_opti_turk(t_data *d, int coef_turk, int r_x, int verbose)
 {
 	int nb_instr;
 
@@ -78,7 +78,7 @@ int load_b_opti_turk(t_data *d, int coef_turk, int verbose)
             nb_instr += load_b_Turk(d, coef_turk, verbose);
         }
         else
-            nb_instr += apply_instr(d, ra, verbose);
+            nb_instr += apply_instr(d, r_x, verbose);
 	}
 	return (nb_instr);
 }
@@ -99,14 +99,14 @@ int dump_b_while_contains_next_softmax(t_data *d, int verbose)
     return (ret);
 }
 
-int main_test(t_data d, int coef_turk, int verbose)
+int main_test(t_data d, int coef_turk, int r_x, int verbose)
 {
 	int r_instr[12];
 	int nb_instr;
 
     //init_r_instr_load_b_basic(r_instr);
 	init_r_instr_load_b_turk_(r_instr);
-	nb_instr = load_b_opti_turk(&d, coef_turk, verbose);
+	nb_instr = load_b_opti_turk(&d, coef_turk, r_x, verbose);
 	nb_instr += dump_b_basic(&d, r_instr, verbose);
 	nb_instr += reach_rank_a(&d, 0, verbose);
 	return (nb_instr);
@@ -137,6 +137,12 @@ t_lnk *list_deep_cpy(t_lnk *lst)
 	}
 	return (ret);
 }
+void reset_lst(t_data *d, t_lnk *back_up)
+{
+	del_lst(&d->a.lst);
+	d->a.lst = list_deep_cpy(back_up);
+	d->b.lst = NULL;
+}
 
 int	main(int argc, char **argv)
 {
@@ -157,24 +163,37 @@ int	main(int argc, char **argv)
 		ft_errmsg("Error: duplicated items");
 	init_data(&d, &d.a.lst, &d.b.lst);
 
-	//int coef_turk = 3;
-	//int best_coef = 3;
-	//int best_turk = SIZE_MAX * 20;
-	//int nb_instr = best_turk;
+	int coef_turk = 3;
+	int best_coef = 3;
+	int best_turk = SIZE_MAX * 20;
+	int nb_instr = best_turk;
 	t_lnk *deep_cpy = list_deep_cpy(d.a.lst);
-	print_lst_byrank(deep_cpy, "copy");
-	//while (coef_turk < 15)
-	//{
-	//	nb_instr = main_test(d, coef_turk, QUIET);
-	//	if (nb_instr < best_turk)
-	//	{
-	//		best_turk = nb_instr;
-	//		best_coef = coef_turk;
-	//	}
-	//	coef_turk++;
-	//}
-	//main_test(d, best_coef, PRINT_DISPLAY);
+	//print_lst_byrank(deep_cpy, "copy");
+	int best_way = ra;
+	while (coef_turk < 8)
+	{
+		int tmp = 100000;
+		int r_x = ra;
+		nb_instr = main_test(d, coef_turk, r_x, QUIET);
+		reset_lst(&d, deep_cpy);
+		tmp = main_test(d, coef_turk, ft_rev_instr(r_x), QUIET);
+		reset_lst(&d, deep_cpy);
+		if (nb_instr > tmp)
+		{
+			nb_instr = tmp;
+			r_x = rra;
+		}
+		if (nb_instr < best_turk)
+		{
+			best_turk = nb_instr;
+			best_coef = coef_turk;
+			best_way = r_x;
+		}
+		coef_turk++;
+	}
+	main_test(d, best_coef, best_way, PRINT_DISPLAY);
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
+	del_lst(&deep_cpy);
 	//free(d.instr_map);
 }
