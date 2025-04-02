@@ -44,41 +44,41 @@ void	set_softmin(t_data *data, t_lnk *lst_a, t_lnk *lst_b)
 		data->b.softmin = get_softmin(lst_b)->rank;
 }
 
-void set_minmax(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
+void	set_minmax(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
-    t_lnk *tmp;
+	t_lnk	*tmp;
 
-    if (!data || !lst_a || !lst_b)
-        return ;
-    data->a.lst = *lst_a;
-    data->b.lst = *lst_b;
-    tmp = get_max(*lst_a);
-    if (tmp)
-        data->a.max = tmp->rank;
-    else
-        data->a.max = UNSET;
-    tmp = get_max(*lst_b);
-    if (tmp)
-        data->b.max = tmp->rank;
-    else
-        data->b.max = UNSET;
-    tmp = get_min(*lst_a);
-    if (tmp)
-        data->a.min = tmp->rank;
-    else
-        data->a.min = UNSET;
-    tmp = get_min(*lst_b);
-    if (tmp)
-        data->b.min = tmp->rank;
-    else
-        data->b.min = UNSET;
+	if (!data || !lst_a || !lst_b)
+		return ;
+	data->a.lst = *lst_a;
+	data->b.lst = *lst_b;
+	tmp = get_max(*lst_a);
+	if (tmp)
+		data->a.max = tmp->rank;
+	else
+		data->a.max = UNSET;
+	tmp = get_max(*lst_b);
+	if (tmp)
+		data->b.max = tmp->rank;
+	else
+		data->b.max = UNSET;
+	tmp = get_min(*lst_a);
+	if (tmp)
+		data->a.min = tmp->rank;
+	else
+		data->a.min = UNSET;
+	tmp = get_min(*lst_b);
+	if (tmp)
+		data->b.min = tmp->rank;
+	else
+		data->b.min = UNSET;
 }
 
 void	data_update(t_data *data, t_lnk **lst_a, t_lnk **lst_b)
 {
 	if (!data)
 		return ;
-    set_minmax(data, lst_a, lst_b);
+	set_minmax(data, lst_a, lst_b);
 	data->a.size = ft_dlstsize(*lst_a);
 	data->b.size = ft_dlstsize(*lst_b);
 	set_softmax(data, *lst_a, *lst_b);
