@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 01:37:34 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/03 01:37:42 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 22:15:02 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,31 @@ int	ft_rev_instr(int instr)
 	return (-42);
 }
 
-int mirror_instr(const int instr)
+int	mirror_instr(const int instr)
 {
 	if (instr == ra)
-		return rb;
+		return (rb);
 	if (instr == rb)
-		return ra;
+		return (ra);
 	if (instr == rra)
-		return rrb;
+		return (rrb);
 	if (instr == rrb)
-		return rra;
+		return (rra);
 	if (instr == sa)
-		return sb;
+		return (sb);
 	if (instr == sb)
-		return sa;
+		return (sa);
 	if (instr == pa)
-		return pb;
+		return (pb);
 	if (instr == pb)
-		return pa;
-	return instr;
+		return (pa);
+	return (instr);
 }
 
-int ft_nb_instr(t_list *instr_step_node)
+int	ft_nb_instr(t_list *instr_step_node)
 {
-	int nb_instr;
-	t_instr_step *instr_step;
+	int				nb_instr;
+	t_instr_step	*instr_step;
 
 	nb_instr = 0;
 	while (instr_step_node)
@@ -62,5 +62,5 @@ int ft_nb_instr(t_list *instr_step_node)
 		nb_instr += instr_step->nb_instr;
 		instr_step_node = instr_step_node->next;
 	}
-	return (nb_instr);	
+	return (nb_instr);
 }
