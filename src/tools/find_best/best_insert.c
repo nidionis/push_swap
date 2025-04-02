@@ -6,18 +6,20 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:49:48 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/02 21:55:20 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 21:58:49 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 void	update_instr_step(t_data *d_copy, t_instr_step *instr_step,
-		int lst_instr[], int (*can_push)(t_data *), int *max_cost)
+		int (*can_push)(t_data *), int *max_cost)
 {
 	int	cost;
 	int	i_instr;
+	int	*lst_instr;
 
+	lst_instr = d_copy->r_instr;
 	cost = SIZE_MAX;
 	i_instr = 0;
 	while (lst_instr[i_instr] != LOOP_END)
@@ -54,7 +56,8 @@ t_list	*best_insert(t_data *d, int lst_instr[], int (*can_push)(t_data *),
 	}
 	else
 	{
-		update_instr_step(&d_copy, instr_step, lst_instr, can_push, &max_cost);
+		d_copy.r_instr = lst_instr;
+		update_instr_step(&d_copy, instr_step, can_push, &max_cost);
 	}
 	return (instr_step_node);
 }
