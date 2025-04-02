@@ -14,20 +14,20 @@
 
 int	do_best_insert(t_data *data, t_searching_op *op)
 {
-    t_list *insertion_step;
-    int nb_instr;
+	t_list	*insertion_step;
+	int		nb_instr;
 
-    nb_instr = 0;
-    if (op->f_can(data))
-        nb_instr += apply_instr(data, op->px, op->verbose);
-    else
-    {
-        insertion_step = ft_best_comb(data, op->instr_ls, op->f_can, SIZE_MAX);
-        if (!insertion_step)
-            return (ERR_NO_BEST_COMB);
-        nb_instr += ft_nb_instr(insertion_step);
-        apply_best_comb_and(op->f_do, data, insertion_step, op->verbose);
-        ft_lstclear(&insertion_step, free);
-    }
-    return (nb_instr);
+	nb_instr = 0;
+	if (op->f_can(data))
+		nb_instr += apply_instr(data, op->px, op->verbose);
+	else
+	{
+		insertion_step = ft_best_comb(data, op->instr_ls, op->f_can, SIZE_MAX);
+		if (!insertion_step)
+			return (ERR_NO_BEST_COMB);
+		nb_instr += ft_nb_instr(insertion_step);
+		apply_best_comb_and(op->f_do, data, insertion_step, op->verbose);
+		ft_lstclear(&insertion_step, free);
+	}
+	return (nb_instr);
 }

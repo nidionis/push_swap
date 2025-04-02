@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 01:38:58 by nidionis          #+#    #+#             */
-/*   Updated: 2025/02/03 01:39:12 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:45:39 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_cost(t_list *best_comb)
 {
-	int	cost;
-	t_instr_step *instr_step;
+	int				cost;
+	t_instr_step	*instr_step;
 
 	cost = 0;
 	if (best_comb)

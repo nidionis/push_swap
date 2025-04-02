@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/02 16:54:31 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/02 19:33:26 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,5 +252,6 @@ int can_first_splitload(t_data *data);
 
 int reach_rank_a(t_data *data, int rank, int verbose);
 int reach_rank_b(t_data *data, int rank, int verbose);
+void	set_minmax(t_data *data, t_lnk **lst_a, t_lnk **lst_b);
 
 #endif
