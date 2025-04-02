@@ -12,19 +12,19 @@
 
 #include "push_swap.h"
 
-int ft_dlstsize(t_lnk *lst)
+int	ft_dlstsize(t_lnk *lst)
 {
-    int		i;
-    t_lnk	*lnk;
+	int		i;
+	t_lnk	*lnk;
 
-    i = 1;
-    lnk = lst;
-    if (!lnk)
-        return (0);
-    while (lnk->next != lst)
-    {
-        i++;
-        lnk = lnk->next;
-    }
-    return (i);
+	i = 1;
+	lnk = lst;
+	if (!lnk)
+		return (0);
+	while (lnk->next != lst)
+	{
+		i++;
+		lnk = lnk->next;
+	}
+	return (i);
 }

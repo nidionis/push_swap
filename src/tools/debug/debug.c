@@ -41,13 +41,13 @@ void	print_instr_steps(int instr_steps_itm[2])
 
 void	print_data(t_data *d)
 {
-    printf("max_a: %d\n", d->a.max);
-    printf("max_b: %d\n", d->b.max);
-    printf("min_a: %d\n", d->a.min);
-    printf("min_b: %d\n", d->b.min);
-    printf("softmax_a: %d\n", d->a.softmax);
-    printf("softmax_b: %d\n", d->b.softmax);
-    printf("softmin_a: %d\n", d->a.softmin);
-    printf("softmin_b: %d\n", d->b.softmin);
-    printf("rank_max: %d\n", d->rank_max);
+	printf("max_a: %d\n", d->a.max);
+	printf("max_b: %d\n", d->b.max);
+	printf("min_a: %d\n", d->a.min);
+	printf("min_b: %d\n", d->b.min);
+	printf("softmax_a: %d\n", d->a.softmax);
+	printf("softmax_b: %d\n", d->b.softmax);
+	printf("softmin_a: %d\n", d->a.softmin);
+	printf("softmin_b: %d\n", d->b.softmin);
+	printf("rank_max: %d\n", d->rank_max);
 }
