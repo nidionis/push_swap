@@ -12,36 +12,36 @@
 
 #include "push_swap.h"
 
-t_lnk *list_deep_cpy(t_lnk *lst)
+t_lnk	*list_deep_cpy(t_lnk *lst)
 {
-    t_lnk *tmp;
-    t_lnk *ret;
-    t_lnk *last;
+	t_lnk	*tmp;
+	t_lnk	*ret;
+	t_lnk	*last;
 
-    ret = NULL;
-    if (!lst)
-        return (NULL);
-    lst = lst->prev;
-    last = lst;
-    while (!ret || lst != last)
-    {
-        tmp = malloc(sizeof(t_lnk));
-        if (!tmp)
-        {
-            del_lst(&ret);
-            return (NULL);
-        }
-        ft_memcpy(tmp, lst, sizeof(t_lnk));
-        push_item(tmp, &ret);
-        lst = lst->prev;
-    }
-    return (ret);
+	ret = NULL;
+	if (!lst)
+		return (NULL);
+	lst = lst->prev;
+	last = lst;
+	while (!ret || lst != last)
+	{
+		tmp = malloc(sizeof(t_lnk));
+		if (!tmp)
+		{
+			del_lst(&ret);
+			return (NULL);
+		}
+		ft_memcpy(tmp, lst, sizeof(t_lnk));
+		push_item(tmp, &ret);
+		lst = lst->prev;
+	}
+	return (ret);
 }
 
-void reset_lst(t_data *d, t_lnk *back_up)
+void	reset_lst(t_data *d, t_lnk *back_up)
 {
-    del_lst(&d->a.lst);
-    del_lst(&d->b.lst);
-    d->a.lst = list_deep_cpy(back_up);
-    d->b.lst = NULL;
+	del_lst(&d->a.lst);
+	del_lst(&d->b.lst);
+	d->a.lst = list_deep_cpy(back_up);
+	d->b.lst = NULL;
 }
