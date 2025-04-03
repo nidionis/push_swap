@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/03 18:05:41 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:26:33 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@
 
 # define LOW 432
 # define HIGH 433
-# define COEF_TURK 7
+# define COEF_TURK_MAX 9
+# define COEF_TURK_MIN 1
 
 # define NOT_FOUND -41
 # define NO_INSTR -42

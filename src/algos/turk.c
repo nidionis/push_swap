@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:41:34 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/03 18:14:52 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:24:56 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	load_b_turk(t_data *d, int coef_turk, int verbose)
 	t_lst	*b;
 
 	b = &d->b;
-	pivot = d->min_to_load + (d->max_to_load - d->min_to_load) / COEF_TURK;
+	pivot = d->min_to_load + (d->max_to_load - d->min_to_load) / 2;
 	ret = 0;
 	ret = apply_instr(d, pb, verbose);
 	if (head(b) < pivot)
@@ -33,12 +33,14 @@ int	load_b_turk(t_data *d, int coef_turk, int verbose)
 int	load_b_opti_turk(t_data *d, int coef_turk, int r_x, int verbose)
 {
 	int	nb_instr;
+	int	range;
 
 	nb_instr = 0;
+	range = d->rank_max / coef_turk;
 	while (!is_sorted(d->a.lst))
 	{
-		d->min_to_load = d->a.max / coef_turk;
-		d->max_to_load = d->a.max - d->min_to_load * 2;
+		d->min_to_load = d->a.min + range / 2;
+		d->max_to_load = d->a.max - range;
 		if (head(&d->a) >= d->max_to_load || head(&d->a) <= d->min_to_load)
 		{
 			nb_instr += load_b_turk(d, coef_turk, verbose);
@@ -68,13 +70,13 @@ int	find_best_coef_turk(t_data d)
 	int		nb_instr;
 	t_lnk	*deep_cpy;
 
-	coef_turk = 3;
+	coef_turk = COEF_TURK_MIN;
 	best_coef = coef_turk;
 	best_turk = SIZE_MAX * 20;
 	nb_instr = best_turk;
 	deep_cpy = list_deep_cpy(d.a.lst);
 	d.a.lst = list_deep_cpy(d.a.lst);
-	while (coef_turk < 8)
+	while (coef_turk <= COEF_TURK_MAX)
 	{
 		reset_lst(&d, deep_cpy);
 		nb_instr = main_algo(d, coef_turk, ra, QUIET);
