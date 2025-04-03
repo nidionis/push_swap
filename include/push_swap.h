@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/03 21:00:01 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 22:32:19 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,5 +278,8 @@ int						main_algo(t_data d, int coef_turk, int r_x,
 							int verbose);
 void sort_small_lst(t_data *d);
 int is_sorted_a_n_nexts(t_lst x, int n_nexts);
+int should_swap_a(t_lst *a);
+int sort_4_nb(t_data *d);
+int sort_3_nb(t_data *d);
 
 #endif

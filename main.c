@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 	t_data	d;
 	int		best_coef;
 
+    ft_bzero(&d, sizeof(t_data));
+
 	if (argc < 2)
 	{
 		ft_errmsg(NULL);

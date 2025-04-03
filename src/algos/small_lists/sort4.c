@@ -6,20 +6,31 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/03 22:24:20 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 23:17:58 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <push_swap.h>
 
-int should_swap_a(t_lst *a)
+int sort_4_nb(t_data *d)
 {
-    if (head(a) == a->max)
+    int nb_instr;
+    int way;
+    int r_instr;
+
+    nb_instr = 0;
+    if (is_sorted_a_n_nexts(d->a, 4))
+        return (0);
+    way = get_shortestway(4, d->a.lst);
+    r_instr = ra;
+    if (way == RROTATE)
+        r_instr = rra;
+    while (head(&d->a) != 4 && !is_sorted_a_n_nexts(d->a, 4))
     {
-        if (a->lst->next->next->rank == a->min)
-            return (TRUE);
+        if (should_swap_a(&d->a))
+            nb_instr = apply_instr(d, sa, PRINT);
+        if (head(&d->a) != 4 && !is_sorted_a_n_nexts(d->a, 4))
+            nb_instr = apply_instr(d, r_instr, PRINT);
     }
-    else if (head(a) > next(a))
-        return (TRUE);
-    return (FALSE);
+    return (nb_instr);
 }
