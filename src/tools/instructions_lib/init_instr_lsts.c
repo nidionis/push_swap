@@ -12,24 +12,24 @@
 
 #include "push_swap.h"
 
-void init_r_instr_load_b_turk_(int r_instr[12])
+void	init_r_instr_load_b_turk_(int r_instr[12])
 {
-    r_instr[0] = ra;
-    r_instr[1] = rr;
-    r_instr[2] = rb;
-    r_instr[5] = rrb;
-    r_instr[4] = rrr;
-    r_instr[3] = rra;
-    r_instr[6] = LOOP_END;
+	r_instr[0] = ra;
+	r_instr[1] = rr;
+	r_instr[2] = rb;
+	r_instr[5] = rrb;
+	r_instr[4] = rrr;
+	r_instr[3] = rra;
+	r_instr[6] = LOOP_END;
 }
 
-void init_r_instr_load_b_basic(int r_instr[12])
+void	init_r_instr_load_b_basic(int r_instr[12])
 {
-    r_instr[0] = rrr;
-    r_instr[1] = rr;
-    r_instr[2] = ra;
-    r_instr[3] = rra;
-    r_instr[4] = rb;
-    r_instr[5] = rrb;
-    r_instr[6] = LOOP_END;
+	r_instr[0] = rrr;
+	r_instr[1] = rr;
+	r_instr[2] = ra;
+	r_instr[3] = rra;
+	r_instr[4] = rb;
+	r_instr[5] = rrb;
+	r_instr[6] = LOOP_END;
 }
