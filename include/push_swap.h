@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/02 23:15:35 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:05:41 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -271,5 +271,7 @@ void                init_r_instr_load_b_basic(int r_instr[12]);
 int                load_b_Turk(t_data *d, int coef_turk, int verbose);
 int                load_b_opti_turk(t_data *d, int coef_turk, int r_x, int verbose);
 int                dump_b_basic(t_data *d, int *r_instr, int verbose);
+int             	find_best_coef_turk(t_data d);
+int	main_algo(t_data d, int coef_turk, int r_x, int verbose);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 23:41:34 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/02 23:09:51 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 18:03:04 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,40 @@ int load_b_opti_turk(t_data *d, int coef_turk, int r_x, int verbose)
     }
     return (nb_instr);
 }
+
+static int	update_best_turk(int *best_coef, int *best_turk, int coef_turk, int nb_instr)
+{
+    if (nb_instr < *best_turk)
+    {
+        *best_turk = nb_instr;
+        *best_coef = coef_turk;
+    }
+    return (1);
+}
+
+int	find_best_coef_turk(t_data d)
+{
+    int		coef_turk;
+    int		best_coef;
+    int		best_turk;
+    int		nb_instr;
+    t_lnk	*deep_cpy;
+
+    coef_turk = 3;
+    best_coef = coef_turk;
+    best_turk = SIZE_MAX * 20;
+    nb_instr = best_turk;
+    deep_cpy = list_deep_cpy(d.a.lst);
+    d.a.lst = list_deep_cpy(d.a.lst);
+    while (coef_turk < 8)
+    {
+        reset_lst(&d, deep_cpy);
+        nb_instr = main_algo(d, coef_turk, ra, QUIET);
+        coef_turk += update_best_turk(&best_coef, &best_turk, coef_turk, nb_instr);
+    }
+    del_lst(&deep_cpy);
+    del_lst(&d.a.lst);
+    del_lst(&d.b.lst);
+    return (best_coef);
+}
+
