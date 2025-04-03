@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/03 18:26:33 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 21:00:01 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define TRUE 1
 # define FALSE 0
 # define UNSET -3
-# define PRINT_DISPLAY 1
+# define PRINT 1
 # define QUIET 0
 # define INSTR 0
 # define NB_INSTR 1
@@ -131,10 +131,10 @@ enum					e_instr
 };
 
 int						dump_b(t_data *data, int verbose);
-void					sort_2_nb(void);
-void					sort_3_nb(int max);
-void					sort_4_nb(void);
-void					sort_5_nb(void);
+int					sort_2_nb(t_data *d);
+int					sort_3_nb(t_data *d);
+int					sort_4_nb(t_data *d);
+int					sort_5_nb(t_data *d);
 
 int						should_swap_b_unsafe(t_lnk *lst);
 int						should_swap_b(t_lnk *lst, int mediane);
@@ -276,5 +276,7 @@ int						dump_b_basic(t_data *d, int *r_instr, int verbose);
 int						find_best_coef_turk(t_data d);
 int						main_algo(t_data d, int coef_turk, int r_x,
 							int verbose);
+void sort_small_lst(t_data *d);
+int is_sorted_a_n_nexts(t_lst x, int n_nexts);
 
 #endif

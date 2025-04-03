@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:13:50 by nidionis          #+#    #+#             */
-/*   Updated: 2025/04/02 17:09:44 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 21:16:25 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	get_shortestway(int target_rank, t_lnk *list)
 	t_lnk	*last;
 	int		step;
 
-	last = list;
+	last = list->prev;
 	step = 0;
 	while (list != last)
 	{
@@ -26,7 +26,7 @@ int	get_shortestway(int target_rank, t_lnk *list)
 		list = list->next;
 		step++;
 	}
-	if (step > ft_dlstsize(list) / 2)
+	if (step >= ft_dlstsize(list) / 2 + 1)
 		return (RROTATE);
 	return (ROTATE);
 }

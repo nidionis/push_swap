@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 19:47:40 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/02 22:11:34 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/03 20:50:07 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ int	reach_rank_a(t_data *data, int rank, int verbose)
 	int	way;
 	int	instr;
 
+    if (head(&data->a) == rank)
+    {
+        return (0);
+    }
 	way = get_shortestway(rank, data->a.lst);
 	instr = rra;
 	if (way == ROTATE)
