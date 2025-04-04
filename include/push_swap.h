@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/04 14:29:52 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/04 16:21:49 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,5 +280,7 @@ int						should_swap_a(t_lst *a);
 int						should_swap_b(t_lst *b);
 int						sort_4_nb(t_data *d);
 int						sort_3_nb(t_data *d);
+int						sort_3_nexts_a(t_data *d);
+void					rotate_a_instr(int r_instr[12]);
 
 #endif

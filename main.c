@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/04 15:16:23 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:57:49 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	parsing(t_data *d, int argc, char **argv)
 	ft_bzero(d, sizeof(t_data));
 	init_instr_map(&d->instr_map);
 	d->a.lst = get_args(d, argc, argv);
+	if (!d->a.lst)
+	{
+		ft_errmsg("Error\n");
+		exit(EXIT_FAILURE);
+	}
 	d->rank_max = lst_init_ranks(&d->a.lst);
 	d->b.lst = NULL;
 	if (!ft_no_duplicate(d->a.lst))
@@ -44,8 +49,8 @@ int	main(int argc, char **argv)
 	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)
 	{
-		ft_errmsg(NULL);
-		exit(0);
+		ft_errmsg("Error\n");
+		exit(EXIT_FAILURE);
 	}
 	parsing(&d, argc, argv);
 	if (d.a.size <= 5)

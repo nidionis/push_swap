@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/02/01 05:45:45 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:53:16 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,27 @@
 
 t_lnk	*get_args(t_data *d, int argc, char *argv[])
 {
-	t_lnk	*lnk;
+	t_lnk		*lnk;
+	long int	nbr;
 
 	argc -= 2;
 	argv = &argv[1];
-	lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
+	nbr = ft_atoi_err(argv[argc]);
+	if (nbr > 2147483647)
+	{
+		return (NULL);
+	}
+	lnk = ft_new_lnk(nbr, argc, 0);
 	d->a.lst = lnk;
 	while (argc--)
 	{
-		lnk = ft_new_lnk(ft_atoi_err(argv[argc]), argc, 0);
+		nbr = ft_atoi_err(argv[argc]);
+		if (nbr > 2147483647)
+		{
+			del_lst(&d->a.lst);
+			return (NULL);
+		}
+		lnk = ft_new_lnk(nbr, argc, 0);
 		push_item(lnk, &d->a.lst);
 	}
 	return (d->a.lst);
