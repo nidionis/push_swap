@@ -29,10 +29,10 @@ int	reach_rank_a(t_data *data, int rank, int verbose)
 	int	way;
 	int	instr;
 
-    if (head(&data->a) == rank)
-    {
-        return (0);
-    }
+	if (head(&data->a) == rank)
+	{
+		return (0);
+	}
 	way = get_shortestway(rank, data->a.lst);
 	instr = rra;
 	if (way == ROTATE)

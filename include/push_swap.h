@@ -131,10 +131,10 @@ enum					e_instr
 };
 
 int						dump_b(t_data *data, int verbose);
-int					sort_2_nb(t_data *d);
-int					sort_3_nb(t_data *d);
-int					sort_4_nb(t_data *d);
-int					sort_5_nb(t_data *d);
+int						sort_2_nb(t_data *d);
+int						sort_3_nb(t_data *d);
+int						sort_4_nb(t_data *d);
+int						sort_5_nb(t_data *d);
 
 int						break_when_minmax_loaded(t_data *d, int instr);
 
@@ -274,11 +274,11 @@ int						dump_b_basic(t_data *d, int *r_instr, int verbose);
 int						find_best_coef_turk(t_data d);
 int						main_algo(t_data d, int coef_turk, int r_x,
 							int verbose);
-void sort_small_lst(t_data *d);
-int is_sorted_a_n_nexts(t_lst x, int n_nexts);
-int should_swap_a(t_lst *a);
-int should_swap_b(t_lst *b);
-int sort_4_nb(t_data *d);
-int sort_3_nb(t_data *d);
+void					sort_small_lst(t_data *d);
+int						is_sorted_a_n_nexts(t_lst x, int n_nexts);
+int						should_swap_a(t_lst *a);
+int						should_swap_b(t_lst *b);
+int						sort_4_nb(t_data *d);
+int						sort_3_nb(t_data *d);
 
 #endif

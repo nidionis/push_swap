@@ -41,24 +41,22 @@ int	main(int argc, char **argv)
 	t_data	d;
 	int		best_coef;
 
-    ft_bzero(&d, sizeof(t_data));
-
+	ft_bzero(&d, sizeof(t_data));
 	if (argc < 2)
 	{
 		ft_errmsg(NULL);
 		exit(0);
 	}
 	parsing(&d, argc, argv);
-    if (d.a.size <= 5)
-    {
-        //printf("is_sorted_a_n_nexts: %d\n", is_sorted_a_n_nexts(d.a, 3));
-        sort_small_lst(&d);
-    }
-    else
-    {
-        best_coef = find_best_coef_turk(d);
-        main_algo(d, best_coef, ra, PRINT);
-    }
+	if (d.a.size <= 5)
+	{
+		sort_small_lst(&d);
+	}
+	else
+	{
+		best_coef = find_best_coef_turk(d);
+		main_algo(d, best_coef, ra, PRINT);
+	}
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
 }
