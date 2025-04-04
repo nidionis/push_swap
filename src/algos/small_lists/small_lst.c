@@ -6,20 +6,11 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/03 22:32:45 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/04 14:24:15 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int sort_5_nb(t_data *d)
-{
-    int nb_instr;
-
-    (void)d;
-    nb_instr = 0;
-    return (nb_instr);
-}
 
 int sort_2_nb(t_data *d)
 {

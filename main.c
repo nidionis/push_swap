@@ -6,7 +6,7 @@
 /*   By: nidionis <nidionis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 17:24:45 by supersko          #+#    #+#             */
-/*   Updated: 2025/04/03 21:08:38 by nidionis         ###   ########.fr       */
+/*   Updated: 2025/04/04 15:16:23 by nidionis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,11 @@ int	main(int argc, char **argv)
         //printf("is_sorted_a_n_nexts: %d\n", is_sorted_a_n_nexts(d.a, 3));
         sort_small_lst(&d);
     }
-	best_coef = find_best_coef_turk(d);
-	main_algo(d, best_coef, ra, PRINT);
+    else
+    {
+        best_coef = find_best_coef_turk(d);
+        main_algo(d, best_coef, ra, PRINT);
+    }
 	del_lst(&d.a.lst);
 	del_lst(&d.b.lst);
 }
