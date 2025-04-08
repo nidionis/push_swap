@@ -15,10 +15,8 @@
 int	is_sorted_a_n_nexts(t_lst x, int n_nexts)
 {
 	int		i;
-	t_lnk	*first;
 
 	i = 0;
-	first = x.lst;
 	while (i < n_nexts)
 	{
 		if (head(&x) == x.max)

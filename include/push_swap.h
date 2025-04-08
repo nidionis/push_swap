@@ -38,8 +38,8 @@
 
 # define LOW 432
 # define HIGH 433
-# define COEF_TURK_MAX 9
-# define COEF_TURK_MIN 1
+# define COEF_TURK_MAX 4
+# define COEF_TURK_MIN 2
 
 # define NOT_FOUND -41
 # define NO_INSTR -42
